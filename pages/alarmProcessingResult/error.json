@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "提交失败",
+    "usingComponents": {
+        "wux-result": "../../dist/wux/dist/result/index"
+    }
+}

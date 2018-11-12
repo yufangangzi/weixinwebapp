@@ -1,0 +1,12 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "警报处理",
+  "backgroundColor": "#F3F4F5",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "wux-button": "../../dist/wux/dist/button/index",
+    "wux-radio-group": "../../dist/wux/dist/radio-group/index",
+    "wux-radio": "../../dist/wux/dist/radio/index"
+  }
+}

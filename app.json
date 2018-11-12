@@ -1,6 +1,11 @@
 {
   "pages": [
+
     "pages/login/login",
+    "pages/alarmProcessing/alarmProcessing",
+    "pages/alarmProcessingResult/index",
+    "pages/alarmProcessingResult/success",
+    "pages/alarmProcessingResult/error",
     "pages/first/first",
     "pages/index/index",
     "pages/logs/logs"
@@ -31,7 +36,7 @@
     "request": 10000,
     "downloadFile": 10000
   },
-  "debug": true,
+  "debug": false,
   "navigateToMiniProgramAppIdList": [
     "wxe5f52902cf4de896"
   ]
