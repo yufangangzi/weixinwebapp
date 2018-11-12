@@ -44,6 +44,7 @@ App({
     console.log(msg)
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    imgUrl:'/usr/local/nginx/iot/portal/assets/static/qzweapp',
   }
 })
