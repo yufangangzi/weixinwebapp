@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/alarmProcessing/handle",
     "pages/alarmProcessing/alarmProcessing",
     "pages/alarmProcessingResult/index",
     "pages/alarmProcessingResult/success",
