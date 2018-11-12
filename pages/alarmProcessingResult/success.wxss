@@ -1,0 +1,7 @@
+/* pages/success/index.wxss */
+/* page{
+  background-color: #FFFFFF;
+} */
+.wux-button--light {
+  background-color: #F8F8F8;
+}

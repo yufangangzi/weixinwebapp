@@ -1,0 +1,9 @@
+<wux-result
+    icon="{{ icon }}"
+    title="提交失败"
+    label="故障预警处理提交失败"
+    buttons="{{ buttons }}"
+    extra=""
+    fixed
+    bind:click="onClick"
+/>

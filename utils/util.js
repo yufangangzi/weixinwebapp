@@ -14,6 +14,15 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const openPage = url => {
+  console.log('open page:', url);
+  wx.navigateTo({
+    url: url
+  });
+}
+
+
 module.exports = {
+  openPage: openPage,
   formatTime: formatTime
 }
