@@ -1,0 +1,35 @@
+<!--wxml-->
+<wux-button size="small" />
+<wux-button size="default" />
+<wux-button size="large" />
+
+<i-button type="primary" bind:click="handleClick">这是一个按钮</i-button>
+
+<view>https://wux-weapp.github.io/wux-weapp-docs/#/quickstart</view>
+<view>https://weapp.iviewui.com/docs/guide/start</view>
+
+<view> {{message}} </view>
+
+
+<view wx:for="{{array}}"> {{item}} </view>
+
+
+<view wx:if="{{view == 'WEBVIEW'}}"> WEBVIEW </view>
+<view wx:elif="{{view == 'APP'}}"> APP </view>
+<view wx:else="{{view == 'MINA'}}"> MINA </view>
+
+
+<template name="staffName">
+  <view>
+    FirstName: {{firstName}}, LastName: {{lastName}}
+  </view>
+</template>
+
+<template is="staffName" data="{{...staffA}}"></template>
+<template is="staffName" data="{{...staffB}}"></template>
+<template is="staffName" data="{{...staffC}}"></template>
+
+
+<view bindtap="add"> {{count}} </view>
+
+
