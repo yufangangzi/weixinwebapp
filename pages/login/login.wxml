@@ -17,12 +17,13 @@
     <view class="section">
       <image class="pwdimg" src="{{loginimg2}}" mode="scaleToFill"></image>
       <text class='lg-text'>密码:</text>
-      <input class='lg-input' placeholder="" auto-focus/>
+      <input class='lg-input' placeholder="" />
     </view>
   </view>
   <!-- input end -->
   <button size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
-      disabled="{{disabled}}" bindtap="primary" class='btn-color'> 
+      disabled="{{disabled}}" bindtap="primary" class='btn-color' 
+      bindtap="open2Page"> 
       登录 
   </button>
   <view>

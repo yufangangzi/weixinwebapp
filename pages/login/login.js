@@ -1,6 +1,7 @@
 // pages/login/login.js
 const app = getApp();
 const imgUrl = app.globalData.imgUrl;
+const util = require('../../utils/util.js');
 Page({
 
   /**
@@ -11,6 +12,9 @@ Page({
     loginimg1: imgUrl +"login1.png",
     loginimg2: imgUrl +"login2.png",
     loginbg: imgUrl +"loginbg.png",
+  },
+  open2Page() {
+    util.openPage("../../pages/alarmProcessing/detail");
   },
   /**
    * 生命周期函数--监听页面加载
