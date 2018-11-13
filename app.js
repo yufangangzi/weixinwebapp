@@ -44,6 +44,7 @@ App({
     console.log(msg)
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    imgUrl: 'http://10.144.132.51:8091/static/qzweapp/',
   }
 })
