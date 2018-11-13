@@ -52,7 +52,8 @@
   line-height:40rpx;
 }
 .bmimg{
-  margin-top: 209rpx;
+  /* margin-top: 209rpx; */
+   margin-top: 149rpx;
   width: 100%;
   height: 278rpx;
 }
