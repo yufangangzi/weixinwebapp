@@ -1,0 +1,99 @@
+.bg-top{
+  width: 100%;
+  position: relative;
+}
+.bg-img{
+  width: 100%;
+  height: 400rpx;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.pos{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+}
+
+.top-t1 {
+  padding-top: 20rpx;
+  padding-left: 27rpx;
+  height:40rpx;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:40rpx;
+  display: inline-block;
+}
+.top-t2 {
+  padding-top: 20rpx;
+  padding-left: 43rpx;
+  height:40rpx;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:40rpx;
+  display: inline-block;
+  width: 15rem;
+}
+
+.top-t3{
+  text-align: right;
+  padding-top: 25rpx;
+  padding-right: 19rpx;
+  height:33rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:33rpx;
+  display: inline-block;
+}
+
+.tupuicon{
+  width:16rpx;
+  height:16rpx;
+}
+
+.tuputxt{
+  padding-left: 10rpx;
+  width: 16.6rem;
+  display: inline-block;
+  vertical-align: top;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:40rpx;
+}
+
+.marb20{
+  margin-bottom: 19rpx;
+}
+
+.marb40{
+  margin-bottom: 40rpx;
+}
+
+.jianyitt{
+  display: inline-block;
+  font-size:34rpx;
+  font-weight:400;
+  color:rgba(53,53,53,1);
+  line-height:48rpx;
+
+}
+
+.jianyitxt{
+  font-size:30rpx;
+  font-weight:400;
+  color:rgba(98,129,229,1);
+  line-height:42rpx;
+  vertical-align: top;
+  float: right;
+  
+}
+
+.martop70{
+  margin-top: 70rpx;
+}

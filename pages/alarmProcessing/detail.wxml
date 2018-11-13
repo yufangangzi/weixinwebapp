@@ -1,0 +1,114 @@
+<view class="bg-top">
+  <image style="width:100%;background-color: #eeeeee;" mode="widthFix" src="{{imgSrc}}"></image>
+  <!-- <view class="bg-img" style="background-image:url({{imgSrc}});"></view> -->
+  <view class="pos">
+    <view style="display:block;padding-top:19rpx;">
+      <view class="top-t1">报警时间</view>
+      <view class="top-t2">2018.11.06 14:20:00</view>
+    </view>
+
+    <view style="display:block;">
+      <view class="top-t1">故障设备</view>
+      <view class="top-t2">2314-P202A</view>
+    </view>
+
+    <view style="display:block;">
+      <view class="top-t1">报警程度</view>
+      <view class="top-t2">严重</view>
+    </view>
+
+    <view style="float:right;margin-right: 20rpx;">
+      <view class="top-t3" >查看历史报警</view>
+      <view style="display:inline-block;vertical-align:middle;">
+      <wux-icon type="ios-arrow-forward" size="16" color="#FFFFFF" />
+      </view>
+    </view>
+
+
+  
+
+  </view>
+
+  <view style="margin-top: -160rpx;z-index:999;position:relative;">
+    <wux-wing-blank size="default">
+        <!-- <wux-card title="卡片标题" extra="额外内容">
+            <view slot="body">卡片内容</view>
+            <view slot="footer"></view>
+        </wux-card> -->
+        <view style="height:469rpx;background-color:#fff;z-index:999;text-align:center;display:flex;justify-content:center;align-items:center;">图表预留</view>
+    </wux-wing-blank>
+  </view>
+
+  <view style="margin-top:18rpx;">
+    <wux-wing-blank size="default">
+        <wux-card title="图谱特征" extra="" thumb="{{imgGroup4Src}}" thumb-style="height:30rpx;width:30rpx;">
+            <view slot="body">
+              <view class="marb20">
+                <image class="tupuicon" mode="aspectFit" src="{{imgGroup3Src}}"></image>
+                <view class="tuputxt">振动速度超过设定阈值; 振动速度频率以转轴的旋转频率（一倍频）、二倍频、三倍频等为主，但二倍频成分突出≥30%。</view>
+              </view>
+
+              <view class="marb20">
+                <image class="tupuicon" mode="aspectFit" src="{{imgGroup3Src}}"></image>
+                <view class="tuputxt">振动速度超过设定阈值; 振动速度频率以转轴的旋转频率（一倍频）、二倍频、三倍频等为主，但二倍频成分突出≥30%。</view>
+              </view>
+
+              <view class="marb20">
+                <image class="tupuicon" mode="aspectFit" src="{{imgGroup3Src}}"></image>
+                <view class="tuputxt">振动速度超过设定阈值; 振动速度频率以转轴的旋转频率（一倍频）、二倍频、三倍频等为主，但二倍频成分突出≥30%。</view>
+              </view>
+
+
+            </view>
+            <view slot="footer"></view>
+        </wux-card>
+    </wux-wing-blank>
+  </view>
+
+  <view style="margin-top:18rpx;">
+    <wux-wing-blank size="default">
+        <wux-card title="诊断建议" extra="" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
+            <view slot="body">
+              <view class="marb40" bindtap="open2Jianyi">
+                <view class="jianyitt">不平衡</view>
+                <view class="jianyitxt">可信度：0.83
+                  <wux-icon type="ios-arrow-forward" size="16" color="#C7C7CC" />
+                </view>
+                
+              </view>
+
+
+              <view class="marb40" bindtap="open2Jianyi">
+                <view class="jianyitt">不对中</view>
+                <view class="jianyitxt">可信度：0.83
+                  <wux-icon type="ios-arrow-forward" size="16" color="#C7C7CC" />
+                </view>
+                
+              </view>
+
+
+              <view class="marb40" bindtap="open2Jianyi">
+                <view class="jianyitt">轴承磨损</view>
+                <view class="jianyitxt">可信度：0.83
+                  <wux-icon type="ios-arrow-forward" size="16" color="#C7C7CC" />
+                </view>
+                
+              </view>
+
+              
+
+
+            </view>
+            <view slot="footer"></view>
+        </wux-card>
+    </wux-wing-blank>
+  </view>
+
+</view>
+
+
+
+
+<view class="page__bd page__bd_spacing martop70">
+  <wux-button block type="positive" bind:click="open2Page">立即处理</wux-button>
+</view>

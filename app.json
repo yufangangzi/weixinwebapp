@@ -1,15 +1,17 @@
 {
   "pages": [
-
     "pages/login/login",
+    "pages/alarmProcessing/detail",
+    "pages/alarmProcessing/handle",
+    "pages/alarmProcessing/diagnosticAdvice",
     "pages/alarmProcessing/alarmProcessing",
     "pages/alarmProcessingResult/index",
     "pages/alarmProcessingResult/success",
     "pages/alarmProcessingResult/error",
-    
     "pages/first/first",
     "pages/index/index",
     "pages/logs/logs"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
