@@ -64,6 +64,12 @@
   line-height: 133rpx;
 }
 .lg-input{
+  margin-left: 30rpx;
+  display: inline-block;
+  font-size: 28rpx;
+  vertical-align: text-bottom
+}
+.pwd-input{
   margin-left: 20rpx;
   display: inline-block;
   font-size: 28rpx;
