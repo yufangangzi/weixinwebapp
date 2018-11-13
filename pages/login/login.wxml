@@ -17,7 +17,7 @@
     <view class="section">
       <image class="pwdimg" src="{{loginimg2}}" mode="scaleToFill"></image>
       <!-- <text class='lg-text'>密码:</text> -->
-      <input class='pwd-input' placeholder="密码" />
+      <input class='pwd-input'type="password" placeholder="密码" />
     </view>
   </view>
   <!-- input end -->
