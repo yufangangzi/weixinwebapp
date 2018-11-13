@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "设备2314-P202A不平衡警报",
+  "usingComponents": {
+    "wux-cell-group": "../../dist/wux/dist/cell-group/index",
+    "wux-cell": "../../dist/wux/dist/cell/index",
+    "wux-wing-blank": "../../dist/wux/dist/wing-blank/index",
+    "wux-white-space": "../../dist/wux/dist/white-space/index",
+    "wux-row": "../../dist/wux/dist/row/index",
+    "wux-col": "../../dist/wux/dist/col/index",
+    "wux-button": "../../dist/wux/dist/button/index"
+  }
+}

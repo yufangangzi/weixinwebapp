@@ -1,0 +1,110 @@
+<view>
+  <wux-white-space />
+  <wux-wing-blank size="default">
+      <view class="bg-wh">
+        <wux-row>
+              <wux-col span="8">
+                  <view class="title">不平衡</view>
+              </wux-col>
+              <wux-col span="4">
+                  <view class="kexingdu">可信度：0.83</view>
+              </wux-col>
+        </wux-row>
+        <view class="line"></view>
+        <view class="">
+          <view class="intro">故障级别</view>
+          <view class="desp">一般</view>
+        </view>
+        <view class="">
+          <view class="intro">故障说明</view>
+          <view class="desp">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+        </view>
+        <view class="">
+          <view class="intro">故障对策</view>
+          <view class="desp">
+
+            <view class="block">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+
+            <view class="block">2、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+          </view>
+        </view>
+      </view>
+  </wux-wing-blank>
+  <wux-white-space />
+</view>
+
+<view>
+  <wux-white-space />
+  <wux-wing-blank size="default">
+      <view class="bg-wh">
+        <wux-row>
+              <wux-col span="8">
+                  <view class="title">不对中</view>
+              </wux-col>
+              <wux-col span="4">
+                  <view class="kexingdu">可信度：0.83</view>
+              </wux-col>
+        </wux-row>
+        <view class="line"></view>
+        <view class="">
+          <view class="intro">故障级别</view>
+          <view class="desp">一般</view>
+        </view>
+        <view class="">
+          <view class="intro">故障说明</view>
+          <view class="desp">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+        </view>
+        <view class="">
+          <view class="intro">故障对策</view>
+          <view class="desp">
+
+            <view class="block">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+
+            <view class="block">2、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+          </view>
+        </view>
+      </view>
+  </wux-wing-blank>
+  <wux-white-space />
+</view>
+
+<view>
+  <wux-white-space />
+  <wux-wing-blank size="default">
+      <view class="bg-wh">
+        <wux-row>
+              <wux-col span="8">
+                  <view class="title">轴承磨损</view>
+              </wux-col>
+              <wux-col span="4">
+                  <view class="kexingdu">可信度：0.83</view>
+              </wux-col>
+        </wux-row>
+        <view class="line"></view>
+        <view class="">
+          <view class="intro">故障级别</view>
+          <view class="desp">一般</view>
+        </view>
+        <view class="">
+          <view class="intro">故障说明</view>
+          <view class="desp">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+        </view>
+        <view class="">
+          <view class="intro">故障对策</view>
+          <view class="desp">
+
+            <view class="block">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+
+            <view class="block">2、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+          </view>
+        </view>
+      </view>
+  </wux-wing-blank>
+  <wux-white-space />
+</view>
+
+
+
+<view class="page__bd page__bd_spacing martop70">
+  <wux-button block type="positive" bind:click="back2">返回</wux-button>
+</view>
