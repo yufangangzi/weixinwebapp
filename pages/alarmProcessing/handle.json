@@ -10,6 +10,7 @@
     "wux-radio": "../../dist/wux/dist/radio/index",
     "wux-checkbox-group": "../../dist/wux/dist/checkbox-group/index",
     "wux-checkbox": "../../dist/wux/dist/checkbox/index",
+    "wux-cell-group": "../../dist/wux/dist/cell-group/index",
     "wux-cell": "../../dist/wux/dist/cell/index",
     "wux-select": "../../dist/wux/dist/select/index"
   }

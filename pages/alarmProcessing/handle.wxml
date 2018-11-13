@@ -1,5 +1,6 @@
 <!--pages/alarmProcessing/alarmProcessing.wxml-->
 <wux-select id="wux-select1" />
+<wux-select id="wux-select2" />
 
 <view>
   <wux-radio-group name="d" value="{{ value4 }}" title="是否接受" bind:change="onChange4">
@@ -15,6 +16,12 @@
         <wux-cell title="请选择" extra="{{ title1 }}" bind:click="onClick1"></wux-cell>
       </view>
   </wux-checkbox-group>
+</view>
+
+<view hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? none : flex}}">
+  <wux-cell-group title="">
+      <wux-cell title="指派人员" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
+  </wux-cell-group>
 </view>
 
 

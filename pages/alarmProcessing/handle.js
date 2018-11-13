@@ -24,6 +24,8 @@ Page({
     isSelectOther: false,
     title1: '',
     value1: '',
+    title2: '',
+    value2: '',
     value4: '1',
     value5: ['1'],
     sugggestArray: [
@@ -143,6 +145,62 @@ Page({
         this.setData({
           value1: value,
           title1: index.map((n) => options[n].title),
+        })
+      },
+    })
+  },
+
+  onClick2() {
+    $wuxSelect('#wux-select2').open({
+      value: this.data.value1,
+      // multiple: true,
+      toolbar: {
+        title: '请选择指派人员',
+        confirmText: '确定',
+      },
+      options: [{
+        title: '张三',
+        value: '1',
+        // color: 'positive',
+      },
+      {
+        title: '李四',
+        value: '2',
+        // color: 'positive',
+      },
+      {
+        title: '王五',
+        value: '3',
+        // color: 'positive',
+      },
+      {
+        title: '赵六',
+        value: '4',
+        // color: 'positive',
+      },
+      {
+        title: '刘名',
+        value: '5',
+        // color: 'positive',
+      },
+      {
+        title: '朱八',
+        value: '6',
+        // color: 'positive',
+      },
+      ],
+      onChange: (value, index, options) => {
+        console.log('onChange', value, index, options)
+        this.setData({
+          value2: value,
+          title2: options[index].title,
+        })
+      },
+      onConfirm: (value, index, options) => {
+        console.log('onConfirm', value, index, options)
+        this.setData({
+          value2: value,
+          title2: options[index].title,
         })
       },
     })
