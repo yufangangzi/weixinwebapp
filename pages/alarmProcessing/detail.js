@@ -13,6 +13,11 @@ Page({
     imgGroup3Src: app.globalData.imgUrl + 'group5.png',
     imgGroup4Src: app.globalData.imgUrl + 'group4.png',
     imgJianyiSrc: app.globalData.imgUrl + 'jianyi.png',
+    imgPhoneSrc: app.globalData.imgUrl + 'phone.png',
+    isReport: false,
+    isRepair: false,
+    isRepairEnd: true,
+    picturesList: [],
   },
 
   open2Page() {
@@ -23,11 +28,50 @@ Page({
     util.openPage("../../pages/alarmProcessing/diagnosticAdvice");
   },
 
+  back2(){
+    wx.navigateBack();
+  },
+
+  makephone(){
+    wx.makePhoneCall({
+      phoneNumber: '13400001234' //仅为示例，并非真实的电话号码
+    })
+  },
+
+  //图片点击事件
+  imgYu: function (event) {
+    var src = event.currentTarget.dataset.src;//获取data-src
+    var imgList = event.currentTarget.dataset.list;//获取data-list
+    //图片预览
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: imgList // 需要预览的图片http链接列表
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const r = Math.random();
+    if(r>0.5){
+      this.setData({
+        isReport: false,
+        isRepair: true,
+      })
+    }else{
+      this.setData({
+        isReport: true,
+        isRepair: false,
+      })
+    }
 
+
+    //设置图片数组
+    const img = this.data.imgGroup3Src;
+    this.setData({
+      picturesList: [img, img, img]
+    })
   },
 
   /**
