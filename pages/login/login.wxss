@@ -1,1 +1,61 @@
 /* pages/login/login.wxss */
+.conbg{
+  background: #FFFFFF;
+}
+.top-con{
+  text-align: center;  
+}
+.image_frame{
+  width: 94rpx;
+  height: 94rpx;
+  margin-top: 78rpx;
+}
+.log-tit{
+  height:33rpx;
+  font-size:24rpx;
+  font-weight:500;
+  color:#5878E4;
+  margin-top: 39rpx;
+}
+.btn-color {
+  margin-top: 73rpx;
+  background-color:rgb(17, 48, 150);
+  border-radius:10px;
+  height: 94rpx;
+  line-height: 94rpx;
+  color:#FFFFFF;
+  font-size:36rpx;
+  width: 680rpx;
+}
+
+.ipt-con{  
+  margin-left: 43rpx;
+  margin-right: 42rpx;
+  margin-top: 143rpx;
+}
+.pwdimg{
+  width: 23rpx;
+  height: 24rpx;
+  display: inline-block
+}
+.lg-text{
+  margin-left: 30rpx;
+  height:40rpx;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(136,136,136,1);
+  line-height:40rpx;
+}
+.bmimg{
+  margin-top: 209rpx;
+}
+.section{
+  flex-direction:row;
+  border-bottom: 1px #D4D4D4 solid;
+  height: 103rpx;
+  padding-top: 45rpx;
+}
+.lg-input{
+ 
+  display: inline-block
+}

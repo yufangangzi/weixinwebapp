@@ -1,13 +1,17 @@
 // pages/login/login.js
+const app = getApp();
+const imgUrl = app.globalData.imgUrl;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    logUrl: imgUrl+"log.png",
+    loginimg1: imgUrl +"login1.png",
+    loginimg2: imgUrl +"login2.png",
+    loginbg: imgUrl +"loginbg.png",
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

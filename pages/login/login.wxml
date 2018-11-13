@@ -1,2 +1,31 @@
 <!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class='conbg'>
+  <view class='top-con'>
+    <image class="image_frame" src="{{logUrl}}" mode="scaleToFill">
+    </image>
+    <view>
+      <text class='log-tit'>泉州石化设备智能诊断系统</text>
+    </view>
+  </view>
+
+  <view class='ipt-con'>
+    <view class="section" style='flex-direction:row'>
+      <image class="pwdimg" src="{{loginimg1}}" mode="scaleToFill"></image>
+      <text class='lg-text'>账号:</text>
+      <input class='lg-input' placeholder="" auto-focus/>
+    </view>
+    <view class="section">
+      <image class="pwdimg" src="{{loginimg2}}" mode="scaleToFill"></image>
+      <text class='lg-text'>密码:</text>
+      <input class='lg-input' placeholder="" auto-focus/>
+    </view>
+  </view>
+  <!-- input end -->
+  <button size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
+      disabled="{{disabled}}" bindtap="primary" class='btn-color'> 
+      登录 
+  </button>
+  <view>
+    <image class="bmimg" src="{{loginbg}}" mode="scaleToFill"></image>
+  </view>
+</view>

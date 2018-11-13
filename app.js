@@ -45,6 +45,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    imgUrl:'/usr/local/nginx/iot/portal/assets/static/qzweapp',
+    imgUrl:'http://10.144.132.51:8091/static/qzweapp/',
   }
 })
