@@ -56,6 +56,19 @@
   height:16rpx;
 }
 
+.phoneicon{
+  width:36rpx;
+  height:32rpx;
+  margin-left: 30rpx;
+}
+
+.resultImg {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+}
+
 .tuputxt{
   padding-left: 10rpx;
   width: 16.6rem;
@@ -96,4 +109,34 @@
 
 .martop70{
   margin-top: 70rpx;
+}
+
+
+.line {
+  margin: 15rpx 0rpx 0;
+  height: 1px;
+  border-bottom: 1px solid #CFCFCF;
+}
+
+
+.intro {
+  display: inline-block;
+  width:130rpx;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(53,53,53,1);
+  line-height:40rpx;
+  padding-left: 0rpx;
+  padding-top: 26rpx;
+}
+
+.desp {
+  display: inline-block;
+  vertical-align: top;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(136,136,136,1);
+  line-height:40rpx;
+  padding-top: 26rpx;
+  width: calc(100% - 150rpx);
 }
