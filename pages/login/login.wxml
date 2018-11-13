@@ -10,14 +10,14 @@
 
   <view class='ipt-con'>
     <view class="section" style='flex-direction:row'>
-      <image class="pwdimg" src="{{loginimg1}}" mode="scaleToFill"></image>
-      <text class='lg-text'>账号:</text>
-      <input class='lg-input' placeholder="" auto-focus/>
+      <image class="logimg" src="{{loginimg1}}" mode="scaleToFill"></image>
+      <!-- <text class='lg-text'>账号:</text> -->
+      <input class='lg-input' placeholder="账号" auto-focus/>
     </view>
     <view class="section">
       <image class="pwdimg" src="{{loginimg2}}" mode="scaleToFill"></image>
-      <text class='lg-text'>密码:</text>
-      <input class='lg-input' placeholder="" />
+      <!-- <text class='lg-text'>密码:</text> -->
+      <input class='lg-input' placeholder="密码" />
     </view>
   </view>
   <!-- input end -->
