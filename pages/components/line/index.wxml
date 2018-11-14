@@ -44,6 +44,9 @@
 </view>
 </view>
 
+<view style="position:relative;height: 500rpx;margin-top:-80rpx;">
 <view class="ec-container">
   <ec-canvas wx:if="{{!isDisposed}}" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+</view>
+
 </view>
