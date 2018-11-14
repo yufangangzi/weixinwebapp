@@ -18,6 +18,11 @@ Page({
     isRepair: false,
     isRepairEnd: true,
     picturesList: [],
+    lineParamsObj: {
+      id: 1,
+      name: '传参',
+    },
+    lineChart: null,
   },
 
   open2Page() {
@@ -49,6 +54,10 @@ Page({
     })
   },
 
+  fatherRecvFn: function(event){
+    console.log('父组件接受到的消息：', event.detail);
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -66,19 +75,35 @@ Page({
       })
     }
 
+    //随机测试父传子
+    setTimeout(()=>{
+      this.setData({
+        lineParamsObj: {
+          id: parseInt(Math.random() * 10000) % 20,
+          name: '被修改的值',
+        }
+      })
+    },6000);
+
 
     //设置图片数组
     const img = this.data.imgGroup3Src;
     this.setData({
       picturesList: [img, img, img]
-    })
+    });
+
+
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.lineChart = this.selectComponent('#mychart-dom-line-father');
+    //初始显示line图
+    this.lineChart.init();
+    console.log('333', this.lineChart);
   },
 
   /**

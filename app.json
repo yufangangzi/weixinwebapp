@@ -1,9 +1,7 @@
 {
   "pages": [
-    
-    "pages/login/login",
-    "pages/alarmProcessing/detail",
-    "pages/alarmProcessing/handle",
+	"pages/login/login",
+    "pages/alarmProcessing/detail",    "pages/alarmProcessing/handle",
     "pages/alarmProcessing/diagnosticAdvice",
     "pages/alarmProcessing/alarmProcessing",
     "pages/alarmProcessingResult/index",
