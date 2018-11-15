@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ec-canvas": "../../../dist/ec-canvas/ec-canvas"
+  }
+}

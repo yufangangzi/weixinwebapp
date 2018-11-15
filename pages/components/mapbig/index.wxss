@@ -1,0 +1,150 @@
+/**index.wxss**/
+.ec-container{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.cbtn{
+  margin-top:24rpx;
+  height:40rpx;
+  width: 120rpx;
+  border-radius:2rpx;
+  border:1px solid #949494;
+  position: relative;
+  display: inline-block;
+}
+
+.ctxt {
+  text-align: left;
+  margin-left: 15rpx;
+  margin-top: 4rpx;
+  height:33rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(80,80,80,1);
+  line-height:33rpx;
+}
+
+.cicon{
+  width:18rpx;
+  height:10rpx;
+  position: absolute;
+  top:15rpx;
+  right: 10rpx;
+}
+
+.marr19{
+  margin-right: 19rpx;
+}
+
+.marr38{
+  margin-right: 38rpx;
+}
+
+
+.dis {
+  display: inline-block;
+  margin-top: 24rpx;
+}
+
+.dis1{
+  position: absolute;
+  right: 20rpx;
+  top: 30rpx;
+  width:30rpx;
+  height:31rpx;
+}
+
+.dis2{
+  position: absolute;
+  right: 170rpx;
+  top: 30rpx;
+  width:30rpx;
+  height:31rpx;
+}
+
+.cicon1{
+  width:30rpx;
+  height:31rpx;
+}
+
+.cbtn1{
+  margin-top:21rpx;
+  height:48rpx;
+  width: 506rpx;
+  border-radius:2rpx;
+  border:1px solid #5878E4;
+  position: relative;
+  display: inline-block;
+}
+
+.crline {
+  width: 335rpx;
+  border-right: 1px solid #5878E4;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+
+.ctxt1 {
+  text-align: left;
+  margin-left: 12rpx;
+  margin-top: 7rpx;
+  height:33rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(80,120,228,1);
+  line-height:33rpx;
+}
+
+.ctxt2 {
+  text-align: left;
+  height:33rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(80,120,228,1);
+  line-height:33rpx;
+  position: absolute;
+  right: 33rpx;
+  top: 7rpx;
+}
+
+.dis3{
+  position: absolute;
+  right: 20rpx;
+  top: 30rpx;
+  width:33rpx;
+  height:33rpx;
+}
+
+.dis4{
+  position: absolute;
+  right: 87rpx;
+  top: 30rpx;
+  width:28rpx;
+  height:36rpx;
+}
+
+.cicon4{
+  width:28rpx;
+  height:36rpx;
+}
+
+.cicon3{
+  width:33rpx;
+  height:33rpx;
+}
