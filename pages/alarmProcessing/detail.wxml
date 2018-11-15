@@ -29,7 +29,7 @@
     </view>
 
     <view wx:if="{{isReport}}" style="float:right;margin-right: 20rpx;">
-      <view class="top-t3" >查看历史报警</view>
+      <view class="top-t3"  bindtap="open2Histor">查看历史报警</view>
       <view style="display:inline-block;vertical-align:middle;">
       <wux-icon type="ios-arrow-forward" size="16" color="#FFFFFF" />
       </view>

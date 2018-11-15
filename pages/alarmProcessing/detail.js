@@ -28,6 +28,9 @@ Page({
   open2Page() {
     util.openPage("../../pages/alarmProcessing/handle");
   },
+  open2Histor() {
+    util.openPage("../../pages/historAlarm/historAlarm");
+  },
 
   open2Jianyi() {
     util.openPage("../../pages/alarmProcessing/diagnosticAdvice");
