@@ -6,14 +6,7 @@ Page({
       type: 'radio',
       label: '故障类型',
       value: 'updated',
-      children: [{
-        label: 'Recently updated',
-        value: 'desc',
-      },
-      {
-        label: 'Least recently updated',
-        value: 'asc',
-      },
+      children: [   
       ],
       groups: ['001'],
     },

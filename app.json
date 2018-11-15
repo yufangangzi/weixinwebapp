@@ -1,6 +1,7 @@
 {
   "pages": [
-	"pages/login/login",
+    "pages/historAlarm/historAlarm",
+	  "pages/login/login",
     "pages/alarmProcessing/detail",    
     "pages/alarmProcessing/handle",
     "pages/alarmProcessing/diagnosticAdvice",
@@ -10,8 +11,8 @@
     "pages/alarmProcessingResult/error",
     "pages/first/first",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/historAlarm/historAlarm"
+    "pages/logs/logs"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
