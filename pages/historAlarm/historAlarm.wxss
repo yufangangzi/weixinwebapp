@@ -17,3 +17,7 @@
   text-align:center;
   line-height: 0px;
 }
+.wux-filterbar__btns .wux-filterbar__btn--danger {
+  background-color:#5878E4;
+  color:#fff;
+}
