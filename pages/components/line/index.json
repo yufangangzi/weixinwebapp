@@ -1,8 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "wux-icon": "../../../dist/wux/dist/icon/index",
-    "wux-select": "../../../dist/wux/dist/select/index",
     "ec-canvas": "../../../dist/ec-canvas/ec-canvas"
   }
 }

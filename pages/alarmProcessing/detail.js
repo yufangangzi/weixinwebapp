@@ -103,10 +103,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.lineChart = this.selectComponent('#mychart-dom-line-father');
-    //初始显示line图
-    this.lineChart.init();
-    console.log('333', this.lineChart);
+    
   },
 
   /**

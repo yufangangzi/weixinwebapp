@@ -15,6 +15,7 @@ Component({
         console.log('newVal:', newVal, ';oldVal:', oldVal);
         
           if (oldVal && newVal) {
+            // debugger
             this.setData({
               'option.series[1].data': [118, 136, 165, 130, 178, 140, 133],
               'option.series[2].data': [12, 50, 51, 35, 70, 30, 20],
@@ -39,15 +40,6 @@ Component({
     },
     isLoaded: false,
     isDisposed: false,
-
-    imgIconSrc: app.globalData.imgUrl + 'Path.png',
-    imgIcon1Src: app.globalData.imgUrl + 'qushi@2x.png',
-    imgIcon2Src: app.globalData.imgUrl + 'xinzhuang@2x.png',
-    imgIcon3Src: app.globalData.imgUrl + 'lujin@2x.png',
-    imgIcon1GraySrc: app.globalData.imgUrl + 'qushi@2x1.png',
-    imgIcon2GraySrc: app.globalData.imgUrl + 'xinzhuang@2x1.png',
-    imgIcon3GraySrc: app.globalData.imgUrl + 'lujin@2x1.png',
-    imgIcon4Src: app.globalData.imgUrl + 'fangda.png',
     
     option: {
       // title: {
