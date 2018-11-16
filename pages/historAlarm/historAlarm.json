@@ -2,6 +2,7 @@
 {
   "navigationBarTitleText": "历史警报",
   "usingComponents": {
-    "wux-filterbar": "../../dist/wux/dist/filterbar/index"
+    "wux-filterbar": "../../dist/wux/dist/filterbar/index",
+    "wux-refresher": "../../dist/wux/dist/refresher/index"
   }
 }

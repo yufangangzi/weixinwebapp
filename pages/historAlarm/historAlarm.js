@@ -1,3 +1,5 @@
+import { $stopWuxRefresher } from '../../dist/wux/dist/index'
+
 const app = getApp();
 
 Page({
@@ -85,6 +87,22 @@ Page({
   },
   onLoad() {
     this.getRepos()
+  },
+  onPulling() {
+    console.log('onPulling')
+  },
+  onRefresh() {
+    console.log('onRefresh')
+    setTimeout(() => {
+      // this.setData({
+      //   items: [{
+      //     title: new Date,
+      //     content: '星球地球++',
+      //   }, ...this.data.items],
+      // })
+
+      $stopWuxRefresher()
+    }, 2000)
   },
   onChange(e) {
     const { checkedItems, items } = e.detail
