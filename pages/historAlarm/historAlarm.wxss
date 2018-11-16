@@ -17,7 +17,21 @@
   text-align:center;
   line-height: 0px;
 }
+.weui-media-box__hd_in-appmsg-res{
+  margin-right:0em;
+  width:60px;
+  height:60px;
+  text-align:right;
+  line-height: 0px;
+}
 .wux-filterbar__btns .wux-filterbar__btn--danger {
   background-color:#5878E4;
   color:#fff;
+}
+.ha-txt-res{
+    height:33rpx;
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+    line-height:33rpx;
 }
