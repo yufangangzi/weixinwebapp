@@ -1,7 +1,6 @@
 <wux-select id="wux-select1" />
 <wux-select id="wux-select2" />
 <wux-select id="wux-select3" />
-
 <view class="bg-top">
   <image style="width:100%;background-color: #eeeeee;" mode="widthFix" src="{{imgSrc}}"></image>
   <!-- <view class="bg-img" style="background-image:url({{imgSrc}});"></view> -->

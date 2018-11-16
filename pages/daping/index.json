@@ -1,0 +1,14 @@
+{
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "大屏展示",
+  "backgroundColor": "#ffffff",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "wux-card": "../../dist/wux/dist/card/index",
+    "wux-wing-blank": "../../dist/wux/dist/wing-blank/index",
+    "wux-button": "../../dist/wux/dist/button/index",
+    "wux-icon": "../../dist/wux/dist/icon/index",
+    "wux-select": "../../dist/wux/dist/select/index",
+    "custom-map": "../components/mapbig/index"
+  }
+}

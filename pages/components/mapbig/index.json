@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "wux-icon": "../../../dist/wux/dist/icon/index",
+    "wux-select": "../../../dist/wux/dist/select/index",
+    "custom-line": "../../components/linebig/index"
+  }
+}

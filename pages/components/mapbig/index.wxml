@@ -1,0 +1,54 @@
+<wux-select id="wux-select1" />
+<wux-select id="wux-select2" />
+<wux-select id="wux-select3" />
+<view style="display:block;position:relative;">
+<view bindtap="openSelect1" class="cbtn marr19" style="margin-left: 24rpx;">
+  <view class="ctxt">{{title1}}</view>
+  <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
+</view>
+
+<view bindtap="openSelect2" class="cbtn marr19">
+  <view class="ctxt">{{title2}}</view>
+  <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
+</view>
+
+<view bindtap="openSelect3" class="cbtn marr38">
+  <view class="ctxt">{{title3}}</view>
+  <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
+</view>
+
+<!-- <view class="dis2">
+  <image class="cicon1" mode="aspectFit" src="{{imgIcon1Src}}"></image>
+</view>
+
+<view class="dis1">
+  <image class="cicon1" mode="aspectFit" src="{{imgIcon4Src}}"></image>
+</view> -->
+</view>
+
+
+<view style="display:block;position:relative;">
+<view class="cbtn1 marr19" style="margin-left: 24rpx;">
+  <view class="crline"></view>
+  <view class="ctxt1">时间：2018-11-12 11:29:22</view>
+  <view class="ctxt2">速度：0.22</view>
+</view>
+
+
+
+
+<!-- <view class="dis4">
+  <image class="cicon4" mode="aspectFit" src="{{imgIcon2GraySrc}}"></image>
+</view>
+
+<view class="dis3">
+  <image class="cicon3" mode="aspectFit" src="{{imgIcon3GraySrc}}"></image>
+</view> -->
+</view>
+
+<view style="position:relative;height: 80%;width:100%;">
+<view class="ec-container">
+  <custom-line hidden="{{ mapShowIndex!=0 }}" style="width:100%;height:100%;display:{{ mapShowIndex!=0 }}" id="mychart-dom-line-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"></custom-line>
+</view>
+
+</view>
