@@ -17,6 +17,9 @@
                             <view class="weui-media-box__info__meta"> {{ item.date }}</view>
                         </view>
                     </view>
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg-res">
+                        <text class='ha-txt-res'>已处理</text>
+                    </view>
                 </view>
             </view>
         </view>
