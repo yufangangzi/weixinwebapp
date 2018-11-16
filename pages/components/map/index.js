@@ -86,6 +86,15 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    //打开大图所在链接
+    openBigPage(){
+      // wx.navigateTo({
+      //   url: '../../pages/webPage/index',
+      // })
+      wx.navigateTo({
+        url: '../../pages/daping/index',
+      })
+    },
     openSelect1() {
       $wuxSelect('#wux-select1').open({
         value: this.data.value1,

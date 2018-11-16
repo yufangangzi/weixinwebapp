@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/alarmProcessing/detail",
+    "pages/webPage/index",
     "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/handle2",
     "pages/alarmProcessing/handle",
     "pages/daping/index",
-    "pages/alarmProcessing/detail",
     "pages/login/login",
     "pages/alarmProcessing/diagnosticAdvice",
     "pages/alarmProcessing/alarmProcessing",
@@ -14,8 +15,6 @@
     "pages/first/first",
     "pages/index/index",
     "pages/logs/logs"
-    
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

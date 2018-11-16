@@ -93,7 +93,7 @@ Component({
       },
       calculable: true,
       dataZoom: {
-        show: true,
+        show: false,
         realtime: true,
         start: 20,
         end: 80,
