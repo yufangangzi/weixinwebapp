@@ -1,0 +1,4 @@
+/* pages/alarmProcessing/alarmProcessing.wxss */
+.martop70{
+  margin-top: 70rpx;
+}

@@ -1,0 +1,49 @@
+<!--pages/alarmProcessing/alarmProcessing.wxml-->
+<wux-select id="wux-select1" />
+<wux-select id="wux-select2" />
+
+<view>
+  <wux-radio-group name="d" value="{{ value4 }}" title="是否接受" bind:change="onChange4">
+      <wux-radio color='positive' title="是" value="1" />
+      <wux-radio color='positive' title="否" value="2" />
+  </wux-radio-group>
+</view>
+
+<view hidden="{{isSelectNo}}" style="display:{{isSelectNo ? none : flex}}">
+  <wux-checkbox-group name="e" value="{{ value5 }}" title="诊断建议" bind:change="onChange5">
+      <wux-checkbox color="positive" wx:for="{{sugggestArray}}" title="{{item.name}}"  value="{{item.id}}" wx:key="check-{{item.id}}" />
+      <view  hidden="{{!isSelectOther}}" style="display:{{isSelectOther ? none : flex}}">
+        <wux-cell title="请选择" extra="{{ title1 }}" bind:click="onClick1"></wux-cell>
+      </view>
+  </wux-checkbox-group>
+</view>
+
+<view hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? none : flex}}">
+  <wux-cell-group title="">
+      <wux-cell title="指派人员" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
+  </wux-cell-group>
+</view>
+
+<view hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? none : flex}}">
+    <wux-cell hover-class="none">
+        <wux-input label="现场描述" placeholder="请输入" />
+    </wux-cell>
+    <wux-cell hover-class="none">
+        <wux-input label="处理结果" placeholder="请输入" />
+    </wux-cell>
+</view>
+
+<wux-cell-group title="上传照片">
+    <!-- <view class="sub-title">Picture card & max = 4</view> -->
+    <wux-upload listType="picture-card" defaultFileList="{{ fileList }}" max="4" url="https://www.skyvow.cn/api/common/file" bind:change="onImgChange" bind:success="onImgSuccess" bind:fail="onImgFail" bind:complete="onImgComplete" bind:preview="onImgPreview">
+        <!-- <text>Upload</text> -->
+      <wux-icon type="ios-add" size="64" color="#CCCCCC" />
+    </wux-upload>
+</wux-cell-group>
+
+
+
+<view class="page__bd page__bd_spacing martop70">
+  <wux-button block type="positive" bind:click="open2Page">确定</wux-button>
+</view>
+
