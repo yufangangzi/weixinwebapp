@@ -1,6 +1,6 @@
 <!--pages/historAlarm/historAlarm.wxml-->
 <view class="page" style="{{ pageStyle }}">
-  
+   
     <view class="page__bd">
         <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />
         <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">

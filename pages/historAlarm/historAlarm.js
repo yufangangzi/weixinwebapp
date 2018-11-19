@@ -12,23 +12,113 @@ Page({
       ],
       groups: ['001'],
     },
-    {
-      type: 'text',
-      label: '故障级别',
-      value: 'forks',
-      groups: ['002'],
-    },
-    {
-      type: 'sort',
-      label: '处理状态',
-      value: 'stars',
-      groups: ['003'],
-    },
-    {
-        type: 'sort',
+      {
+        type: 'filter',
+        label: '故障级别',
+        value: 'filter',
+        children: [{
+          type: 'radio',
+          label: '故障级别',
+          value: 'language',
+          children: [{
+            label: '全部',
+            value: 'javascript',
+          },
+          {
+            label: '轻微',
+            value: 'html',
+          },
+          {
+            label: '一般',
+            value: 'css',
+          },
+            {
+              label: '严重',
+              value: 'css',
+            },
+          ],
+        }
+        ],
+        groups: ['004', '005', '006'],
+      },
+      {
+        type: 'filter',
+        label: '处理状态',
+        value: 'filter',
+        children: [{
+          type: 'radio',
+          label: '处理状态',
+          value: 'language',
+          children: [{
+            label: '全部',
+            value: 'javascript',
+          },
+          {
+            label: '已处理',
+            value: 'html',
+          },
+          {
+            label: '未处理',
+            value: 'css',
+          },
+          
+          ],
+        }
+        ],
+        groups: ['001', '002', '003'],
+      },
+      {
+        type: 'filter',
         label: '装置单元',
-        value: 'stars',
-        groups: ['003'],
+        value: 'filter',
+        children: [{
+          type: 'radio',
+          label: '装置单元',
+          value: 'language',
+          children: [{
+            label: '全部',
+            value: 'javascript',
+          },
+          {
+            label: '常减压',
+            value: 'html',
+          },
+          {
+            label: '催化裂化',
+            value: 'css',
+          },
+          {
+            label: '延迟焦化',
+            value: 'typescript',
+          },
+          {
+            label: '蜡油加氢',
+            value: 'test1',
+          },
+          {
+            label: '渣油加氢',
+            value: 'test2',
+          },
+          {
+            label: '柴油加氢',
+            value: 'test3',
+          },
+          {
+            label: '煤油加氢',
+            value: 'test4',
+          },
+          {
+            label: '连续重置',
+            value: 'test5',
+          },
+          {
+            label: '汽油加氢',
+            value: 'test6',
+          },
+          ],
+        }
+        ],
+        groups: ['001', '002', '003'],
       },
     {
       type: 'filter',

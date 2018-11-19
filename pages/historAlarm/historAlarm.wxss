@@ -28,6 +28,7 @@
   background-color:#5878E4;
   color:#fff;
 }
+/* 文字颜色 */
 .ha-txt-res{
     height:33rpx;
     font-size:24rpx;
