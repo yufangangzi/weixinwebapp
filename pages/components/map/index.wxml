@@ -46,7 +46,7 @@
 </view>
 </view>
 
-<view style="position:relative;height: 500rpx;margin-top:-95rpx;">
+<view style="position:relative;height: 342rpx;">
 <view class="ec-container">
   <custom-line hidden="{{ mapShowIndex!=0 }}" style="width:100%;height:100%;display:{{ mapShowIndex!=0 }}" id="mychart-dom-line-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"></custom-line>
 </view>
