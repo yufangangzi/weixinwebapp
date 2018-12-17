@@ -1,13 +1,20 @@
 {
   "pages": [
+<<<<<<< HEAD
+=======
+
+    "pages/login/login",
+	  "pages/historAlarm/historAlarm",
+
+>>>>>>> b1496aabc23228ae959b793c9dd9f1695cc2a57b
     "pages/alarmProcessing/detail",
     "pages/login/login",
     "pages/webPage/index",
-    "pages/historAlarm/historAlarm",
+    
     "pages/alarmProcessing/handle2",
     "pages/alarmProcessing/handle",
     "pages/daping/index",
-    
+
     "pages/alarmProcessing/diagnosticAdvice",
     "pages/alarmProcessing/alarmProcessing",
     "pages/alarmProcessingResult/index",
