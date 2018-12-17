@@ -140,3 +140,43 @@
   padding-top: 26rpx;
   width: calc(100% - 150rpx);
 }
+
+.ggaobao {
+  display: inline-block;
+  width: 236rpx;
+}
+.gaobao {
+  width: 226rpx;
+  display: inline-block;
+}
+
+.ggaobao-txt {
+  background: linear-gradient(180deg, #ff6767 0%, #be0000 100%);
+  border-radius: 5rpx;
+  color: rgb(255, 255, 255);
+  padding: 3rpx 15rpx;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.ggaobao-txt {
+  background: linear-gradient(180deg, #ff6767 0%, #be0000 100%);
+  border-radius: 5rpx;
+  color: rgb(255, 255, 255);
+  padding: 3rpx 15rpx;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.baoicon{
+  width:36rpx;
+  height:36rpx;
+  
+}
+
+.placeholder {
+    margin: 10rpx;
+    width: auto;
+}
