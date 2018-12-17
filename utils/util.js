@@ -94,9 +94,105 @@ const deviceAlarmGet = (data, successcb, failcb) => {
   })
 }
 
+// 获取故障列表
+const faultListAll = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'fault/listAll',
+    data: {},
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
+// 获取维修人列表
+const accendantList = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'user/accendantList',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
+// 获取channel列表 1-1H 1-2V
+const listChannel = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'deviceMonitor/listChannel',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
+// 获取图谱数据
+const trendChart = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'deviceMonitor/trendChart',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
 module.exports = {
   timeformat: timeformat,
   deviceAlarmGet: deviceAlarmGet,
+  faultListAll: faultListAll,
+  accendantList: accendantList,
+  listChannel: listChannel,
+  trendChart: trendChart,
   openPage: openPage,
   formatTime: formatTime
 }
