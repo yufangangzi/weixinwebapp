@@ -13,8 +13,29 @@ Page({
     loginimg2: imgUrl +"login2.png",
     loginbg: imgUrl +"loginbg.png",
   },
+  // 登陆接口
   open2Page() {
-    util.openPage("../../pages/alarmProcessing/detail");
+      var that = this;
+      var userName = 'admin';
+      var password = 'admin';
+      wx.request({
+        //请求链接
+        url: 'http://10.144.132.20:8005/wxapp/wexinLogin',
+        //发送的数据
+        data: {
+          userName: userName,
+          password: password
+        },
+        //成功回调
+        success: function (res) {
+          that.setData({
+            user_name: res.data.data.nickname,
+            user_image: res.data.data.imageurl
+          })
+        },
+      })
+
+     util.openPage("../../pages/alarmProcessing/detail");
   },
   /**
    * 生命周期函数--监听页面加载
