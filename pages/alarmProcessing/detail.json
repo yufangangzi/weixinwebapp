@@ -10,6 +10,8 @@
     "wux-button": "../../dist/wux/dist/button/index",
     "wux-icon": "../../dist/wux/dist/icon/index",
     "wux-select": "../../dist/wux/dist/select/index",
+    "wux-row": "../../dist/wux/dist/row/index",
+    "wux-col": "../../dist/wux/dist/col/index",
     "custom-map": "../components/map/index"
   }
 }

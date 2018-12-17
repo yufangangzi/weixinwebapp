@@ -8,7 +8,18 @@ Page({
    * 页面的初始数据
    */
   data: {
+    faultTime2: '',
+    faultTime3: '',
+    stepList: [],
+    alertArr: {
+      '0': '低报',
+      '1': '高报',
+      '2': '高高报'
+    },
+    DeviceFaultDetail: '',
     imgSrc: app.globalData.imgUrl + 'Bitmap1.jpg',
+    gaobaoSrc: app.globalData.imgUrl + 'gaobao.png',
+    gaogaobaoSrc: app.globalData.imgUrl + 'gaogaobao.png',
     imgArrowSrc: app.globalData.imgUrl + 'Chevron.png',
     imgGroup3Src: app.globalData.imgUrl + 'group5.png',
     imgGroup4Src: app.globalData.imgUrl + 'group4.png',
@@ -16,7 +27,7 @@ Page({
     imgPhoneSrc: app.globalData.imgUrl + 'phone.png',
     isReport: false,
     isRepair: false,
-    isRepairEnd: true,
+    isRepairEnd: false,
     picturesList: [],
     lineParamsObj: {
       id: 1,
@@ -65,18 +76,93 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const r = Math.random();
-    if(r>0.5){
-      this.setData({
-        isReport: false,
-        isRepair: true,
-      })
-    }else{
-      this.setData({
-        isReport: true,
-        isRepair: false,
-      })
-    }
+    console.log(options);
+
+    // wx.login({
+    //   success(res){
+    //     console.log(res);
+    //     debugger;
+    //   }
+    // })
+    
+    // debugger;
+    util.deviceAlarmGet({ 
+      'deviceAlarmId': '1469e1943a684f5d971c47756907de9f'
+    }, res => {
+      // debugger;
+      if(res.code===0){
+        ;
+        res.result.alarmTime2 = util.timeformat(
+          new Date(res.result.alarmTime)
+        );
+        
+        res.result.alarmLevel = this.data.alertArr[res.result.alarmSeverity];
+
+        //设置图谱特征
+        let stepList = res.result.faultOmenVOList.map(item => {
+          return item.description;
+        });
+        this.setData({
+          stepList: stepList
+        });
+        // debugger;
+
+        //设置当前处理状态
+        if(res.result.processStatus==0){
+          this.setData({
+            isReport: true,
+            isRepair: false,
+            isRepairEnd: false
+          })
+        }
+        if (res.result.processStatus == 1) {
+          this.setData({
+            isReport: true,
+            isRepair: true,
+            isRepairEnd: false
+          })
+        }
+
+        if (res.result.processStatus == 2) {
+          this.setData({
+            isReport: true,
+            isRepair: true,
+            isRepairEnd: true
+          })
+        }
+
+        let faultTime2 = util.timeformat(
+          new Date(res.result.processTime)
+        );
+        let faultTime3 = util.timeformat(
+          new Date(res.result.accendantTime)
+        );
+        // debugger;
+
+        this.setData({
+          faultTime2: faultTime2,
+          faultTime3: faultTime3,
+          DeviceFaultDetail: res.result
+        });
+
+      }
+    }, err => {
+
+    });
+
+
+    // const r = Math.random();
+    // if(r>0.5){
+    //   this.setData({
+    //     isReport: false,
+    //     isRepair: true,
+    //   })
+    // }else{
+    //   this.setData({
+    //     isReport: true,
+    //     isRepair: false,
+    //   })
+    // }
 
     //随机测试父传子
     setTimeout(()=>{

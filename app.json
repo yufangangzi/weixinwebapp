@@ -1,10 +1,8 @@
 {
   "pages": [
-
-    "pages/login/login",
-	  "pages/historAlarm/historAlarm",
-
     "pages/alarmProcessing/detail",
+	  "pages/historAlarm/historAlarm",
+    "pages/login/login",
     "pages/webPage/index",
     
     "pages/alarmProcessing/handle2",

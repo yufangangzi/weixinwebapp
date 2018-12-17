@@ -7,27 +7,41 @@
   <view class="pos">
     <view style="display:block;padding-top:19rpx;">
       <view class="top-t1">报警时间</view>
-      <view class="top-t2">2018.11.06 14:20:00</view>
+      <view class="top-t2">{{ DeviceFaultDetail.alarmTime2 }}</view>
     </view>
 
     <view style="display:block;">
       <view class="top-t1">故障设备</view>
-      <view class="top-t2">2314-P202A</view>
+      <view class="top-t2">{{ DeviceFaultDetail.deviceCode }}</view>
     </view>
 
     <view style="display:block;">
       <view class="top-t1">报警程度</view>
-      <view class="top-t2">严重</view>
+      <view class="top-t2" wx:if="{{ DeviceFaultDetail.alarmSeverity==2}}">
+        <view class="ggaobao">
+          <view class="ggaobao-txt">{{ DeviceFaultDetail.alarmLevel}}
+          </view>
+          <image class="baoicon" mode="aspectFit" src="{{gaogaobaoSrc}}" ></image>
+          </view>
+        </view>
+      <view class="top-t2" wx:elif="{{ DeviceFaultDetail.alarmSeverity==1}}">
+        <view class="gaobao">
+          <view class="gaobao-txt">{{ DeviceFaultDetail.alarmLevel}}
+          </view>
+          <image class="baoicon" mode="aspectFit" src="{{gaobaoSrc}}" ></image>
+        </view>
+      </view>
+      <view class="top-t2" wx:else></view>
     </view>
 
-    <view wx:if="{{isRepair}}" style="display:block;">
+    <!-- <view wx:if="{{isRepair}}" style="display:block;">
       <view class="top-t1">维护人员</view>
       <view class="top-t2">张三(13923456792)
         <image class="phoneicon" mode="aspectFit" src="{{imgPhoneSrc}}" bindtap="makephone"></image>
       </view>
-    </view>
+    </view> -->
 
-    <view wx:if="{{isReport}}" style="float:right;margin-right: 20rpx;">
+    <view style="float:right;margin-right: 20rpx;">
       <view class="top-t3"  bindtap="open2Histor">查看历史报警</view>
       <view style="display:inline-block;vertical-align:middle;">
       <wux-icon type="ios-arrow-forward" size="16" color="#FFFFFF" />
@@ -56,7 +70,12 @@
     <wux-wing-blank size="default">
         <wux-card title="图谱特征" extra="" thumb="{{imgGroup4Src}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
-              <view class="marb20">
+              <view wx:for="{{stepList}}" class="marb20">
+                <image class="tupuicon" mode="aspectFit" src="{{imgGroup3Src}}"></image>
+                <view class="tuputxt">{{ item }}</view>
+              </view>
+
+              <!-- <view class="marb20">
                 <image class="tupuicon" mode="aspectFit" src="{{imgGroup3Src}}"></image>
                 <view class="tuputxt">振动速度超过设定阈值; 振动速度频率以转轴的旋转频率（一倍频）、二倍频、三倍频等为主，但二倍频成分突出≥30%。</view>
               </view>
@@ -64,12 +83,7 @@
               <view class="marb20">
                 <image class="tupuicon" mode="aspectFit" src="{{imgGroup3Src}}"></image>
                 <view class="tuputxt">振动速度超过设定阈值; 振动速度频率以转轴的旋转频率（一倍频）、二倍频、三倍频等为主，但二倍频成分突出≥30%。</view>
-              </view>
-
-              <view class="marb20">
-                <image class="tupuicon" mode="aspectFit" src="{{imgGroup3Src}}"></image>
-                <view class="tuputxt">振动速度超过设定阈值; 振动速度频率以转轴的旋转频率（一倍频）、二倍频、三倍频等为主，但二倍频成分突出≥30%。</view>
-              </view>
+              </view> -->
 
 
             </view>
@@ -78,38 +92,30 @@
     </wux-wing-blank>
   </view>
 
-  <view wx:if="{{isReport}}" style="margin-top:18rpx;">
+  <view style="margin-top:18rpx;">
     <wux-wing-blank size="default">
-        <wux-card title="诊断建议" extra="" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
+        <wux-card title="系统诊断建议" extra="{{isRepair ? '确认人员：'+DeviceFaultDetail.processor+'　　确认时间：'+faultTime2 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
-              <view class="marb40" bindtap="open2Jianyi">
-                <view class="jianyitt">不平衡</view>
-                <view class="jianyitxt">可信度：0.83
-                  <wux-icon type="ios-arrow-forward" size="16" color="#C7C7CC" />
+
+              <view wx:for="{{DeviceFaultDetail.faultInfoVOList}}" wx:key="index" class="marb40" bindtap="open2Jianyi">
+                <view class="jianyitt">诊断建议{{(index+1)}}：{{item.faultName}}</view>
+                <view class="jianyitxt"></view>
+                <view class="line"></view>
+                <view class="">
+                  <view class="intro">故障说明</view>
+                  <view class="desp">{{ item.description }}</view>
+                </view>
+                <view class="">
+                  <view class="intro">故障对策</view>
+                  <view class="desp">
+
+                    <view wx:for="{{item.faultStrategyList}}" wx:for-index="idx" wx:for-item="it" class="block">
+                      {{ (idx+1) + '、' + it.content }}
+                    </view>
+                  </view>
                 </view>
                 
               </view>
-
-
-              <view class="marb40" bindtap="open2Jianyi">
-                <view class="jianyitt">不对中</view>
-                <view class="jianyitxt">可信度：0.83
-                  <wux-icon type="ios-arrow-forward" size="16" color="#C7C7CC" />
-                </view>
-                
-              </view>
-
-
-              <view class="marb40" bindtap="open2Jianyi">
-                <view class="jianyitt">轴承磨损</view>
-                <view class="jianyitxt">可信度：0.83
-                  <wux-icon type="ios-arrow-forward" size="16" color="#C7C7CC" />
-                </view>
-                
-              </view>
-
-              
-
 
             </view>
             <view slot="footer"></view>
@@ -117,7 +123,20 @@
     </wux-wing-blank>
   </view>
 
-
+<view wx-if="{{DeviceFaultDetail.processStatus==0}}" class="page__bd page__bd_spacing martop70">
+  <wux-row>
+    <wux-col span="6">
+      <view class="placeholder">
+    <wux-button block type="positive" bind:click="open2Page">立即处理</wux-button>
+      </view>
+    </wux-col>
+    <wux-col span="6">
+      <view class="placeholder">
+    <wux-button block type="assertive" bind:click="open2Page">全部不采纳</wux-button>
+      </view>
+    </wux-col>
+  </wux-row>
+</view>
 
 
   <view wx:if="{{isRepair}}" style="margin-top:18rpx;">
