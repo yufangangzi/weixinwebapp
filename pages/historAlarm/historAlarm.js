@@ -6,7 +6,7 @@ Page({
   data: {
     items: [{
       type: 'radio',
-      label: '故障类型',
+      label: '全部',
       value: 'updated',
       children: [   
       ],

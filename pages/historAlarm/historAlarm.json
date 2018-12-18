@@ -1,6 +1,6 @@
 
 {
-  "navigationBarTitleText": "历史警报",
+  "navigationBarTitleText": "警报列表",
   "usingComponents": {
     "wux-filterbar": "../../dist/wux/dist/filterbar/index",
     "wux-refresher": "../../dist/wux/dist/refresher/index"
