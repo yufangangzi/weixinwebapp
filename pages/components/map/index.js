@@ -166,9 +166,6 @@ Component({
     },
     //打开大图所在链接
     openBigPage(){
-      // wx.navigateTo({
-      //   url: '../../pages/webPage/index',
-      // })
       const mapIndex = this.data.mapIndex;
       const obj = this.properties.outInfo;
       debugger
@@ -178,8 +175,13 @@ Component({
     },
     mapChange(data) {
       debugger
+      wx.navigateTo({
+        url: `../../pages/daping/index?pagemap=${this.data.mapIndex}&devicecode=${this.properties.paramDevice.deviceCode}&token=${wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'}`,
+      })
+    },
+    mapChange(data) {
       this.setData({
-        mapIndex: data
+        mapIndex: data.target.id
       })
     },
     openSelect1() {

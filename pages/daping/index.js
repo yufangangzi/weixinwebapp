@@ -20,7 +20,7 @@ Page({
       pagemap:options.pagemap,
       devicecode:options.devicecode,
       token:options.token,
-      src: `http://10.144.132.51:8091/static/qzweapp/bigcharts.html?pagemap=${options.pagemap}&devicecode=${options.devicecode}&token=${options.token}`
+      src: `http://10.144.132.51:8091/static/qzweapp/bigcharts.html?pagemap=${options.pagemap}&devicecode=${options.devicecode}&token=${options.token}&time=${new Date().getTime()}`
     })
   },
 

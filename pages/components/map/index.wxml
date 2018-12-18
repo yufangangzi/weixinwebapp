@@ -17,8 +17,8 @@
   <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
 </view>
 
-<view class="dis2" bindtap="mapChange('zdqs')" >
-  <image class="cicon1" mode="aspectFit" src="{{imgIcon1Src}}"></image>
+<view class="dis2"  >
+  <image class="cicon1" id="zdqs" bindtap="mapChange" mode="aspectFit" src="{{imgIcon1Src}}"></image>
 </view>
 
 <view class="dis1" bindtap="openBigPage">
@@ -37,12 +37,12 @@
 
 
 
-<view class="dis4" bindtap="mapChange('sybx')">
-  <image class="cicon4" mode="aspectFit" src="{{imgIcon2GraySrc}}"></image>
+<view class="dis4" >
+  <image class="cicon4" id="sybx" bindtap="mapChange" mode="aspectFit" src="{{imgIcon2GraySrc}}"></image>
 </view>
 
-<view class="dis3" bindtap="mapChange('fft')">
-  <image class="cicon3" mode="aspectFit" src="{{imgIcon3GraySrc}}"></image>
+<view class="dis3" >
+  <image class="cicon3" id="fft" bindtap="mapChange" mode="aspectFit" src="{{imgIcon3GraySrc}}"></image>
 </view>
 </view>
 
