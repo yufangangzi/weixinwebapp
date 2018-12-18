@@ -3,7 +3,6 @@
     "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/detail",
     "pages/alarmProcessing/handle",
-	  "pages/historAlarm/historAlarm",
     "pages/login/login",
     "pages/webPage/index",
     "pages/alarmProcessing/handle2",
