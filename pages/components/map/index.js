@@ -90,19 +90,14 @@ Component({
   methods: {
     //打开大图所在链接
     openBigPage(){
-      // wx.navigateTo({
-      //   url: '../../pages/webPage/index',
-      // })
-      console.log(this.data.mapIndex)
-      console.log(this.properties.paramDevice)
-      
       wx.navigateTo({
         url: `../../pages/daping/index?pagemap=${this.data.mapIndex}&devicecode=${this.properties.paramDevice.deviceCode}&token=${wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'}`,
       })
     },
     mapChange(data) {
+      console.log(data)
       this.setData({
-        mapIndex: data
+        mapIndex: data.target.id
       })
     },
     openSelect1() {

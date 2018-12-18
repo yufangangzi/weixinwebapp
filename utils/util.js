@@ -60,7 +60,7 @@ const timeformat = function (date, fmt) {
 const request = obj => {
   let param = Object.assign({
     'header': {
-      'identity-authentic-request-header': wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'
+      'identity-authentic-request-header': wx.getStorageSync('token') || 'c34d9b63-0f38-49a9-ad05-4a5dd7be616f'
     },
   }, obj);
   // console.log(param);
