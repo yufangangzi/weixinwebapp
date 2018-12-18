@@ -12,6 +12,8 @@
     "wux-select": "../../dist/wux/dist/select/index",
     "wux-row": "../../dist/wux/dist/row/index",
     "wux-col": "../../dist/wux/dist/col/index",
+    "wux-dialog": "../../dist/wux/dist/dialog/index",
+    "wux-toast": "../../dist/wux/dist/toast/index",
     "custom-map": "../components/map/index"
   }
 }
