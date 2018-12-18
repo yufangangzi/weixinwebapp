@@ -176,7 +176,7 @@ Page({
     
     // debugger;
     util.deviceAlarmGet({ 
-      'deviceAlarmId': '4aea427017a54804bda6e0238c4a1382'
+      'deviceAlarmId': '507ec94982a24c5182b556bcd298c113'
     }, res => {
       // debugger;
       if(res.code==1){
