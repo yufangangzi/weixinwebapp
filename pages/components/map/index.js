@@ -42,7 +42,8 @@ Component({
         
         
       }
-    }
+    },
+    paramDevice:Object
   },
 
   /**
@@ -68,6 +69,7 @@ Component({
     title2: '速度',
     value3: '5',
     title3: '6小时',
+    mapIndex: 'zdqs' // zdqs 振动趋势图  fft fft图  sybx 时域波形图
 
   },
 
@@ -92,7 +94,12 @@ Component({
       //   url: '../../pages/webPage/index',
       // })
       wx.navigateTo({
-        url: '../../pages/daping/index?pagemap=fft&devicecode=2314-P202A&token=eeeee',
+        url: `../../pages/daping/index?pagemap=${mapIndex}&devicecode=${paramDevice.deviceCode}&token=${wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'}`,
+      })
+    },
+    mapChange(data) {
+      this.setData({
+        mapIndex: data
       })
     },
     openSelect1() {

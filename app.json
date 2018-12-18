@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/detail",
+    "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/handle",
     "pages/login/login",
     "pages/webPage/index",

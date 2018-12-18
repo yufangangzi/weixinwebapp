@@ -17,7 +17,7 @@
   <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
 </view>
 
-<view class="dis2">
+<view class="dis2" bindtap="mapChange('zdqs')" >
   <image class="cicon1" mode="aspectFit" src="{{imgIcon1Src}}"></image>
 </view>
 
@@ -37,11 +37,11 @@
 
 
 
-<view class="dis4">
+<view class="dis4" bindtap="mapChange('sybx')">
   <image class="cicon4" mode="aspectFit" src="{{imgIcon2GraySrc}}"></image>
 </view>
 
-<view class="dis3">
+<view class="dis3" bindtap="mapChange('fft')">
   <image class="cicon3" mode="aspectFit" src="{{imgIcon3GraySrc}}"></image>
 </view>
 </view>
