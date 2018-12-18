@@ -1,3 +1,6 @@
+<wux-toast id="wux-toast" />
+<wux-dialog id="wux-dialog" />
+<wux-dialog id="wux-dialog--alert" />
 <wux-select id="wux-select1" style="z-index: 1000;" />
 <wux-select id="wux-select2" style="z-index: 1000;" />
 <wux-select id="wux-select3" style="z-index: 1000;" />
@@ -70,7 +73,7 @@
     <wux-wing-blank size="default">
         <wux-card title="图谱特征" extra="" thumb="{{imgGroup4Src}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
-              <view wx:for="{{stepList}}" class="marb20">
+              <view wx:for="{{stepList}}" wx:key="index" class="marb20">
                 <image class="tupuicon" mode="aspectFit" src="{{imgGroup3Src}}"></image>
                 <view class="tuputxt">{{ item }}</view>
               </view>
@@ -94,7 +97,7 @@
 
   <view style="margin-top:18rpx;">
     <wux-wing-blank size="default">
-        <wux-card title="系统诊断建议" extra="{{isRepair ? '确认人员：'+DeviceFaultDetail.processor+'　　确认时间：'+faultTime2 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
+        <wux-card title="系统诊断建议" extra="{{isRepair ? '确认人员：'+DeviceFaultDetail.processor : ''}}" extra2="{{isRepair ? '确认时间：'+faultTime2 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
 
               <view wx:for="{{DeviceFaultDetail.faultInfoVOList}}" wx:key="index" class="marb40" bindtap="open2Jianyi">
@@ -109,7 +112,7 @@
                   <view class="intro">故障对策</view>
                   <view class="desp">
 
-                    <view wx:for="{{item.faultStrategyList}}" wx:for-index="idx" wx:for-item="it" class="block">
+                    <view wx:for="{{item.faultStrategyList}}" wx:for-index="idx" wx:for-item="it" wx:key="idx" class="block">
                       {{ (idx+1) + '、' + it.content }}
                     </view>
                   </view>
@@ -132,68 +135,22 @@
     </wux-col>
     <wux-col span="6">
       <view class="placeholder">
-    <wux-button block type="assertive" bind:click="open2Page">全部不采纳</wux-button>
+    <wux-button block type="assertive" bind:click="reject3">全部不采纳</wux-button>
       </view>
     </wux-col>
   </wux-row>
 </view>
 
 
-  <view wx:if="{{isRepair}}" style="margin-top:18rpx;">
+<view wx-if="{{DeviceFaultDetail.processStatus==1}}" class="page__bd page__bd_spacing martop70">
+  <wux-button block type="positive" bind:click="open3Page">立即处理</wux-button>
+</view>
+
+
+  <!-- <view wx:if="{{isRepairEnd}}" style="margin-top:18rpx;">
     <wux-wing-blank size="default">
         <wux-card title="诊断建议" extra="" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
-              <view class="marb40" bindtap="open2Jianyi">
-                <view class="jianyitt">不平衡</view>
-                <view class="jianyitxt">可信度：0.83</view>
-                <view class="line"></view>
-                <view class="">
-                  <view class="intro">故障级别</view>
-                  <view class="desp">一般</view>
-                </view>
-                <view class="">
-                  <view class="intro">故障说明</view>
-                  <view class="desp">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
-                </view>
-                <view class="">
-                  <view class="intro">故障对策</view>
-                  <view class="desp">
-
-                    <view class="block">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
-
-                    <view class="block">2、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
-                  </view>
-                </view>
-                
-              </view>
-
-
-              <view class="marb40" bindtap="open2Jianyi">
-                <view class="line" style="margin-bottom: 20rpx;"></view>
-                <view class="jianyitt">不对中</view>
-                <view class="jianyitxt">可信度：0.83</view>
-                <view class="line"></view>
-                <view class="">
-                  <view class="intro">故障级别</view>
-                  <view class="desp">一般</view>
-                </view>
-                <view class="">
-                  <view class="intro">故障说明</view>
-                  <view class="desp">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
-                </view>
-                <view class="">
-                  <view class="intro">故障对策</view>
-                  <view class="desp">
-
-                    <view class="block">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
-
-                    <view class="block">2、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
-                  </view>
-                </view>
-                
-              </view>
-
-
               <view class="marb40" bindtap="open2Jianyi">
                 <view class="line" style="margin-bottom: 20rpx;"></view>
                 <view class="jianyitt">轴承磨损</view>
@@ -216,49 +173,19 @@
                     <view class="block">2、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
                   </view>
                 </view>
-                
               </view>
-
-              
-
-
             </view>
             <view slot="footer"></view>
         </wux-card>
     </wux-wing-blank>
-  </view>
+  </view> -->
 
 
   <view wx:if="{{isRepairEnd}}" style="margin-top:18rpx;">
     <wux-wing-blank size="default">
-        <wux-card title="专家诊断建议" extra="" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
+        <wux-card title="维修结果" extra="{{isRepair ? '维护人员：'+DeviceFaultDetail.accendant : ''}}" extra2="{{isRepairEnd ? '维护时间：'+faultTime3 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
-              <view class="marb40" bindtap="open2Jianyi">
-                <view class="jianyitt">不平衡</view>
-                <view class="jianyitxt">可信度：0.83</view>
-                <view class="line"></view>
-                <view class="">
-                  <view class="intro">故障级别</view>
-                  <view class="desp">一般</view>
-                </view>
-                <view class="">
-                  <view class="intro">故障说明</view>
-                  <view class="desp">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
-                </view>
-                <view class="">
-                  <view class="intro">故障对策</view>
-                  <view class="desp">
-
-                    <view class="block">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
-
-                    <view class="block">2、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
-                  </view>
-                </view>
-                
-              </view>
-
-
-              <view class="marb40" bindtap="open2Jianyi">
+              <!-- <view class="marb40" bindtap="open2Jianyi">
                 <view class="line" style="margin-bottom: 20rpx;"></view>
                 <view class="jianyitt">不对中</view>
                 <view class="jianyitxt">可信度：0.83</view>
@@ -281,26 +208,26 @@
                   </view>
                 </view>
                 
-              </view>
+              </view> -->
 
               <!-- 结论 -->
               <view class="marb40">
-                <view class="line"></view>
+                <!-- <view class="line"></view> -->
                 <view class="">
                   <view class="intro">故障名称</view>
-                  <view class="desp">一般</view>
+                  <view class="desp">{{value9}}</view>
                 </view>
                 <view class="">
                   <view class="intro">现场描述</view>
-                  <view class="desp">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+                  <view class="desp">{{value7}}</view>
                 </view>
                 <view class="">
                   <view class="intro">处理结果</view>
                   <view class="desp">
 
-                    <view class="block">1、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+                    <view class="block">{{value6}}</view>
 
-                    <view class="block">2、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view>
+                    <!-- <view class="block">2、检查设备及监测系统运行状况，通知相关人员分析排查故障，并及时处理</view> -->
 
                     <view style="float:left;" wx:for="{{picturesList}}" wx:key="pic-{{index}}">
                       <image class="resultImg" mode="aspectFit" src="{{item}}" bindtap="imgYu" data-list="{{picturesList}}" data-src="{{item}}"></image>
@@ -329,9 +256,6 @@
 
 
 
-<view class="page__bd page__bd_spacing martop70">
-  <wux-button block type="positive" bind:click="open2Page">立即处理</wux-button>
-</view>
 
 <view wx:if="{{isRepairEnd}}" class="page__bd page__bd_spacing martop70">
   <wux-button block type="positive" bind:click="back2">返回</wux-button>

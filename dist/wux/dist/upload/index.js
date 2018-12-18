@@ -277,12 +277,14 @@ Component({
             if (!url || !filePath || disabled) return
 
             this.onStart(file)
-
             this.uploadTask[uid] = wx.uploadFile({
                 url,
                 filePath,
                 name,
-                header,
+                header: {
+                  'identity-authentic-request-header': wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
+                  'Content-Type': 'multipart/form-data'
+                },
                 formData,
                 success: (res) => this.onSuccess(file, res),
                 fail: (res) => this.onFail(file, res),

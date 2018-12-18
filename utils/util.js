@@ -60,16 +60,53 @@ const timeformat = function (date, fmt) {
 const request = obj => {
   let param = Object.assign({
     'header': {
-      'identity-authentic-request-header': 
-      wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'
+      'identity-authentic-request-header': wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'
     },
   }, obj);
   // console.log(param);
   // debugger
+  // 拦截器
+  const successcb = param.success;
+  param.success = res => {
+    // debugger;
+    if(res && res.data && res.data.code==10103){
+      //登录状态失效，需重新登录
+      relogin();
+      // return;
+    }
+    if(successcb){
+      successcb(res);
+    }
+  }
   wx.request(param);
 }
 
 const baseUrl = 'http://10.144.132.20:8005/';
+
+// 重新登录
+const relogin = (data, successcb, failcb) => {
+  console.log('执行登录逻辑')
+  return;
+  request({
+    url: baseUrl + 'user/accendantList',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
 
 // 获取警报详情
 const deviceAlarmGet = (data, successcb, failcb) => {

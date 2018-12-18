@@ -5,14 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    pagemap:'',
+    devicecode: '',
+    token: '',
+    src:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      pagemap:options.pagemap,
+      devicecode:options.devicecode,
+      token:options.token,
+      src: `http://10.144.132.51:8091/static/qzweapp/bigcharts.html?pagemap=${options.pagemap}&devicecode=${options.devicecode}&token=${options.token}`
+    })
   },
 
   /**

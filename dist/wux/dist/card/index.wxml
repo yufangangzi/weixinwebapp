@@ -1,10 +1,18 @@
+<!-- <import src="../../../wxParse/wxParse.wxml"/> -->
 <view class="wux-class wux-card {{ bordered ? 'wux-card--bordered' : '' }} {{ full ? 'wux-card--full' : '' }}">
     <view class="wux-card__hd">
         <view class="wux-card__content">
             <image class="wux-card__thumb" src="{{ thumb }}" mode="aspectFit" style="{{ thumbStyle }}" wx:if="{{ thumb }}" />
             <text>{{ title }}</text>
         </view>
-        <view class="wux-card__extra" wx:if="{{ extra }}">{{ extra }}</view>
+        <view class="wux-card__extra" wx:if="{{ extra }}">
+          <!-- <template is="wxParse" data="{{wxParseData:extra}}"/> -->
+          <block wx:if="{{ extra2 }}">
+            <view class="wux-card__extra1">{{extra}}</view>
+            <view class="wux-card__extra1">{{extra2}}</view>
+          </block>
+          <view wx:else>{{extra}}</view>
+        </view>
     </view>
     <view class="wux-card__bd">
         <slot name="body"></slot>

@@ -2,10 +2,11 @@
   "pages": [
     "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/detail",
+    "pages/alarmProcessing/handle",
+	  "pages/historAlarm/historAlarm",
     "pages/login/login",
     "pages/webPage/index",
     "pages/alarmProcessing/handle2",
-    "pages/alarmProcessing/handle",
     "pages/daping/index",
     "pages/alarmProcessing/diagnosticAdvice",
     "pages/alarmProcessing/alarmProcessing",
