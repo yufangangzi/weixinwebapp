@@ -20,6 +20,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    suggestCheckList2: [],
+    repairPeopleList: [],
     isSelectNo: false,
     isSelectOther: false,
     title1: '',
@@ -29,22 +31,22 @@ Page({
     value4: '1',
     value5: ['1'],
     sugggestArray: [
-      {
-        name: '不平衡',
-        id: '1',
-      },
-      {
-        name: '不对中',
-        id: '2',
-      },
-      {
-        name: '轴承磨损',
-        id: '3',
-      },
-      {
-        name: '其他',
-        id: '4',
-      }
+      // {
+      //   name: '不平衡',
+      //   id: '1',
+      // },
+      // {
+      //   name: '不对中',
+      //   id: '2',
+      // },
+      // {
+      //   name: '轴承磨损',
+      //   id: '3',
+      // },
+      // {
+      //   name: '其他',
+      //   id: '4',
+      // }
     ]
   },
 
@@ -95,6 +97,8 @@ Page({
     this.onChange2('value5', e)
   },
   onClick1() {
+    let options = this.data.suggestCheckList2;
+    // debugger
     $wuxSelect('#wux-select1').open({
       value: this.data.value1,
       multiple: true,
@@ -102,37 +106,38 @@ Page({
         title: '请选择诊断建议',
         confirmText: '确定',
       },
-      options: [{
-        title: '画画',
-        value: '1',
-        // color: 'positive',
-      },
-      {
-        title: '打球',
-        value: '2',
-        // color: 'positive',
-      },
-      {
-        title: '唱歌',
-        value: '3',
-        // color: 'positive',
-      },
-      {
-        title: '游泳',
-        value: '4',
-        // color: 'positive',
-      },
-      {
-        title: '健身',
-        value: '5',
-        // color: 'positive',
-      },
-      {
-        title: '睡觉',
-        value: '6',
-        // color: 'positive',
-      },
-      ],
+      options: options,
+      // options: [{
+      //   title: '画画',
+      //   value: '1',
+      //   // color: 'positive',
+      // },
+      // {
+      //   title: '打球',
+      //   value: '2',
+      //   // color: 'positive',
+      // },
+      // {
+      //   title: '唱歌',
+      //   value: '3',
+      //   // color: 'positive',
+      // },
+      // {
+      //   title: '游泳',
+      //   value: '4',
+      //   // color: 'positive',
+      // },
+      // {
+      //   title: '健身',
+      //   value: '5',
+      //   // color: 'positive',
+      // },
+      // {
+      //   title: '睡觉',
+      //   value: '6',
+      //   // color: 'positive',
+      // },
+      // ],
       onChange: (value, index, options) => {
         console.log('onChange', value, index, options)
         this.setData({
@@ -151,6 +156,7 @@ Page({
   },
 
   onClick2() {
+    let options = this.data.repairPeopleList;
     $wuxSelect('#wux-select2').open({
       value: this.data.value1,
       // multiple: true,
@@ -158,37 +164,38 @@ Page({
         title: '请选择指派人员',
         confirmText: '确定',
       },
-      options: [{
-        title: '张三',
-        value: '1',
-        // color: 'positive',
-      },
-      {
-        title: '李四',
-        value: '2',
-        // color: 'positive',
-      },
-      {
-        title: '王五',
-        value: '3',
-        // color: 'positive',
-      },
-      {
-        title: '赵六',
-        value: '4',
-        // color: 'positive',
-      },
-      {
-        title: '刘名',
-        value: '5',
-        // color: 'positive',
-      },
-      {
-        title: '朱八',
-        value: '6',
-        // color: 'positive',
-      },
-      ],
+      options: options,
+      // options: [{
+      //   title: '张三',
+      //   value: '1',
+      //   // color: 'positive',
+      // },
+      // {
+      //   title: '李四',
+      //   value: '2',
+      //   // color: 'positive',
+      // },
+      // {
+      //   title: '王五',
+      //   value: '3',
+      //   // color: 'positive',
+      // },
+      // {
+      //   title: '赵六',
+      //   value: '4',
+      //   // color: 'positive',
+      // },
+      // {
+      //   title: '刘名',
+      //   value: '5',
+      //   // color: 'positive',
+      // },
+      // {
+      //   title: '朱八',
+      //   value: '6',
+      //   // color: 'positive',
+      // },
+      // ],
       onChange: (value, index, options) => {
         console.log('onChange', value, index, options)
         this.setData({
@@ -214,6 +221,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let suggestCheckList1 = wx.getStorageSync('suggestCheckList1')
+    let suggestCheckList2 = wx.getStorageSync('suggestCheckList2')
+    let repairPeopleList  = wx.getStorageSync('repairPeopleList')
+    if(suggestCheckList1){
+      suggestCheckList1 = JSON.parse(suggestCheckList1);
+      suggestCheckList1 = suggestCheckList1.map(v => {return { name: v.faultName, id: v.id }});
+      suggestCheckList1.push({
+        name: '其他',
+        id: '4',
+      });
+    // debugger;
+
+      this.setData({
+        sugggestArray: suggestCheckList1
+      })
+    }
+
+    if (suggestCheckList2) {
+      suggestCheckList2 = JSON.parse(suggestCheckList2);
+      suggestCheckList2 = suggestCheckList2.map(v => { return { title: v.label, value: v.value } });
+      // debugger;
+
+      this.setData({
+        suggestCheckList2: suggestCheckList2
+      })
+    }
+
+    if (repairPeopleList) {
+      repairPeopleList = JSON.parse(repairPeopleList);
+      repairPeopleList = repairPeopleList.map(v => { return { title: v.label, value: v.value } });
+      debugger;
+
+      this.setData({
+        repairPeopleList: repairPeopleList
+      })
+    }
 
   },
 

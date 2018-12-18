@@ -2,12 +2,12 @@
 <wux-select id="wux-select1" />
 <wux-select id="wux-select2" />
 
-<view>
+<!-- <view>
   <wux-radio-group name="d" value="{{ value4 }}" title="是否接受" bind:change="onChange4">
       <wux-radio color='positive' title="是" value="1" />
       <wux-radio color='positive' title="否" value="2" />
   </wux-radio-group>
-</view>
+</view> -->
 
 <view hidden="{{isSelectNo}}" style="display:{{isSelectNo ? none : flex}}">
   <wux-checkbox-group name="e" value="{{ value5 }}" title="诊断建议" bind:change="onChange5">

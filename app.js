@@ -45,6 +45,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    imgUrl: 'http://10.144.132.51:8091/static/qzweapp/'
+    token: '',
+    imgUrl: 'http://10.144.132.51:8091/static/qzweapp/',
+    baseUrl: 'http://10.144.132.51:8090/'
   }
 })
