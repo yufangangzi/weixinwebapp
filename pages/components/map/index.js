@@ -24,13 +24,14 @@ Component({
       type: Object,
       // value: '',
       observer: function(newVal, oldVal){
-        console.log('newVal:', newVal, ';oldVal:', oldVal);
+        // console.log('newVal:', newVal, ';oldVal:', oldVal);
         
           if (oldVal && newVal) {
+            this.listChannel();
             // debugger
-            this.setData({
-              lineParamsObj: newVal,
-            });
+            // this.setData({
+            //   lineParamsObj: newVal,
+            // });
           //   this.setData({
           //     'option.series[1].data': [118, 136, 165, 130, 178, 140, 133],
           //     'option.series[2].data': [12, 50, 51, 35, 70, 30, 20],
@@ -51,6 +52,9 @@ Component({
    */
   data: {
     lineParamsObj: {},
+    options:[],
+    timeShow:'',
+    valueShow: '',
 
     imgIconSrc: app.globalData.imgUrl + 'Path.png',
     imgIcon1Src: app.globalData.imgUrl + 'qushi@2x.png',
@@ -63,12 +67,12 @@ Component({
     
     mapShowIndex: 0,
 
-    value1: '1',
+    value1: '1-1H',
     title1: '1-1H',
-    value2: '1',
+    value2: '-2',
     title2: '速度',
-    value3: '5',
-    title3: '6小时',
+    value3: '1440',
+    title3: '24小时',
     mapIndex: 'zdqs' // zdqs 振动趋势图  fft fft图  sybx 时域波形图
 
   },
@@ -88,16 +92,92 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    init() {
+      let obj = {};
+      // debugger;
+      obj = Object.assign({}, this.properties.outInfo);
+      delete obj.kpiFlag;
+      obj.timeSpan = this.data.value3;
+      obj.channel = this.data.value1;
+      obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
+      // this.newLists.timeSpan
+      this.deviceId = obj.deviceNo;
+      this.passageway = obj.channel;
+
+      util.trendChart(obj, res => {
+        // trendChart(obj).then(res => {
+        if (res.code === 0) {
+          // debugger
+          this.setData({
+            lineParamsObj: {
+              time: res.result.time,
+              value: res.result.value,
+              unit: this.data.title2,
+              vibrateHighQuote: res.result.vibrateHighQuote,
+              vibrateHighHighQuote: res.result.vibrateHighHighQuote
+            }
+          });
+
+          
+        }
+        // debugger
+      });
+    },
+    listChannel() {
+      // debugger
+      let obj = {
+        faultId: this.properties.outInfo.faultId,
+        deviceNo: this.properties.outInfo.deviceNo
+      };
+      // debugger;
+      util.listChannel(obj, res => {
+        if (res.code === 0 && res.result && Array.isArray(res.result.channel)) {
+          let accessMethodList = res.result.channel.map(item => {
+            return {
+              title: item,
+              value: item
+            };
+          });
+          this.setData({
+            options: accessMethodList
+          })
+          let channel1 = res.result.channel[0];
+
+          if (this.properties.outInfo.channel) {
+            channel1 = this.properties.outInfo.channel;
+            setTimeout(() => {
+              this.init();
+            }, 300);
+          }
+          this.setData({
+            value1: channel1,
+            title1: channel1
+          })
+          if (res.result.attribute && res.result.attribute == 'acceleration') {
+            this.setData({
+              title2: '加速度',
+              value2: '-1'
+            })
+          }
+          // debugger
+        }
+        // debugger
+      });
+    },
     //打开大图所在链接
     openBigPage(){
       // wx.navigateTo({
       //   url: '../../pages/webPage/index',
       // })
+      const mapIndex = this.data.mapIndex;
+      const obj = this.properties.outInfo;
+      debugger
       wx.navigateTo({
-        url: `../../pages/daping/index?pagemap=${mapIndex}&devicecode=${paramDevice.deviceCode}&token=${wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'}`,
+        url: `../../pages/daping/index?pagemap=${mapIndex}&devicecode=${obj.deviceNo}&token=${wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'}`,
       })
     },
     mapChange(data) {
+      debugger
       this.setData({
         mapIndex: data
       })
@@ -110,17 +190,18 @@ Component({
           title: '请选择',
           confirmText: '确定',
         },
-        options: [{
-          title: '1-1H',
-          value: '1',
-          // color: 'positive',
-        },
-        {
-          title: '2-1V',
-          value: '2',
-          // color: 'positive',
-        },
-        ],
+        options: this.data.options,
+        // options: [{
+        //   title: '1-1H',
+        //   value: '1',
+        //   // color: 'positive',
+        // },
+        // {
+        //   title: '2-1V',
+        //   value: '2',
+        //   // color: 'positive',
+        // },
+        // ],
         onChange: (value, index, options) => {
           console.log('onChange', value, index, options)
           this.setData({
@@ -134,6 +215,9 @@ Component({
             value1: value,
             title1: options[index].title,
           })
+          setTimeout(() => {
+            this.init();
+          }, 300);
         },
       })
     },
@@ -147,12 +231,12 @@ Component({
         },
         options: [{
           title: '速度',
-          value: '1',
+          value: '-2',
           // color: 'positive',
         },
         {
           title: '加速度',
-          value: '2',
+          value: '-1',
           // color: 'positive',
         },
         ],
@@ -169,6 +253,9 @@ Component({
             value2: value,
             title2: options[index].title,
           })
+          setTimeout(() => {
+            this.init();
+          }, 300);
         },
       })
     },
@@ -182,37 +269,37 @@ Component({
         },
         options: [{
           title: '5分钟',
-          value: '1',
-          // color: 'positive',
-        },
-        {
-          title: '半小时',
-          value: '2',
-          // color: 'positive',
-        },
-        {
-          title: '1小时',
-          value: '3',
-          // color: 'positive',
-        },
-        {
-          title: '3小时',
-          value: '4',
-          // color: 'positive',
-        },
-        {
-          title: '6小时',
           value: '5',
           // color: 'positive',
         },
         {
+          title: '半小时',
+          value: '30',
+          // color: 'positive',
+        },
+        {
+          title: '1小时',
+          value: '60',
+          // color: 'positive',
+        },
+        {
+          title: '3小时',
+          value: '180',
+          // color: 'positive',
+        },
+        {
+          title: '6小时',
+          value: '360',
+          // color: 'positive',
+        },
+        {
           title: '12小时',
-          value: '6',
+          value: '720',
           // color: 'positive',
         },
         {
           title: '24小时',
-          value: '7',
+          value: '1440',
           // color: 'positive',
         },
 
@@ -230,6 +317,9 @@ Component({
             value3: value,
             title3: options[index].title,
           })
+          setTimeout(() => {
+            this.init();
+          }, 300);
         },
       })
     },
@@ -237,6 +327,17 @@ Component({
     //给父组件传消息
     send2FatherFn: function(e){
       this.triggerEvent('myevent', {msg: '来自子组件的问候'});
+    },
+
+    fatherRecvFn: function (event) {
+      // debugger
+      console.log('父组件接受到的消息：', event.detail);
+      if(event.detail.time && event.detail.value){
+        this.setData({
+          timeShow: event.detail.time,
+          valueShow: event.detail.value
+        });
+      }
     },
 
   }
