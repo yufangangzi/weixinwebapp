@@ -92,7 +92,7 @@ Component({
       //   url: '../../pages/webPage/index',
       // })
       wx.navigateTo({
-        url: '../../pages/daping/index',
+        url: '../../pages/daping/index?pagemap=fft&devicecode=2314-P202A&token=eeeee',
       })
     },
     openSelect1() {
