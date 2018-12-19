@@ -111,7 +111,7 @@ const relogin = (data, successcb, failcb) => {
 // 获取警报详情
 const deviceAlarmGet = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceAlarm/getDetail?' + Object.entries(data).map(v => v[0] + '=' + encodeURIComponent(v[1])).join('&'),
+    url: baseUrl + 'weChatDeviceMonitor/getDetail?' + Object.entries(data).map(v => v[0] + '=' + encodeURIComponent(v[1])).join('&'),
     data: {},
     // header: {},
     method: 'POST',
@@ -134,7 +134,7 @@ const deviceAlarmGet = (data, successcb, failcb) => {
 // 获取故障列表
 const faultListAll = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'fault/listAll',
+    url: baseUrl + 'wechatAlarm/listAllFault',
     data: {},
     // header: {},
     method: 'POST',
@@ -157,7 +157,7 @@ const faultListAll = (data, successcb, failcb) => {
 // 获取维修人列表
 const accendantList = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'user/accendantList',
+    url: baseUrl + 'wechatAlarm/accendantList',
     data: data,
     // header: {},
     method: 'POST',
@@ -180,7 +180,7 @@ const accendantList = (data, successcb, failcb) => {
 // 获取channel列表 1-1H 1-2V
 const listChannel = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceMonitor/listChannel',
+    url: baseUrl + 'weChatDeviceMonitor/listChannel',
     data: data,
     // header: {},
     method: 'POST',
@@ -203,7 +203,7 @@ const listChannel = (data, successcb, failcb) => {
 // 获取图谱数据
 const trendChart = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceMonitor/trendChart',
+    url: baseUrl + 'weChatDeviceMonitor/trendChart',
     data: data,
     // header: {},
     method: 'POST',
@@ -226,7 +226,7 @@ const trendChart = (data, successcb, failcb) => {
 // 获取时域波形图谱数据
 const domainWaveformFigure = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceMonitor/domainWaveformFigure',
+    url: baseUrl + 'weChatDeviceMonitor/domainWaveformFigure',
     data: data,
     // header: {},
     method: 'POST',
@@ -249,7 +249,7 @@ const domainWaveformFigure = (data, successcb, failcb) => {
 // 获取fft图谱数据
 const fftFigure = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceMonitor/fftFigure',
+    url: baseUrl + 'weChatDeviceMonitor/fftFigure',
     data: data,
     // header: {},
     method: 'POST',

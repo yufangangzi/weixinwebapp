@@ -297,19 +297,19 @@ Component({
           // this.lineChart.dispose();
           this.lineChart.init();
           this.init();
-        }, 200);
+        }, 100);
       }else if(mapShowIndex==1){
         setTimeout(() => {
           // this.lineChart1.dispose();
           this.lineChart1.init();
           this.init();
-        }, 200);
+        }, 100);
       } else if (mapShowIndex == 2) {
         setTimeout(() => {
           // this.lineChart2.dispose();
           this.lineChart2.init();
           this.init();
-        }, 200);
+        }, 100);
       }
     },
     openSelect1() {
