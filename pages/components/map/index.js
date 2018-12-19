@@ -73,8 +73,8 @@ Component({
     title2: '速度',
     value3: '1440',
     title3: '24小时',
+    mapIndexFlag: false,//fft sybx则不显示
     mapIndex: 'zdqs' // zdqs 振动趋势图  fft fft图  sybx 时域波形图
-
   },
 
   ready: function(){
@@ -173,15 +173,28 @@ Component({
         url: `../../pages/daping/index?pagemap=${mapIndex}&devicecode=${obj.deviceNo}&token=${wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'}`,
       })
     },
+    // mapChange(data) {
+    //   debugger
+    //   wx.navigateTo({
+    //     url: `../../pages/daping/index?pagemap=${this.data.mapIndex}&devicecode=${this.properties.paramDevice.deviceCode}&token=${wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'}`,
+    //   })
+    // },
     mapChange(data) {
-      debugger
-      wx.navigateTo({
-        url: `../../pages/daping/index?pagemap=${this.data.mapIndex}&devicecode=${this.properties.paramDevice.deviceCode}&token=${wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'}`,
-      })
-    },
-    mapChange(data) {
+      // debugger
+      let mapIndexFlag = true;
+      let mapShowIndex = 0;
+      if (data.target.id =='zdqs'){
+        mapIndexFlag = false;
+        mapShowIndex = 0;
+      }else if(data.target.id=='sybx'){
+        mapShowIndex = 1;
+      }else if(data.target.id=='fft'){
+        mapShowIndex = 2;
+      }
       this.setData({
-        mapIndex: data.target.id
+        mapIndex: data.target.id,
+        mapIndexFlag: mapIndexFlag,
+        mapShowIndex: mapShowIndex
       })
     },
     openSelect1() {

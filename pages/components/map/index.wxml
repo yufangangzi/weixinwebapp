@@ -12,7 +12,7 @@
   <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
 </view>
 
-<view bindtap="openSelect3" class="cbtn marr38">
+<view bindtap="openSelect3" class="cbtn marr38" hidden='{{mapIndexFlag}}' style="display:{{mapIndexFlag ? none : flex}}">
   <view class="ctxt">{{title3}}</view>
   <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
 </view>
@@ -48,7 +48,9 @@
 
 <view style="position:relative;height: 342rpx;">
 <view class="ec-container">
-  <custom-line hidden="{{ mapShowIndex!=0 }}" style="width:100%;height:100%;display:{{ mapShowIndex!=0 }}" id="mychart-dom-line-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"></custom-line>
+  <custom-line hidden="{{ mapShowIndex!=0 }}" style="width:100%;height:100%;display:{{mapShowIndex!=0 ? 'none' : flex}}" id="mychart-dom-line-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"></custom-line>
+  <custom-fft hidden="{{ mapShowIndex!=1 }}" style="width:100%;height:100%;display:{{mapShowIndex!=1 ? 'none' : flex}}" id="mychart-dom-line-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"></custom-fft>
+  <custom-fft hidden="{{ mapShowIndex!=2 }}" style="width:100%;height:100%;display:{{mapShowIndex!=2 ? 'none' : flex}}" id="mychart-dom-line-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"></custom-fft>
 </view>
 
 </view>
