@@ -223,6 +223,52 @@ const trendChart = (data, successcb, failcb) => {
   })
 }
 
+// 获取时域波形图谱数据
+const domainWaveformFigure = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'deviceMonitor/domainWaveformFigure',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
+// 获取fft图谱数据
+const fftFigure = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'deviceMonitor/fftFigure',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
 module.exports = {
   timeformat: timeformat,
   deviceAlarmGet: deviceAlarmGet,
@@ -230,6 +276,8 @@ module.exports = {
   accendantList: accendantList,
   listChannel: listChannel,
   trendChart: trendChart,
+  domainWaveformFigure: domainWaveformFigure,
+  fftFigure: fftFigure,
   openPage: openPage,
   formatTime: formatTime
 }

@@ -86,6 +86,16 @@ Component({
     //初始显示line图
     this.lineChart.init();
     console.log('333', this.lineChart);
+
+    this.lineChart1= this.selectComponent('#mychart-dom-line-father1');
+    //初始显示line图
+    // this.lineChart1.init();
+    // console.log('444', this.lineChart1);
+
+    this.lineChart2 = this.selectComponent('#mychart-dom-line-father2');
+    // //初始显示line图
+    // this.lineChart2.init();
+    // console.log('555', this.lineChart2);
   },
 
   /**
@@ -93,35 +103,119 @@ Component({
    */
   methods: {
     init() {
-      let obj = {};
-      // debugger;
-      obj = Object.assign({}, this.properties.outInfo);
-      delete obj.kpiFlag;
-      obj.timeSpan = this.data.value3;
-      obj.channel = this.data.value1;
-      obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
-      // this.newLists.timeSpan
-      this.deviceId = obj.deviceNo;
-      this.passageway = obj.channel;
+      if (this.data.mapShowIndex === 0){
+        let obj = {};
+        // debugger;
+        obj = Object.assign({}, this.properties.outInfo);
+        delete obj.kpiFlag;
+        obj.timeSpan = this.data.value3;
+        obj.channel = this.data.value1;
+        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
+        // this.newLists.timeSpan
+        this.deviceId = obj.deviceNo;
+        this.passageway = obj.channel;
 
-      util.trendChart(obj, res => {
-        // trendChart(obj).then(res => {
-        if (res.code === 0) {
+        util.trendChart(obj, res => {
+          // trendChart(obj).then(res => {
+          if (res.code === 0) {
+            // debugger
+            this.setData({
+              lineParamsObj: {
+                time: res.result.time,
+                value: res.result.value,
+                unit: this.data.title2,
+                vibrateHighQuote: res.result.vibrateHighQuote,
+                vibrateHighHighQuote: res.result.vibrateHighHighQuote
+              }
+            });
+
+            
+          }
           // debugger
-          this.setData({
-            lineParamsObj: {
-              time: res.result.time,
-              value: res.result.value,
-              unit: this.data.title2,
-              vibrateHighQuote: res.result.vibrateHighQuote,
-              vibrateHighHighQuote: res.result.vibrateHighHighQuote
-            }
-          });
+        });
 
-          
-        }
+      }
+
+      if (this.data.mapShowIndex === 1) {
+        let obj = {};
+        // debugger;
+        obj = Object.assign({}, this.properties.outInfo);
+        delete obj.kpiFlag;
+        delete obj.faultId;
+        delete obj.pageSize;
+        delete obj.parameterTime;
+        delete obj.timeSpan;
+        delete obj.statisDimen;
+        obj.statisStartTime = (this.data.timeShow && new Date(this.data.timeShow).getTime()) || this.data.value3;
+        obj.channel = this.data.value1;
+        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
+        // this.newLists.timeSpan
+        this.deviceNo = obj.deviceNo;
         // debugger
-      });
+        util.domainWaveformFigure(obj, res => {
+          // trendChart(obj).then(res => {
+          if (res.code === 0) {
+            // debugger
+            const obj = JSON.parse(res.result[0]);
+            
+
+            this.setData({
+              lineParamsObj: {
+                x0data: Array.from({ length: obj.domainWaveformFigure.length }, (v, k) => k),
+                s0data: obj.domainWaveformFigure,
+                x0name: '',
+                title: this.name,
+                rotateSpeed: obj.device.rotateSpeed
+              }
+            });
+
+
+          }
+          // debugger
+        });
+
+      }
+
+      if (this.data.mapShowIndex === 2) {
+        let obj = {};
+        // debugger;
+        obj = Object.assign({}, this.properties.outInfo);
+        delete obj.kpiFlag;
+        delete obj.faultId;
+        delete obj.pageSize;
+        delete obj.parameterTime;
+        delete obj.timeSpan;
+        delete obj.statisDimen;
+        obj.statisStartTime = (this.data.timeShow && new Date(this.data.timeShow).getTime()) || this.data.value3;
+        obj.channel = this.data.value1;
+        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
+        // this.newLists.timeSpan
+        this.deviceNo = obj.deviceNo;
+        // debugger
+        util.fftFigure(obj, res => {
+          // trendChart(obj).then(res => {
+          if (res.code === 0) {
+            // debugger
+
+
+            this.setData({
+              lineParamsObj: {
+                x0data: res.result.rp_fft_f_arr,
+                s0data: res.result.rp_fft_date_arr,
+                x0name: '频率(Hz)',
+                title: this.name,
+                rotateSpeed: res.result.device.rotateSpeed
+              }
+            });
+
+
+          }
+          // debugger
+        });
+
+      }
+
+
     },
     listChannel() {
       // debugger
@@ -196,6 +290,27 @@ Component({
         mapIndexFlag: mapIndexFlag,
         mapShowIndex: mapShowIndex
       })
+
+      // debugger;
+      if(mapShowIndex==0){
+        setTimeout(() => {
+          // this.lineChart.dispose();
+          this.lineChart.init();
+          this.init();
+        }, 200);
+      }else if(mapShowIndex==1){
+        setTimeout(() => {
+          // this.lineChart1.dispose();
+          this.lineChart1.init();
+          this.init();
+        }, 200);
+      } else if (mapShowIndex == 2) {
+        setTimeout(() => {
+          // this.lineChart2.dispose();
+          this.lineChart2.init();
+          this.init();
+        }, 200);
+      }
     },
     openSelect1() {
       $wuxSelect('#wux-select1').open({
