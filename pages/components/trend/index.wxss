@@ -92,8 +92,7 @@ ec-canvas {
 }
 
 .crline {
-  /* width: 335rpx; */
-  width: 260rpx;
+  width: 335rpx;
   border-right: 1px solid #5878E4;
   position: absolute;
   left: 0;
@@ -102,7 +101,7 @@ ec-canvas {
 }
 
 .ctxt1 {
-  text-align: center;
+  text-align: left;
   margin-left: 12rpx;
   margin-top: 7rpx;
   height:33rpx;
@@ -110,20 +109,18 @@ ec-canvas {
   font-weight:400;
   color:rgba(80,120,228,1);
   line-height:33rpx;
-  width:240rpx;
 }
 
 .ctxt2 {
-  text-align: center;
+  text-align: left;
   height:33rpx;
   font-size:24rpx;
   font-weight:400;
   color:rgba(80,120,228,1);
   line-height:33rpx;
   position: absolute;
-  right: 7rpx;
+  right: 33rpx;
   top: 7rpx;
-  width: 240rpx;
 }
 
 .dis3{

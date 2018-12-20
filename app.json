@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/historAlarm/historAlarm",
-    "pages/alarmProcessing/detail",
-    "pages/alarmProcessing/handle",
+    "pages/first/first",
     "pages/login/login",
+    "pages/alarmProcessing/detail",
+    "pages/historAlarm/historAlarm",
+    "pages/alarmProcessing/handle",
     "pages/webPage/index",
     "pages/alarmProcessing/handle2",
     "pages/daping/index",
@@ -12,7 +13,6 @@
     "pages/alarmProcessingResult/index",
     "pages/alarmProcessingResult/success",
     "pages/alarmProcessingResult/error",
-    "pages/first/first",
     "pages/index/index",
     "pages/logs/logs"
   ],

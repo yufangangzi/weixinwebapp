@@ -1,13 +1,12 @@
 // pages/daping/index.js
+const util = require('../../utils/util.js');
+console.log(util);
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pagemap:'',
-    devicecode: '',
-    token: '',
     src:''
   },
 
@@ -16,11 +15,13 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    const params = Object.keys(options).map(function (key) {
+      // body...
+      return encodeURIComponent(key) + "=" + encodeURIComponent(options[key]);
+    }).join("&");
     this.setData({
-      pagemap:options.pagemap,
-      devicecode:options.devicecode,
-      token:options.token,
-      src: `http://10.144.132.51:8091/static/qzweapp/bigcharts.html?pagemap=${options.pagemap}&devicecode=${options.devicecode}&token=${options.token}`
+      src: `${util.baseWebView}static/qzweapp/bigcharts.html?${params}&time=${new Date().getTime()}`
+      //src: `${util.baseWebView}static/qzweapp/bigcharts.html`
     })
   },
 

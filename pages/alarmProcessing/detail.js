@@ -176,7 +176,7 @@ Page({
     
     // debugger;
     util.deviceAlarmGet({ 
-      'deviceAlarmId': '4aea427017a54804bda6e0238c4a1382'
+      'deviceAlarmId': '507ec94982a24c5182b556bcd298c113'
     }, res => {
       // debugger;
       if(res.code==1){
@@ -260,6 +260,8 @@ Page({
           });
         }
 
+        this.devEchart();
+
         //获取故障列表
         this.faultListAll();
 
@@ -285,14 +287,14 @@ Page({
     // }
 
     //随机测试父传子
-    setTimeout(()=>{
-      this.setData({
-        lineParamsObj: {
-          id: parseInt(Math.random() * 10000) % 20,
-          name: '被修改的值',
-        }
-      })
-    },6000);
+    // setTimeout(()=>{
+    //   this.setData({
+    //     lineParamsObj: {
+    //       id: parseInt(Math.random() * 10000) % 20,
+    //       name: '被修改的值',
+    //     }
+    //   })
+    // },6000);
 
 
     //设置图片数组
@@ -303,6 +305,26 @@ Page({
 
 
     
+  },
+
+  devEchart() {
+    let channel = '';
+    if (this.data.DeviceFaultDetail.channel && this.data.DeviceFaultDetail.channel != '/') {
+      channel = this.data.DeviceFaultDetail.channel.split(',')[0];
+    }
+    // debugger
+    this.setData({
+      lineParamsObj: {
+        faultId: this.data.DeviceFaultDetail.id,
+        channel: channel, // 加速度,通道  属性
+        kpiFlag: this.data.DeviceFaultDetail.kpiFlag || '0', // 0速度 1加速度
+        deviceNo: this.data.DeviceFaultDetail.deviceCode, // 设备编号
+        parameterTime: this.data.DeviceFaultDetail.alarmTime, // 报警时间
+        statisDimen: 'second', // 固定
+        timeSpan: 10, // 展示时长
+        pageSize: 0 
+      }
+    })
   },
 
   /**
