@@ -1,17 +1,19 @@
 <!--pages/historAlarm/historAlarm.wxml-->
 <view class="page" style="{{ pageStyle }}">
-   
+    <view class="page__bd page_search">
+        <input class='lg-input' placeholder="搜索" auto-focus/>
+    </view>
     <view class="page__bd">
         <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />
         <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
         <view class="weui-panel weui-panel_access">
             <view class="weui-panel__bd">
-                <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ repos }}" wx:key="">
+                <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ repos }}" wx:key=""  catchtap='go2page' data-bean='{{repos}}' data-index='{{index}}'>
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <text class='ha-txt'>严重</text>
+                        <text class='ha-txt'>{{item.alarmSeverity}}</text>
                     </view>
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">{{ item.name }}</view>
+                        <view class="weui-media-box__title">{{ item.deviceCode }}</view>
                         <view class="weui-media-box__desc">{{ item.description }}</view>
                         <view class="weui-media-box__info">
                             
@@ -19,7 +21,7 @@
                         </view>
                     </view>
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg-res">
-                        <text class='ha-txt-res'>已处理</text>
+                        <text class='ha-txt-res'>{{item.processStatus}}</text>
                     </view>
                 </view>
             </view>

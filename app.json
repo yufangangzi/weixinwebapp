@@ -14,8 +14,7 @@
     "pages/alarmProcessingResult/error",
     "pages/first/first",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/historAlarm/alarmList"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

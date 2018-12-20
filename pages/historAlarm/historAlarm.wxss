@@ -36,3 +36,12 @@
     color:rgba(155,155,155,1);
     line-height:33rpx;
 }
+.weui-media-box__info{
+  color: #000;
+}
+.page_search{
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  margin-left:10rpx;
+}
+
