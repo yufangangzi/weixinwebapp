@@ -71,7 +71,7 @@ const request = obj => {
     // debugger;
     if(res && res.data && res.data.code==10103){
       //登录状态失效，需重新登录
-      relogin();
+      wxlogin();
       // return;
     }
     if(successcb){
@@ -83,12 +83,41 @@ const request = obj => {
 
 const baseUrl = 'http://10.144.132.20:8005/';
 
-// 重新登录
-const relogin = (data, successcb, failcb) => {
-  console.log('执行登录逻辑')
-  return;
+// WX登录,拿code换登录
+const wxlogin = (data, successcb, failcb) => {
+  // console.log('执行登录逻辑')
+  // return;
+  wx.login({
+    success(res) {
+      console.log(res);
+      request({
+        url: baseUrl + 'wxapp/wexinLogin',
+        data: {code: res.code},
+        // header: {},
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          if (successcb) {
+            successcb(res.data || res);
+          }
+        },
+        fail: function (res) {
+          if (failcb) {
+            failcb(res);
+          }
+        },
+        complete: function (res) { },
+      })
+    }
+  })
+  
+}
+
+// WX绑定用户
+const wxbind = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'user/accendantList',
+    url: baseUrl + 'wxapp/wexinBindAccount',
     data: data,
     // header: {},
     method: 'POST',
@@ -278,6 +307,8 @@ module.exports = {
   trendChart: trendChart,
   domainWaveformFigure: domainWaveformFigure,
   fftFigure: fftFigure,
+  wxlogin: wxlogin,
+  wxbind: wxbind,
   openPage: openPage,
   formatTime: formatTime
 }

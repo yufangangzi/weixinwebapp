@@ -5,29 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    message: 'Hello MINA!',
-    array: [1, 2, 3, 4, 5],
-    view: 'MINA',
 
-    staffA: { firstName: 'Hulk', lastName: 'Hu' },
-    staffB: { firstName: 'Shang', lastName: 'You' },
-    staffC: { firstName: 'Gideon', lastName: 'Lin' },
-
-    count: 11,
-
-  },
-
-  add: function (e) {
-    this.setData({
-      count: this.data.count + 1
-    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**

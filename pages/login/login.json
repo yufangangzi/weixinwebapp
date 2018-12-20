@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "登录"
+  "navigationBarTitleText": "用户绑定",
+  "usingComponents": {
+    "wux-button": "../../dist/wux/dist/button/index",
+    "wux-toast": "../../dist/wux/dist/toast/index"
+  }
 }
