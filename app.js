@@ -69,7 +69,7 @@ App({
     openId: '',
     userInfo: null,
     token: '',
-    imgUrl: 'http://10.144.132.51:8091/static/qzweapp/',
-    baseUrl: 'http://10.144.132.51:8090/'
+    imgUrl: 'https://tiot.sinochem-tech.com/static/qzweapp/',
+    baseUrl: 'https://tiot.sinochem-tech.com/'
   }
 })
