@@ -221,7 +221,7 @@ Page({
         ;
         res.result.alarmTime2 = util.timeformat(
           new Date(res.result.alarmTime)
-        );
+        );alarmSeverity
         
         res.result.alarmLevel = this.data.alertArr[res.result.alarmSeverity];
 

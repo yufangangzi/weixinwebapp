@@ -81,7 +81,8 @@ const request = obj => {
   wx.request(param);
 }
 
-const baseUrl = 'http://10.144.132.20:8005/';
+const baseUrl = 'https://tiot.sinochem-tech.com/wx/';
+const baseWebView = 'https://tiot.sinochem-tech.com/'
 
 // WX登录,拿code换登录
 const wxlogin = (data, successcb, failcb) => {
@@ -334,5 +335,6 @@ module.exports = {
   wxbind: wxbind,
   allNotAccept: allNotAccept,
   openPage: openPage,
-  formatTime: formatTime
+  formatTime: formatTime,
+  baseWebView: baseWebView
 }

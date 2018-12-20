@@ -67,6 +67,7 @@
 
 .wux-filterbar__item--checked {
   color: #f15353;
+  border-bottom:1px solid #009A40;
 }
 
 .wux-filterbar__icon {
