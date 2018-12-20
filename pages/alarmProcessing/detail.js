@@ -221,7 +221,7 @@ Page({
         ;
         res.result.alarmTime2 = util.timeformat(
           new Date(res.result.alarmTime)
-        );alarmSeverity
+        );
         
         res.result.alarmLevel = this.data.alertArr[res.result.alarmSeverity];
 
@@ -271,6 +271,20 @@ Page({
           new Date(res.result.accendantTime)
         );
         // debugger;
+
+        wx.setStorageSync('repairId', res.result.id);
+        wx.setStorageSync('deviceCode', res.result.deviceCode);
+        wx.setStorageSync('faultInfoVOList', res.result.faultInfoVOList);
+
+        try{
+          let stepList = res.result.faultOmenVOList.map(item => {
+            return item.description;
+          });
+          wx.setStorageSync('stepList', stepList.join('\n'));
+        }catch(e){
+
+        }
+
 
         this.setData({
           faultTime2: faultTime2,

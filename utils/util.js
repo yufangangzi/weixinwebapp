@@ -322,7 +322,31 @@ const allNotAccept = (data, successcb, failcb) => {
   })
 }
 
+// 未处理采纳
+const dealDeviceAlarm = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'wechatAlarm/dealDeviceAlarm',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
 module.exports = {
+  baseUrl: baseUrl,
   timeformat: timeformat,
   deviceAlarmGet: deviceAlarmGet,
   faultListAll: faultListAll,
@@ -334,6 +358,7 @@ module.exports = {
   wxlogin: wxlogin,
   wxbind: wxbind,
   allNotAccept: allNotAccept,
+  dealDeviceAlarm: dealDeviceAlarm,
   openPage: openPage,
   formatTime: formatTime,
   baseWebView: baseWebView

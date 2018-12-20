@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/first/first",
+    "pages/alarmProcessing/handle2",
     "pages/login/login",
     "pages/alarmProcessing/detail",
     "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/handle",
     "pages/webPage/index",
-    "pages/alarmProcessing/handle2",
     "pages/daping/index",
     "pages/alarmProcessing/diagnosticAdvice",
     "pages/alarmProcessing/alarmProcessing",
