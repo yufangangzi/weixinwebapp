@@ -1,18 +1,39 @@
 //app.js
+const util = require('./utils/util.js');
 App({
   onLaunch: function (options) {
     console.log(options);
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
+
+    // 判断是否已登录
+    util.wxlogin({}, res => {
+      if(res.result && res.result.openId){
+        this.globalData.openId = res.result.openId;
+      }
+      if (res.code === 0) {
+        this.globalData.islogined = true;
+        this.globalData.userInfo = res.result.user;
+        this.globalData.token = res.result.token;
+        wx.setStorageSync('token', res.result.token);
+        this.globalData.islogined = true;
+
+        util.openPage("../../pages/alarmProcessing/detail");
+      } else if (res.code == 50001) {
+        console.log(res.msg);
+        this.globalData.islogined = false;
+        util.openPage("../../pages/login/login");
+      }
+    });
 
     // 登录
-    wx.login({
-      success: res => {
-        console.log(res)
-      }
-    })
+    // wx.login({
+    //   success: res => {
+    //     console.log(res)
+    //   }
+    // })
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -44,6 +65,8 @@ App({
     console.log(msg)
   },
   globalData: {
+    islogined: true,
+    openId: '',
     userInfo: null,
     token: '',
     imgUrl: 'http://10.144.132.51:8091/static/qzweapp/',

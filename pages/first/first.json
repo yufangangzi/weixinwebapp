@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-    "wux-button": "../../dist/wux/dist/button/index",
-    "i-button": "../../dist/iview/dist/button/index"
-  }
+  "navigationBarTitleText": " ",
+  "backgroundColor": "#ffffff"
 }

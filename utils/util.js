@@ -71,7 +71,7 @@ const request = obj => {
     // debugger;
     if(res && res.data && res.data.code==10103){
       //登录状态失效，需重新登录
-      relogin();
+      wxlogin();
       // return;
     }
     if(successcb){
@@ -84,12 +84,41 @@ const request = obj => {
 const baseUrl = 'https://tiot.sinochem-tech.com/wx/';
 const baseWebView = 'https://tiot.sinochem-tech.com/'
 
-// 重新登录
-const relogin = (data, successcb, failcb) => {
-  console.log('执行登录逻辑')
-  return;
+// WX登录,拿code换登录
+const wxlogin = (data, successcb, failcb) => {
+  // console.log('执行登录逻辑')
+  // return;
+  wx.login({
+    success(res) {
+      console.log(res);
+      request({
+        url: baseUrl + 'wxapp/wexinLogin',
+        data: {code: res.code},
+        // header: {},
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          if (successcb) {
+            successcb(res.data || res);
+          }
+        },
+        fail: function (res) {
+          if (failcb) {
+            failcb(res);
+          }
+        },
+        complete: function (res) { },
+      })
+    }
+  })
+  
+}
+
+// WX绑定用户
+const wxbind = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'user/accendantList',
+    url: baseUrl + 'wxapp/wexinBindAccount',
     data: data,
     // header: {},
     method: 'POST',
@@ -112,7 +141,7 @@ const relogin = (data, successcb, failcb) => {
 // 获取警报详情
 const deviceAlarmGet = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceAlarm/getDetail?' + Object.entries(data).map(v => v[0] + '=' + encodeURIComponent(v[1])).join('&'),
+    url: baseUrl + 'weChatDeviceMonitor/getDetail?' + Object.entries(data).map(v => v[0] + '=' + encodeURIComponent(v[1])).join('&'),
     data: {},
     // header: {},
     method: 'POST',
@@ -135,7 +164,7 @@ const deviceAlarmGet = (data, successcb, failcb) => {
 // 获取故障列表
 const faultListAll = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'fault/listAll',
+    url: baseUrl + 'wechatAlarm/listAllFault',
     data: {},
     // header: {},
     method: 'POST',
@@ -158,7 +187,7 @@ const faultListAll = (data, successcb, failcb) => {
 // 获取维修人列表
 const accendantList = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'user/accendantList',
+    url: baseUrl + 'wechatAlarm/accendantList',
     data: data,
     // header: {},
     method: 'POST',
@@ -181,7 +210,7 @@ const accendantList = (data, successcb, failcb) => {
 // 获取channel列表 1-1H 1-2V
 const listChannel = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceMonitor/listChannel',
+    url: baseUrl + 'weChatDeviceMonitor/listChannel',
     data: data,
     // header: {},
     method: 'POST',
@@ -204,7 +233,53 @@ const listChannel = (data, successcb, failcb) => {
 // 获取图谱数据
 const trendChart = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceMonitor/trendChart',
+    url: baseUrl + 'weChatDeviceMonitor/trendChart',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
+// 获取时域波形图谱数据
+const domainWaveformFigure = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'weChatDeviceMonitor/domainWaveformFigure',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
+// 获取fft图谱数据
+const fftFigure = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'weChatDeviceMonitor/fftFigure',
     data: data,
     // header: {},
     method: 'POST',
@@ -231,6 +306,10 @@ module.exports = {
   accendantList: accendantList,
   listChannel: listChannel,
   trendChart: trendChart,
+  domainWaveformFigure: domainWaveformFigure,
+  fftFigure: fftFigure,
+  wxlogin: wxlogin,
+  wxbind: wxbind,
   openPage: openPage,
   formatTime: formatTime,
   baseWebView: baseWebView

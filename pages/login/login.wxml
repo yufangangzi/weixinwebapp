@@ -1,4 +1,6 @@
 <!--pages/login/login.wxml-->
+<wux-toast id="wux-toast" />
+<!-- <view class='conbg' hidden="{{pageHidden}}" style="display:{{pageHidden ? 'none' : flex}}"> -->
 <view class='conbg'>
   <view class='top-con'>
     <image class="image_frame" src="{{logUrl}}" mode="scaleToFill">
@@ -12,20 +14,22 @@
     <view class="section" style='flex-direction:row'>
       <image class="logimg" src="{{loginimg1}}" mode="scaleToFill"></image>
       <!-- <text class='lg-text'>账号:</text> -->
-      <input class='lg-input' placeholder="账号" auto-focus/>
+      <input bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" value="{{userName}}" class='lg-input' placeholder="手机号" auto-focus/>
     </view>
     <view class="section">
       <image class="pwdimg" src="{{loginimg2}}" mode="scaleToFill"></image>
       <!-- <text class='lg-text'>密码:</text> -->
-      <input class='pwd-input'type="password" placeholder="密码" />
+      <input bind:change="onChangePwd" bind:focus="onFocusPwd" bind:blur="onBlurPwd" value="{{pwd}}" class='pwd-input'type="password" placeholder="密码" />
     </view>
   </view>
   <!-- input end -->
-  <button size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
-      disabled="{{disabled}}" bindtap="primary" class='btn-color' 
+  <button class='btn-color' 
       bindtap="open2Page"> 
-      登录 
+      绑定 
   </button>
+  <!-- <view>
+  <wux-button block type="light" bind:click="open2Page">登录</wux-button>
+  </view> -->
   <view>
     <image class="bmimg" src="{{loginbg}}" mode="scaleToFill"></image>
   </view>
