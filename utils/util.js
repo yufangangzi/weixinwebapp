@@ -298,6 +298,29 @@ const fftFigure = (data, successcb, failcb) => {
   })
 }
 
+// 未处理处理
+const allNotAccept = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'wechatAlarm/allNotAccept',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
 module.exports = {
   timeformat: timeformat,
   deviceAlarmGet: deviceAlarmGet,
@@ -309,6 +332,7 @@ module.exports = {
   fftFigure: fftFigure,
   wxlogin: wxlogin,
   wxbind: wxbind,
+  allNotAccept: allNotAccept,
   openPage: openPage,
   formatTime: formatTime
 }
