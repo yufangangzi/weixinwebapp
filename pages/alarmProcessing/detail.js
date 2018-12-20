@@ -260,7 +260,7 @@ Page({
           this.setData({
             value6: res.result.processResult,
             value7: res.result.remark,
-            value9: res.result.accendantFault.join(',')
+            value9: (res.result.accendantFault && res.result.accendantFault.join(',')) || ''
           })
         }
 
