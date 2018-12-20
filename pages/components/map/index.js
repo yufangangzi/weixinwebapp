@@ -166,19 +166,26 @@ Component({
     },
     //打开大图所在链接
     openBigPage(){
-      const mapIndex = this.data.mapIndex;
-      const obj = this.properties.outInfo;
-      debugger
+      const obj = {
+        token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
+        pagemap : this.data.mapIndex,
+        timeSpan: this.data.value3,
+        channel: this.data.value1,
+        dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed'
+      }
+      const paramsobj = Object.assign({}, this.properties.outInfo,obj);
+      
+      
+      console.log(paramsobj)
+      const params = Object.keys(paramsobj).map(function (key) {
+        // body...
+        return encodeURIComponent(key) + "=" + encodeURIComponent(paramsobj[key]);
+      }).join("&");
+      console.log(params)
       wx.navigateTo({
-        url: `../../pages/daping/index?pagemap=${mapIndex}&devicecode=${obj.deviceNo}&token=${wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'}`,
+        url: `../../pages/daping/index?${params}`,
       })
     },
-    // mapChange(data) {
-    //   debugger
-    //   wx.navigateTo({
-    //     url: `../../pages/daping/index?pagemap=${this.data.mapIndex}&devicecode=${this.properties.paramDevice.deviceCode}&token=${wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b'}`,
-    //   })
-    // },
     mapChange(data) {
       // debugger
       let mapIndexFlag = true;

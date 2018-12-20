@@ -81,7 +81,8 @@ const request = obj => {
   wx.request(param);
 }
 
-const baseUrl = 'http://10.144.132.20:8005/';
+const baseUrl = 'https://tiot.sinochem-tech.com/wx/';
+const baseWebView = 'https://tiot.sinochem-tech.com/'
 
 // 重新登录
 const relogin = (data, successcb, failcb) => {
@@ -231,5 +232,6 @@ module.exports = {
   listChannel: listChannel,
   trendChart: trendChart,
   openPage: openPage,
-  formatTime: formatTime
+  formatTime: formatTime,
+  baseWebView: baseWebView
 }
