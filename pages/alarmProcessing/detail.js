@@ -193,6 +193,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
+    debugger
+    const deviceId = options.id || '07574ed454084de1b83550eea5fb27d9';
+    const deviceCode = options.code;
 
     // wx.login({
     //   success(res){
@@ -203,7 +206,7 @@ Page({
     
     // debugger;
     util.deviceAlarmGet({ 
-      'deviceAlarmId': '07574ed454084de1b83550eea5fb27d9'
+      'deviceAlarmId': deviceId
     }, res => {
       // debugger;
       if(res.code==1){
