@@ -9,6 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    detailId: '',
+    deviceCode: '',
+    reloadFlag: false,
     value6: '',
     value7: '',
     value9: '',
@@ -188,25 +191,16 @@ Page({
     console.log('父组件接受到的消息：', event.detail);
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log(options);
+  getDetail() {
+    const deviceId = this.data.detailId;
+    const deviceCode = this.data.deviceCode;
 
-    // wx.login({
-    //   success(res){
-    //     console.log(res);
-    //     debugger;
-    //   }
-    // })
-    
     // debugger;
-    util.deviceAlarmGet({ 
-      'deviceAlarmId': '07574ed454084de1b83550eea5fb27d9'
+    util.deviceAlarmGet({
+      'deviceAlarmId': deviceId
     }, res => {
       // debugger;
-      if(res.code==1){
+      if (res.code == 1) {
         // debugger
         $wuxToast().show({
           type: 'forbidden',
@@ -217,25 +211,27 @@ Page({
         })
         return;
       }
-      if(res.code===0){
+      if (res.code === 0) {
         ;
         res.result.alarmTime2 = util.timeformat(
           new Date(res.result.alarmTime)
         );
-        
+
         res.result.alarmLevel = this.data.alertArr[res.result.alarmSeverity];
 
         //设置图谱特征
+        if (res.result.faultOmenVOList && Array.isArray(res.result.faultOmenVOList)){
         let stepList = res.result.faultOmenVOList.map(item => {
           return item.description;
         });
         this.setData({
           stepList: stepList
         });
+        }
         // debugger;
 
         //设置当前处理状态
-        if(res.result.processStatus==0){
+        if (res.result.processStatus == 0) {
           this.setData({
             isReport: true,
             isRepair: false,
@@ -276,12 +272,12 @@ Page({
         wx.setStorageSync('deviceCode', res.result.deviceCode);
         wx.setStorageSync('faultInfoVOList', res.result.faultInfoVOList);
 
-        try{
+        try {
           let stepList = res.result.faultOmenVOList.map(item => {
             return item.description;
           });
           wx.setStorageSync('stepList', stepList.join('\n'));
-        }catch(e){
+        } catch (e) {
 
         }
 
@@ -294,7 +290,7 @@ Page({
 
         //设置图片数组
         const img = res.result.picUrl;
-        if(img){
+        if (img) {
           const imgList = img.split(',').map(v => app.globalData.baseUrl + v);
           this.setData({
             picturesList: imgList
@@ -310,8 +306,36 @@ Page({
 
       }
     }, err => {
-      
+
     });
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // 主要作用是从详情页修改状态返回后刷新列表
+    this.setData({
+      reloadFlag: true
+    })
+    console.log(options);
+    // debugger
+    const deviceId = options.id || '07574ed454084de1b83550eea5fb27d9';
+    const deviceCode = options.code;
+
+    this.setData({
+      detailId: deviceId,
+      deviceCode: deviceCode
+    });
+
+    // wx.login({
+    //   success(res){
+    //     console.log(res);
+    //     debugger;
+    //   }
+    // })
+    
+    this.getDetail();
 
 
     // const r = Math.random();
@@ -378,8 +402,11 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow() {
+    console.log('页面切入前台了')
+    if (this.data.reloadFlag) {
+      this.getDetail();
+    }
   },
 
   /**

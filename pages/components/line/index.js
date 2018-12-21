@@ -50,7 +50,7 @@ Component({
           borderWidth: 1,
           lineStyle: {
             type: 'solid',
-            color: '#FF8080 ',
+            // color: '00FFFF ',
             width: 1
           },
           label: {
@@ -77,7 +77,7 @@ Component({
           borderWidth: 1,
           lineStyle: {
             type: 'solid',
-            color: '#00FF7F ',
+            // color: '#00FF7F ',
             width: 1
           },
           label: {
@@ -253,15 +253,16 @@ Component({
               normal: {
                 borderWidth: 1,
                 lineStyle: {
-                  color: '#FF8080',
+                  color: '#00ffff',
                   type: 'solid',
+                  width:1
                 },
                 // label: {
                 //     formatter: '高报',
                 //     textStyle: {
                 //         fontSize: 16,
                 //         fontWeight: 'bolder',
-                //       color: '#63C57A'
+                //       color: '#00ffff'
                 //     }
                 // }
               }
@@ -327,6 +328,7 @@ Component({
         // 在这里初始化图表
         // width = 300;
         // height = 300;
+        console.log(canvas,width,height)
         const chart = echarts.init(canvas, null, {
           width: width,
           height: height
@@ -364,8 +366,11 @@ Component({
 
 
     setOption: function(data) {
+      if (data.pagemap !== 'zdqs') {
+        return
+      }
       console.log(data);
-      let option = this.data.option;
+      let option = Object.assign({}, this.data.option);
       option.xAxis[0].data = data.time;
       // if (data.unit === '速度') {
       //   option.yAxis[0].name = '速度(mm/s)';
@@ -380,12 +385,14 @@ Component({
       markLine2.data[0].yAxis = data.vibrateHighHighQuote || 7.1;
       if (data.unit === '速度') {
         option.series[0].markLine = markLine1;
-        option.series[1].markLine = markLine2;
+        option.series[1].markLine = markLine2
       } else {
         option.series[0].markLine = {};
         option.series[1].markLine = {};
       }
-      // this.chart.clear(); // 清楚累加数据
+      try{
+        this.chart.clear(); // 清楚累加数据
+      }catch(e){}
       this.chart.setOption(option);
       // this.setData({
       //   isLoaded: true,

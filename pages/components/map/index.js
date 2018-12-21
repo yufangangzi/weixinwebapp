@@ -125,7 +125,8 @@ Component({
                 value: res.result.value,
                 unit: this.data.title2,
                 vibrateHighQuote: res.result.vibrateHighQuote,
-                vibrateHighHighQuote: res.result.vibrateHighHighQuote
+                vibrateHighHighQuote: res.result.vibrateHighHighQuote,
+                pagemap: 'zdqs'
               }
             });
 
@@ -165,7 +166,8 @@ Component({
                 s0data: obj.domainWaveformFigure,
                 x0name: '',
                 title: this.name,
-                rotateSpeed: obj.device.rotateSpeed
+                rotateSpeed: obj.device.rotateSpeed,
+                pagemap: 'sybx'
               }
             });
 
@@ -204,7 +206,8 @@ Component({
                 s0data: res.result.rp_fft_date_arr,
                 x0name: '频率(Hz)',
                 title: this.name,
-                rotateSpeed: res.result.device.rotateSpeed
+                rotateSpeed: res.result.device.rotateSpeed,
+                pagemap: 'fft'
               }
             });
 
@@ -260,13 +263,17 @@ Component({
     },
     //打开大图所在链接
     openBigPage(){
+      const timereg = /-/g
       const obj = {
         token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
         pagemap : this.data.mapIndex,
         timeSpan: this.data.value3,
         channel: this.data.value1,
-        dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed'
+        dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
+        statisStartTime: new Date(this.data.timeShow.replace(timereg, '/')).getTime(),
+        valueshow: this.data.valueShow
       }
+      console.log(this.properties.outInfo)
       const paramsobj = Object.assign({}, this.properties.outInfo,obj);
       
       
