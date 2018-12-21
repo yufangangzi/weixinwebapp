@@ -220,12 +220,14 @@ Page({
         res.result.alarmLevel = this.data.alertArr[res.result.alarmSeverity];
 
         //设置图谱特征
+        if (res.result.faultOmenVOList && Array.isArray(res.result.faultOmenVOList)){
         let stepList = res.result.faultOmenVOList.map(item => {
           return item.description;
         });
         this.setData({
           stepList: stepList
         });
+        }
         // debugger;
 
         //设置当前处理状态
