@@ -21,7 +21,7 @@ App({
         this.globalData.islogined = true;
 
         // util.openPage("../../pages/alarmProcessing/detail");
-        let url = "../../pages/historAlarm/historAlarm";
+        let url = "../../pages/alarmProcessing/detail";
         wx.redirectTo({
           url: url
         });
