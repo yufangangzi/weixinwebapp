@@ -264,7 +264,7 @@ Page({
     // if (index) {
       // var id = this.data.repos[index].deviceId;
       // var code = this.data.repos[index].deviceCode;
-      var id = bean[index].deviceId;
+      var id = bean[index].id;
       var code = bean[index].deviceCode;
       wx.navigateTo({
         url: "../../pages/alarmProcessing/detail?id=" + id + '&code=' + code,
