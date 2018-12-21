@@ -1,7 +1,7 @@
 <!--pages/historAlarm/historAlarm.wxml-->
 <view class="page" style="{{ pageStyle }}">
     <view class="page__bd page_search">
-        <input class='lg-input' placeholder="搜索" auto-focus/>
+        <input class='lg-input' placeholder="搜索" />
     </view>
     <view class="page__bd">
         <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />

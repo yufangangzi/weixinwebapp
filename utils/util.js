@@ -210,7 +210,7 @@ const alarmList = (data, successcb, failcb) => {
 const listMenu = (data, successcb, failcb) => {
   request({
     url: baseUrl + 'wechatAlarm/listMenu',
-    data: {},
+    data: data,
     // header: {},
     method: 'POST',
     dataType: 'json',

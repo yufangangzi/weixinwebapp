@@ -1,14 +1,16 @@
 /* pages/historAlarm/historAlarm.wxss */
 .ha-txt{
-  width:71rpx;
-  height:34rpx;
-  background:rgba(255,88,88,1);
-  border-radius:4rpx;
-  font-size:12px;
-  font-weight:400;
-  color:rgba(255,255,255,1);
-  padding: 10rpx 30rpx;
-  line-height: 60rpx;
+ width:71rpx;
+height:34rpx;
+background:rgba(255,88,88,1);
+border-radius:8rpx;
+font-size:24rpx;
+font-weight:400;
+color:rgba(255,255,255,1);
+padding:10rpx 10rpx;
+line-height:60rpx;
+border-radius:8rpx;
+
 }
 .weui-media-box__hd_in-appmsg {
   margin-right:.8em;
