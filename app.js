@@ -10,7 +10,7 @@ App({
 
     // 判断是否已登录
     util.wxlogin({}, res => {
-      if(res.result && res.result.openId){
+      if (res.result && res.result.openId) {
         this.globalData.openId = res.result.openId;
       }
       if (res.code === 0) {

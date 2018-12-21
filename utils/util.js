@@ -184,6 +184,50 @@ const faultListAll = (data, successcb, failcb) => {
   })
 }
 
+// 警报列表
+const alarmList = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'wechatAlarm/list',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+// 设备列表
+const listMenu = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'wechatAlarm/listMenu',
+    data: {},
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
 // 获取维修人列表
 const accendantList = (data, successcb, failcb) => {
   request({
@@ -303,6 +347,8 @@ module.exports = {
   timeformat: timeformat,
   deviceAlarmGet: deviceAlarmGet,
   faultListAll: faultListAll,
+  alarmList: alarmList,
+  listMenu: listMenu,
   accendantList: accendantList,
   listChannel: listChannel,
   trendChart: trendChart,
