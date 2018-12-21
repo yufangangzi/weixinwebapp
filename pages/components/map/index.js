@@ -125,7 +125,8 @@ Component({
                 value: res.result.value,
                 unit: this.data.title2,
                 vibrateHighQuote: res.result.vibrateHighQuote,
-                vibrateHighHighQuote: res.result.vibrateHighHighQuote
+                vibrateHighHighQuote: res.result.vibrateHighHighQuote,
+                pagemap: 'zdqs'
               }
             });
 
@@ -165,7 +166,8 @@ Component({
                 s0data: obj.domainWaveformFigure,
                 x0name: '',
                 title: this.name,
-                rotateSpeed: obj.device.rotateSpeed
+                rotateSpeed: obj.device.rotateSpeed,
+                pagemap: 'sybx'
               }
             });
 
@@ -204,7 +206,8 @@ Component({
                 s0data: res.result.rp_fft_date_arr,
                 x0name: '频率(Hz)',
                 title: this.name,
-                rotateSpeed: res.result.device.rotateSpeed
+                rotateSpeed: res.result.device.rotateSpeed,
+                pagemap: 'fft'
               }
             });
 
