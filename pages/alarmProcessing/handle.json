@@ -12,6 +12,8 @@
     "wux-checkbox": "../../dist/wux/dist/checkbox/index",
     "wux-cell-group": "../../dist/wux/dist/cell-group/index",
     "wux-cell": "../../dist/wux/dist/cell/index",
+    "wux-dialog": "../../dist/wux/dist/dialog/index",
+    "wux-toast": "../../dist/wux/dist/toast/index",
     "wux-select": "../../dist/wux/dist/select/index"
   }
 }

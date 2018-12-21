@@ -170,11 +170,19 @@ Page({
                   wx.setStorageSync('token', res.result.token);
                   app.globalData.islogined = true;
 
-                  util.openPage("../../pages/alarmProcessing/detail");
+                  // util.openPage("../../pages/alarmProcessing/detail");
+                  let url = "../../pages/alarmProcessing/detail";
+                  wx.redirectTo({
+                    url: url
+                  });
                 } else if (res.code == 50001) {
                   console.log(res.msg);
-                  app.globalData.islogined = false;
-                  util.openPage("../../pages/login/login");
+                  this.globalData.islogined = false;
+                  // util.openPage("../../pages/login/login");
+                  let url = "../../pages/login/login";
+                  wx.redirectTo({
+                    url: url
+                  });
                 }
               });
             }

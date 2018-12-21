@@ -1,8 +1,8 @@
 // pages/alarmProcessing/alarmProcessing.js
 //获取应用实例
+import { $wuxDialog, $wuxToast, $wuxLoading } from '../../dist/wux/dist/index'
 const app = getApp();
 const util = require('../../utils/util.js');
-// app.globalData.token = wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b';
 
 const getCtx = (selector, ctx = getCurrentPages()[getCurrentPages().length - 1]) => {
   const componentCtx = ctx.selectComponent(selector)
@@ -21,17 +21,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // cusHeader: app.globalData.token,
+    fileList: [],
+    uploadUrl: util.baseUrl + 'picture/upload',
     suggestCheckList2: [],
     repairPeopleList: [],
     isSelectNo: false,
     isSelectOther: false,
     title1: '',
-    value1: '',
+    value1: [],
     title2: '',
     value2: '',
     value4: '1',
-    value5: ['1'],
+    value5: [],
+    value6: '',
+    value7: '',
     sugggestArray: [
       // {
       //   name: '不平衡',
@@ -50,6 +53,53 @@ Page({
       //   id: '4',
       // }
     ]
+  },
+
+  onImgChange(e) {
+    console.log('onChange', e)
+    // const { file } = e.detail
+    // if (file.status === 'done') {
+    //   this.setData({
+    //     imageUrl: file.url,
+    //   })
+    // }
+  },
+  onImgSuccess(e) {
+    console.log('onSuccess', e)
+    const { fileList } = e.detail
+    this.setData({
+      fileList: fileList,
+    })
+  },
+  onImgFail(e) {
+    console.log('onFail', e)
+  },
+  onImgComplete(e) {
+    console.log('onComplete', e)
+    // wx.hideLoading()
+  },
+  onImgPreview(e) {
+    console.log('onPreview', e)
+    // debugger
+    const { file, fileList } = e.detail
+    wx.previewImage({
+      current: file.url,
+      urls: fileList.map((n) => n.url),
+    })
+  },
+  onImgRemove(e) {
+    // debugger
+    const { file, fileList } = e.detail
+    wx.showModal({
+      content: '确定删除？',
+      success: (res) => {
+        if (res.confirm) {
+          this.setData({
+            fileList: fileList.filter((n) => n.uid !== file.uid),
+          })
+        }
+      },
+    })
   },
 
   onChange(field, e) {
@@ -105,7 +155,7 @@ Page({
       value: this.data.value1,
       multiple: true,
       toolbar: {
-        title: '请选择诊断建议',
+        title: '请选择故障名称',
         confirmText: '确定',
       },
       options: options,
@@ -160,7 +210,7 @@ Page({
   onClick2() {
     let options = this.data.repairPeopleList;
     $wuxSelect('#wux-select2').open({
-      value: this.data.value1,
+      value: this.data.value2,
       // multiple: true,
       toolbar: {
         title: '请选择指派人员',
@@ -215,8 +265,127 @@ Page({
     })
   },
 
+  onChange6(e) {
+    const v = e.detail.value;
+    this.setData({
+      value6: v
+    });
+  },
+  onBlur6(e) {
+    const v = e.detail.value;
+    this.setData({
+      value6: v
+    });
+  },
+
+  onChange7(e) {
+    const v = e.detail.value;
+    this.setData({
+      value7: v
+    });
+  },
+  onBlur7(e) {
+    const v = e.detail.value;
+    this.setData({
+      value7: v
+    });
+  },
+
   open2Page(){
-    util.openPage("../../pages/alarmProcessingResult/index");
+    // util.openPage("../../pages/alarmProcessingResult/index");
+    // debugger
+    let flag_1 = true;
+    let acceptIds = this.data.value5.filter(v => v!=4);//.map(v => v[0]);
+    if (!(acceptIds && Array.isArray(acceptIds) && acceptIds.length > 0)) {
+      flag_1 = false;
+    }
+
+    let flag_2 = true;
+    let newFaultIds = this.data.value1;
+    if (!(this.data.isSelectOther && newFaultIds && Array.isArray(newFaultIds) && newFaultIds.length > 0)) {
+      flag_2 = false;
+    }
+
+    if (this.data.value4==1 && !(flag_1 || flag_2)) {
+      $wuxToast().show({
+        type: 'forbidden',
+        duration: 1000,
+        color: '#f66',
+        text: '请勾选故障名称',
+        success: () => console.log('请勾选故障名称')
+      })
+      return;
+    }
+    // if (!this.data.title2) {
+    //   $wuxToast().show({
+    //     type: 'forbidden',
+    //     duration: 1000,
+    //     color: '#f66',
+    //     text: '请选择维修人员',
+    //     success: () => console.log('请选择维修人员')
+    //   })
+    //   return;
+    // }
+    const faultInfoVOList = wx.getStorageSync('faultInfoVOList') || [];
+    acceptIds = acceptIds.map(p => {
+      let m = faultInfoVOList.find(v => {
+        return v.id == p;
+      });
+      if (m) {
+        return m.otherId;
+      }
+    });
+    newFaultIds.push(...acceptIds);
+    acceptIds = [];
+    let param = {
+      id: wx.getStorageSync('repairId'),
+      newFaultIds: newFaultIds,
+      acceptIds: acceptIds,
+      processStatus: 1
+    };
+    // debugger;
+    param.processResult = this.data.value7;
+    param.remark = this.data.value6;
+    param.reportStatus = this.data.value4==1 ? 1 : 0;
+    param.deviceCode = wx.getStorageSync('deviceCode') || '';
+    // 新增提交字段
+    let stepList = wx.getStorageSync('stepList') || '';
+    param.faultPerformance = stepList+ '\n\n' + param.remark;
+    // 添加图片
+    try{
+      param.picUrl = this.data.fileList.map(v => {return JSON.parse(v.res.data).result[0] }).join(',');
+    }catch(e){
+
+    }
+    if (param.reportStatus == '0') {
+      delete param.processResult;
+      delete param.remark;
+      delete param.acceptIds;
+      delete param.picUrl;
+    }
+    // console.log(param);
+    // return;
+    //
+    util.dealDeviceAlarm(param, res => {
+      // debugger;
+      // return;
+      if (res.code === 0) {
+        $wuxToast().show({
+          type: 'text',
+          duration: 1000,
+          color: '#f66',
+          text: '操作成功!',
+          success: () => {
+            let url = "../../pages/alarmProcessingResult/success";
+            wx.redirectTo({
+              url: url
+            });
+          }
+        });
+      }
+    }, err => {
+
+    });
   },
 
   /**

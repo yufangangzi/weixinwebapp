@@ -20,11 +20,19 @@ App({
         wx.setStorageSync('token', res.result.token);
         this.globalData.islogined = true;
 
-        util.openPage("../../pages/alarmProcessing/detail");
+        // util.openPage("../../pages/alarmProcessing/detail");
+        let url = "../../pages/alarmProcessing/detail";
+        wx.redirectTo({
+          url: url
+        });
       } else if (res.code == 50001) {
         console.log(res.msg);
         this.globalData.islogined = false;
-        util.openPage("../../pages/login/login");
+        // util.openPage("../../pages/login/login");
+        let url = "../../pages/login/login";
+        wx.redirectTo({
+          url: url
+        });
       }
     });
 
@@ -69,7 +77,7 @@ App({
     openId: '',
     userInfo: null,
     token: '',
-    imgUrl: 'http://10.144.132.51:8091/static/qzweapp/',
-    baseUrl: 'http://10.144.132.51:8090/'
+    imgUrl: 'https://tiot.sinochem-tech.com/static/qzweapp/',
+    baseUrl: 'https://tiot.sinochem-tech.com/'
   }
 })

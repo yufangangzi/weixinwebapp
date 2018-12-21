@@ -1,4 +1,5 @@
 <!--pages/alarmProcessing/alarmProcessing.wxml-->
+<wux-toast id="wux-toast" />
 <wux-select id="wux-select1" />
 <wux-select id="wux-select2" />
 

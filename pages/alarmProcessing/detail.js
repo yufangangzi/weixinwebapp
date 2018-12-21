@@ -106,6 +106,7 @@ Page({
   },
 
   reject3() {
+    const _this = this;
     // 确认不采纳
     $wuxDialog().confirm({
       resetOnClose: true,
@@ -113,10 +114,36 @@ Page({
       title: '提示',
       content: '确认该设备未发生故障',
       onConfirm(e) {
-        console.log('凭什么吃我的冰淇淋！')
+        // debugger
+        let param = {
+          id: _this.data.DeviceFaultDetail.id,
+          deviceCode: _this.data.DeviceFaultDetail.deviceCode,
+          processor: app.globalData.userInfo.realName
+        };
+        // return;
+        util.allNotAccept(param, res => {
+          // debugger;
+          // return;
+          if (res.code === 0) {
+            $wuxToast().show({
+              type: 'text',
+              duration: 1000,
+              color: '#f66',
+              text: '操作成功!',
+              success: () => {
+                let url = "../../pages/historAlarm/historAlarm";
+                wx.redirectTo({
+                  url: url
+                });
+              }
+            });
+          }
+        }, err => {
+
+        });
       },
       onCancel(e) {
-        console.log('谢谢你不吃之恩！')
+        
       },
     });
   },
@@ -176,7 +203,7 @@ Page({
     
     // debugger;
     util.deviceAlarmGet({ 
-      'deviceAlarmId': '507ec94982a24c5182b556bcd298c113'
+      'deviceAlarmId': '07574ed454084de1b83550eea5fb27d9'
     }, res => {
       // debugger;
       if(res.code==1){
@@ -194,7 +221,7 @@ Page({
         ;
         res.result.alarmTime2 = util.timeformat(
           new Date(res.result.alarmTime)
-        );alarmSeverity
+        );
         
         res.result.alarmLevel = this.data.alertArr[res.result.alarmSeverity];
 
@@ -233,7 +260,7 @@ Page({
           this.setData({
             value6: res.result.processResult,
             value7: res.result.remark,
-            value9: res.result.accendantFault.join(',')
+            value9: (res.result.accendantFault && res.result.accendantFault.join(',')) || ''
           })
         }
 
@@ -244,6 +271,20 @@ Page({
           new Date(res.result.accendantTime)
         );
         // debugger;
+
+        wx.setStorageSync('repairId', res.result.id);
+        wx.setStorageSync('deviceCode', res.result.deviceCode);
+        wx.setStorageSync('faultInfoVOList', res.result.faultInfoVOList);
+
+        try{
+          let stepList = res.result.faultOmenVOList.map(item => {
+            return item.description;
+          });
+          wx.setStorageSync('stepList', stepList.join('\n'));
+        }catch(e){
+
+        }
+
 
         this.setData({
           faultTime2: faultTime2,

@@ -211,7 +211,7 @@
               </view> -->
 
               <!-- 结论 -->
-              <view class="marb40">
+              <view class="marb40" wx:if="{{ DeviceFaultDetail.reportStatus==1}}">
                 <!-- <view class="line"></view> -->
                 <view class="">
                   <view class="intro">故障名称</view>
@@ -241,6 +241,7 @@
                 </view>
                 
               </view>
+              
 
               
 

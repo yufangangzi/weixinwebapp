@@ -1,6 +1,8 @@
 <!--pages/alarmProcessing/alarmProcessing.wxml-->
+<wux-toast id="wux-toast" />
 <wux-select id="wux-select1" />
 <wux-select id="wux-select2" />
+<wux-loading id="wux-loading" />
 
 <view>
   <wux-radio-group name="d" value="{{ value4 }}" title="是否处理" bind:change="onChange4">
@@ -10,7 +12,7 @@
 </view>
 
 <view hidden="{{isSelectNo}}" style="display:{{isSelectNo ? none : flex}}">
-  <wux-checkbox-group name="e" value="{{ value5 }}" title="诊断建议" bind:change="onChange5">
+  <wux-checkbox-group name="e" value="{{ value5 }}" title="故障名称" bind:change="onChange5">
       <wux-checkbox color="positive" wx:for="{{sugggestArray}}" title="{{item.name}}"  value="{{item.id}}" wx:key="check-{{item.id}}" />
       <view  hidden="{{!isSelectOther}}" style="display:{{isSelectOther ? none : flex}}">
         <wux-cell title="请选择" extra="{{ title1 }}" bind:click="onClick1"></wux-cell>
@@ -18,25 +20,25 @@
   </wux-checkbox-group>
 </view>
 
-<view hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? none : flex}}">
+<!-- <view hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? none : flex}}">
   <wux-cell-group title="">
       <wux-cell title="指派人员" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
   </wux-cell-group>
-</view>
+</view> -->
 
 <view hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? none : flex}}">
     <wux-cell hover-class="none">
-        <wux-input label="现场描述" placeholder="请输入" />
+        <wux-input label="现场描述" placeholder="请输入" value="{{value6}}" bind:change="onChange6" bind:blur="onBlur6" />
     </wux-cell>
     <wux-cell hover-class="none">
-        <wux-input label="处理结果" placeholder="请输入" />
+        <wux-input label="处理结果" placeholder="请输入" value="{{value7}}" bind:change="onChange7" bind:blur="onBlur7" />
     </wux-cell>
 </view>
 
 <block>
 <wux-cell-group title="上传照片" hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? 'none' : flex}}">
     <!-- <view class="sub-title">Picture card & max = 4</view> -->
-    <wux-upload listType="picture-card" defaultFileList="{{ fileList }}" max="4" url="http://10.144.132.20:8005/picture/upload" name="files" formData="" bind:change="onImgChange" bind:success="onImgSuccess" bind:fail="onImgFail" bind:complete="onImgComplete" bind:preview="onImgPreview">
+    <wux-upload listType="picture-card" defaultFileList="{{ fileList }}" max="4" url="{{uploadUrl}}" name="files" formData="" bind:change="onImgChange" bind:success="onImgSuccess" bind:fail="onImgFail" bind:complete="onImgComplete" bind:preview="onImgPreview" bind:remove="onImgRemove">
         <!-- <text>Upload</text> -->
       <wux-icon type="ios-add" size="64" color="#CCCCCC" />
     </wux-upload>

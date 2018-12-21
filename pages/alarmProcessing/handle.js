@@ -1,5 +1,6 @@
 // pages/alarmProcessing/alarmProcessing.js
 //获取应用实例
+import { $wuxDialog, $wuxToast } from '../../dist/wux/dist/index'
 const app = getApp();
 const util = require('../../utils/util.js');
 
@@ -25,11 +26,11 @@ Page({
     isSelectNo: false,
     isSelectOther: false,
     title1: '',
-    value1: '',
+    value1: [],
     title2: '',
     value2: '',
-    value4: '1',
-    value5: ['1'],
+    value4: '',
+    value5: [],
     sugggestArray: [
       // {
       //   name: '不平衡',
@@ -158,7 +159,7 @@ Page({
   onClick2() {
     let options = this.data.repairPeopleList;
     $wuxSelect('#wux-select2').open({
-      value: this.data.value1,
+      value: this.data.value2,
       // multiple: true,
       toolbar: {
         title: '请选择指派人员',
@@ -214,7 +215,71 @@ Page({
   },
 
   open2Page(){
-    util.openPage("../../pages/alarmProcessingResult/index");
+    // util.openPage("../../pages/alarmProcessingResult/index");
+    debugger
+    let flag_1 = true;
+    let acceptIds = this.data.value5.filter(v => v!=4);//.map(v => v[0]);
+    if (!(acceptIds && Array.isArray(acceptIds) && acceptIds.length > 0)) {
+      flag_1 = false;
+    }
+
+    let flag_2 = true;
+    let newFaultIds = this.data.value1;
+    if (!(this.data.isSelectOther && newFaultIds && Array.isArray(newFaultIds) && newFaultIds.length > 0)) {
+      flag_2 = false;
+    }
+
+    if (!(flag_1 || flag_2)) {
+      $wuxToast().show({
+        type: 'forbidden',
+        duration: 1000,
+        color: '#f66',
+        text: '请勾选诊断建议',
+        success: () => console.log('请勾选诊断建议')
+      })
+      return;
+    }
+    if (!this.data.title2) {
+      $wuxToast().show({
+        type: 'forbidden',
+        duration: 1000,
+        color: '#f66',
+        text: '请选择维修人员',
+        success: () => console.log('请选择维修人员')
+      })
+      return;
+    }
+    let param = {
+      id: wx.getStorageSync('repairId'),
+      newFaultIds: newFaultIds,
+      acceptIds: acceptIds,
+      processor: app.globalData.userInfo.realName,
+      accendant: this.data.title2,
+      processStatus: 0
+    };
+    // console.log(param);
+    // return;
+    //
+    util.dealDeviceAlarm(param, res => {
+      // debugger;
+      // return;
+      if (res.code === 0) {
+        $wuxToast().show({
+          type: 'text',
+          duration: 1000,
+          color: '#f66',
+          text: '操作成功!',
+          success: () => {
+            let url = "../../pages/alarmProcessingResult/success";
+            wx.redirectTo({
+              url: url
+            });
+          }
+        });
+      }
+    }, err => {
+
+    });
   },
 
   /**
@@ -251,7 +316,7 @@ Page({
     if (repairPeopleList) {
       repairPeopleList = JSON.parse(repairPeopleList);
       repairPeopleList = repairPeopleList.map(v => { return { title: v.label, value: v.value } });
-      debugger;
+      // debugger;
 
       this.setData({
         repairPeopleList: repairPeopleList
