@@ -370,7 +370,7 @@ Component({
         return
       }
       console.log(data);
-      let option = this.data.option;
+      let option = Object.assign({}, this.data.option);
       option.xAxis[0].data = data.time;
       // if (data.unit === '速度') {
       //   option.yAxis[0].name = '速度(mm/s)';
@@ -390,7 +390,9 @@ Component({
         option.series[0].markLine = {};
         option.series[1].markLine = {};
       }
-      // this.chart.clear(); // 清楚累加数据
+      try{
+        this.chart.clear(); // 清楚累加数据
+      }catch(e){}
       this.chart.setOption(option);
       // this.setData({
       //   isLoaded: true,
