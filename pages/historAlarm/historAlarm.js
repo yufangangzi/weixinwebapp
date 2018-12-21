@@ -5,6 +5,7 @@ const util = require('../../utils/util.js');
 const imgUrl = app.globalData.imgUrl;
 Page({
   data: {
+    reloadFlag: false,
     itemsArr:[],
     unitArr:[], //装置单元数组
     codeArr: [], // 设备编号
@@ -104,7 +105,17 @@ Page({
     ],
   },
   onLoad() {
+    // 主要作用是从详情页修改状态返回后刷新列表
+    this.setData({
+      reloadFlag: true
+    })
     this.getRepos()
+  },
+  onShow() {
+    console.log('页面切入前台了')
+    if(this.data.reloadFlag){
+      this.getRepos();
+    }
   },
   onPulling() {
     console.log('onPulling')
@@ -177,7 +188,7 @@ Page({
       pageSize: 20,
       processStatus: ""
     }
-    debugger
+    // debugger
     util.alarmList(param, res => {
       // debugger;
       // return;
