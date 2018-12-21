@@ -150,18 +150,16 @@ Component({
       series: [{
         name: '',
         data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line'
-        // showSymbol: true,
-        // symbol: 'none',
-        // symbolSize: 8,
-        // itemStyle: {
-        //   normal: {
-        //     color: '#fff',
-        //     lineStyle: {
-        //       color: '#10EDFF'
-        //     }
-        //   }
-        // }
+        type: 'line',
+        itemStyle: {
+          normal: {
+            borderWidth: 1,
+            color: '#63C57A', //拆点颜色
+            lineStyle: {
+              color: '#63C57A', //折线颜色
+            },
+          }
+        },
       }],
       tooltip: {
         trigger: 'axis',
@@ -259,6 +257,9 @@ Component({
 
 
     setOption: function(data) {
+      if (data.pagemap !== 'fft'){
+        return
+      }
       console.log(data);
       let option = this.data.option;
       option.xAxis[0].data = data.x0data;
