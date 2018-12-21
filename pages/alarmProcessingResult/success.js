@@ -1,11 +1,11 @@
 Page({
     data: {
         buttons: [
-            {
-                type: 'positive',
-                block: true,
-                text: '知道了',
-            },
+            // {
+            //     type: 'positive',
+            //     block: true,
+            //     text: '知道了',
+            // },
             {
                 type: 'light',
                 block: true,
@@ -22,6 +22,6 @@ Page({
         //     showCancel: !1,
         // })
 
-        index === 1 && wx.navigateBack()
+        index === 0 && wx.navigateBack()
     },
 })
