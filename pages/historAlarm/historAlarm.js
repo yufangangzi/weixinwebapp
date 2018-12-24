@@ -9,6 +9,7 @@ Page({
     itemsArr: [],
     unitArr: [], //装置单元数组
     codeArr: [], // 设备编号
+    inputValue: '', //搜索的内容
     filterParams: {
       alarmSeverity: '',  //警报来源
       alarmType: '',    //报警程度
@@ -18,7 +19,7 @@ Page({
       pageSize: 20,
       processStatus: ""  //
     },
-    searchlog: imgUrl + "searchlog.png",
+    searchlog: imgUrl + "search.png",
     alertArr: {
       '0': '低报',
       '1': '高报',
@@ -119,20 +120,20 @@ Page({
     this.setData({
       reloadFlag: true
     })
-    let params = {
-      alarmSeverity: "",
-      alarmType: "",
-      pageNum: 1,
-      pageSize: 20,
-      processStatus: ""
-    }
-    this.getRepos(params);
+    // let params = {
+    //   alarmSeverity: "",
+    //   alarmType: "",
+    //   pageNum: 1,
+    //   pageSize: 20,
+    //   processStatus: ""
+    // }
+    this.getRepos(this.data.filterParams);
     this.getRelist();
   },
   onShow() {
     console.log('页面切入前台了')
     if (this.data.reloadFlag) {
-      this.getRepos();
+      this.getRepos(this.data.filterParams);
     }
   },
   onPulling() {
@@ -337,25 +338,7 @@ Page({
     })
     // }
   },
-  //筛选确认
-  onConfirm: function (e) {
-    let alarmSeverity = "";
-    let alarmType = "";
-    let deviceCode = "";
-    let deviceUnitId = "";
-
-    let params = {
-      alarmSeverity: alarmSeverity,  //警报来源
-      alarmType: alarmType,    //报警程度
-      deviceCode: deviceCode,
-      deviceUnitId: deviceUnitId,
-      pageNum: 1,
-      pageSize: 20,
-      processStatus: ""  //
-
-    }
-    // this.getRepos(params);
-  },
+  
   onOpen(e) {
 
     this.setData({
@@ -369,6 +352,17 @@ Page({
       pageStyle: '',
     })
   },
+  //搜索框文本内容显示
+  inputBind: function (event) {
+    this.setData({
+      inputValue: event.detail.value
+    })
+    console.log('bindInput' + this.data.inputValue)
+  },
+  query: function (event) {
+    this.data.filterParams.deviceCode = this.data.inputValue
+    this.getRepos(this.data.filterParams);
+  }
 })
 
 // weui - media - box_appmsg

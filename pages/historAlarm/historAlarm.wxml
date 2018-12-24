@@ -1,7 +1,8 @@
 <!--pages/historAlarm/historAlarm.wxml-->
 <view class="page" style="{{ pageStyle }}">
     <view class="page__bd page_search">
-        <input class='lg-input' placeholder="搜索" />
+        <image class="baoicon" src="{{searchlog}}" bindtap='query'></image>
+        <input class='lg-input' type='text' placeholder='输入设备编号' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
     </view>
     <view class="page__bd">
         <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />

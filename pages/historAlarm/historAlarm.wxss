@@ -46,4 +46,14 @@ border-radius:8rpx;
   padding-bottom: 10rpx;
   margin-left:10rpx;
 }
-
+.baoicon{
+  width:36rpx;
+  height:36rpx;
+  display: inline-block;
+  padding-left:10rpx;
+  padding-right:10rpx;
+}
+.lg-input{
+  display: inline-block;
+  font-size: 32rpx;
+}
