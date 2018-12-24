@@ -154,7 +154,7 @@ Page({
   onChange(e) {
     const { checkedItems, items } = e.detail
     const params = {}
-    this.getRelist(); //设备编号
+    // this.getRelist(); //设备编号
     console.log(checkedItems, items)
 
     checkedItems.forEach((n) => {
