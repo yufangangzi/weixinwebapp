@@ -9,32 +9,7 @@ App({
     // wx.setStorageSync('logs', logs)
 
     // 判断是否已登录
-    util.wxlogin({}, res => {
-      if (res.result && res.result.openId) {
-        this.globalData.openId = res.result.openId;
-      }
-      if (res.code === 0) {
-        this.globalData.islogined = true;
-        this.globalData.userInfo = res.result.user;
-        this.globalData.token = res.result.token;
-        wx.setStorageSync('token', res.result.token);
-        this.globalData.islogined = true;
-
-        // util.openPage("../../pages/alarmProcessing/detail");
-        let url = "../../pages/historAlarm/historAlarm";
-        wx.redirectTo({
-          url: url
-        });
-      } else if (res.code == 50001) {
-        console.log(res.msg);
-        this.globalData.islogined = false;
-        // util.openPage("../../pages/login/login");
-        let url = "../../pages/login/login";
-        wx.redirectTo({
-          url: url
-        });
-      }
-    });
+   
 
     // 登录
     // wx.login({
