@@ -1,4 +1,6 @@
 // first/first.js
+const util = require('../../utils/util.js');
+const app = getApp();
 Page({
 
   /**
@@ -12,7 +14,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    util.wxlogin({}, res => {
+      console.log(res)
+      if (res.result && res.result.openId) {
+        app.globalData.openId = res.result.openId;
+      }
+      if (res.code === 0) {
+        app.globalData.islogined = true;
+        app.globalData.userInfo = res.result.user;
+        app.globalData.token = res.result.token;
+        wx.setStorageSync('token', res.result.token);
+        app.globalData.islogined = true;
+
+        // util.openPage("../../pages/alarmProcessing/detail");
+        let url = "../../pages/historAlarm/historAlarm";
+        wx.redirectTo({
+          url: url
+        });
+      } else if (res.code == 50001) {
+        console.log(res.msg);
+        app.globalData.islogined = false;
+        // util.openPage("../../pages/login/login");
+        let url = "../../pages/login/login";
+        wx.redirectTo({
+          url: url
+        });
+      }
+    });
   },
 
   /**

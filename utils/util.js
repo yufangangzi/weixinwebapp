@@ -86,7 +86,7 @@ const baseWebView = 'https://tiot.sinochem-tech.com/'
 
 // WX登录,拿code换登录
 const wxlogin = (data, successcb, failcb) => {
-  // console.log('执行登录逻辑')
+  console.log('执行登录逻辑')
   // return;
   wx.login({
     success(res) {
@@ -110,6 +110,10 @@ const wxlogin = (data, successcb, failcb) => {
         },
         complete: function (res) { },
       })
+    },
+    fail (err) {
+      console.log(err)
+      console.log(33)
     }
   })
   
