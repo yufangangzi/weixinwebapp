@@ -372,6 +372,48 @@ Component({
         }, 100);
       }
     },
+    scrollToMap() {
+      this.buttonClicked();
+      wx.pageScrollTo({
+        scrollTop: 180,
+        duration: 300,
+        // complete: () => {
+        //   debugger;
+        //   this.openSelect1();
+        // }
+      })
+    },
+    scrollToMap1(){
+      this.buttonClicked();
+      wx.pageScrollTo({
+        scrollTop: 180,
+        duration: 300,
+        // complete: () => {
+        //   debugger;
+        //   this.openSelect1();
+        // }
+      })
+    },
+    scrollToMap2() {
+      this.buttonClicked();
+      wx.pageScrollTo({
+        scrollTop: 180,
+        duration: 300,
+        // success: () => {
+        //   this.openSelect2();
+        // }
+      })
+    },
+    scrollToMap3() {
+      this.buttonClicked();
+      wx.pageScrollTo({
+        scrollTop: 180,
+        duration: 300,
+        // success: () => {
+        //   this.openSelect3();
+        // }
+      })
+    },
     openSelect1Before() {
       // debugger;
       this.buttonClicked();
@@ -385,7 +427,7 @@ Component({
       // return;
     },
     openSelect1() {
-      
+      this.scrollToMap();
       $wuxSelect('#wux-select1').open({
         value: this.data.value1,
         // multiple: true,
@@ -442,7 +484,7 @@ Component({
       // return;
     },
     openSelect2() {
-
+      this.scrollToMap();
       $wuxSelect('#wux-select2').open({
         value: this.data.value2,
         // multiple: true,
@@ -498,7 +540,7 @@ Component({
       return;
     },
     openSelect3() {
-      
+      this.scrollToMap();
       $wuxSelect('#wux-select3').open({
         value: this.data.value3,
         // multiple: true,
