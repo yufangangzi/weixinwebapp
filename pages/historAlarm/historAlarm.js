@@ -128,7 +128,10 @@ Page({
   onShow() {
     console.log('页面切入前台了')
     if (this.data.reloadFlag) {
-      this.getRepos(this.data.filterParams);
+      if (app.globalData.listReload) {
+        this.getRepos(this.data.filterParams);
+        app.globalData.listReload = false;
+      }
     }
   },
   onPulling() {
