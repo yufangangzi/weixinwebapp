@@ -47,6 +47,7 @@ Page({
   onFocus(e) {
   },
   onBlur(e) {
+    return
     const userName = e.detail.value;
     this.setData({
       userName: userName
@@ -82,6 +83,7 @@ Page({
 
   },
   onBlurPwd(e) {
+    return;
     const pwd = e.detail.value;
     this.setData({
       pwd: pwd
