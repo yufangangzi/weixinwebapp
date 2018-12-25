@@ -34,7 +34,7 @@ Page({
       checked: true,
       type: 'text',
       label: '全部',
-      value: 'updated',
+      value: 'alls',
       children: [
       ],
       groups: ['001'],
@@ -107,12 +107,7 @@ Page({
       ],
       groups: ['001', '002', '003'],
     },
-    {
-      type: 'search',
-      label: '搜索',
-      value: 'search',
-      groups: ['005'],
-    },
+    
     ],
   },
   onLoad() {
@@ -203,6 +198,15 @@ Page({
 
         } else if (n.value === 'search') {
           params.sort = n.value
+        } else if (n.value === 'alls') {
+          let params = {
+            alarmSeverity: "",
+            alarmType: "",
+            pageNum: 1,
+            pageSize: 20,
+            processStatus: ""
+          }
+          this.getRepos(params);
         } else if (n.value === 'state0') {
           // 未处理
           let params = {
