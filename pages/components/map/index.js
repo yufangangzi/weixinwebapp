@@ -46,16 +46,16 @@ Component({
     },
     paramDevice:Object,
     outFlag: {
-      type: String,
+      type: Object,
       observer: function (newVal, oldVal) {
         // console.log('newVal:', newVal, ';oldVal:', oldVal);
 
         if (oldVal && newVal) {
           debugger
           let mapIndex = 'sybx';
-          if(newVal==1){
+          if(newVal.index==1){
             mapIndex = 'sybx';
-          }else if(newVal==2){
+          }else if(newVal.index==2){
             mapIndex = 'fft';
           }
           const timereg = /-/g
