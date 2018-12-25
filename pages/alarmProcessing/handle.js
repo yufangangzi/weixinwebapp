@@ -270,6 +270,7 @@ Page({
           color: '#f66',
           text: '操作成功!',
           success: () => {
+            app.globalData.listReload = true;
             let url = "../../pages/alarmProcessingResult/success";
             wx.redirectTo({
               url: url

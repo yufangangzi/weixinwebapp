@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    mapFlag: 0,
     detailId: '',
     deviceCode: '',
     reloadFlag: false,
@@ -134,6 +135,7 @@ Page({
               color: '#f66',
               text: '操作成功!',
               success: () => {
+                app.globalData.listReload = true;
                 let url = "../../pages/historAlarm/historAlarm";
                 wx.redirectTo({
                   url: url
@@ -149,6 +151,18 @@ Page({
         
       },
     });
+  },
+  // 打开时域波形大图
+  open2SYBX() {
+    this.setData({
+      mapFlag: 1
+    })
+  },
+  // 打开FFT大图
+  open2FFT() {
+    this.setData({
+      mapFlag: 2
+    })
   },
   // 跳转到工单处理
   open3Page() {
@@ -405,7 +419,10 @@ Page({
   onShow() {
     console.log('页面切入前台了')
     if (this.data.reloadFlag) {
-      this.getDetail();
+      if(app.globalData.detailReload){
+        this.getDetail();
+        app.globalData.detailReload = false;
+      }
     }
   },
 

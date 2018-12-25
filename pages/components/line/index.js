@@ -29,6 +29,27 @@ Component({
         
         
       }
+    },
+    outMsg: {
+      type: Object,
+      observer: function (newVal, oldVal) {
+        // debugger
+
+        // wx.showModal({ title: 'msg', content: JSON.stringify(newVal) })
+        if (oldVal && newVal){
+          console.log(newVal);
+          // wx.showModal({ title: 'msg', content: JSON.stringify(newVal) })
+          // wx.showModal({ title: 'msg', content: this.save })
+          // wx.showModal({ title: 'msg', content: newVal.isOpened })
+          if(newVal.isOpened){
+            this.save();
+          }else{}
+
+          this.setData({
+            mapShowIndex: !newVal.mapShowIndex
+          })
+        }
+      }
     }
   },
 
@@ -36,6 +57,8 @@ Component({
    * 组件的初始数据
    */
   data: {
+    canvasSrc: '',
+    mapShowIndex: 0,
     ec: {
       // 将 lazyLoad 设为 true 后，需要手动初始化图表
       lazyLoad: true
@@ -329,6 +352,7 @@ Component({
         // width = 300;
         // height = 300;
         console.log(canvas,width,height)
+        // debugger
         const chart = echarts.init(canvas, null, {
           width: width,
           height: height
@@ -355,6 +379,32 @@ Component({
 
       this.setData({
         isDisposed: true
+      });
+    },
+
+    save() {
+      const _this = this;
+      // 保存图片到临时的本地文件
+      const ecComponent = this.selectComponent('#mychart-dom-line');
+      // wx.showModal({ title: 'msg', content: ecComponent.canvasToTempFilePath })
+      // debugger
+      ecComponent.canvasToTempFilePath({
+        success: res => {
+          console.log(res.tempFilePath)
+          // wx.showModal({ title: 'msg', content: JSON.stringify(res) })
+          _this.setData({
+            canvasSrc: res.tempFilePath
+          })
+          _this.triggerEvent('mysaveevent', 'reset');
+
+          // _this.setData({
+          //   mapShowIndex: 1
+          // })
+        },
+        fail: res => {
+          console.log(res)
+          wx.showModal({ title: 'msg', content: JSON.stringify(res) })
+        }
       });
     },
 

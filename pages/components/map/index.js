@@ -44,13 +44,58 @@ Component({
         
       }
     },
-    paramDevice:Object
+    paramDevice:Object,
+    outFlag: {
+      type: String,
+      observer: function (newVal, oldVal) {
+        // console.log('newVal:', newVal, ';oldVal:', oldVal);
+
+        if (oldVal && newVal) {
+          debugger
+          let mapIndex = 'sybx';
+          if(newVal==1){
+            mapIndex = 'sybx';
+          }else if(newVal==2){
+            mapIndex = 'fft';
+          }
+          const timereg = /-/g
+          const obj = {
+            token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
+            pagemap: mapIndex,
+            timeSpan: this.data.value3,
+            channel: this.data.value1,
+            dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
+            statisStartTime: new Date(this.data.timeShow.replace(timereg, '/')).getTime(),
+            valueshow: this.data.valueShow
+          }
+          console.log(this.properties.outInfo)
+          const paramsobj = Object.assign({}, this.properties.outInfo, obj);
+
+
+          console.log(paramsobj)
+          const params = Object.keys(paramsobj).map(function (key) {
+            // body...
+            return encodeURIComponent(key) + "=" + encodeURIComponent(paramsobj[key]);
+          }).join("&");
+          console.log(params)
+          wx.navigateTo({
+            url: `../../pages/daping/index?${params}`,
+          })
+          
+        }
+
+
+      }
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
+    buttonClicked: false,
+    currentSelect: '1',
+    outMsgObj: {},
     lineParamsObj: {},
     options:[],
     timeShow:'',
@@ -242,10 +287,11 @@ Component({
 
           if (this.properties.outInfo.channel) {
             channel1 = this.properties.outInfo.channel;
-            setTimeout(() => {
-              this.init();
-            }, 300);
+            
           }
+          setTimeout(() => {
+            this.init();
+          }, 50);
           this.setData({
             value1: channel1,
             title1: channel1
@@ -326,7 +372,20 @@ Component({
         }, 100);
       }
     },
+    openSelect1Before() {
+      // debugger;
+      this.buttonClicked();
+      this.setData({
+        outMsgObj: {
+          isOpened: true,
+          mapShowIndex: this.data.mapShowIndex
+        },
+        currentSelect: 1
+      })
+      // return;
+    },
     openSelect1() {
+      
       $wuxSelect('#wux-select1').open({
         value: this.data.value1,
         // multiple: true,
@@ -361,11 +420,29 @@ Component({
           })
           setTimeout(() => {
             this.init();
-          }, 300);
+          }, 30);
+
+          this.resetMap();
         },
+        onCancel: () => {
+          this.resetMap();
+        }
       })
     },
+    openSelect2Before() {
+      this.buttonClicked();
+      // debugger;
+      this.setData({
+        outMsgObj: {
+          isOpened: true,
+          mapShowIndex: this.data.mapShowIndex
+        },
+        currentSelect: 2
+      })
+      // return;
+    },
     openSelect2() {
+
       $wuxSelect('#wux-select2').open({
         value: this.data.value2,
         // multiple: true,
@@ -399,11 +476,29 @@ Component({
           })
           setTimeout(() => {
             this.init();
-          }, 300);
+          }, 30);
+
+          this.resetMap();
         },
+        onCancel: () => {
+          this.resetMap();
+        }
       })
     },
+    openSelect3Before() {
+      this.buttonClicked();
+      // debugger;
+      this.setData({
+        outMsgObj: {
+          isOpened: true,
+          mapShowIndex: this.data.mapShowIndex
+        },
+        currentSelect: 3
+      })
+      return;
+    },
     openSelect3() {
+      
       $wuxSelect('#wux-select3').open({
         value: this.data.value3,
         // multiple: true,
@@ -463,9 +558,26 @@ Component({
           })
           setTimeout(() => {
             this.init();
-          }, 300);
+          }, 30);
+        
+          this.resetMap();
         },
+        onCancel: () => {
+          this.resetMap();
+        }
       })
+    },
+
+    resetMap: function(){
+      // 恢复图表状态
+      // debugger;
+      this.setData({
+        outMsgObj: {
+          isOpened: false,
+          mapShowIndex: !this.data.mapShowIndex
+        }
+      })
+      return;
     },
 
     //给父组件传消息
@@ -483,6 +595,29 @@ Component({
         });
       }
     },
+
+    fatherSaveFn: function (event){
+      // debugger
+      const currentSelect = this.data.currentSelect;
+      if(currentSelect==2){
+        this.openSelect2();
+      }else if(currentSelect==3){
+        this.openSelect3();
+      }else{
+        this.openSelect1()
+      }
+    },
+
+    buttonClicked: function(){
+      this.setData({
+        buttonClicked: true
+      })
+      setTimeout(() => {
+        this.setData({
+          buttonClicked: false
+        })
+      }, 500);
+    }
 
   }
 })
