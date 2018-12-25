@@ -205,7 +205,7 @@ Component({
   ready: function(){
     // 获取组件
     _this = this;
-    this.ecComponent = this.selectComponent('#mychart-dom-fft');
+    this.ecComponent = this.selectComponent('#mychart-dom-trend');
     console.log(this.properties.outInfo);
   },
 

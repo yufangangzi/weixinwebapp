@@ -14,7 +14,7 @@
     <view class="section" style='flex-direction:row'>
       <image class="logimg" src="{{loginimg1}}" mode="scaleToFill"></image>
       <!-- <text class='lg-text'>账号:</text> -->
-      <input bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" value="{{userName}}" class='lg-input' placeholder="手机号" auto-focus/>
+      <input bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" value="{{userName}}" class='lg-input' type="number" placeholder="手机号" auto-focus/>
     </view>
     <view class="section">
       <image class="pwdimg" src="{{loginimg2}}" mode="scaleToFill"></image>
@@ -30,7 +30,7 @@
   <!-- <view>
   <wux-button block type="light" bind:click="open2Page">登录</wux-button>
   </view> -->
-  <view>
+  <view class="bgbottom">
     <image class="bmimg" src="{{loginbg}}" mode="scaleToFill"></image>
   </view>
 </view>

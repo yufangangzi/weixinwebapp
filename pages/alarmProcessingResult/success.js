@@ -1,3 +1,5 @@
+const app = getApp();
+
 Page({
     data: {
         buttons: [
@@ -24,4 +26,8 @@ Page({
 
         index === 0 && wx.navigateBack()
     },
+  onLoad: function (options) {
+    app.globalData.detailReload = true;
+    app.globalData.listReload = true;
+  }
 })

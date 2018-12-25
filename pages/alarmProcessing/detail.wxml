@@ -63,9 +63,23 @@
             <view slot="footer"></view>
         </wux-card> -->
         <!-- <view style="height:469rpx;background-color:#fff;z-index:999;text-align:center;display:flex;justify-content:center;align-items:center;">图表预留</view> -->
-        <view style="height:469rpx;background-color:#fff;z-index:999;">
-          <custom-map paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"></custom-map>
+        <view style="height:410rpx;background-color:#fff;z-index:999;">
+          <custom-map paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"  out-flag="{{mapFlag}}"></custom-map>
         </view>
+        <view style="height:36rpx;background-color:#fff;z-index:999;font-size:24rpx;text-align:center;">振动趋势图</view>
+        <view style="height:36rpx;background-color:#fff;z-index:999;font-size:22rpx;text-align:left;color:#ccc;padding-left:20rpx;">点击选择上图任一时间点查看时域波形图和FFT</view>
+        <wux-row>
+          <wux-col span="6">
+            <view class="placeholder">
+          <wux-button block type="positive" size="small" bind:click="open2SYBX">时域波形图</wux-button>
+            </view>
+          </wux-col>
+          <wux-col span="6">
+            <view class="placeholder">
+          <wux-button block type="assertive" size="small" bind:click="open2FFT">FFT</wux-button>
+            </view>
+          </wux-col>
+        </wux-row>
     </wux-wing-blank>
   </view>
 
