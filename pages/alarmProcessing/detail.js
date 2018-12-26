@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mapFlag: 0,
+    mapFlag: {index: 0, r:0.3},
     detailId: '',
     deviceCode: '',
     reloadFlag: false,
@@ -155,13 +155,19 @@ Page({
   // 打开时域波形大图
   open2SYBX() {
     this.setData({
-      mapFlag: 1
+      mapFlag: {
+        index: 1,
+        r: Math.random()
+      }
     })
   },
   // 打开FFT大图
   open2FFT() {
     this.setData({
-      mapFlag: 2
+      mapFlag: {
+        index: 2,
+        r: Math.random()
+      }
     })
   },
   // 跳转到工单处理
