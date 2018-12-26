@@ -427,7 +427,7 @@ Component({
       // return;
     },
     openSelect1() {
-      this.scrollToMap();
+      // this.scrollToMap();
       $wuxSelect('#wux-select1').open({
         value: this.data.value1,
         // multiple: true,
@@ -484,7 +484,7 @@ Component({
       // return;
     },
     openSelect2() {
-      this.scrollToMap();
+      // this.scrollToMap();
       $wuxSelect('#wux-select2').open({
         value: this.data.value2,
         // multiple: true,
@@ -540,7 +540,7 @@ Component({
       return;
     },
     openSelect3() {
-      this.scrollToMap();
+      // this.scrollToMap();
       $wuxSelect('#wux-select3').open({
         value: this.data.value3,
         // multiple: true,
