@@ -10,7 +10,7 @@ Page({
     unitArr: [], //装置单元数组
     codeArr: [], // 设备编号
     inputValue: '', //搜索的内容
-    filterParams: {
+    reposParams: {
       alarmSeverity: '',  //警报来源
       alarmType: '',    //报警程度
       deviceCode: '',
@@ -18,6 +18,9 @@ Page({
       pageNum: 1,
       pageSize: 20,
       processStatus: ""  //
+    },
+    filterParams: {  //单元
+     
     },
     searchlog: imgUrl + "search.png",
     alertArr: {
@@ -122,14 +125,14 @@ Page({
     //   pageSize: 20,
     //   processStatus: ""
     // }
-    this.getRepos(this.data.filterParams);
-    this.getRelist();
+    this.getRepos(this.data.reposParams);
+    this.getFiterList();
   },
   onShow() {
     console.log('页面切入前台了')
     if (this.data.reloadFlag) {
       if (app.globalData.listReload) {
-        this.getRepos(this.data.filterParams);
+        this.getRepos(this.data.reposParams);
         app.globalData.listReload = false;
       }
     }
@@ -153,7 +156,7 @@ Page({
   onChange(e) {
     const { checkedItems, items } = e.detail
     const params = {}
-    // this.getRelist(); //设备编号
+    // this.getFiterList(); //设备编号
     console.log(checkedItems, items)
 
     checkedItems.forEach((n) => {
@@ -175,23 +178,23 @@ Page({
 
             if (n.value === 'alarmItem1') {
               params.sort = n.value
-              this.data.filterParams.alarmType = n.children.find(v => { return v.checked }).value
+              this.data.reposParams.alarmType = n.children.find(v => { return v.checked }).value
 
             } else if (n.value === 'alarmItem2') {
               params.sort = n.value
-              this.data.filterParams.alarmSeverity = n.children.find(v => { return v.checked }).value
+              this.data.reposParams.alarmSeverity = n.children.find(v => { return v.checked }).value
 
             } else if (n.value === 'devUnit') {
               const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
               params.devUnit = selected
 
-              this.data.filterParams.deviceUnitId = n.children.find(v => { return v.checked }).value
+              this.data.reposParams.deviceUnitId = n.children.find(v => { return v.checked }).value
             } else if (n.value === 'devCode') {
               const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
               params.devUnit = selected
 
-              this.data.filterParams.deviceCode = n.children.find(v => { return v.checked }).value
-              // this.getRelist(params);
+              this.data.reposParams.deviceCode = n.children.find(v => { return v.checked }).value
+              // this.getFiterList(params);
             } else if (n.value === 'query') {
               const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
               params.query = selected
@@ -244,8 +247,6 @@ Page({
       }
     })
 
-    // this.getRepos(params);
-    // this.getRelist(params);
   },
   getRepos(params = {}) {
     const language = params.language || 'javascript'
@@ -285,11 +286,10 @@ Page({
 
   },
   // 获取筛选接口数据
-  getRelist(params = {}) {
+  getFiterList(params = {}) {
     util.listMenu(params, res => {
 
       if (res.code === 0) {
-        // debugger;
         wx.hideLoading()
         var ka = this.data.items[4].children[2].children;
         var k1 = [];
@@ -353,7 +353,7 @@ Page({
     })
   },
   onClose(e) {
-    this.getRepos(this.data.filterParams);
+    this.getRepos(this.data.reposParams);
 
     this.setData({
       pageStyle: '',
@@ -367,8 +367,8 @@ Page({
     console.log('bindInput' + this.data.inputValue)
   },
   query: function (event) {
-    this.data.filterParams.deviceCode = this.data.inputValue
-    this.getRepos(this.data.filterParams);
+    this.data.reposParams.deviceCode = this.data.inputValue
+    this.getRepos(this.data.reposParams);
   }
 })
 
