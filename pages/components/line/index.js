@@ -195,6 +195,8 @@ Component({
       grid: {
         top: 20,
         bottom: 30,
+        left: 60,
+        right: 60,
       },
       xAxis: [
         {
@@ -270,64 +272,64 @@ Component({
               },
             }
           },
-          markLine: {
-            silent: true,
-            itemStyle: {
-              normal: {
-                borderWidth: 1,
-                lineStyle: {
-                  color: '#00ffff',
-                  type: 'solid',
-                  width:1
-                },
-                // label: {
-                //     formatter: '高报',
-                //     textStyle: {
-                //         fontSize: 16,
-                //         fontWeight: 'bolder',
-                //       color: '#00ffff'
-                //     }
-                // }
-              }
-            },
-            data: [
-              {
-                yAxis: 4.5
-              }
-            ]
-          }
+          // markLine: {
+          //   silent: true,
+          //   itemStyle: {
+          //     normal: {
+          //       borderWidth: 1,
+          //       lineStyle: {
+          //         color: '#00ffff',
+          //         type: 'solid',
+          //         width:1
+          //       },
+          //       // label: {
+          //       //     formatter: '高报',
+          //       //     textStyle: {
+          //       //         fontSize: 16,
+          //       //         fontWeight: 'bolder',
+          //       //       color: '#00ffff'
+          //       //     }
+          //       // }
+          //     }
+          //   },
+          //   data: [
+          //     {
+          //       yAxis: 4.5
+          //     }
+          //   ]
+          // }
         },
         {
           name: '速度',
           type: 'line',
           data: [],
-          markLine: {
-            silent: true,
-            itemStyle: {
-              normal: {
-                  borderWidth: 1,
-                  lineStyle: {
-                      type: 'solid',
-                      color: '#00FF7F ',
-                      width: 1
-                  },
-                  // label: {
-                  //     formatter: '高高报',
-                  //     textStyle: {
-                  //         fontSize: 16,
-                  //         fontWeight: 'bolder',
-                  //         color: '#00FF7F'
-                  //     }
-                  // }
-              }
+          // markLine: {
+          //   silent: true,
+          //   itemStyle: {
+          //     normal: {
+          //         borderWidth: 1,
+          //         lineStyle: {
+          //             type: 'solid',
+          //             color: '#00FF7F ',
+          //             width: 1
+          //         },
+          //         // label: {
+          //         //     formatter: '高高报',
+          //         //     textStyle: {
+          //         //         fontSize: 16,
+          //         //         fontWeight: 'bolder',
+          //         //         color: '#00FF7F'
+          //         //     }
+          //         // }
+          //     }
 
-            },
-            data: [
-              {
-                  yAxis: 7.1
-              }
-            ]
-          }
+          //   },
+          //   data: [
+          //     {
+          //         yAxis: 7.1
+          //     }
+          //   ]
+          // }
         }
       ]
     }
@@ -359,6 +361,9 @@ Component({
         });
         // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
         this.chart = chart;
+        this.canvas = canvas;
+        this.canvas_w = width;
+        this.canvas_h = height;
         // this.setOption();
 
 
@@ -421,6 +426,7 @@ Component({
       }
       console.log(data);
       let option = Object.assign({}, this.data.option);
+      option.series = JSON.parse(JSON.stringify(this.data.option.series));
       option.xAxis[0].data = data.time;
       // if (data.unit === '速度') {
       //   option.yAxis[0].name = '速度(mm/s)';
@@ -439,10 +445,13 @@ Component({
       } else {
         option.series[0].markLine = {};
         option.series[1].markLine = {};
+        option.series[1] = null;
       }
       try{
         this.chart.clear(); // 清楚累加数据
       }catch(e){}
+      // debugger
+      // this.canvas.ctx._context.clearRect(0,0, this.canvas_w, this.canvas_h);
       this.chart.setOption(option);
       // this.setData({
       //   isLoaded: true,
@@ -455,7 +464,7 @@ Component({
         dw2 = 'm/s2';
       }
       // '时间：' + 
-      _this.triggerEvent('myevent', { time: data.time[0], value: data.unit + '：' + (data.value[0]).toFixed(2) + dw2 });
+      // _this.triggerEvent('myevent', { time: data.time[0], value: data.unit + '：' + (data.value[0]).toFixed(2) + dw2 });
     }
   }
 })

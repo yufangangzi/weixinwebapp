@@ -383,6 +383,19 @@ Page({
             });
           }
         });
+      } else if (res.code === 4) {
+        wx.showModal({
+          title: '提示',
+          content: res.msg,
+          success: (r) => {
+            if(r.confirm){
+              app.globalData.detailReload = true;
+              app.globalData.listReload = true;
+              wx.navigateBack();
+            }
+
+          }
+        })
       }
     }, err => {
 

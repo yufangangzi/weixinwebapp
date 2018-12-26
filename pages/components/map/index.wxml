@@ -48,7 +48,7 @@
 
 <view style="position:relative;height: 342rpx;">
 <view class="ec-container">
-  <custom-line hidden="{{ mapShowIndex!=0 }}" out-msg="{{outMsgObj}}" style="width:100%;height:100%;display:{{mapShowIndex!=0 ? 'none' : flex}}" id="mychart-dom-line-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn" bind:mysaveevent="fatherSaveFn"></custom-line>
+  <custom-line hidden="{{ mapShowIndex!=0 }}" out-msg="{{outMsgObj}}" style="width:100%;height:100%;display:{{mapShowIndex!=0 ? 'none' : flex}}" id="mychart-dom-line-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn" bind:mysaveevent="fatherSaveFn" bind:mybtnevent="btnRecFn"></custom-line>
   <custom-trend  hidden="{{ mapShowIndex!=1 }}" out-msg="{{outMsgObj}}" style="width:100%;height:100%;display:{{mapShowIndex!=1 ? 'none' : flex}}" id="mychart-dom-line-father1" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"></custom-trend>
   <custom-fft hidden="{{ mapShowIndex!=2 }}" out-msg="{{outMsgObj}}" style="width:100%;height:100%;display:{{mapShowIndex!=2 ? 'none' : flex}}" id="mychart-dom-line-father2" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"></custom-fft>
 </view>
