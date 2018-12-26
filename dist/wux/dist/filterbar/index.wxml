@@ -15,7 +15,7 @@
                     <view class="wux-filterbar__panel">
                         <view class="wux-filterbar__panel-hd">
                             <div class="wux-filterbar__panel-title">{{ p.label }}</div>
-                            <div class="wux-filterbar__panel-selected">{{ p.selected }}</div>
+                            <!-- <div class="wux-filterbar__panel-selected">{{ p.selected }}</div> -->
                         </view>
                         <view class="wux-filterbar__panel-bd">
                             <radio-group bindchange="onRadioChange" data-parent-index="{{ index }}" data-index="{{ pIndex }}" data-item="{{ p }}" wx:if="{{ p.type === 'radio' }}">
