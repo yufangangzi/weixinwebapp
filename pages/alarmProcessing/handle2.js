@@ -266,26 +266,32 @@ Page({
   },
 
   onChange6(e) {
-    const v = e.detail.value;
+    let v = e.detail.value;
+    // if(v && v.length> 8){
+    //   v = v.substring(0, 8);
+    // }
     this.setData({
       value6: v
     });
   },
   onBlur6(e) {
-    const v = e.detail.value;
+    let v = e.detail.value;
     this.setData({
       value6: v
     });
   },
 
   onChange7(e) {
-    const v = e.detail.value;
+    let v = e.detail.value;
+    // if (v && v.length > 8) {
+    //   v = v.substring(0, 8);
+    // }
     this.setData({
       value7: v
     });
   },
   onBlur7(e) {
-    const v = e.detail.value;
+    let v = e.detail.value;
     this.setData({
       value7: v
     });
