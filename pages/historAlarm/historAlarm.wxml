@@ -32,11 +32,11 @@
     <view class="weui-loadmore weui-loadmore_line" hidden='{{isResult}}'>
 　　　　<view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
 　　</view>
-    <!-- <view class="weui-loadmore weui-loadmore_line" hidden='{{hasmoreData}}'>
+    <view class="weui-loadmore weui-loadmore_line" hidden='{{hasmoreData}}'>
 　　　　<view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无更多数据</view>
-　　</view> -->
-<!-- 　　<view class="weui-loadmore" hidden='{{hiddenloading}}'>
+　　</view>
+　<view class="weui-loadmore" hidden='{{hiddenloading}}'>
 　　　　<view class="weui-loading"></view>
 　　　　<view class="weui-loadmore__tips">正在加载</view>
-　　</view> -->
+　　</view>
 </view>

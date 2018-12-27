@@ -16,7 +16,7 @@ Page({
       deviceCode: '',
       deviceUnitId: '',
       pageNum: 1,
-      pageSize: 30,
+      pageSize: 20,
       processStatus: ""  //
     },
     
@@ -25,7 +25,7 @@ Page({
     },
     total: 0,//分页总数
 　　pageNum: 0,//分页记录数pageNum
-　　pageSize: 30,//分页大小
+　　pageSize: 20,//分页大小
 　　hasmoreData: true,//更多数据
 　　hiddenloading: true,//加载中
     isResult:true,
@@ -131,10 +131,14 @@ Page({
     this.getRepos(this.data.reposParams);
     this.getFiterList();
   },
+  // 加载更多
   onReachBottom: function () {
 　　　　console.log('加载更多')
 
-　　　　this.setData({ hiddenloading: false })
+　　　　this.setData({ 
+          hiddenloading: false, 
+          'reposParams.pageNum':this.data.reposParams.pageNum+1
+        })
     　　this.getRepos(this.data.reposParams);
   　　},
   onShow() {
@@ -278,7 +282,7 @@ Page({
         })
         if (res.result.list.length == 0) {
           that.setData({ isResult: false })
-          return
+          
         }
         if (that.data.total <= 0 || that.data.pageNum * that.data.pageSize >= that.data.total) {
 　　　　　　　　that.setData({ hasmoreData: false, hiddenloading: true })
@@ -287,15 +291,6 @@ Page({
     }, err => {
 
     });
-    // wx.request({
-    // url: app.globalData.imgUrl,
-    // data,
-    // success: (res) => {
-    //   console.log(res)
-
-
-    // },
-    // })
 
   },
   // 获取筛选接口数据
@@ -382,7 +377,7 @@ Page({
         deviceCode: '',
         deviceUnitId: '',
         pageNum: 1,
-        pageSize: 30,
+        pageSize: 20,
         processStatus: ""  //
       },
     })
