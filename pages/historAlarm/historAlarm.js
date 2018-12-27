@@ -125,7 +125,7 @@ Page({
     
     this.setData({ //详情跳转过来接参数
       reloadFlag: true,
-      'reposParams.devCode': obj.devCode || '',
+      'reposParams.deviceCode': obj.deviceCode || '',
       'reposParams.deviceUnitId': obj.deviceUnitId || ''
     })
     this.getRepos(this.data.reposParams);

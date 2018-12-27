@@ -136,6 +136,18 @@ Component({
       // color: ['#10EDFF'],
       tooltip: {
         trigger: 'axis',
+        position: function (p) {   //其中p为当前鼠标的位置
+          // debugger
+          let x = p[0];
+          let y = p[1];
+          if(x>150){
+            x = x - 100;
+          }
+          if(y>100){
+            y = y - 50;
+          }
+          return [x, y];
+        },
         showDelay: 0,
         hideDelay: 50,
         // show:false,
@@ -193,13 +205,16 @@ Component({
 
       },
       grid: {
-        top: 20,
+        top: 40,
         bottom: 30,
         left: 60,
-        right: 60,
+        right: 30,
       },
       xAxis: [
         {
+          // min: 'dataMin',
+          // max: 'dataMax',
+          // interval: 30000000000,
           type: 'category',
           boundaryGap: false,
           data: [],
@@ -431,11 +446,11 @@ Component({
       let option = Object.assign({}, this.data.option);
       option.series = JSON.parse(JSON.stringify(this.data.option.series));
       option.xAxis[0].data = data.time;
-      // if (data.unit === '速度') {
-      //   option.yAxis[0].name = '速度(mm/s)';
-      // } else {
-      //   option.yAxis[0].name = '加速度(m/s2)';
-      // }
+      if (data.unit === '速度') {
+        option.yAxis[0].name = '速度(mm/s)';
+      } else {
+        option.yAxis[0].name = '加速度(m/s2)';
+      }
       option.series[0].data = data.value;
       option.series[0].name = data.unit;
       let markLine1 = this.data.markLine1;
