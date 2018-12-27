@@ -136,10 +136,12 @@ Page({
 　　　　console.log('加载更多')
 
 　　　　this.setData({ 
+          hasmoreData: true, 
           hiddenloading: false, 
           'reposParams.pageNum':this.data.reposParams.pageNum+1
         })
-    　　this.getRepos(this.data.reposParams);
+    
+    　　this.getRepos2(this.data.reposParams);
   　　},
   onShow() {
     console.log('页面切入前台了')
@@ -162,9 +164,9 @@ Page({
       //     content: '星球地球++',
       //   }, ...this.data.items],
       // })
-
+      this.getRepos(this.data.reposParams);
       $stopWuxRefresher()
-    }, 2000)
+    }, 1500)
   },
   onChange(e) {
     const { checkedItems, items } = e.detail
@@ -241,6 +243,14 @@ Page({
   
   },
   getRepos(params = {}) {
+    this.setData({
+      hasmoreData: true,
+      hiddenloading: true,
+      'reposParams.pageNum': 1
+    })
+    this.getRepos2(this.data.reposParams);
+  },
+  getRepos2(params = {}) {
     // const language = params.language || 'javascript'
     // const query = params.query || 'react'
     // const q = `${query}+language:${language}`
@@ -271,22 +281,36 @@ Page({
       if (res.code === 0) {
         wx.hideLoading()
       
-        that.setData({
-          repos: res.result.list.map((n) => Object.assign({}, n, {
+        if (that.data.reposParams.pageNum<2){
+          that.setData({
+            repos: res.result.list.map((n) => Object.assign({}, n, {
+              date: "报警时间:" + util.timeformat(new Date(n.alarmTime)).substr(5, 14),
+              alarmSeverity: that.data.alertArr[n.alarmSeverity],
+              processStatus: that.data.proStateArr[n.processStatus],
+              total: res.result.total,
+              pageNum: that.data.pageNum + 1
+            }))
+          })
+        }else{
+          let appendList= that.data.repos;
+          appendList.push(...res.result.list.map((n) => Object.assign({}, n, {
             date: "报警时间:" + util.timeformat(new Date(n.alarmTime)).substr(5, 14),
             alarmSeverity: that.data.alertArr[n.alarmSeverity],
             processStatus: that.data.proStateArr[n.processStatus],
             total: res.result.total,
             pageNum: that.data.pageNum + 1
-          })),
-        })
-        if (res.result.list.length == 0) {
+          })));
+          that.setData({
+            repos: appendList
+          })
+        }
+        if (that.data.reposParams.pageNum < 2 && res.result.list.length == 0) {
           that.setData({ isResult: false })
           
         }
-        if (that.data.total <= 0 || that.data.pageNum * that.data.pageSize >= that.data.total) {
-　　　　　　　　that.setData({ hasmoreData: false, hiddenloading: true })
-　　　　　　}
+        if (that.data.reposParams.pageNum > 1 && !res.result.hasNextPage) {
+          that.setData({ hasmoreData: false, hiddenloading: true })
+　　　　  }
       }
     }, err => {
 
