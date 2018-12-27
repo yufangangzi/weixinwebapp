@@ -36,7 +36,7 @@ Page({
     },
     proStateArr: {
       '0': '未处理',
-      '1': '工单下发',
+      '1': '处理中',
       '2': '已处理'
     },
     items: [{
@@ -56,7 +56,7 @@ Page({
     },
     {
       type: 'text',
-      label: '工单下发',
+      label: '处理中',
       value: 'state1',
       groups: ['003'],
     },
@@ -212,7 +212,7 @@ Page({
            params.processStatus = '0'
            this.setData({'inputValue': ''})
         } else if (n.value === 'state1') {
-          // 工单下发
+          // 处理中
            params.processStatus = '1'
            this.setData({ 'inputValue': '' })
         } else if (n.value === 'state2') {
@@ -248,14 +248,12 @@ Page({
 //           wx.hideLoading()
 // 　　　　　　return;
 // 　　　　}
-//  const serchData = Object.assign({
-//       q,
-//     }, params)
-
-//     if (this.data.inputValue && this.data.inputValue.indexOf('/') > -1) {
-//        this.setData({ 'inputValue': this.data.inputValue.substring(0, this.data.inputValue.indexOf('/') - 1)})
-//     }
-
+//筛选模糊查询
+    const serchData = Object.assign({}, params);
+    if (serchData.deviceCode && serchData.deviceCode.indexOf('/') > -1) {
+      this.setData({ 'reposParams.deviceCode': serchData.deviceCode.substring(0, serchData.deviceCode.indexOf('/') - 1)})
+    }
+    
     util.alarmList(params, res => {
       
       if (res.code === 0) {
