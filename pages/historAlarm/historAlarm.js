@@ -16,12 +16,18 @@ Page({
       deviceCode: '',
       deviceUnitId: '',
       pageNum: 1,
-      pageSize: 20,
+      pageSize: 30,
       processStatus: ""  //
     },
+    
     filterParams: {  //单元
      
     },
+    total: 0,//分页总数
+　　pageNum: 0,//分页记录数pageNum
+　　pageSize: 30,//分页大小
+　　hasmoreData: true,//更多数据
+　　hiddenloading: true,//加载中
     searchlog: imgUrl + "search.png",
     alertArr: {
       '0': '低报',
@@ -108,7 +114,7 @@ Page({
           children: [],
         }, // 设备编号
       ],
-      groups: ['001', '002', '003'],
+      groups: ['001', '002', '003','004'],
     },
     
     ],
@@ -118,16 +124,15 @@ Page({
     this.setData({
       reloadFlag: true
     })
-    // let params = {
-    //   alarmSeverity: "",
-    //   alarmType: "",
-    //   pageNum: 1,
-    //   pageSize: 20,
-    //   processStatus: ""
-    // }
     this.getRepos(this.data.reposParams);
     this.getFiterList();
   },
+  onReachBottom: function () {
+　　　　console.log('加载更多')
+
+　　　　this.setData({ hiddenloading: false })
+    　　this.getRepos(this.data.reposParams);
+  　　},
   onShow() {
     console.log('页面切入前台了')
     if (this.data.reloadFlag) {
@@ -155,121 +160,119 @@ Page({
   },
   onChange(e) {
     const { checkedItems, items } = e.detail
-    const params = {}
+    const params = {
+      alarmSeverity: '',  //警报来源
+      alarmType: '',    //报警程度
+      deviceCode: '',
+      deviceUnitId: '',
+    }
+    let isCheck = false;
     // this.getFiterList(); //设备编号
     console.log(checkedItems, items)
 
     checkedItems.forEach((n) => {
       if (n.checked) {
 
-        if (n.value === 'updated') {
-          const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
-          params.sort = n.value
-          params.order = selected
-        } else if (n.value === 'stars') {
-          params.sort = n.value
-          params.order = n.sort === 1 ? 'asc' : 'desc'
-        } else if (n.value === 'forks') {
-          params.sort = n.value
-        } else if (n.value === 'filter') {
-
+         if (n.value === 'filter') {
+           this.setData({ 'inputValue': '' })  // 切换标签清空搜索框
 
           n.children.filter((n) => n.selected).forEach((n) => {
 
             if (n.value === 'alarmItem1') {
-              params.sort = n.value
-              this.data.reposParams.alarmType = n.children.find(v => { return v.checked }).value
-
+              params.alarmType = n.children.find(v => { return v.checked }).value || ''
+              isCheck = true;
             } else if (n.value === 'alarmItem2') {
-              params.sort = n.value
-              this.data.reposParams.alarmSeverity = n.children.find(v => { return v.checked }).value
-
+              params.alarmSeverity = n.children.find(v => { return v.checked }).value || ''
+              isCheck = true;
             } else if (n.value === 'devUnit') {
-              const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
-              params.devUnit = selected
-
-              this.data.reposParams.deviceUnitId = n.children.find(v => { return v.checked }).value
+              params.deviceUnitId = n.children.find(v => { return v.checked }).value || ''
+              isCheck = true;
             } else if (n.value === 'devCode') {
-              const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
-              params.devUnit = selected
+              params.deviceCode = n.children.find(v => { return v.checked }).value || ''
+              isCheck = true;
 
-              this.data.reposParams.deviceCode = n.children.find(v => { return v.checked }).value
-              // this.getFiterList(params);
-            } else if (n.value === 'query') {
-              const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
-              params.query = selected
-            }
+            } 
           })
+          if(!isCheck){  //
+            if (n.value === 'filter') {
+              n.checked = false
 
-
-        } else if (n.value === 'search') {
-          params.sort = n.value
-        } else if (n.value === 'alls') {
-          let params = {
-            alarmSeverity: "",
-            alarmType: "",
-            pageNum: 1,
-            pageSize: 20,
-            processStatus: ""
+              this.setData({
+                'items[4].checked': false
+              })
+            }
           }
-          this.getRepos(params);
+
+        }else if (n.value === 'search') {
+        } else if (n.value === 'alls') {
+           params.processStatus = ''
+           
         } else if (n.value === 'state0') {
           // 未处理
-          let params = {
-            alarmSeverity: "",
-            alarmType: "",
-            pageNum: 1,
-            pageSize: 20,
-            processStatus: "0"
-          }
-          this.getRepos(params);
+           params.processStatus = '0'
+           this.setData({'inputValue': ''})
         } else if (n.value === 'state1') {
           // 工单下发
-          let params = {
-            alarmSeverity: "",
-            alarmType: "",
-            pageNum: 1,
-            pageSize: 20,
-            processStatus: "1"
-          }
-          this.getRepos(params);
+           params.processStatus = '1'
+           this.setData({ 'inputValue': '' })
         } else if (n.value === 'state2') {
           // 已处理
-          let params = {
-            alarmSeverity: "",
-            alarmType: "",
-            pageNum: 1,
-            pageSize: 20,
-            processStatus: "2"
-          }
-          this.getRepos(params);
+           params.processStatus = '2'
+           this.setData({ 'inputValue': '' })
+          //  debugger
         }
       }
     })
-
+  
+    const data = Object.assign(this.data.reposParams,params)
+    this.setData({
+      reposParams: data
+    })
+    // debugger
+    this.getRepos(this.data.reposParams);
+  
   },
   getRepos(params = {}) {
-    const language = params.language || 'javascript'
-    const query = params.query || 'react'
-    const q = `${query}+language:${language}`
-    const data = Object.assign({
-      q,
-    }, params)
+    // const language = params.language || 'javascript'
+    // const query = params.query || 'react'
+    // const q = `${query}+language:${language}`
+    // const data = Object.assign({
+    //   q,
+    // }, params)
 
-    wx.showLoading()
+    wx.showLoading();
+  
+     var that = this;
+//     if (that.data.hasmoreData == false) {
+// 　　　　　　that.setData({ hiddenloading: true })
+//           wx.hideLoading()
+// 　　　　　　return;
+// 　　　　}
+//  const serchData = Object.assign({
+//       q,
+//     }, params)
+
+//     if (this.data.inputValue && this.data.inputValue.indexOf('/') > -1) {
+//        this.setData({ 'inputValue': this.data.inputValue.substring(0, this.data.inputValue.indexOf('/') - 1)})
+//     }
+
     util.alarmList(params, res => {
-      // debugger;
-      // return;
+      
       if (res.code === 0) {
         wx.hideLoading()
 
-        this.setData({
+        that.setData({
           repos: res.result.list.map((n) => Object.assign({}, n, {
             date: "报警时间:" + util.timeformat(new Date(n.alarmTime)).substr(5, 14),
-            alarmSeverity: this.data.alertArr[n.alarmSeverity],
-            processStatus: this.data.proStateArr[n.processStatus],
+            alarmSeverity: that.data.alertArr[n.alarmSeverity],
+            processStatus: that.data.proStateArr[n.processStatus],
+            total: res.result.total,
+            pageNum: that.data.pageNum + 1
           })),
         })
+        if (that.data.total <= 0 || that.data.pageNum * that.data.pageSize >= that.data.total) {
+　　　　　　　　that.setData({ hasmoreData: false, hiddenloading: true })
+　　　　　　}
       }
     }, err => {
 
@@ -292,6 +295,7 @@ Page({
       if (res.code === 0) {
         wx.hideLoading()
         var ka = this.data.items[4].children[2].children;
+        
         var k1 = [];
         for (let index = 0; index < res.result.length; index += 1) {
           const item = res.result[index].menuDeviceList;
@@ -354,10 +358,26 @@ Page({
   },
   onClose(e) {
     this.getRepos(this.data.reposParams);
-
+    
     this.setData({
       pageStyle: '',
     })
+  },
+  //重置清空字段
+  onReset(e){
+    this.setData({
+      reposParams: {
+        alarmSeverity: '',  //警报来源
+        alarmType: '',    //报警程度
+        deviceCode: '',
+        deviceUnitId: '',
+        pageNum: 1,
+        pageSize: 30,
+        processStatus: ""  //
+      },
+    })
+
+    
   },
   //搜索框文本内容显示
   inputBind: function (event) {
@@ -365,11 +385,18 @@ Page({
       inputValue: event.detail.value
     })
     console.log('bindInput' + this.data.inputValue)
+    this.setData({
+      'reposParams.deviceCode': this.data.inputValue
+    })
+    
   },
-  query: function (event) {
-    this.data.reposParams.deviceCode = this.data.inputValue
+  pageSearch: function (event) {
+    // this.data.reposParams.deviceCode = this.data.inputValue
+    
+  
     this.getRepos(this.data.reposParams);
+    debugger
   }
+  
 })
 
-// weui - media - box_appmsg
