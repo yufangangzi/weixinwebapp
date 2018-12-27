@@ -627,6 +627,10 @@ Component({
       this.triggerEvent('myevent', {msg: '来自子组件的问候'});
     },
 
+    btnRecFn: function (event) {
+      this.triggerEvent('mybtnevent', { msg: '启用fft按钮' });
+    },
+
     fatherRecvFn: function (event) {
       // debugger
       console.log('父组件接受到的消息：', event.detail);
@@ -635,6 +639,8 @@ Component({
           timeShow: event.detail.time,
           valueShow: event.detail.value
         });
+
+        this.triggerEvent('mybtnevent', { msg: '启用fft按钮' });
       }
     },
 

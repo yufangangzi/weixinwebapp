@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    btnEnabled: false,
     mapFlag: {index: 0, r:0.3},
     detailId: '',
     deviceCode: '',
@@ -142,6 +143,19 @@ Page({
                 });
               }
             });
+          } else if (res.code === 4) {
+            wx.showModal({
+              title: '提示',
+              content: res.msg,
+              success: (r) => {
+                if(r.confirm){
+                  // app.globalData.detailReload = true;
+                  app.globalData.listReload = true;
+                  // wx.navigateBack();
+                  _this.getDetail();
+                }
+              }
+            })
           }
         }, err => {
 
@@ -209,6 +223,12 @@ Page({
 
   fatherRecvFn: function(event){
     console.log('父组件接受到的消息：', event.detail);
+  },
+
+  btnRecFn: function(event){
+    this.setData({
+      btnEnabled: true
+    })
   },
 
   getDetail() {

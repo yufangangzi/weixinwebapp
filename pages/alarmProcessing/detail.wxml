@@ -5,17 +5,27 @@
 <wux-select id="wux-select2" style="z-index: 1000;" />
 <wux-select id="wux-select3" style="z-index: 1000;" />
 <view class="bg-top">
-  <image style="width:100%;background-color: #eeeeee;" mode="widthFix" src="{{imgSrc}}"></image>
+  <image style="width:100%;background-color: #eeeeee;height:265px;" mode="scaleToFill" src="{{imgSrc}}"></image>
   <!-- <view class="bg-img" style="background-image:url({{imgSrc}});"></view> -->
   <view class="pos">
-    <view style="display:block;padding-top:19rpx;">
+    <view style="display:block;">
+      <view class="top-t1">故障设备</view>
+      <view class="top-t2">{{ DeviceFaultDetail.deviceCode }}</view>
+    </view>
+
+    <view style="display:block;">
+      <view class="top-t1">装置单元</view>
+      <view class="top-t2">{{ DeviceFaultDetail.deviceUnitName }}</view>
+    </view>
+
+    <view style="display:block;">
       <view class="top-t1">报警时间</view>
       <view class="top-t2">{{ DeviceFaultDetail.alarmTime2 }}</view>
     </view>
 
     <view style="display:block;">
-      <view class="top-t1">故障设备</view>
-      <view class="top-t2">{{ DeviceFaultDetail.deviceCode }}</view>
+      <view class="top-t1">报警通道</view>
+      <view class="top-t2">{{ DeviceFaultDetail.channel || '' }}</view>
     </view>
 
     <view style="display:block;">
@@ -64,22 +74,26 @@
         </wux-card> -->
         <!-- <view style="height:469rpx;background-color:#fff;z-index:999;text-align:center;display:flex;justify-content:center;align-items:center;">图表预留</view> -->
         <view style="height:410rpx;background-color:#fff;z-index:999;">
-          <custom-map paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn"  out-flag="{{mapFlag}}"></custom-map>
+          <custom-map paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn" bind:mybtnevent="btnRecFn"  out-flag="{{mapFlag}}"></custom-map>
         </view>
         <view style="height:36rpx;background-color:#fff;z-index:999;font-size:24rpx;text-align:center;">振动趋势图</view>
-        <view style="height:36rpx;background-color:#fff;z-index:999;font-size:22rpx;text-align:left;color:#ccc;padding-left:20rpx;">点击选择上图任一时间点查看时域波形图和FFT</view>
+        <view style="background-color:#fff;">
         <wux-row>
           <wux-col span="6">
-            <view class="placeholder">
-          <wux-button block type="positive" size="small" bind:click="open2SYBX">时域波形图</wux-button>
+            <view class="placeholder" style="background-color:#fff;">
+          <wux-button block type="{{btnEnabled ? 'positive' : 'light'}}" size="small" bind:click="open2SYBX" disabled="{{!btnEnabled}}">时域波形图</wux-button>
             </view>
           </wux-col>
           <wux-col span="6">
-            <view class="placeholder">
-          <wux-button block type="assertive" size="small" bind:click="open2FFT">FFT</wux-button>
+            <view class="placeholder" style="background-color:#fff;">
+          <wux-button block type="{{btnEnabled ? 'assertive' : 'light'}}" size="small" bind:click="open2FFT" disabled="{{!btnEnabled}}">FFT</wux-button>
             </view>
           </wux-col>
         </wux-row>
+        </view>
+        <view style="height:46rpx;background-color:#fff !important;z-index:999;font-size:22rpx;text-align:left;color:#ccc;padding-left:20rpx;">
+        <span style="height:8px;width:8px;border-radius:100%;background-color:#f33;display:inline-block;"></span>
+        点击选择上图任一时间点查看时域波形图和FFT</view>
     </wux-wing-blank>
   </view>
 
