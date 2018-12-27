@@ -193,7 +193,7 @@ Page({
     util.openPage("../../pages/alarmProcessing/handle");
   },
   open2Histor() {
-    util.openPage("../../pages/historAlarm/historAlarm?deviceCode=" + DeviceFaultDetail.deviceCode + '&deviceUnitId=' + DeviceFaultDetail.deviceUnitId);
+    util.openPage("../../pages/historAlarm/historAlarm?deviceCode=" + this.data.DeviceFaultDetail.deviceCode + '&deviceUnitId=' + this.data.DeviceFaultDetail.deviceUnitId);
   },
 
   open2Jianyi() {

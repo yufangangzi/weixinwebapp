@@ -28,6 +28,7 @@ Page({
 　　pageSize: 30,//分页大小
 　　hasmoreData: true,//更多数据
 　　hiddenloading: true,//加载中
+    isResult:true,
     searchlog: imgUrl + "search.png",
     alertArr: {
       '0': '低报',
@@ -119,10 +120,13 @@ Page({
     
     ],
   },
-  onLoad() {
+  onLoad(obj) {
     // 主要作用是从详情页修改状态返回后刷新列表
-    this.setData({
-      reloadFlag: true
+    
+    this.setData({ //详情跳转过来接参数
+      reloadFlag: true,
+      'reposParams.devCode': obj.devCode || '',
+      'reposParams.deviceUnitId': obj.deviceUnitId || ''
     })
     this.getRepos(this.data.reposParams);
     this.getFiterList();
@@ -248,6 +252,9 @@ Page({
 //           wx.hideLoading()
 // 　　　　　　return;
 // 　　　　}
+    if (that.data.isResult == false){
+      that.setData({ isResult: true })
+    }
 //筛选模糊查询
     const serchData = Object.assign({}, params);
     if (serchData.deviceCode && serchData.deviceCode.indexOf('/') > -1) {
@@ -259,7 +266,7 @@ Page({
       
       if (res.code === 0) {
         wx.hideLoading()
-
+      
         that.setData({
           repos: res.result.list.map((n) => Object.assign({}, n, {
             date: "报警时间:" + util.timeformat(new Date(n.alarmTime)).substr(5, 14),
@@ -269,6 +276,10 @@ Page({
             pageNum: that.data.pageNum + 1
           })),
         })
+        if (res.result.list.length == 0) {
+          that.setData({ isResult: false })
+          return
+        }
         if (that.data.total <= 0 || that.data.pageNum * that.data.pageSize >= that.data.total) {
 　　　　　　　　that.setData({ hasmoreData: false, hiddenloading: true })
 　　　　　　}
