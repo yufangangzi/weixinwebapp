@@ -211,7 +211,7 @@
 
   <view wx:if="{{isRepairEnd}}" style="margin-top:18rpx;">
     <wux-wing-blank size="default">
-        <wux-card title="维修结果" extra="{{isRepair ? '维护人员：'+DeviceFaultDetail.accendant : ''}}" extra2="{{isRepairEnd ? '维护时间：'+faultTime3 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
+        <wux-card title="维修结果" extra="{{isRepair && DeviceFaultDetail.accendant ? '维护人员：'+DeviceFaultDetail.accendant : ''}}" extra2="{{isRepairEnd && DeviceFaultDetail.accendant ? '维护时间：'+faultTime3 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
               <!-- <view class="marb40" bindtap="open2Jianyi">
                 <view class="line" style="margin-bottom: 20rpx;"></view>

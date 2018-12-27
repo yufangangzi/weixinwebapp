@@ -322,6 +322,31 @@ Page({
       })
       return;
     }
+    if (this.data.value4 == 1) {
+      const miaoshu = this.data.value6;
+      if(miaoshu && miaoshu.length>800){
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1000,
+          color: '#f66',
+          text: '现场描述限800个字符',
+          success: () => console.log('现场描述限800个字符')
+        })
+        return;
+      }
+
+      const remark = this.data.value7;
+      if (remark && remark.length > 800) {
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1000,
+          color: '#f66',
+          text: '处理结果限800个字符',
+          success: () => console.log('处理结果限800个字符')
+        })
+        return;
+      }
+    }
     // if (!this.data.title2) {
     //   $wuxToast().show({
     //     type: 'forbidden',
