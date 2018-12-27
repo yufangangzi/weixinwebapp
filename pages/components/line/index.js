@@ -424,6 +424,9 @@ Component({
       if (data.pagemap !== 'zdqs') {
         return
       }
+      if (data.value && data.value.length<1){
+        return;
+      }
       console.log(data);
       let option = Object.assign({}, this.data.option);
       option.series = JSON.parse(JSON.stringify(this.data.option.series));

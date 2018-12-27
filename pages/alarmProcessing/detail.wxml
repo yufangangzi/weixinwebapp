@@ -128,7 +128,7 @@
         <wux-card title="系统诊断建议" extra="{{isRepair ? '确认人员：'+DeviceFaultDetail.processor : ''}}" extra2="{{isRepair ? '确认时间：'+faultTime2 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
 
-              <view wx:for="{{DeviceFaultDetail.faultInfoVOList}}" wx:key="index" class="marb40" bindtap="open2Jianyi">
+              <view wx:for="{{DeviceFaultDetail.faultInfoVOList}}" wx:key="index" class="marb40">
                 <view class="jianyitt">诊断建议{{(index+1)}}：{{item.faultName}}</view>
                 <view class="jianyitxt"></view>
                 <view class="line"></view>
