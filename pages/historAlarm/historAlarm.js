@@ -242,6 +242,11 @@ Page({
     this.getRepos(this.data.reposParams);
   
   },
+  // 父组件接受消息
+  fatherRecvFn: function (event) {
+    console.log('父组件接受到的消息：', event.detail);
+  },
+
   getRepos(params = {}) {
     this.setData({
       hasmoreData: true,
