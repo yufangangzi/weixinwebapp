@@ -139,6 +139,8 @@
   line-height:40rpx;
   padding-top: 26rpx;
   width: calc(100% - 150rpx);
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 .ggaobao {
