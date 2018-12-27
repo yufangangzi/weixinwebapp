@@ -251,10 +251,11 @@ Page({
 //筛选模糊查询
     const serchData = Object.assign({}, params);
     if (serchData.deviceCode && serchData.deviceCode.indexOf('/') > -1) {
-      this.setData({ 'reposParams.deviceCode': serchData.deviceCode.substring(0, serchData.deviceCode.indexOf('/') - 1)})
+      // this.setData({ 'reposParams.deviceCode': serchData.deviceCode.substring(0, serchData.deviceCode.indexOf('/') - 1)})
+      serchData.deviceCode = serchData.deviceCode.substring(0, serchData.deviceCode.indexOf('/') - 1);
     }
     
-    util.alarmList(params, res => {
+    util.alarmList(serchData, res => {
       
       if (res.code === 0) {
         wx.hideLoading()
