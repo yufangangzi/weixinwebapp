@@ -19,13 +19,12 @@ Page({
       pageSize: 20,
       processStatus: ""  //
     },
-    deviceNameList:'', // 逆向单元名
-    total: 0,//分页总数
-　　pageNum: 0,//分页记录数pageNum
-　　pageSize: 20,//分页大小
-　　hasmoreData: true,//更多数据
-　　hiddenloading: true,//加载中
-    isResult:true,
+   total: 0,//分页总数
+    　　pageNum: 0,//分页记录数pageNum
+    　　pageSize: 20,//分页大小
+    　　hasmoreData: true,//更多数据
+    　　hiddenloading: true,//加载中
+    isResult: true,
     searchlog: imgUrl + "search.png",
     alertArr: {
       '0': '低报',
@@ -112,14 +111,14 @@ Page({
           children: [],
         }, // 设备编号
       ],
-      groups: ['001', '002', '003','004'],
+      groups: ['001', '002', '003', '004'],
     },
-    
+
     ],
   },
   onLoad(obj) {
     // 主要作用是从详情页修改状态返回后刷新列表
-    
+
     this.setData({ //详情跳转过来接参数
       reloadFlag: true,
       'reposParams.deviceCode': obj.deviceCode || '',
@@ -130,16 +129,16 @@ Page({
   },
   // 加载更多
   onReachBottom: function () {
-　　　　console.log('加载更多')
+    　　　　console.log('加载更多')
 
-　　　　this.setData({ 
-          hasmoreData: true, 
-          hiddenloading: false, 
-          'reposParams.pageNum':this.data.reposParams.pageNum+1
-        })
-    
-    　　this.getRepos2(this.data.reposParams);
-  　　},
+    　　　　this.setData({
+      hasmoreData: true,
+      hiddenloading: false,
+      'reposParams.pageNum': this.data.reposParams.pageNum + 1
+    })
+
+    this.getRepos2(this.data.reposParams);
+  },
   onShow() {
     console.log('页面切入前台了')
     if (this.data.reloadFlag) {
@@ -174,14 +173,14 @@ Page({
       deviceUnitId: '',
     }
     let isCheck = false;
-    // this.getFiterList(); //设备编号
+    
     console.log(checkedItems, items)
 
     checkedItems.forEach((n) => {
       if (n.checked) {
 
-         if (n.value === 'filter') {
-           this.setData({ 'inputValue': '' })  // 切换标签清空搜索框
+        if (n.value === 'filter') {
+          this.setData({ 'inputValue': '' })  // 切换标签清空搜索框
 
           n.children.filter((n) => n.selected).forEach((n) => {
 
@@ -198,9 +197,9 @@ Page({
               params.deviceCode = n.children.find(v => { return v.checked }).value || ''
               isCheck = true;
 
-            } 
+            }
           })
-          if(!isCheck){  //
+          if (!isCheck) {  //
             if (n.value === 'filter') {
               n.checked = false
 
@@ -210,36 +209,36 @@ Page({
             }
           }
 
-        }else if (n.value === 'search') {
+        } else if (n.value === 'search') {
         } else if (n.value === 'alls') {
-           params.processStatus = ''
-           
+          params.processStatus = ''
+
         } else if (n.value === 'state0') {
           // 未处理
-           params.processStatus = '0'
-           this.setData({'inputValue': ''})
+          params.processStatus = '0'
+          this.setData({ 'inputValue': '' })
         } else if (n.value === 'state1') {
           // 处理中
-           params.processStatus = '1'
-           this.setData({ 'inputValue': '' })
+          params.processStatus = '1'
+          this.setData({ 'inputValue': '' })
         } else if (n.value === 'state2') {
           // 已处理
-           params.processStatus = '2'
-           this.setData({ 'inputValue': '' })
+          params.processStatus = '2'
+          this.setData({ 'inputValue': '' })
           //  debugger
         }
       }
     })
-  
-    const data = Object.assign(this.data.reposParams,params)
+
+    const data = Object.assign(this.data.reposParams, params)
     this.setData({
       reposParams: data
     })
     // debugger
     this.getRepos(this.data.reposParams);
-  
+
   },
-  
+
   getRepos(params = {}) {
     this.setData({
       hasmoreData: true,
@@ -247,6 +246,7 @@ Page({
       'reposParams.pageNum': 1
     })
     this.getRepos2(this.data.reposParams);
+    
   },
   getRepos2(params = {}) {
     // const language = params.language || 'javascript'
@@ -257,29 +257,29 @@ Page({
     // }, params)
 
     wx.showLoading();
-  
-     var that = this;
-//     if (that.data.hasmoreData == false) {
-// 　　　　　　that.setData({ hiddenloading: true })
-//           wx.hideLoading()
-// 　　　　　　return;
-// 　　　　}
-    if (that.data.isResult == false){
+
+    var that = this;
+    //     if (that.data.hasmoreData == false) {
+    // 　　　　　　that.setData({ hiddenloading: true })
+    //           wx.hideLoading()
+    // 　　　　　　return;
+    // 　　　　}
+    if (that.data.isResult == false) {
       that.setData({ isResult: true })
     }
-//筛选模糊查询
+    //筛选模糊查询
     const serchData = Object.assign({}, params);
     if (serchData.deviceCode && serchData.deviceCode.indexOf('/') > -1) {
       // this.setData({ 'reposParams.deviceCode': serchData.deviceCode.substring(0, serchData.deviceCode.indexOf('/') - 1)})
       serchData.deviceCode = serchData.deviceCode.substring(0, serchData.deviceCode.indexOf('/') - 1);
     }
-    
+
     util.alarmList(serchData, res => {
-      
+
       if (res.code === 0) {
         wx.hideLoading()
-      
-        if (that.data.reposParams.pageNum<2){
+
+        if (that.data.reposParams.pageNum < 2) {
           that.setData({
             repos: res.result.list.map((n) => Object.assign({}, n, {
               date: "报警时间:" + util.timeformat(new Date(n.alarmTime)).substr(5, 14),
@@ -289,8 +289,8 @@ Page({
               pageNum: that.data.pageNum + 1
             }))
           })
-        }else{
-          let appendList= that.data.repos;
+        } else {
+          let appendList = that.data.repos;
           appendList.push(...res.result.list.map((n) => Object.assign({}, n, {
             date: "报警时间:" + util.timeformat(new Date(n.alarmTime)).substr(5, 14),
             alarmSeverity: that.data.alertArr[n.alarmSeverity],
@@ -304,11 +304,11 @@ Page({
         }
         if (that.data.reposParams.pageNum < 2 && res.result.list.length == 0) {
           that.setData({ isResult: false })
-          
+
         }
         if (that.data.reposParams.pageNum > 1 && !res.result.hasNextPage) {
           that.setData({ hasmoreData: false, hiddenloading: true })
-　　　　  }
+        }
       }
     }, err => {
 
@@ -318,13 +318,13 @@ Page({
   // 获取筛选接口数据
   getFiterList(params = {}) {
 
-  
+
     util.listMenu(params, res => {
 
       if (res.code === 0) {
         wx.hideLoading()
         var ka = this.data.items[4].children[2].children;
-        
+
         var k1 = [];
         for (let index = 0; index < res.result.length; index += 1) {
           const item = res.result[index].menuDeviceList;
@@ -332,17 +332,18 @@ Page({
             const codeArrs = item[j]
             k1.push(codeArrs);
           }
-
         }
         // debugger
+        wx.setStorageSync('filterArr', k1); // 存取k1的值 重置用
         console.log("codeArr--" + this.data.codeArr);
         this.setData({
           relist: res.result.map((n) => Object.assign({}, n, {
             type: 'ghost',
             name: n.unitName,
-            id: n.id.toString()
+            id: n.id.toString(),
+           
           })),
-
+           
           'items[4].children[2].children': res.result.map((n) => Object.assign({}, n, {
             label: n.unitName,
             value: n.id.toString(),
@@ -358,43 +359,10 @@ Page({
     }, err => {
 
     });
-    //getDeviceList();  // 测试逆向
+    
 
   },
-  // 父组件接受消息
-  fatherRecvFn: function (event) {
-    console.log('父组件接受到的消息：', event.detail);
-  },
-  // var id = '5212beaf82794e74b6f6a3ffa0074497'
-  getDeviceList(id) {
-    var id = '5212beaf82794e74b6f6a3ffa0074497';
-    let a;
-    var resaa = { "code": 0, "msg": "OK", "result": [{ "id": "5212beaf82794e74b6f6a3ffa0074497", "unitName": "常减压", "menuDeviceList": ["2111-P230A/B/C", "2111-P460A/B", "2111-P430A/B", "2111-P452A/B", "2111-P330A/B", "2111-P403A/B", "2111-P303A/B", "2111-P402A/B", "2111-P404A/B", "2111-P311A/B", "2111-P453A/B", "2111-P302A/B", "2111-P301A/B", "2111-P312A/B"] }, { "id": "1ebc8f98169041019466e033e1749db6", "unitName": "催化裂化", "menuDeviceList": ["2411-K103A/B", "2411-P206A/B", "2411-P207A/B", "2411-P208A/B"] }, { "id": "32fa79285a7c4a8d8abd812f313a1465", "unitName": "延迟焦化", "menuDeviceList": ["2611-P101A/B", "2611-P105A/B", "2611-P104A/B", "2611-P102A/B", "2611-P206A/B", "2611-P106A/B"] }, { "id": "67082fec294b4c10974bfa3e2e6e43a4", "unitName": "蜡油加氢", "menuDeviceList": ["2314-P209A/B", "2314-P207A/B", "2314-P208A/B", "2314-P206A/B", "2314-P202A/B"] }, { "id": "38f3a7c75fce4a8ba060151d92d490a7", "unitName": "渣油加氢", "menuDeviceList": ["2315-P205A/B/C", "2315-P204A/B", "2315-P206A/B"] }, { "id": "c5aaad41ec674b4abfb2a6989a16803e", "unitName": "汽油加氢", "menuDeviceList": ["2414-P231A/B"] }, { "id": "d318c6cd91ed4f7298b251bd13e50a54", "unitName": "煤油加氢", "menuDeviceList": ["2311-P203A/B", "2311-P202A/B"] }, { "id": "971704cbe67c4002a9081920f2288f7e", "unitName": "柴油加氢", "menuDeviceList": ["2312-P203A/B/C", "2312-P204A/B"] }, { "id": "ebdaabb9fb8e4eeb8f352b4ffebb1f2b", "unitName": "连续重整", "menuDeviceList": ["2211-P403A/B", "2211-P404A/B"] }] }
-    if (id) {
-      const i = resaa.result.findIndex(item => {
-        return item.id == id;
-      });
-      a = resaa.result.slice(i, i + 1);
-    } else {
-      a = resaa.result;
-    }
-    // debugger
-    // this.deviceNameList.splice(0);
-    a.map(it => {
-      if (Array.isArray(it.menuDeviceList)) {
-        let deviceNameList = it.menuDeviceList.map(item => {
-          return {
-            type: 'ghost',
-            name: item, // item.name,
-            id: item,
-            unitId: it.id.toString()
-          };
-        });
-
-        this.data.deviceNameList.push(...deviceNameList);
-      }
-    });
-  },
+  
   // 跳转到详情页
   go2page: function (e) {
 
@@ -412,7 +380,7 @@ Page({
     })
     // }
   },
-  
+
   onOpen(e) {
 
     this.setData({
@@ -421,13 +389,14 @@ Page({
   },
   onClose(e) {
     this.getRepos(this.data.reposParams);
-    
+
     this.setData({
       pageStyle: '',
     })
   },
   //重置清空字段
-  onReset(e){
+  onReset(e) {
+    
     this.setData({
       reposParams: {
         alarmSeverity: '',  //警报来源
@@ -439,8 +408,8 @@ Page({
         processStatus: ""  //
       },
     })
-
     
+
   },
   //搜索框文本内容显示
   inputBind: function (event) {
@@ -451,15 +420,15 @@ Page({
     this.setData({
       'reposParams.deviceCode': this.data.inputValue
     })
-    
+
   },
   pageSearch: function (event) {
     // this.data.reposParams.deviceCode = this.data.inputValue
-    
-  
+
+
     this.getRepos(this.data.reposParams);
     debugger
   }
-  
+
 })
 

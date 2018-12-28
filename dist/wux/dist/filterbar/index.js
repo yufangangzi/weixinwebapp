@@ -26,10 +26,23 @@ Component({
                     selected: '',
                 })
             })
+            const filterk1 = wx.getStorageSync('filterArr');
+            let k2 = filterk1.map(item => {
+                  return {
+                    label: item,
+                    value: item
+                  };
+            });
+          this.$$setData({
+            [`items[${index}].children`]: children,
+            'items[4].children[3].children': k2
+          })
+          debugger
+          // this.$$setData({
+          //   [`items[${index}].children`]: children,
+          //   'items[4].children[3].children': filterk1
+          // })
 
-            this.$$setData({
-                [`items[${index}].children`]: children,
-            })
         },
         /**
          * 关闭侧边栏筛选框
@@ -75,26 +88,45 @@ Component({
                 [`items[${parentIndex}].children[${index}].children`]: children,
                 [`items[${parentIndex}].children[${index}].selected`]: selected,
             })
-
-          debugger
-
+          if (index === 2){
+            var id = children.find(v => { return v.checked }).id; //选中的id
+            let deviceNameList = [];
+            let a;
+            
+            if (id) {
+              const i = children.findIndex(item => {
+                return item.id == id;
+              });
+              a = children.slice(i, i + 1);
+            } else {
+              a = children;
+            }
+            // console.log("item-000---" + JSON.stringify(this.properties.items[4].children[2].selected));
+            console.log("item111---" + JSON.stringify(this.properties.items[4].children[3]));
+            // this.deviceNameList.splice(0);
+            a.map(it => {
+              if (Array.isArray(it.menuDeviceList)) {
+                let deviceNameListQ = it.menuDeviceList.map(item => {
+                  return {
+                    // id: item,
+                    // value: it.id.toString()
+                    label: item,
+                    value: item
+                  };
+                });
+                deviceNameList.push(...deviceNameListQ);
+                this.$$setData({
+                  'items[4].children[3].children': deviceNameListQ,
+                })
+              }
+            });
+            // console.log("item222---" + JSON.stringify(this.properties.items[4].children[3].children));
+          }else{
+            // conslole.log("0000000000")
+          }
+     
         },
-      //给父组件传消息
-      send2FatherFn: function (e) {
-        this.triggerEvent('myevent', { msg: '来自子组件的问候' });
-      },
-      fatherRecvFn: function (event) {
-        // debugger
-        console.log('父组件接受到的消息：', event.detail);
-        if (event.detail.time && event.detail.value) {
-          this.setData({
-            timeShow: event.detail.time,
-            valueShow: event.detail.value
-          });
-
-          this.triggerEvent('mybtnevent', { msg: '启用fft按钮' });
-        }
-      },
+      
         /**
          * 筛选栏内多项选择触发 change 事件
          * @param {Object} e 事件对象
@@ -183,104 +215,104 @@ Component({
                                 }))
                             }
 
-                            if (['filter'].includes(n.type)) {
-                                params.children = params.children.map((n) => {
-                                    return Object.assign({}, n, {
-                                        children: n.children.map((m) => Object.assign({}, m, {
-                                            checked: false,
-                                        })),
-                                        selected: '',
-                                    })
-                                })
-                            }
-                        }
+              if (['filter'].includes(n.type)) {
+                params.children = params.children.map((n) => {
+                  return Object.assign({}, n, {
+                    children: n.children.map((m) => Object.assign({}, m, {
+                      checked: false,
+                    })),
+                    selected: '',
+                  })
+                })
+              }
+            }
 
-                        if (['sort'].includes(n.type)) {
-                            params.sort = undefined
-                        }
-                    }
-                }
+            if (['sort'].includes(n.type)) {
+              params.sort = undefined
+            }
+          }
+        }
 
-                // 展开或隐藏下拉框
-                if (['radio', 'checkbox', 'filter'].includes(n.type)) {
-                    params.visible = index === i ? !n.visible : false
+        // 展开或隐藏下拉框
+        if (['radio', 'checkbox', 'filter'].includes(n.type)) {
+          params.visible = index === i ? !n.visible : false
 
-                    if (n.type === 'filter') {
-                        this.$wuxBackdrop[index === i ? !n.visible ? 'retain' : 'release' : 'release']()
-                    }
-                }
+          if (n.type === 'filter') {
+            this.$wuxBackdrop[index === i ? !n.visible ? 'retain' : 'release' : 'release']()
+          }
+        }
 
-                // 当前点击排序做出处理
-                if (index === i && ['sort'].includes(n.type)) {
-                    params.sort = typeof params.sort === 'number' ? -params.sort : 1
-                }
+        // 当前点击排序做出处理
+        if (index === i && ['sort'].includes(n.type)) {
+          params.sort = typeof params.sort === 'number' ? -params.sort : 1
+        }
 
-                return params
-            })
+        return params
+      })
 
-            this.$$setData({ items, index }).then(() => {
-                this.prevState = current
-                if (!['radio', 'checkbox', 'filter'].includes(current.type)) {
-                    this.onChange()
-                }
-            })
-        },
-        /** 
-         * 关闭下拉框
-         */
-        onCloseSelect() {
-            const items = this.data.items
-            const params = {}
-
-            items.forEach((n, i) => {
-                if (n.checked && n.visible) {
-                    params[`items[${i}].visible`] = false
-                }
-            })
-
-            this.$$setData(params)
-        },
-        /**
-         * 获取两个数组相同的元素
-         * @param {Array} data 数组
-         * @param {Array} values 数组
-         */
-        getDifference(data = [], values = []) {
-            return data.filter(v => values.includes(v))
-        },
-        /**
-         * 元素发生变化时的事件
-         */
-        onChange() {
-            const { items } = this.data
-            const checkedItems = items.filter((n) => n.checked)
-
-            this.$$requestAnimationFrame(() => this.onCloseSelect(), 300)
-                .then(() => this.triggerEvent('change', { checkedItems, items }))
-        },
-        /**
-         * scroll-view 滚动时触发的事件
-         * @param {Object} e 事件对象
-         */
-        onScroll(e) {
-            this.triggerEvent('scroll', e)
-        },
-        /**
-         * 打开 select 或 filter 时触发的回调函数
-         * @param {Object} e 事件对象
-         */
-        onEnter(e) {
-            this.triggerEvent('open', e)
-        },
-        /**
-         * 关闭 select 或 filter 时触发的回调函数
-         * @param {Object} e 事件对象
-         */
-        onExit(e) {
-            this.triggerEvent('close', e)
-        },
+      this.$$setData({ items, index }).then(() => {
+        this.prevState = current
+        if (!['radio', 'checkbox', 'filter'].includes(current.type)) {
+          this.onChange()
+        }
+      })
     },
-    created() {
-        this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
+    /** 
+     * 关闭下拉框
+     */
+    onCloseSelect() {
+      const items = this.data.items
+      const params = {}
+
+      items.forEach((n, i) => {
+        if (n.checked && n.visible) {
+          params[`items[${i}].visible`] = false
+        }
+      })
+
+      this.$$setData(params)
     },
+    /**
+     * 获取两个数组相同的元素
+     * @param {Array} data 数组
+     * @param {Array} values 数组
+     */
+    getDifference(data = [], values = []) {
+      return data.filter(v => values.includes(v))
+    },
+    /**
+     * 元素发生变化时的事件
+     */
+    onChange() {
+      const { items } = this.data
+      const checkedItems = items.filter((n) => n.checked)
+
+      this.$$requestAnimationFrame(() => this.onCloseSelect(), 300)
+        .then(() => this.triggerEvent('change', { checkedItems, items }))
+    },
+    /**
+     * scroll-view 滚动时触发的事件
+     * @param {Object} e 事件对象
+     */
+    onScroll(e) {
+      this.triggerEvent('scroll', e)
+    },
+    /**
+     * 打开 select 或 filter 时触发的回调函数
+     * @param {Object} e 事件对象
+     */
+    onEnter(e) {
+      this.triggerEvent('open', e)
+    },
+    /**
+     * 关闭 select 或 filter 时触发的回调函数
+     * @param {Object} e 事件对象
+     */
+    onExit(e) {
+      this.triggerEvent('close', e)
+    },
+  },
+  created() {
+    this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
+  },
 })
