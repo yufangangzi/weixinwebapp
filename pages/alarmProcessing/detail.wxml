@@ -28,7 +28,7 @@
       <view class="top-t2">{{ DeviceFaultDetail.channel || '' }}</view>
     </view>
 
-    <view style="display:block;">
+    <view style="display:block;position:relative;">
       <view class="top-t1">报警程度</view>
       <view class="top-t2" wx:if="{{ DeviceFaultDetail.alarmSeverity==2}}">
         <view class="ggaobao">
@@ -36,12 +36,12 @@
           </view>
           <image class="baoicon" mode="aspectFit" src="{{gaogaobaoSrc}}" ></image>
           </view>
-          <view style="float:right;margin-right: 20rpx;display:inline-block;margin-top:-14rpx;">
+          <!-- <view style="float:right;margin-right: 20rpx;display:inline-block;margin-top:-14rpx;">
             <view class="top-t3"  bindtap="open2Histor">查看历史报警</view>
             <view style="display:inline-block;vertical-align:middle;">
             <wux-icon type="ios-arrow-forward" size="16" color="#FFFFFF" />
             </view>
-          </view>
+          </view> -->
         </view>
       <view class="top-t2" wx:elif="{{ DeviceFaultDetail.alarmSeverity==1}}">
         <view class="gaobao">
@@ -49,14 +49,22 @@
           </view>
           <image class="baoicon" mode="aspectFit" src="{{gaobaoSrc}}" ></image>
         </view>
-          <view style="float:right;margin-right: 20rpx;display:inline-block;margin-top:-14rpx;">
+          <!-- <view style="float:right;margin-right: 20rpx;display:inline-block;margin-top:-14rpx;">
+            <view class="top-t3"  bindtap="open2Histor">查看历史报警</view>
+            <view style="display:inline-block;vertical-align:middle;">
+            <wux-icon type="ios-arrow-forward" size="16" color="#FFFFFF" />
+            </view>
+          </view> -->
+      </view>
+      <view class="top-t2" wx:else></view>
+
+          <view style="position:absolute;right:20rpx;top:0;">
             <view class="top-t3"  bindtap="open2Histor">查看历史报警</view>
             <view style="display:inline-block;vertical-align:middle;">
             <wux-icon type="ios-arrow-forward" size="16" color="#FFFFFF" />
             </view>
           </view>
-      </view>
-      <view class="top-t2" wx:else></view>
+
     </view>
 
     <!-- <view wx:if="{{isRepair}}" style="display:block;">
