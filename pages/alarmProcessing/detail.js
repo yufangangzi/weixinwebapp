@@ -55,9 +55,12 @@ Page({
       // return;
       if (res.code === 0) {
         if (Array.isArray(res.result)) {
-          let result = res.result.filter(v => {
-            return !this.data.DeviceFaultDetail.faultInfoVOList.find(it => it.otherId == v.id);
-          });
+          let result = [];
+          try{
+            result = res.result.filter(v => {
+              return !this.data.DeviceFaultDetail.faultInfoVOList.find(it => it.otherId == v.id);
+            });
+          }catch(e){}
           // debugger;
           let suggestCheckList2 = result.map(item => {
             return {
@@ -137,10 +140,14 @@ Page({
               text: '操作成功!',
               success: () => {
                 app.globalData.listReload = true;
-                let url = "../../pages/historAlarm/historAlarm";
-                wx.redirectTo({
-                  url: url
-                });
+                //此处暂时改为退回上一页，因为肯定会列表进来
+                // let url = "../../pages/historAlarm/historAlarm";
+                // wx.redirectTo({
+                //   url: url
+                // });
+                wx.navigateBack({
+                  
+                })
               }
             });
           } else if (res.code === 4) {
