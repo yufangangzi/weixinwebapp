@@ -91,12 +91,13 @@
         <view style="height:36rpx;background-color:#fff;z-index:999;font-size:24rpx;text-align:center;">振动趋势图</view>
         <view style="background-color:#fff;">
         <wux-row>
-          <wux-col span="6">
+          <wux-col span="5">
             <view class="placeholder" style="background-color:#fff;">
           <wux-button block type="{{btnEnabled ? 'positive' : 'stable'}}" size="small" bind:click="open2SYBX" disabled="{{!btnEnabled}}">时域波形图</wux-button>
             </view>
           </wux-col>
-          <wux-col span="6">
+          <wux-col span="2"></wux-col>
+          <wux-col span="5">
             <view class="placeholder" style="background-color:#fff;">
           <wux-button block type="{{btnEnabled ? 'positive' : 'stable'}}" size="small" bind:click="open2FFT" disabled="{{!btnEnabled}}">FFT</wux-button>
             </view>

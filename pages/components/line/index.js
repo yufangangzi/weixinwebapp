@@ -447,9 +447,13 @@ Component({
       option.series = JSON.parse(JSON.stringify(this.data.option.series));
       option.xAxis[0].data = data.time;
       if (data.unit === '速度') {
-        option.yAxis[0].name = '速度(mm/s)';
+        option.yAxis[0].name = 'mm/s';
+        // option.yAxis[0].nameLocation = 'start';
+        // option.yAxis[0].nameTextStyle = {align: 'left', color: '#f00'};
       } else {
-        option.yAxis[0].name = '加速度(m/s2)';
+        option.yAxis[0].name = 'm/s2';
+        // option.yAxis[0].nameLocation = 'start';
+        // option.yAxis[0].nameTextStyle = { align: 'left', color: '#f00' };
       }
       option.series[0].data = data.value;
       option.series[0].name = data.unit;
