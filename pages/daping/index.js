@@ -19,8 +19,10 @@ Page({
       // body...
       return encodeURIComponent(key) + "=" + encodeURIComponent(options[key]);
     }).join("&");
+    const sc = `${util.baseWebView}static/qzweapp/bigcharts.html?${params}&time=${new Date().getTime()}`;
+    console.log(sc);
     this.setData({
-      src: `${util.baseWebView}static/qzweapp/bigcharts.html?${params}&time=${new Date().getTime()}`
+      src: sc
       //src: `${util.baseWebView}static/qzweapp/bigcharts.html`
     })
   },

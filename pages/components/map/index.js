@@ -51,7 +51,7 @@ Component({
         // console.log('newVal:', newVal, ';oldVal:', oldVal);
 
         if (oldVal && newVal) {
-          debugger
+          // debugger
           let mapIndex = 'sybx';
           if(newVal.index==1){
             mapIndex = 'sybx';
