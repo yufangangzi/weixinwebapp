@@ -19,10 +19,7 @@ Page({
       pageSize: 20,
       processStatus: ""  //
     },
-    
-    filterParams: {  //单元
-     
-    },
+    deviceNameList:'', // 逆向单元名
     total: 0,//分页总数
 　　pageNum: 0,//分页记录数pageNum
 　　pageSize: 20,//分页大小
@@ -242,11 +239,7 @@ Page({
     this.getRepos(this.data.reposParams);
   
   },
-  // 父组件接受消息
-  fatherRecvFn: function (event) {
-    console.log('父组件接受到的消息：', event.detail);
-  },
-
+  
   getRepos(params = {}) {
     this.setData({
       hasmoreData: true,
@@ -324,6 +317,8 @@ Page({
   },
   // 获取筛选接口数据
   getFiterList(params = {}) {
+
+  
     util.listMenu(params, res => {
 
       if (res.code === 0) {
@@ -363,8 +358,42 @@ Page({
     }, err => {
 
     });
+    //getDeviceList();  // 测试逆向
 
+  },
+  // 父组件接受消息
+  fatherRecvFn: function (event) {
+    console.log('父组件接受到的消息：', event.detail);
+  },
+  // var id = '5212beaf82794e74b6f6a3ffa0074497'
+  getDeviceList(id) {
+    var id = '5212beaf82794e74b6f6a3ffa0074497';
+    let a;
+    var resaa = { "code": 0, "msg": "OK", "result": [{ "id": "5212beaf82794e74b6f6a3ffa0074497", "unitName": "常减压", "menuDeviceList": ["2111-P230A/B/C", "2111-P460A/B", "2111-P430A/B", "2111-P452A/B", "2111-P330A/B", "2111-P403A/B", "2111-P303A/B", "2111-P402A/B", "2111-P404A/B", "2111-P311A/B", "2111-P453A/B", "2111-P302A/B", "2111-P301A/B", "2111-P312A/B"] }, { "id": "1ebc8f98169041019466e033e1749db6", "unitName": "催化裂化", "menuDeviceList": ["2411-K103A/B", "2411-P206A/B", "2411-P207A/B", "2411-P208A/B"] }, { "id": "32fa79285a7c4a8d8abd812f313a1465", "unitName": "延迟焦化", "menuDeviceList": ["2611-P101A/B", "2611-P105A/B", "2611-P104A/B", "2611-P102A/B", "2611-P206A/B", "2611-P106A/B"] }, { "id": "67082fec294b4c10974bfa3e2e6e43a4", "unitName": "蜡油加氢", "menuDeviceList": ["2314-P209A/B", "2314-P207A/B", "2314-P208A/B", "2314-P206A/B", "2314-P202A/B"] }, { "id": "38f3a7c75fce4a8ba060151d92d490a7", "unitName": "渣油加氢", "menuDeviceList": ["2315-P205A/B/C", "2315-P204A/B", "2315-P206A/B"] }, { "id": "c5aaad41ec674b4abfb2a6989a16803e", "unitName": "汽油加氢", "menuDeviceList": ["2414-P231A/B"] }, { "id": "d318c6cd91ed4f7298b251bd13e50a54", "unitName": "煤油加氢", "menuDeviceList": ["2311-P203A/B", "2311-P202A/B"] }, { "id": "971704cbe67c4002a9081920f2288f7e", "unitName": "柴油加氢", "menuDeviceList": ["2312-P203A/B/C", "2312-P204A/B"] }, { "id": "ebdaabb9fb8e4eeb8f352b4ffebb1f2b", "unitName": "连续重整", "menuDeviceList": ["2211-P403A/B", "2211-P404A/B"] }] }
+    if (id) {
+      const i = resaa.result.findIndex(item => {
+        return item.id == id;
+      });
+      a = resaa.result.slice(i, i + 1);
+    } else {
+      a = resaa.result;
+    }
+    // debugger
+    // this.deviceNameList.splice(0);
+    a.map(it => {
+      if (Array.isArray(it.menuDeviceList)) {
+        let deviceNameList = it.menuDeviceList.map(item => {
+          return {
+            type: 'ghost',
+            name: item, // item.name,
+            id: item,
+            unitId: it.id.toString()
+          };
+        });
 
+        this.data.deviceNameList.push(...deviceNameList);
+      }
+    });
   },
   // 跳转到详情页
   go2page: function (e) {
