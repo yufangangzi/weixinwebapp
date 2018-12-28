@@ -71,12 +71,30 @@ Component({
                 checked: n.value === value,
             }))
             const selected = children.filter((n) => n.checked).map((n) => n.label).join(',')
-
             this.$$setData({
                 [`items[${parentIndex}].children[${index}].children`]: children,
                 [`items[${parentIndex}].children[${index}].selected`]: selected,
             })
+
+          debugger
+
         },
+      //给父组件传消息
+      send2FatherFn: function (e) {
+        this.triggerEvent('myevent', { msg: '来自子组件的问候' });
+      },
+      fatherRecvFn: function (event) {
+        // debugger
+        console.log('父组件接受到的消息：', event.detail);
+        if (event.detail.time && event.detail.value) {
+          this.setData({
+            timeShow: event.detail.time,
+            valueShow: event.detail.value
+          });
+
+          this.triggerEvent('mybtnevent', { msg: '启用fft按钮' });
+        }
+      },
         /**
          * 筛选栏内多项选择触发 change 事件
          * @param {Object} e 事件对象
