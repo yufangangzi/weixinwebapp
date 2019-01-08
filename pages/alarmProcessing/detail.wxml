@@ -58,12 +58,12 @@
       </view>
       <view class="top-t2" wx:else></view>
 
-          <view style="position:absolute;right:20rpx;top:0;">
+          <!-- <view style="position:absolute;right:20rpx;top:0;">
             <view class="top-t3"  bindtap="open2Histor">查看历史报警</view>
             <view style="display:inline-block;vertical-align:middle;">
             <wux-icon type="ios-arrow-forward" size="16" color="#FFFFFF" />
             </view>
-          </view>
+          </view> -->
 
     </view>
 

@@ -1,10 +1,12 @@
 {
   "pages": [
     "pages/first/first",
+    "pages/deviceMonitor/index",
+    "pages/historAlarm/historAlarm",
+
     "pages/alarmProcessing/handle2",
     "pages/login/login",
     "pages/alarmProcessing/detail",
-    "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/handle",
     "pages/webPage/index",
     "pages/daping/index",
@@ -15,6 +17,7 @@
     "pages/alarmProcessingResult/error",
     "pages/index/index",
     "pages/logs/logs"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,15 +29,20 @@
     "color": "#000",
     "selectedColor": "#f00",
     "backgroundColor": "#fff",
+    "borderStyle": "black",
     "position": "bottom",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "首页"
+        "selectedIconPath": "images/monitor-sel.png",
+        "iconPath": "images/monitor.png",
+        "pagePath": "pages/deviceMonitor/index",
+        "text": "设备监测"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "日志"
+        "selectedIconPath": "images/warning-sel.png",
+        "iconPath": "images/warning.png",
+        "pagePath": "pages/historAlarm/historAlarm",
+        "text": "设备警报"
       }
     ]
   },

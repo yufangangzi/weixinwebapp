@@ -27,8 +27,8 @@ Page({
         app.globalData.islogined = true;
 
         // util.openPage("../../pages/alarmProcessing/detail");
-        let url = "../../pages/historAlarm/historAlarm";
-        wx.redirectTo({
+        let url = "../../pages/deviceMonitor/index";
+        wx.switchTab({
           url: url
         });
       } else if (res.code == 50001) {
