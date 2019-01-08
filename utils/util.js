@@ -82,7 +82,8 @@ const request = obj => {
 }
 
 const baseUrl = 'https://tiot.sinochem-tech.com/wx/';
-const baseWebView = 'https://tiot.sinochem-tech.com/'
+const baseWebView = 'https://tiot.sinochem-tech.com/';
+const wss = 'wss://tiot.sinochem-tech.com/wss/socketServer/';
 
 // WX登录,拿code换登录
 const wxlogin = (data, successcb, failcb) => {
@@ -411,5 +412,6 @@ module.exports = {
   dealDeviceAlarm: dealDeviceAlarm,
   openPage: openPage,
   formatTime: formatTime,
-  baseWebView: baseWebView
+  baseWebView: baseWebView,
+  wss: wss
 }

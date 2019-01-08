@@ -14,7 +14,8 @@
     "pages/alarmProcessingResult/success",
     "pages/alarmProcessingResult/error",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/monitor/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
