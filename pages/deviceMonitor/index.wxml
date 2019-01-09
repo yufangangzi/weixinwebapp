@@ -1,3 +1,2 @@
 <!--pages/deviceMonitor/index.wxml-->
 <text>pages/deviceMonitor/index.wxml</text>
-<page-monitor deviceNo="{{deviceNo}}" channelnum="{{channelnum}}" rotateSpeed="{{rotateSpeed}}" deviceData="{{deviceData}}"></page-monitor>

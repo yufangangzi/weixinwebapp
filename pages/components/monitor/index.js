@@ -5,10 +5,13 @@ Component({
    */
   properties: {
     deviceData: {
-      type: Object
+      type: Object,
+      observer: function (newVal, oldVal, changedPath) {
+        return newVal
+      }
     },
     rotateSpeed: {
-      type: String
+      type: String,
     },
     channelnum: {
       type: Number

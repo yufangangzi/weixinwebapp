@@ -1,10 +1,8 @@
 const monitorData = (data, channelnum) => {
-  console.log(data, '999999999999999');
   let sensorList = {};
   let deviceNoList = [];
   let reportTime = '';
   let list = Object.keys(data);
-  console.log(list);
   list.forEach(key => {
     let obj = {
       deviceNo: key,
@@ -153,13 +151,12 @@ const monitorData = (data, channelnum) => {
       return;
     }
     // obj.channelnums = deviceinfo.length / 2;
-    console.log(deviceinfo);
     let status = data.status[key];
     deviceinfo.forEach(item => {
       const index = item.channel.indexOf('-');
       const channelNum = item.channel.slice(index + 1);
       // 不取峰峰值，改为取validValue 181203ylj
-      item.peakToPeakValue = item.validValue;
+      item.peakToPeakValue = Number(item.validValue).toFixed(2) || 0;
       if (channelNum === '1H' && item.attribute === 'speed') {
         obj.sensor1h.speed = item.peakToPeakValue;
         obj.sensor1h.title = '传感器' + item.channel;

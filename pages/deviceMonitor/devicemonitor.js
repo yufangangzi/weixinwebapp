@@ -1,6 +1,7 @@
 // pages/deviceMonitor/index.js
 const app = getApp();
 const util = require('../../utils/util.js');
+const handel = require('./monitorinfo.js')
 Page({
 
   /**
@@ -19,7 +20,7 @@ Page({
     }
     return util.listNewByGroup(obj)
   },
-  getByCodes (code) {
+  getByCodes(code) {
     let _this = this;
     const obj = {
       code: '2111-P230A'
@@ -51,7 +52,7 @@ Page({
       }
     })
   },
-  distributeMessage (data) {
+  distributeMessage(data) {
     if (typeof (data) === 'string') {
       try {
         const val = JSON.parse(data);
@@ -71,7 +72,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this= this;
+    let _this = this;
     wx.connectSocket({
       url: util.wss + wx.getStorageSync('token')
     })

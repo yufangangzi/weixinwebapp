@@ -3,7 +3,6 @@
     "pages/first/first",
     "pages/deviceMonitor/index",
     "pages/historAlarm/historAlarm",
-
     "pages/alarmProcessing/handle2",
     "pages/login/login",
     "pages/alarmProcessing/detail",
@@ -16,8 +15,8 @@
     "pages/alarmProcessingResult/success",
     "pages/alarmProcessingResult/error",
     "pages/index/index",
-    "pages/logs/logs"
-    
+    "pages/logs/logs",
+    "pages/deviceMonitor/devicemonitor"
   ],
   "window": {
     "backgroundTextStyle": "light",

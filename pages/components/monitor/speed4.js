@@ -6,7 +6,10 @@ Component({
    */
   properties: {
     deviceData: {
-      type: Object
+      type: Object,
+      observer: function (newVal, oldVal, changedPath) {
+        return newVal
+      }
     }
   },
 

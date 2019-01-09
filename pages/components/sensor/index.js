@@ -5,7 +5,10 @@ Component({
    */
   properties: {
     sensorData: {
-      type: Object
+      type: Object,
+      observer: function (newVal, oldVal, changedPath) {
+        return newVal
+      }
     }
   },
 
