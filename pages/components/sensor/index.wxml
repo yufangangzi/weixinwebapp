@@ -1,0 +1,14 @@
+<!--pages/components/sensor/index.wxml-->
+<view class='sensor'>
+  <view class='sensor-title'>{{sensorData.title}}</view>
+  <view class='sensor-main'>
+    <view class='speed'>
+      <text>速度：</text>
+      <text>{{Number(sensorData.speed).toFixed(2) || 0}} mm/s</text>
+    </view>
+    <view class='accel'>
+      <text>加速度</text>
+      <text>{{Number(sensorData.accel).toFixed(2) || 0}} m/s2</text>
+    </view>
+  </view>
+</view>

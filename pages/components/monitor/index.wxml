@@ -1,0 +1,5 @@
+<!--pages/components/monitor/index.wxml-->
+<view class='main'>
+  <top rotateSpeed="{{rotateSpeed}}"></top>
+  <speed4 deviceData="{{deviceData.sensorList[deviceNo]}}"></speed4>
+</view>

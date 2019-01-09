@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "设备监测",
-  "usingComponents": {}
+  "usingComponents": {
+    "page-monitor": "../components/monitor/index"
+  }
 }
