@@ -1,2 +1,5 @@
 <!--pages/deviceMonitor/index.wxml-->
-<text>pages/deviceMonitor/index.wxml</text>
+<!-- <text>pages/deviceMonitor/index.wxml</text> -->
+<view class="page__bd1">
+        <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />
+  </view>

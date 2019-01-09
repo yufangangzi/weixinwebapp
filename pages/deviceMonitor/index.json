@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "设备监测",
-  "usingComponents": {}
+  "usingComponents": {
+    "wux-filterbar": "../../dist/wux/dist/filterbar/index",
+    "wux-refresher": "../../dist/wux/dist/refresher/index"
+  }
 }
+

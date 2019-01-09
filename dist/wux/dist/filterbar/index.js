@@ -33,11 +33,17 @@ Component({
                     value: item
                   };
             });
-          this.$$setData({
-            [`items[${index}].children`]: children,
-            'items[4].children[3].children': k2
-          })
-          debugger
+          if (wx.getStorageSync('selFlag') === 0){
+              this.$$setData({
+                [`items[${index}].children`]: children,
+                'items[0].children[1].children': k2
+              })
+          }else if (wx.getStorageSync('selFlag') === 1){ //filter
+            this.$$setData({
+              [`items[${index}].children`]: children,
+              'items[4].children[3].children': k2
+            })}
+           //debugger
           // this.$$setData({
           //   [`items[${index}].children`]: children,
           //   'items[4].children[3].children': filterk1
@@ -78,6 +84,7 @@ Component({
          * @param {Object} e 事件对象
          */
         onRadioChange(e) {
+          
             const { value } = e.detail
             const { index, item, parentIndex } = e.currentTarget.dataset
             const children = item.children.map((n) => Object.assign({}, n, {
@@ -88,7 +95,7 @@ Component({
                 [`items[${parentIndex}].children[${index}].children`]: children,
                 [`items[${parentIndex}].children[${index}].selected`]: selected,
             })
-          if (index === 2){
+          if (wx.getStorageSync('selFlag') === 0 ? index === 0 :index === 2){
             var id = children.find(v => { return v.checked }).id; //选中的id
             let deviceNameList = [];
             let a;
@@ -101,8 +108,9 @@ Component({
             } else {
               a = children;
             }
+            
             // console.log("item-000---" + JSON.stringify(this.properties.items[4].children[2].selected));
-            console.log("item111---" + JSON.stringify(this.properties.items[4].children[3]));
+           // console.log("item111---" + JSON.stringify(this.properties.items[0].children[0]));
             // this.deviceNameList.splice(0);
             a.map(it => {
               if (Array.isArray(it.menuDeviceList)) {
@@ -115,9 +123,16 @@ Component({
                   };
                 });
                 deviceNameList.push(...deviceNameListQ);
-                this.$$setData({
-                  'items[4].children[3].children': deviceNameListQ,
-                })
+                if (wx.getStorageSync('selFlag') === 0) {
+                  this.$$setData({
+                    'items[0].children[1].children': deviceNameListQ,
+                  })
+                } else if (wx.getStorageSync('selFlag') === 1) { //filter
+                  this.$$setData({
+                    'items[4].children[3].children': deviceNameListQ,
+                  })
+                }
+               
               }
             });
             // console.log("item222---" + JSON.stringify(this.properties.items[4].children[3].children));
@@ -302,7 +317,10 @@ Component({
      * @param {Object} e 事件对象
      */
     onEnter(e) {
-      this.triggerEvent('open', e)
+      this.triggerEvent('open', e);
+      wx.getStorageSync('selFlag');
+      // console.log("--" + wx.getStorageSync('selFlag'));
+      // debugger
     },
     /**
      * 关闭 select 或 filter 时触发的回调函数
@@ -313,6 +331,7 @@ Component({
     },
   },
   created() {
-    this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
+    this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this);
+    
   },
 })
