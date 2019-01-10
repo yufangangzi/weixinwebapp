@@ -169,11 +169,9 @@ Page({
         })
         // console.log("data--" + this.data.codeArr);
         // 跳转
-        const title = devName
-        const deviceNos = value
 
         wx.navigateTo({
-          url: "./devicemonitor" + id ,
+          url: "../../pages/deviceMonitor/devicemonitor?unit=" + devName + "&deviceNos=" + value ,
         })
         // debugger
       },

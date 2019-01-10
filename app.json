@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/deviceMonitor/index",
     "pages/deviceMonitor/devicemonitor",
     "pages/first/first",
     "pages/deviceMonitor/detail",
-    "pages/deviceMonitor/index",
     "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/handle2",
     "pages/login/login",
