@@ -10,6 +10,12 @@ Component({
         return newVal
       }
     },
+    deviceinfos: {
+      type: Object,
+      observer: function (newVal, oldVal, changedPath) {
+        return newVal
+      }
+    },
     rotateSpeed: {
       type: String,
     },
