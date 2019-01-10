@@ -11,14 +11,14 @@
     <view style="display:inline-block;vertical-align:middle;width:50%;">
       <view style="display:block;">
         <view class="top-t1">通道：</view>
-        <view class="top-t1">{{ DeviceFaultDetail.deviceCode }}</view>
+        <view class="top-t1">{{ channel }}</view>
       </view>
     </view>
 
     <view style="display:inline-block;vertical-align:middle;width:50%;text-align:right;">
       <view style="display:block;">
         <view class="top-t1">额定转速：</view>
-        <view class="top-t1" style="padding-right:27rpx;">{{ DeviceFaultDetail.deviceUnitName }}</view>
+        <view class="top-t1" style="padding-right:27rpx;">{{ rotateSpeed }}</view>
       </view>
     </view>
 

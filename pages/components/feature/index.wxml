@@ -1,5 +1,5 @@
 <view class="ec-container">
-  <ec-canvas wx:if="{{!isDisposed}}" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"  ></ec-canvas>
+  <ec-canvas wx:if="{{!isDisposed}}" id="mychart-dom-fe" canvas-id="mychart-fe" ec="{{ ec }}"  ></ec-canvas>
   <!-- <ec-canvas wx:if="{{!isDisposed}}" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"  hidden="{{ mapShowIndex!=0 }}" style="display:{{mapShowIndex!=0 ? 'none' : flex}}"></ec-canvas> -->
   <!-- <image class="baoicon" mode="aspectFit" src="{{canvasSrc}}"  hidden="{{ mapShowIndex==0 }}" style="width:100%;display:{{mapShowIndex==0 ? 'none' : flex}}"></image> -->
 </view>

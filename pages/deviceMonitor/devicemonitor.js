@@ -52,6 +52,8 @@ Page({
           channelnum: structureNum,
           deviceinfos: res1.result
         })
+        //保存数据供下个页面使用
+        wx.setStorageSync('rotateSpeed', res1.result.rotateSpeed)
         if (res2.code === 1102 && res2.result) {
           _this.setData({
             deviceData: handel.monitorData(res2.result, structureNum)

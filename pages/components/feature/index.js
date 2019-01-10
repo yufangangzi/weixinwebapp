@@ -261,8 +261,9 @@ Component({
   ready: function(){
     // 获取组件
     _this = this;
-    this.ecComponent = this.selectComponent('#mychart-dom-line');
+    this.ecComponent = this.selectComponent('#mychart-dom-fe');
     console.log(this.properties.outInfo);
+    // debugger
   },
 
   /**
@@ -313,7 +314,7 @@ Component({
     save() {
       const _this = this;
       // 保存图片到临时的本地文件
-      const ecComponent = this.selectComponent('#mychart-dom-line');
+      const ecComponent = this.selectComponent('#mychart-dom-fe');
       // wx.showModal({ title: 'msg', content: ecComponent.canvasToTempFilePath })
       // debugger
       ecComponent.canvasToTempFilePath({
@@ -352,7 +353,7 @@ Component({
       }
       console.log(data);
       let option = Object.assign({}, this.data.option);
-      option.series = JSON.parse(JSON.stringify(this.data.option.series));
+      // option.series = JSON.parse(JSON.stringify(this.data.option.series));
       // option.xAxis[0].data = data.time;
       if (data.unit === '速度') {
         option.yAxis[0].name = '速度(mm/s)';//'mm/s';
@@ -360,7 +361,7 @@ Component({
         option.yAxis[0].name = '加速度(m/s2)';//'m/s2';
       }
       option.series[0].data = data.value;
-      
+      debugger
       try{
         this.chart.clear(); // 清楚累加数据
       }catch(e){}

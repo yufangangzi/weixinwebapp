@@ -29,7 +29,7 @@ Component({
         // console.log('newVal:', newVal, ';oldVal:', oldVal);
         
           if (oldVal && newVal) {
-            this.listChannel();
+            this.init();
             // debugger
             // this.setData({
             //   lineParamsObj: newVal,
@@ -129,7 +129,7 @@ Component({
     // this.ecComponent = this.selectComponent('#mychart-dom-line');
     // console.log(this.properties.outInfo);
 
-    this.lineChart = this.selectComponent('#mychart-dom-line-father');
+    this.lineChart = this.selectComponent('#mychart-dom-fe-father');
     //初始显示line图
     this.lineChart.init();
     console.log('333', this.lineChart);
@@ -200,86 +200,7 @@ Component({
 
       }
 
-      if (this.data.mapShowIndex === 1) {
-        let obj = {};
-        // debugger;
-        obj = Object.assign({}, this.properties.outInfo);
-        delete obj.kpiFlag;
-        delete obj.faultId;
-        delete obj.pageSize;
-        delete obj.parameterTime;
-        delete obj.timeSpan;
-        delete obj.statisDimen;
-        obj.statisStartTime = (this.data.timeShow && new Date(this.data.timeShow).getTime()) || this.data.value3;
-        obj.channel = this.data.value1;
-        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
-        // this.newLists.timeSpan
-        this.deviceNo = obj.deviceNo;
-        // debugger
-        util.domainWaveformFigure(obj, res => {
-          // trendChart(obj).then(res => {
-          if (res.code === 0) {
-            // debugger
-            const obj = JSON.parse(res.result[0]);
-            
-
-            this.setData({
-              lineParamsObj: {
-                x0data: Array.from({ length: obj.domainWaveformFigure.length }, (v, k) => k),
-                s0data: obj.domainWaveformFigure,
-                x0name: '',
-                title: this.name,
-                rotateSpeed: obj.device.rotateSpeed,
-                pagemap: 'sybx'
-              }
-            });
-
-
-          }
-          // debugger
-        });
-
-      }
-
-      if (this.data.mapShowIndex === 2) {
-        let obj = {};
-        // debugger;
-        obj = Object.assign({}, this.properties.outInfo);
-        delete obj.kpiFlag;
-        delete obj.faultId;
-        delete obj.pageSize;
-        delete obj.parameterTime;
-        delete obj.timeSpan;
-        delete obj.statisDimen;
-        obj.statisStartTime = (this.data.timeShow && new Date(this.data.timeShow).getTime()) || this.data.value3;
-        obj.channel = this.data.value1;
-        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
-        // this.newLists.timeSpan
-        this.deviceNo = obj.deviceNo;
-        // debugger
-        util.fftFigure(obj, res => {
-          // trendChart(obj).then(res => {
-          if (res.code === 0) {
-            // debugger
-
-
-            this.setData({
-              lineParamsObj: {
-                x0data: res.result.rp_fft_f_arr,
-                s0data: res.result.rp_fft_date_arr,
-                x0name: '频率(Hz)',
-                title: this.name,
-                rotateSpeed: res.result.device.rotateSpeed,
-                pagemap: 'fft'
-              }
-            });
-
-
-          }
-          // debugger
-        });
-
-      }
+      
 
 
     },
@@ -351,45 +272,7 @@ Component({
         url: `../../pages/daping/index?${params}`,
       })
     },
-    mapChange(data) {
-      // debugger
-      let mapIndexFlag = true;
-      let mapShowIndex = 0;
-      if (data.target.id =='zdqs'){
-        mapIndexFlag = false;
-        mapShowIndex = 0;
-      }else if(data.target.id=='sybx'){
-        mapShowIndex = 1;
-      }else if(data.target.id=='fft'){
-        mapShowIndex = 2;
-      }
-      this.setData({
-        mapIndex: data.target.id,
-        mapIndexFlag: mapIndexFlag,
-        mapShowIndex: mapShowIndex
-      })
-
-      // debugger;
-      if(mapShowIndex==0){
-        setTimeout(() => {
-          // this.lineChart.dispose();
-          this.lineChart.init();
-          this.init();
-        }, 100);
-      }else if(mapShowIndex==1){
-        setTimeout(() => {
-          // this.lineChart1.dispose();
-          this.lineChart1.init();
-          this.init();
-        }, 100);
-      } else if (mapShowIndex == 2) {
-        setTimeout(() => {
-          // this.lineChart2.dispose();
-          this.lineChart2.init();
-          this.init();
-        }, 100);
-      }
-    },
+    
     scrollToMap() {
       this.buttonClicked();
       wx.pageScrollTo({
