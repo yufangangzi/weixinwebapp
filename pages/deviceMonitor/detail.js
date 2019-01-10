@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    channel: '',
+    rotateSpeed: '',
     btnEnabled: false,
     mapFlag: {index: 0, r:0.3},
     detailId: '',
@@ -47,132 +49,10 @@ Page({
     lineChart: null,
   },
 
-  // 获取其他故障信息
-  faultListAll() {
-    // debugger
-    util.faultListAll({}, res => {
-      // debugger;
-      // return;
-      if (res.code === 0) {
-        if (Array.isArray(res.result)) {
-          let result = [];
-          try{
-            result = res.result.filter(v => {
-              return !this.data.DeviceFaultDetail.faultInfoVOList.find(it => it.otherId == v.id);
-            });
-          }catch(e){}
-          // debugger;
-          let suggestCheckList2 = result.map(item => {
-            return {
-              value: item.id,
-              label: item.faultName
-            };
-          });
+  
+  
 
-          this.setData({
-            suggestCheckList2: suggestCheckList2
-          })
-          console.log(suggestCheckList2);
-
-          wx.setStorageSync('suggestCheckList1', JSON.stringify(this.data.DeviceFaultDetail.faultInfoVOList));
-          wx.setStorageSync('suggestCheckList2', JSON.stringify(suggestCheckList2));
-
-        }
-      }
-    }, err => {
-
-    });
-  },
-  // 获取指派维修人员信息
-  accendantList() {
-    util.accendantList({ id: 2 }, res => {
-      // debugger;
-      // return;
-      if (res.code === 0) {
-        if (Array.isArray(res.result)) {
-          let repairPeopleList = res.result.map(item => {
-            return {
-              value: item.userName,
-              label: item.realName
-            };
-          });
-
-          this.setData({
-            repairPeopleList: repairPeopleList
-          })
-          console.log(repairPeopleList);
-          wx.setStorageSync('repairPeopleList', JSON.stringify(repairPeopleList));
-
-          // this.currentPerson = this.DeviceFaultDetail.accendant;
-          // this.handlePerson = this.DeviceFaultDetail.processor;
-          
-        }
-      }
-    }, err => {
-
-    });
-  },
-
-  reject3() {
-    const _this = this;
-    // 确认不采纳
-    $wuxDialog().confirm({
-      resetOnClose: true,
-      closable: true,
-      title: '提示',
-      content: '确认该设备未发生故障',
-      onConfirm(e) {
-        // debugger
-        let param = {
-          id: _this.data.DeviceFaultDetail.id,
-          deviceCode: _this.data.DeviceFaultDetail.deviceCode,
-          processor: app.globalData.userInfo.realName
-        };
-        // return;
-        util.allNotAccept(param, res => {
-          // debugger;
-          // return;
-          if (res.code === 0) {
-            $wuxToast().show({
-              type: 'text',
-              duration: 1000,
-              color: '#f66',
-              text: '操作成功!',
-              success: () => {
-                app.globalData.listReload = true;
-                //此处暂时改为退回上一页，因为肯定会列表进来
-                // let url = "../../pages/historAlarm/historAlarm";
-                // wx.redirectTo({
-                //   url: url
-                // });
-                wx.navigateBack({
-                  
-                })
-              }
-            });
-          } else if (res.code === 4) {
-            wx.showModal({
-              title: '提示',
-              content: res.msg,
-              success: (r) => {
-                if(r.confirm){
-                  // app.globalData.detailReload = true;
-                  app.globalData.listReload = true;
-                  // wx.navigateBack();
-                  _this.getDetail();
-                }
-              }
-            })
-          }
-        }, err => {
-
-        });
-      },
-      onCancel(e) {
-        
-      },
-    });
-  },
+  
   // 打开时域波形大图
   open2SYBX() {
     this.setData({
@@ -346,10 +226,7 @@ Page({
 
         this.devEchart();
 
-        //获取故障列表
-        this.faultListAll();
-
-        this.accendantList();
+        
 
       }
     }, err => {
@@ -361,59 +238,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 主要作用是从详情页修改状态返回后刷新列表
-    this.setData({
-      reloadFlag: true
-    })
     console.log(options);
-    // debugger
-    const deviceId = options.id || '07574ed454084de1b83550eea5fb27d9';
-    const deviceCode = options.code;
-
+    const obj = Object.assign({}, options);
+    obj.deviceNo = wx.getStorageSync('deviceNo');
     this.setData({
-      detailId: deviceId,
-      deviceCode: deviceCode
-    });
+      channel: obj.channel,
+      rotateSpeed: wx.getStorageSync('rotateSpeed') + 'REM'
+    })
 
-    // wx.login({
-    //   success(res){
-    //     console.log(res);
-    //     debugger;
+    // debugger
+    this.setData({
+      lineParamsObj: obj
+    });
+    // this.setData({
+    //   lineParamsObj: {
+    //     faultId: this.data.DeviceFaultDetail.id,
+    //     channel: channel, // 加速度,通道  属性
+    //     kpiFlag: this.data.DeviceFaultDetail.kpiFlag || '0', // 0速度 1加速度
+    //     deviceNo: this.data.DeviceFaultDetail.deviceCode, // 设备编号
+    //     parameterTime: this.data.DeviceFaultDetail.alarmTime, // 报警时间
+    //     statisDimen: 'second', // 固定
+    //     timeSpan: 10, // 展示时长
+    //     pageSize: 0
     //   }
     // })
-    
-    this.getDetail();
 
+    // debugger
+    // const deviceId = options.id || '07574ed454084de1b83550eea5fb27d9';
+    // const deviceCode = options.code;
 
-    // const r = Math.random();
-    // if(r>0.5){
-    //   this.setData({
-    //     isReport: false,
-    //     isRepair: true,
-    //   })
-    // }else{
-    //   this.setData({
-    //     isReport: true,
-    //     isRepair: false,
-    //   })
-    // }
-
-    //随机测试父传子
-    // setTimeout(()=>{
-    //   this.setData({
-    //     lineParamsObj: {
-    //       id: parseInt(Math.random() * 10000) % 20,
-    //       name: '被修改的值',
-    //     }
-    //   })
-    // },6000);
-
-
-    //设置图片数组
-    // const img = this.data.imgGroup3Src;
     // this.setData({
-    //   picturesList: [img, img, img]
+    //   detailId: deviceId,
+    //   deviceCode: deviceCode
     // });
+
+    
+    // this.getDetail();
 
 
     
@@ -450,13 +310,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    console.log('页面切入前台了')
-    if (this.data.reloadFlag) {
-      if(app.globalData.detailReload){
-        this.getDetail();
-        app.globalData.detailReload = false;
-      }
-    }
+    
   },
 
   /**
