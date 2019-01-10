@@ -246,6 +246,10 @@ Page({
       rotateSpeed: wx.getStorageSync('rotateSpeed') + 'REM'
     })
 
+    wx.setNavigationBarTitle({
+      title: obj.deviceNo,
+    })
+
     // debugger
     this.setData({
       lineParamsObj: obj
