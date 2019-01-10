@@ -311,19 +311,20 @@ Component({
     openBigPage(){
       const timereg = /-/g
       const obj = {
+        selfPageName: 'zdqst',
         token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
         pagemap : this.data.mapIndex,
         // timeSpan: this.data.value3,
         // channel: this.data.value1,
-        // dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
-        // statisStartTime: new Date(this.data.timeShow.replace(timereg, '/')).getTime(),
-        // valueshow: this.data.valueShow
+        // dataType: this.data.value2 == '速度' ? 'speed' : 'acceleration',
+        // statisStartTime: this.data.outInfo.parameterTime,
+        // valueshow: this.data.title2
       }
-      console.log(this.properties.outInfo)
-      const paramsobj = Object.assign({}, this.properties.outInfo,obj);
+      const valueshow = {
+        valueshow: this.properties.outInfo.kpiFlag === '0'? '速度': '加速度'
+      }
+      const paramsobj = Object.assign({}, this.properties.outInfo, obj, valueshow);
       
-      debugger
-      console.log(paramsobj)
       const params = Object.keys(paramsobj).map(function (key) {
         // body...
         return encodeURIComponent(key) + "=" + encodeURIComponent(paramsobj[key]);

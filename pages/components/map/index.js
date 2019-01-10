@@ -322,7 +322,6 @@ Component({
       console.log(this.properties.outInfo)
       const paramsobj = Object.assign({}, this.properties.outInfo,obj);
       
-      
       console.log(paramsobj)
       const params = Object.keys(paramsobj).map(function (key) {
         // body...
