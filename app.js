@@ -38,6 +38,25 @@ App({
       }
     })
   },
+  initSocket () {
+    let _this = this;
+    wx.connectSocket({
+      url: util.wss + wx.getStorageSync('token')
+    })
+
+    wx.onSocketOpen(function (res) {
+      console.log('WebSocket连接已打开！')
+      wx.sendSocketMessage({
+        data: '2111-P230A/B/C'
+      })
+    })
+
+    
+
+    wx.onSocketClose(function (res) {
+      console.log('WebSocket连接已关闭！')
+    })
+  },
   onShow: function (options) {
     // Do something when show.
   },

@@ -73,26 +73,11 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
-    wx.connectSocket({
-      url: util.wss + wx.getStorageSync('token')
-    })
-
-    wx.onSocketOpen(function (res) {
-      console.log('WebSocket连接已打开！')
-      wx.sendSocketMessage({
-        data: '2111-P230A/B/C'
-      })
-    })
-
     wx.onSocketMessage(function (res) {
       let data = res.data
       if (data) {
         _this.distributeMessage(data)
       }
-    })
-
-    wx.onSocketClose(function (res) {
-      console.log('WebSocket连接已关闭！')
     })
   },
 

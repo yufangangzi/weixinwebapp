@@ -25,7 +25,7 @@ Page({
         app.globalData.token = res.result.token;
         wx.setStorageSync('token', res.result.token);
         app.globalData.islogined = true;
-
+        app.initSocket()
         // util.openPage("../../pages/alarmProcessing/detail");
         let url = "../../pages/deviceMonitor/index";
         wx.switchTab({
