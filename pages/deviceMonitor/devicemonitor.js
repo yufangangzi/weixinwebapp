@@ -16,25 +16,27 @@ Page({
     deviceData: {},
     rotateSpeed: '',
     channelnum: 4,
-    deviceNo: '2111-P230A'
+    deviceNo: '',
+    deviceLists:[],
+    deviceinfos: {}
   },
   getlistNewByGroup(deviceNo) {
     let _this = this;
     const obj = {
-      deviceNo: '2111-P230A/B/C'
+      deviceNo: deviceNo
     }
     return util.listNewByGroup(obj)
   },
   getByCodes(code) {
     let _this = this;
     const obj = {
-      code: '2111-P230A'
+      code: code
     }
     return util.getByCode(obj)
   },
-  initData() {
+  initData(deciveNos,device) {
     let _this = this;
-    Promise.all([this.getByCodes(), this.getlistNewByGroup()]).then(([res1, res2]) => {
+    Promise.all([this.getByCodes(device), this.getlistNewByGroup(deciveNos)]).then(([res1, res2]) => {
       if (res1.code === 0) {
         const structure = res1.result.structure;
         let structureNum = 4;
@@ -47,7 +49,8 @@ Page({
         }
         _this.setData({
           rotateSpeed: res1.result.rotateSpeed,
-          channelnum: structureNum
+          channelnum: structureNum,
+          deviceinfos: res1.result
         })
         //保存数据供下个页面使用
         wx.setStorageSync('rotateSpeed', res1.result.rotateSpeed)
@@ -56,6 +59,35 @@ Page({
             deviceData: handel.monitorData(res2.result, structureNum)
           });
         }
+      }
+    })
+  },
+  initPage(data) {
+    const deviceNo = data;
+    const deviceAry = deviceNo.split('/');
+    const fir = deviceAry[0].slice(0,deviceAry[0].length-1)
+    const nameNo = deviceAry[0].slice(deviceAry[0].length-1)
+    const ary = []
+    deviceAry.forEach((item, index) => {
+      if (index === 0) {
+        ary.push(`${fir}${nameNo}`)
+      } else {
+        ary.push(`${fir}${item}`)
+      }
+    })
+    this.setData({
+      deviceNo: ary[0],
+      deviceLists: ary
+    })
+    this.initData(data,ary[0])
+  },
+  initDeviceInfo(code) {
+    let _this = this;
+    this.getByCodes(device).then(res => {
+      if (res.code === 0) {
+        _this.setData({
+          deviceinfos: res.result
+        });
       }
     })
   },
@@ -83,7 +115,8 @@ Page({
     console.log(deviceCode);
     const index = e.currentTarget.dataset.index;
     this.setData({
-      tabIndex: index
+      tabIndex: index,
+      deviceNo: deviceCode
     })
     //加载数据
     if(this.data.switchIndex==1){
@@ -129,6 +162,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     let _this = this;
     wx.onSocketMessage(function (res) {
       let data = res.data
@@ -136,7 +170,11 @@ Page({
         _this.distributeMessage(data)
       }
     })
-
+    wx.setNavigationBarTitle({
+      title: options.unit || '常减压'
+    })
+    const deviceNos = options.deviceNos || '2111-P230A/B/C'
+    this.initPage(deviceNos)
 
     // this.setData({
     //   deviceParamsObj: {
@@ -156,7 +194,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.initData()
+    
   },
 
   /**
