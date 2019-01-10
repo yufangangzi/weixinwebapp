@@ -1,1 +1,7 @@
 /* pages/deviceMonitor/index.wxss */
+.wux-grid__thumb {
+  display:block;
+  width:200rpx;
+  height:200rpx;
+  margin:0 auto;
+}

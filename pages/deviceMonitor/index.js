@@ -1,6 +1,7 @@
 // pages/deviceMonitor/index.js
 
 import { $stopWuxRefresher } from '../../dist/wux/dist/index'
+import { $wuxSelect } from '../../dist/wux/dist/index'
 const app = getApp();
 const util = require('../../utils/util.js');
 const handel = require('./monitorinfo.js')
@@ -10,30 +11,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 单元编号选择 start
-    items: [
-      {
-        type: 'filter',
-        label: '选项',
-        value: 'filter',
-        children: [
-          {
-            type: 'radio',
-            label: '装置单元',
-            value: 'devUnit',
-            children: []
-          }, // 装置单元
-          {
-            type: 'radio',
-            label: '设备编号',
-            value: 'devCode',
-            children: [],
-          }, // 设备编号
-        ],
-        // groups: ['001', '002', '003', '004'],
-      },
-    ],
-    // 单元编号选择 end
+    value3: '',
+    title3: '',
+    codeArr: [], // 设备编号
   },
   /**
    * 生命周期函数--监听页面加载
@@ -95,37 +75,74 @@ Page({
     util.listMenu(params, res => {
       if (res.code === 0) {
         wx.hideLoading();
-        wx.setStorageSync('selFlag', 0);
-        var ka = this.data.items[0].children[0].children;
-        var k1 = [];
-        for (let index = 0; index < res.result.length; index += 1) {
-          const item = res.result[index].menuDeviceList;
-          for (let j = 0; j < item.length; j++) {
-            const codeArrs = item[j]
-            k1.push(codeArrs);
-          }
-        }
-        // debugger
-        wx.setStorageSync('filterArr', k1); // 存取k1的值 重置用
-        console.log("codeArr--" + this.data.codeArr);
+        
+        // for (let index = 0; index < res.result.length; index += 1) {
+        //   this.data.codeArr = res.result[index].menuDeviceList;
+          
+        // }
+        
+
         this.setData({
           relist: res.result.map((n) => Object.assign({}, n, {
-            type: 'ghost',
-            name: n.unitName,
+            lable: n.unitName,
             id: n.id.toString(),
           })),
-          'items[0].children[0].children': res.result.map((n) => Object.assign({}, n, {
-            label: n.unitName,
-            value: n.id.toString(),
-          })),
-          // 设备编号取值
-          'items[0].children[1].children': k1.map((n) => Object.assign({}, n, {
-            label: n,
-            value: n,
-          })),
+          'codeArr': res.result,
+         
         })
       }
     }, err => {
     });
   },
+ // sel start
+  onClick3(e) {
+    let index = e.currentTarget.id;
+    let devName = e.detail.label;
+    const codeOption = this.data.codeArr[index].menuDeviceList.map((n) => Object.assign({},  {
+      title: n,
+      value: n,
+    }))
+    // debugger
+    $wuxSelect('#wux-select3').open({
+      value: this.data.value3,
+      // multiple: true, 
+      max:1, //最多选择个数
+      toolbar: {
+        title: devName,
+        confirmText: '跳转',
+        cancelText: '取消',
+      },
+      options: codeOption,
+      // [{
+      //   title: '画画',
+      //   value: '1',
+      //   },      
+      // ],
+      onChange: (value, index, options) => {
+        console.log('onChange', value, index, options)
+        this.setData({
+          value3: value,
+          title3: options[index],
+        })
+      },
+      onConfirm: (value, index, options) => {
+        console.log('onConfirm', value, index, options)
+        this.setData({
+          value3: value,
+          title3: options[index],          
+        })
+        // console.log("data--" + this.data.codeArr);
+        // 跳转
+        const title = devName
+        const deviceNos = value
+
+        wx.navigateTo({
+          url: "./devicemonitor" + id ,
+        })
+        // debugger
+      },
+    })
+  },
+// sel end
+
 })

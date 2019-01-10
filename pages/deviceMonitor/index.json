@@ -1,9 +1,12 @@
 {
   "navigationBarTitleText": "设备监测",
   "usingComponents": {
-    "page-monitor": "../components/monitor/index",
-    "wux-filterbar": "../../dist/wux/dist/filterbar/index",
-    "wux-refresher": "../../dist/wux/dist/refresher/index"
+      "wux-icon": "../../dist/wux/dist/icon/index",
+      "wux-grids": "../../dist/wux/dist/grids/index",
+      "wux-grid": "../../dist/wux/dist/grid/index",
+      "wux-cell-group": "../../dist/wux/dist/cell-group/index",
+      "wux-cell": "../../dist/wux/dist/cell/index",
+      "wux-select": "../../dist/wux/dist/select/index"
   }
 }
 

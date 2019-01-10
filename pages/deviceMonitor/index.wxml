@@ -1,4 +1,21 @@
 
-<view class="page__bd1">
-  <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />
+
+<wux-select id="wux-select3" />
+<view class="page">
+  <view class="page__bd">
+    <!-- <wux-cell-group title="Select">
+            <wux-cell title="爱好" extra="{{ title3 }}" bind:click="onClick3"></wux-cell>
+    </wux-cell-group> -->
+    <wux-grids bordered="{{ false }}" >
+      <wux-grid  wx:for="{{ relist }}" thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="{{item.lable}}" id="{{index}}" bind:click="onClick3" />
+      <!-- <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="催化裂化" />
+      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="延迟焦化" />
+      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="蜡油加氢" />
+      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="渣油加氢" />
+      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="汽油加氢" />
+      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="煤油加氢" />
+      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="柴油加氢" />
+      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="连续重整" /> -->
+    </wux-grids>
+  </view>
 </view>
