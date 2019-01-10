@@ -379,7 +379,7 @@ Component({
         this.canvas = canvas;
         this.canvas_w = width;
         this.canvas_h = height;
-        // this.setOption();
+        this.setOption(this.data.outInfo);
 
 
         this.setData({
@@ -471,10 +471,11 @@ Component({
       }
       try{
         this.chart.clear(); // 清楚累加数据
+        this.chart.setOption(option);
       }catch(e){}
       // debugger
       // this.canvas.ctx._context.clearRect(0,0, this.canvas_w, this.canvas_h);
-      this.chart.setOption(option);
+      
       // this.setData({
       //   isLoaded: true,
       //   isDisposed: false

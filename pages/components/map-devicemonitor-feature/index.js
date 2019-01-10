@@ -165,7 +165,7 @@ Component({
         util.listNewByGroup2(obj, res => {
           // trendChart(obj).then(res => {
           if (res.code === 1102) {
-            debugger
+            // debugger
             const showTitle = this.data.value2 == '-1' ? 'acceleration' : 'speed';
             const data = res.result;
             let newData = monitorData(data).sensorList;
@@ -182,7 +182,7 @@ Component({
               jfg: jfg,
               attribute: showTitle
             };
-            debugger
+            // debugger
             console.log(jfgDate);
             this.setData({
               lineParamsObj: {

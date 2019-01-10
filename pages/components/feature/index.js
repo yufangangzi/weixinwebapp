@@ -16,7 +16,9 @@ Component({
         // console.log('newVal:', newVal, ';oldVal:', oldVal);
           // debugger
           if (oldVal && newVal) {
-            this.setOption(newVal);
+            setTimeout(()=>{
+              this.setOption(newVal);
+            },50);
             // debugger
             // this.setData({
             //   'option.series[1].data': [118, 136, 165, 130, 178, 140, 133],
@@ -288,7 +290,7 @@ Component({
         this.canvas = canvas;
         this.canvas_w = width;
         this.canvas_h = height;
-        // this.setOption();
+        this.setOption(this.data.outInfo);
 
 
         this.setData({
@@ -361,12 +363,12 @@ Component({
         option.yAxis[0].name = '加速度(m/s2)';//'m/s2';
       }
       option.series[0].data = data.value;
-      debugger
+      // debugger
       try{
         this.chart.clear(); // 清楚累加数据
+        this.chart.setOption(option);
       }catch(e){}
       
-      this.chart.setOption(option);
       
     }
   }

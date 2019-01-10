@@ -1,7 +1,7 @@
 <wux-select id="wux-select1" />
 <wux-select id="wux-select2" />
 <wux-select id="wux-select3" />
-<view style="display:block;position:relative;">
+<view style="display:block;position:relative;height:60rpx;">
 <!-- <view bindtap="openSelect1" disabled="buttonClicked" class="cbtn marr19" style="margin-left: 24rpx;">
   <view class="ctxt">{{title1}}</view>
   <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
