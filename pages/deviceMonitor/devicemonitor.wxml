@@ -1,12 +1,8 @@
+<!--pages/deviceMonitor/devicemonitor.wxml-->
+<page-monitor deviceNo="{{deviceNo}}" channelnum="{{channelnum}}" rotateSpeed="{{rotateSpeed}}" deviceData="{{deviceData}}"></page-monitor>
 
-<!--pages/deviceMonitor/index.wxml-->
 <wux-select id="wux-select1" />
 <wux-select id="wux-select2" />
 <wux-calendar id="wux-calendar" />
 <!-- 根据标识位来切换到历史记录列表 -->
 <custom-history out-info="{{deviceParamsObj}}" out-more="{{loadMoreFlag}}" bind:myevent="fatherRecvFn" ></custom-history>
-
-
-<view class="page__bd1">
-  <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />
-</view>

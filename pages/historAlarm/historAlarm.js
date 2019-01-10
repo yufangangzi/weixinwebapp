@@ -317,14 +317,11 @@ Page({
   },
   // 获取筛选接口数据
   getFiterList(params = {}) {
-
-
     util.listMenu(params, res => {
-
       if (res.code === 0) {
-        wx.hideLoading()
+        wx.hideLoading();
+        wx.setStorageSync('selFlag', 1);
         var ka = this.data.items[4].children[2].children;
-
         var k1 = [];
         for (let index = 0; index < res.result.length; index += 1) {
           const item = res.result[index].menuDeviceList;
@@ -341,9 +338,7 @@ Page({
             type: 'ghost',
             name: n.unitName,
             id: n.id.toString(),
-           
           })),
-           
           'items[4].children[2].children': res.result.map((n) => Object.assign({}, n, {
             label: n.unitName,
             value: n.id.toString(),
@@ -354,13 +349,9 @@ Page({
             value: n,
           })),
         })
-
       }
     }, err => {
-
     });
-    
-
   },
   
   // 跳转到详情页

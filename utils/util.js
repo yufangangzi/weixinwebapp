@@ -82,7 +82,8 @@ const request = obj => {
 }
 
 const baseUrl = 'https://tiot.sinochem-tech.com/wx/';
-const baseWebView = 'https://tiot.sinochem-tech.com/'
+const baseWebView = 'https://tiot.sinochem-tech.com/';
+const wss = 'wss://tiot.sinochem-tech.com/wss/socketServer/';
 
 // WX登录,拿code换登录
 const wxlogin = (data, successcb, failcb) => {
@@ -440,6 +441,45 @@ const listNewByGroup2 = (data, successcb, failcb) => {
   })
 }
 
+// 获取设备监测数据
+const listNewByGroup = (data, successcb, failcb) => {
+  return new Promise((resolve, reject) => {
+    request({
+      url: baseUrl + 'deviceMonitor/listNewByGroup?deviceNo=' + data.deviceNo,
+      data: data,
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        resolve(res.data || res)
+      },
+      fail: function () {
+        reject('请求数据失败')
+      },
+      complete: function (res) { },
+    })
+  })
+}
+// 获取设备信息
+const getByCode = (data, successcb, failcb) => {
+  return new Promise((resolve, reject) => {
+    request({
+      url: baseUrl + 'device/getByCode?code=' + data.code,
+      data: data,
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        resolve(res.data || res)
+      },
+      fail: function () {
+        reject('请求数据失败')
+      },
+      complete: function (res) { },
+    })
+  })
+}
+
 module.exports = {
   baseUrl: baseUrl,
   timeformat: timeformat,
@@ -460,5 +500,8 @@ module.exports = {
   dealDeviceAlarm: dealDeviceAlarm,
   openPage: openPage,
   formatTime: formatTime,
-  baseWebView: baseWebView
+  baseWebView: baseWebView,
+  listNewByGroup,
+  getByCode,
+  wss: wss
 }

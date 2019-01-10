@@ -1,0 +1,33 @@
+/* pages/components/monitor/speed4.wxss */
+.speed-device{
+  position: relative;
+  height:260px;
+}
+.ico{
+  width: 160px;
+  height: 120px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-80px;
+  margin-top:-60px;
+}
+.sensor{
+  position: absolute;
+}
+.sensor1{
+  left:0;
+  top:0
+}
+.sensor2{
+  right:0;
+  top:0
+}
+.sensor3{
+  left:0;
+  top:150px
+}
+.sensor4{
+  right:0;
+  top:150px
+}

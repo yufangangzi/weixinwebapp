@@ -1,0 +1,5 @@
+/* pages/components/monitor/index.wxss */
+.main{
+  padding: 0 2px;
+  background: linear-gradient(360deg, #425caf 0%, #5779e4 100%);
+}
