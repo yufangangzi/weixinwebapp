@@ -474,9 +474,11 @@ Component({
           this.setData({
             startTime: displayValues,
           })
-          setTimeout(() => {
-            this.getHis();
-          }, 30);
+          if (values[0] != displayValues[0]) {
+            setTimeout(() => {
+              this.getHis();
+            }, 30);
+          }
 
         },
       })
@@ -491,9 +493,11 @@ Component({
           this.setData({
             endTime: displayValues,
           })
-          setTimeout(() => {
-            this.getHis();
-          }, 30);
+          if (values[0] != displayValues[0]) {
+            setTimeout(() => {
+              this.getHis();
+            }, 30);
+          }
         },
       })
     },
