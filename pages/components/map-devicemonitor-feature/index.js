@@ -1,3 +1,5 @@
+import { monitorData } from './monitorInfo';
+import { passTrans, speedOrAccel1 } from './sensor.js';
 // pages/components/line/index.js
 import * as echarts from '../../../dist/ec-canvas/echarts';
 const app = getApp();
@@ -27,7 +29,7 @@ Component({
         // console.log('newVal:', newVal, ';oldVal:', oldVal);
         
           if (oldVal && newVal) {
-            this.listChannel();
+            this.init();
             // debugger
             // this.setData({
             //   lineParamsObj: newVal,
@@ -127,7 +129,7 @@ Component({
     // this.ecComponent = this.selectComponent('#mychart-dom-line');
     // console.log(this.properties.outInfo);
 
-    this.lineChart = this.selectComponent('#mychart-dom-line-father');
+    this.lineChart = this.selectComponent('#mychart-dom-fe-father');
     //初始显示line图
     this.lineChart.init();
     console.log('333', this.lineChart);
@@ -147,30 +149,46 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    getchannel(channel) {
+      const index = channel.indexOf('-');
+      const channelNum = channel.slice(index + 1);
+      return channelNum;
+    },
     init() {
       if (this.data.mapShowIndex === 0){
         let obj = {};
         // debugger;
         obj = Object.assign({}, this.properties.outInfo);
-        delete obj.kpiFlag;
-        obj.timeSpan = this.data.value3;
-        obj.channel = this.data.value1;
-        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
-        // this.newLists.timeSpan
-        this.deviceId = obj.deviceNo;
-        this.passageway = obj.channel;
+        obj.deviceNo = obj.deviceNo || '2111-P230A';
+        this.passageway = obj.passageway || '2-1V';
 
-        util.trendChart(obj, res => {
+        util.listNewByGroup2(obj, res => {
           // trendChart(obj).then(res => {
-          if (res.code === 0) {
+          if (res.code === 1102) {
             // debugger
+            const showTitle = this.data.value2 == '-1' ? 'acceleration' : 'speed';
+            const data = res.result;
+            let newData = monitorData(data).sensorList;
+            console.log(newData);
+            let datainfo = newData.filter(item => {
+              return item.deviceNo === obj.deviceNo;
+            });
+            console.log(datainfo);
+            const key = passTrans[this.getchannel(this.passageway)];
+            console.log(key);
+            const passData = datainfo[0][key];
+            const jfg = passData[speedOrAccel1[showTitle]].yAxis;
+            const jfgDate = {
+              jfg: jfg,
+              attribute: showTitle
+            };
+            // debugger
+            console.log(jfgDate);
             this.setData({
               lineParamsObj: {
-                time: res.result.time,
-                value: res.result.value,
+                time: [],
+                value: jfg,
                 unit: this.data.title2,
-                vibrateHighQuote: res.result.vibrateHighQuote,
-                vibrateHighHighQuote: res.result.vibrateHighHighQuote,
                 pagemap: 'zdqs'
               }
             });
@@ -182,86 +200,7 @@ Component({
 
       }
 
-      if (this.data.mapShowIndex === 1) {
-        let obj = {};
-        // debugger;
-        obj = Object.assign({}, this.properties.outInfo);
-        delete obj.kpiFlag;
-        delete obj.faultId;
-        delete obj.pageSize;
-        delete obj.parameterTime;
-        delete obj.timeSpan;
-        delete obj.statisDimen;
-        obj.statisStartTime = (this.data.timeShow && new Date(this.data.timeShow).getTime()) || this.data.value3;
-        obj.channel = this.data.value1;
-        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
-        // this.newLists.timeSpan
-        this.deviceNo = obj.deviceNo;
-        // debugger
-        util.domainWaveformFigure(obj, res => {
-          // trendChart(obj).then(res => {
-          if (res.code === 0) {
-            // debugger
-            const obj = JSON.parse(res.result[0]);
-            
-
-            this.setData({
-              lineParamsObj: {
-                x0data: Array.from({ length: obj.domainWaveformFigure.length }, (v, k) => k),
-                s0data: obj.domainWaveformFigure,
-                x0name: '',
-                title: this.name,
-                rotateSpeed: obj.device.rotateSpeed,
-                pagemap: 'sybx'
-              }
-            });
-
-
-          }
-          // debugger
-        });
-
-      }
-
-      if (this.data.mapShowIndex === 2) {
-        let obj = {};
-        // debugger;
-        obj = Object.assign({}, this.properties.outInfo);
-        delete obj.kpiFlag;
-        delete obj.faultId;
-        delete obj.pageSize;
-        delete obj.parameterTime;
-        delete obj.timeSpan;
-        delete obj.statisDimen;
-        obj.statisStartTime = (this.data.timeShow && new Date(this.data.timeShow).getTime()) || this.data.value3;
-        obj.channel = this.data.value1;
-        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
-        // this.newLists.timeSpan
-        this.deviceNo = obj.deviceNo;
-        // debugger
-        util.fftFigure(obj, res => {
-          // trendChart(obj).then(res => {
-          if (res.code === 0) {
-            // debugger
-
-
-            this.setData({
-              lineParamsObj: {
-                x0data: res.result.rp_fft_f_arr,
-                s0data: res.result.rp_fft_date_arr,
-                x0name: '频率(Hz)',
-                title: this.name,
-                rotateSpeed: res.result.device.rotateSpeed,
-                pagemap: 'fft'
-              }
-            });
-
-
-          }
-          // debugger
-        });
-
-      }
+      
 
 
     },
@@ -312,17 +251,18 @@ Component({
       const timereg = /-/g
       const obj = {
         token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
-        pagemap : this.data.mapIndex,
-        timeSpan: this.data.value3,
-        channel: this.data.value1,
-        dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
-        statisStartTime: new Date(this.data.timeShow.replace(timereg, '/')).getTime(),
-        valueshow: this.data.valueShow
+        pagemap : 'pytz',
+        selfPageName: 'pytzt',
+        // timeSpan: this.data.value3,
+        // channel: this.data.value1,
+        // dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
+        // statisStartTime: new Date(this.data.timeShow.replace(timereg, '/')).getTime(),
+        // valueshow: this.data.valueShow
       }
-      console.log(this.properties.outInfo)
-      const paramsobj = Object.assign({}, this.properties.outInfo,obj);
-      
-      console.log(paramsobj)
+      const valueshow = {
+        valueshow: this.properties.outInfo.kpiFlag === '0' ? '速度' : '加速度'
+      }
+      const paramsobj = Object.assign({}, this.properties.outInfo, obj, valueshow);
       const params = Object.keys(paramsobj).map(function (key) {
         // body...
         return encodeURIComponent(key) + "=" + encodeURIComponent(paramsobj[key]);
@@ -332,45 +272,7 @@ Component({
         url: `../../pages/daping/index?${params}`,
       })
     },
-    mapChange(data) {
-      // debugger
-      let mapIndexFlag = true;
-      let mapShowIndex = 0;
-      if (data.target.id =='zdqs'){
-        mapIndexFlag = false;
-        mapShowIndex = 0;
-      }else if(data.target.id=='sybx'){
-        mapShowIndex = 1;
-      }else if(data.target.id=='fft'){
-        mapShowIndex = 2;
-      }
-      this.setData({
-        mapIndex: data.target.id,
-        mapIndexFlag: mapIndexFlag,
-        mapShowIndex: mapShowIndex
-      })
-
-      // debugger;
-      if(mapShowIndex==0){
-        setTimeout(() => {
-          // this.lineChart.dispose();
-          this.lineChart.init();
-          this.init();
-        }, 100);
-      }else if(mapShowIndex==1){
-        setTimeout(() => {
-          // this.lineChart1.dispose();
-          this.lineChart1.init();
-          this.init();
-        }, 100);
-      } else if (mapShowIndex == 2) {
-        setTimeout(() => {
-          // this.lineChart2.dispose();
-          this.lineChart2.init();
-          this.init();
-        }, 100);
-      }
-    },
+    
     scrollToMap() {
       this.buttonClicked();
       wx.pageScrollTo({

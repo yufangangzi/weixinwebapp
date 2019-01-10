@@ -1,0 +1,20 @@
+{
+  "navigationBarBackgroundColor": "#5E8FE5",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "设备监测图",
+  "backgroundColor": "#F3F4F5",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "wux-card": "../../dist/wux/dist/card/index",
+    "wux-wing-blank": "../../dist/wux/dist/wing-blank/index",
+    "wux-button": "../../dist/wux/dist/button/index",
+    "wux-icon": "../../dist/wux/dist/icon/index",
+    "wux-select": "../../dist/wux/dist/select/index",
+    "wux-row": "../../dist/wux/dist/row/index",
+    "wux-col": "../../dist/wux/dist/col/index",
+    "wux-dialog": "../../dist/wux/dist/dialog/index",
+    "wux-toast": "../../dist/wux/dist/toast/index",
+    "custom-map-feature": "../components/map-devicemonitor-feature/index",
+    "custom-map": "../components/map-devicemonitor/index"
+  }
+}

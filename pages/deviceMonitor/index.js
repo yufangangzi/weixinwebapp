@@ -14,11 +14,42 @@ Page({
     value3: '',
     title3: '',
     codeArr: [], // 设备编号
+    // 单元编号选择 start
+    items: [
+      {
+        type: 'filter',
+        label: '选项',
+        value: 'filter',
+        children: [
+          {
+            type: 'radio',
+            label: '装置单元',
+            value: 'devUnit',
+            children: []
+          }, // 装置单元
+          {
+            type: 'radio',
+            label: '设备编号',
+            value: 'devCode',
+            children: [],
+          }, // 设备编号
+        ],
+        // groups: ['001', '002', '003', '004'],
+      },
+    ],
+    // 单元编号选择 end
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    this.setData({
+      deviceParamsObj: {
+        deviceNo: '2411-K103A'
+      }
+    })
+
     this.getFiterList();  //选项
   },
 
@@ -61,7 +92,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    //加载更多
+    this.setData({
+      loadMoreFlag: {
+        flag: true
+      }
+    })
   },
 
   /**

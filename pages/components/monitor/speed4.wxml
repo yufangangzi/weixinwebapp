@@ -13,5 +13,7 @@
   <view class='sensor sensor4'>
     <sensor sensorData="{{deviceData.sensor3h}}"></sensor>
   </view>
+
+  
   
 </view>

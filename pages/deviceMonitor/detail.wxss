@@ -1,0 +1,184 @@
+.bg-top{
+  width: 100%;
+  position: relative;
+}
+.bg-img{
+  width: 100%;
+  height: 400rpx;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.pos{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+}
+
+.top-t1 {
+  padding-top: 20rpx;
+  padding-left: 27rpx;
+  height:40rpx;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:40rpx;
+  display: inline-block;
+}
+.top-t2 {
+  padding-top: 20rpx;
+  padding-left: 43rpx;
+  height:40rpx;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:40rpx;
+  display: inline-block;
+  width: 15rem;
+}
+
+.top-t3{
+  text-align: right;
+  padding-top: 25rpx;
+  padding-right: 19rpx;
+  height:33rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:33rpx;
+  display: inline-block;
+}
+
+.tupuicon{
+  width:16rpx;
+  height:16rpx;
+}
+
+.phoneicon{
+  width:36rpx;
+  height:32rpx;
+  margin-left: 30rpx;
+}
+
+.resultImg {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+}
+
+.tuputxt{
+  padding-left: 10rpx;
+  width: 16.6rem;
+  display: inline-block;
+  vertical-align: top;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:40rpx;
+}
+
+.marb20{
+  margin-bottom: 19rpx;
+}
+
+.marb40{
+  margin-bottom: 40rpx;
+}
+
+.jianyitt{
+  display: inline-block;
+  font-size:34rpx;
+  font-weight:400;
+  color:rgba(53,53,53,1);
+  line-height:48rpx;
+
+}
+
+.jianyitxt{
+  font-size:30rpx;
+  font-weight:400;
+  color:rgba(98,129,229,1);
+  line-height:42rpx;
+  vertical-align: top;
+  float: right;
+  
+}
+
+.martop70{
+  margin-top: 70rpx;
+}
+
+
+.line {
+  margin: 15rpx 0rpx 0;
+  height: 1px;
+  border-bottom: 1px solid #CFCFCF;
+}
+
+
+.intro {
+  display: inline-block;
+  width:130rpx;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(53,53,53,1);
+  line-height:40rpx;
+  padding-left: 0rpx;
+  padding-top: 26rpx;
+}
+
+.desp {
+  display: inline-block;
+  vertical-align: top;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(136,136,136,1);
+  line-height:40rpx;
+  padding-top: 26rpx;
+  width: calc(100% - 150rpx);
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.ggaobao {
+  width: 236rpx;
+  display: inline-block;
+}
+.gaobao {
+  width: 226rpx;
+  display: inline-block;
+}
+
+.ggaobao-txt {
+  background: linear-gradient(180deg, #ff6767 0%, #be0000 100%);
+  border-radius: 5rpx;
+  color: rgb(255, 255, 255);
+  padding: 3rpx 15rpx;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.gaobao-txt {
+  background:linear-gradient(180deg,rgba(255,103,103,1) 0%,rgba(255,12,12,1) 100%);
+  border-radius: 5rpx;
+  color: rgb(255, 255, 255);
+  padding: 3rpx 15rpx;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.baoicon{
+  width:36rpx;
+  height:36rpx;
+  
+}
+
+.placeholder {
+    margin: 10rpx;
+    width: auto;
+}

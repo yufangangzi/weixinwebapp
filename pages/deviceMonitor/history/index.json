@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "wux-icon": "../../../dist/wux/dist/icon/index",
+    "wux-calendar": "../../../dist/wux/dist/calendar/index",
+    "wux-select": "../../../dist/wux/dist/select/index",
+    "wux-refresher": "../../../dist/wux/dist/refresher/index"
+  }
+}

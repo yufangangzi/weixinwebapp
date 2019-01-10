@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/deviceMonitor/devicemonitor",
     "pages/first/first",
+    "pages/deviceMonitor/detail",
     "pages/deviceMonitor/index",
     "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/handle2",
@@ -15,8 +17,7 @@
     "pages/alarmProcessingResult/success",
     "pages/alarmProcessingResult/error",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/deviceMonitor/devicemonitor"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

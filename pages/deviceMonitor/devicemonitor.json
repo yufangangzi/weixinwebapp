@@ -1,6 +1,10 @@
 {
   "navigationBarTitleText": "设备监测",
   "usingComponents": {
+    "custom-history": "./history/index",
+    "wux-calendar": "../../dist/wux/dist/calendar/index",
+    "wux-select": "../../dist/wux/dist/select/index",
+    "wux-refresher": "../../dist/wux/dist/refresher/index",
     "page-monitor": "../components/monitor/index"
   }
 }

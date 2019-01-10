@@ -1,0 +1,86 @@
+<wux-select id="wux-select1" />
+<wux-select id="wux-select2" />
+<wux-calendar id="wux-calendar" />
+
+
+<view class="bg-top">
+  <view class="ff">
+    <view class="lf">历史查询</view>
+    <view class="rf" bindtap="switchRT">实时监测》</view>
+  </view>
+
+  <view class="ff">
+    <view class="lf">
+      <view bindtap="openSelect2" disabled="buttonClicked" class="cbtn marr19" style="width: 220rpx;">
+        <view class="ctxt">{{title2}}</view>
+        <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
+      </view>
+    </view>
+
+    <view class="lf"><view class="ff2">
+      <view bindtap="openCalendar1" disabled="buttonClicked" class="cbtn marr19">
+        <view class="ctxt">{{startTime[0]}}</view>
+      </view>
+      </view>
+    </view>
+
+    <view><span>至</span></view>
+
+    <view class="lf"><view class="ff2">
+      <view bindtap="openCalendar2" disabled="buttonClicked" class="cbtn marr19">
+        <view class="ctxt">{{endTime[0]}}</view>
+      </view>
+      </view>
+    </view>
+
+  </view>
+
+</view><view class="scrool-left">
+<wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh" pull-end="{{pullEnd}}">
+
+<scroll-view scroll-x="true" style="white-space: nowrap; display: block" class="showmian">
+
+<view class="w30 hovertxt" >
+  <view class="item-title">时间</view>
+  <view wx:for="{{tablelist}}" wx:for-item="it" wx:key="index" class="item">
+    {{it.reportTime}}
+  </view>
+</view> 
+<view wx:for="{{initChannel}}" wx:for-index="idx" wx:key="idx" class="w20 hovertxt">
+  <view class="item-title">
+    <span class="item-1">{{item}}</span>
+    <image class="trendicon" mode="aspectFit" src="{{trendSrc}}" ></image>
+  </view>
+  <view wx:for="{{tablelist}}" wx:for-item="it" wx:key="index" class="item" bindtap="chooseItem">
+    {{it[item]}}
+  </view>
+</view> 
+<!-- <view bindtap="chooseItem" class="w20 hovertxt" data-index="{{index}}">
+  <view class="item-title">
+    <span class="item-1">1-1H</span>
+    <image class="trendicon" mode="aspectFit" src="{{trendSrc}}" ></image>
+  </view>
+  <view class="item">0.00</view>
+  <view class="item">0.00</view>
+  <view class="item">0.00</view>
+  <view class="item">0.00</view>
+  <view class="item">0.00</view>
+  <view class="item">0.00</view>
+  <view class="item">0.00</view>
+  <view class="item">0.00</view>
+  <view class="item">0.00</view>
+  </view> -->
+</scroll-view>
+</wux-refresher>
+<view class="weui-loadmore weui-loadmore_line" hidden='{{isResult}}'>
+  <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+</view>
+<view class="weui-loadmore weui-loadmore_line" hidden='{{hasmoreData}}'>
+  <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无更多数据</view>
+</view>
+<view class="weui-loadmore" hidden='{{hiddenloading}}'>
+  <view class="weui-loading"></view>
+　<view class="weui-loadmore__tips">正在加载</view>
+</view>
+
+</view>

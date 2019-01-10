@@ -20,6 +20,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    switchHis (){
+      //切换到历史记录
+      console.log('切换到历史记录')
+      this.triggerEvent('myevent', { msg: '切换到历史记录' });
+    }
   }
 })
