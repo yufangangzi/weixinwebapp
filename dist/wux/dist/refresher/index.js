@@ -7,6 +7,19 @@ Component({
         style: defaultStyle,
     },
     properties: {
+        pullEnd: {
+          type: Object,
+          observer: function (newVal, oldVal) {
+            // console.log('newVal:', newVal, ';oldVal:', oldVal);
+            // debugger;
+
+            if (oldVal && newVal) {
+              this.finishPullToRefresh();
+            }
+
+
+          }
+        },
         pullingIcon: {
             type: String,
             value: 'wux-refresher__icon--arrow-down',

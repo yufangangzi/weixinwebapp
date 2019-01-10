@@ -393,6 +393,53 @@ const dealDeviceAlarm = (data, successcb, failcb) => {
   })
 }
 
+
+// 获取设备监测历史数据
+const listHistoryData2 = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'deviceMonitor/listHistoryData',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
+// 获取频域特征图数据
+const listNewByGroup2 = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'deviceMonitor/listNewByGroup?deviceNo=' + data.deviceNo,
+    data: {},
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
 module.exports = {
   baseUrl: baseUrl,
   timeformat: timeformat,
@@ -405,6 +452,8 @@ module.exports = {
   trendChart: trendChart,
   domainWaveformFigure: domainWaveformFigure,
   fftFigure: fftFigure,
+  listHistoryData2: listHistoryData2,
+  listNewByGroup2: listNewByGroup2,
   wxlogin: wxlogin,
   wxbind: wxbind,
   allNotAccept: allNotAccept,

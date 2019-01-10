@@ -1,2 +1,6 @@
 <!--pages/deviceMonitor/index.wxml-->
-<text>pages/deviceMonitor/index.wxml</text>
+<wux-select id="wux-select1" />
+<wux-select id="wux-select2" />
+<wux-calendar id="wux-calendar" />
+<!-- 根据标识位来切换到历史记录列表 -->
+<custom-history out-info="{{deviceParamsObj}}" out-more="{{loadMoreFlag}}" bind:myevent="fatherRecvFn" ></custom-history>

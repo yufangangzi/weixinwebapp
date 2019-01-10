@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "wux-icon": "../../../dist/wux/dist/icon/index",
+    "wux-select": "../../../dist/wux/dist/select/index",
+    "custom-line": "../../components/line/index",
+    "custom-trend": "../../components/trend/index",
+    "custom-fft": "../../components/fft/index"
+  }
+}

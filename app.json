@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/first/first",
+    "pages/deviceMonitor/detail",
     "pages/deviceMonitor/index",
     "pages/historAlarm/historAlarm",
 
