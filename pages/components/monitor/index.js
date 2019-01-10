@@ -32,6 +32,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    fatherRecvFn: function (event) {
+      // debugger
+      console.log('父组件接受到的消息：', event.detail);
+      this.triggerEvent('myevent', { msg: '切换到历史记录' });
+      
+    },
   }
 })

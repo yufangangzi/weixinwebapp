@@ -6,7 +6,7 @@
 <view class="bg-top">
   <view class="ff">
     <view class="lf">历史查询</view>
-    <view class="rf">实时监测》</view>
+    <view class="rf" bindtap="switchRT">实时监测》</view>
   </view>
 
   <view class="ff">

@@ -499,7 +499,11 @@ Component({
     },
     
     
-
+    switchRT() {
+      //切换到历史记录
+      console.log('切换到实时监测')
+      this.triggerEvent('myevent', { msg: '切换到实时监测' });
+    },
     
 
     //给父组件传消息

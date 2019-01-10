@@ -10,6 +10,8 @@ Page({
   data: {
     deviceParamsObj: {},
     loadMoreFlag: {},
+    switchIndex: 0,
+    tabIndex: 0,
 
     deviceData: {},
     rotateSpeed: '',
@@ -72,6 +74,56 @@ Page({
     }
   },
   /**
+   * 切换设备编号 
+   */
+  switchTab(e){
+    const deviceCode = e.currentTarget.dataset.code;
+    console.log(deviceCode);
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+      tabIndex: index
+    })
+    //加载数据
+    if(this.data.switchIndex==1){
+      //历史数据页面在此
+      this.setData({
+        deviceParamsObj: {
+          deviceNo: this.data.deviceNo || '2411-K103A'
+        }
+      })
+
+    }else{
+      //实时监测页面
+
+    }
+
+  },
+  /**
+   * 切换历史数据跟实时监测按钮
+   */
+  fatherRecvFn: function (event) {
+    // debugger
+    console.log('父组件接受到的消息：', event.detail);
+    // debugger;
+    const msg = event.detail && event.detail.msg;
+    if (msg.indexOf('历史记录') > -1) {
+      this.setData({
+        switchIndex: 1
+      })
+
+      this.setData({
+        deviceParamsObj: {
+          deviceNo: this.data.deviceNo || '2411-K103A'
+        }
+      })
+    } else if (msg.indexOf('实时监测') > -1) {
+      this.setData({
+        switchIndex: 0
+      })
+    }
+
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
@@ -84,11 +136,11 @@ Page({
     })
 
 
-    this.setData({
-      deviceParamsObj: {
-        deviceNo: '2411-K103A'
-      }
-    })
+    // this.setData({
+    //   deviceParamsObj: {
+    //     deviceNo: '2411-K103A'
+    //   }
+    // })
   },
 
   /**
@@ -131,12 +183,16 @@ Page({
    */
   onReachBottom: function () {
     //加载更多
-    this.setData({
-      loadMoreFlag: {
-        flag: true
-      }
-    })
+    if(this.data.switchIndex==1){
+      this.setData({
+        loadMoreFlag: {
+          flag: true
+        }
+      })
+    }
   },
+
+  
 
   /**
    * 用户点击右上角分享

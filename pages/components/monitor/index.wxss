@@ -3,3 +3,34 @@
   padding: 0 2px;
   background: linear-gradient(360deg, #425caf 0%, #5779e4 100%);
 }
+
+
+.ub {
+  display: flex;
+}
+
+.ub-f1 {
+  flex: 1;
+}
+
+.wid {
+  width: 180rpx;
+}
+
+.ub-pc {
+  align-items: center;
+}
+.ub-ac {
+  justify-content: center;
+}
+
+.padl10{
+  padding-left: 10px;
+}
+.padb10{
+  padding-bottom: 10px;
+}
+
+.c-wh{
+  color: white;
+}

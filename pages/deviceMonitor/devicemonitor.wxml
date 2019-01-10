@@ -1,8 +1,26 @@
 <!--pages/deviceMonitor/devicemonitor.wxml-->
-<page-monitor deviceNo="{{deviceNo}}" channelnum="{{channelnum}}" rotateSpeed="{{rotateSpeed}}" deviceData="{{deviceData}}"></page-monitor>
 
 <wux-select id="wux-select1" />
 <wux-select id="wux-select2" />
 <wux-calendar id="wux-calendar" />
+
+<view class="ub">
+  <view class="ub-f1 ub ub-ac ub-pc t-item {{tabIndex==0 ? 't-sel': ''}}" bindtap='switchTab' data-code="2111-230A" data-index="0">
+    <view class="">2111-230A</view>
+  </view>
+  <view class="ub-f1 ub ub-ac ub-pc t-item {{tabIndex==1 ? 't-sel': ''}}" bindtap='switchTab' data-code="2111-230B" data-index="1">
+    <view class="">2111-230B</view>
+  </view>
+  <view class="ub-f1 ub ub-ac ub-pc t-item  {{tabIndex==2 ? 't-sel': ''}}" bindtap='switchTab' data-code="2111-230C" data-index="2">
+    <view class="">2111-230C</view>
+  </view>
+</view>
+
+<!-- 设备详情-->
+<block wx:if="{{ switchIndex===0 }}">
+<page-monitor deviceNo="{{deviceNo}}" channelnum="{{channelnum}}" rotateSpeed="{{rotateSpeed}}" deviceData="{{deviceData}}"   bind:myevent="fatherRecvFn"></page-monitor>
+</block>
 <!-- 根据标识位来切换到历史记录列表 -->
+<block wx:else>
 <custom-history out-info="{{deviceParamsObj}}" out-more="{{loadMoreFlag}}" bind:myevent="fatherRecvFn" ></custom-history>
+</block>

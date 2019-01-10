@@ -8,6 +8,7 @@ Component({
     deviceData: {
       type: Object,
       observer: function (newVal, oldVal, changedPath) {
+        console.log('newVal', newVal)
         return newVal
       }
     }
