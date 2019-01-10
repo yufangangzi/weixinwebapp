@@ -21,7 +21,7 @@
 
   <view class='ub padl10 padb10 c-wh'>
     <view class='wid'>安装时间：</view>
-    <view class='ub-f1'>{{deviceinfos.setupTime}}</view>
+    <view class='ub-f1'>{{setupTime}}</view>
   </view>
 
   <view class='ub padl10 padb10 c-wh'>
