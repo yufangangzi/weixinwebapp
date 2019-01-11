@@ -2,6 +2,8 @@
   "component": true,
   "usingComponents": {
     "speed4": "./speed4",
+    "speed2": "./speed2",
+    "speed8": "./speed8",
     "top": "./top"
   }
 }

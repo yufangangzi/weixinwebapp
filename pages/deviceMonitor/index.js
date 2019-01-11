@@ -51,6 +51,7 @@ Page({
     })
 
     this.getFiterList();  //选项
+    app.initSocket()
   },
 
   /**
