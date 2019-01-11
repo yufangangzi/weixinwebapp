@@ -469,10 +469,12 @@ Component({
         option.series[1].markLine = {};
         option.series[1] = null;
       }
-      try{
+      try {
         this.chart.clear(); // 清楚累加数据
+      } catch (e) { }
+      try {
         this.chart.setOption(option);
-      }catch(e){}
+      } catch (e) { }
       // debugger
       // this.canvas.ctx._context.clearRect(0,0, this.canvas_w, this.canvas_h);
       

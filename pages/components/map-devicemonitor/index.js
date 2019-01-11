@@ -27,7 +27,7 @@ Component({
         // console.log('newVal:', newVal, ';oldVal:', oldVal);
         
           if (oldVal && newVal) {
-            this.listChannel();
+            this.init();
             // debugger
             // this.setData({
             //   lineParamsObj: newVal,
@@ -42,6 +42,18 @@ Component({
           }
         
         
+      }
+    },
+    outWsdata: {
+      type: Object,
+      // value: '',
+      observer: function (newVal, oldVal) {
+        // console.log('newVal:', newVal, ';oldVal:', oldVal);
+        // debugger
+        if (oldVal && newVal) {
+          // debugger;
+          this.distributeMessage(newVal.data);
+        }
       }
     },
     paramDevice:Object,
@@ -152,10 +164,10 @@ Component({
         let obj = {};
         // debugger;
         obj = Object.assign({}, this.properties.outInfo);
+        // obj.timeSpan = this.data.value3;
+        // obj.channel = this.data.value1;
+        obj.dataType = obj.kpiFlag == 1 ? 'acceleration' : 'speed';
         delete obj.kpiFlag;
-        obj.timeSpan = this.data.value3;
-        obj.channel = this.data.value1;
-        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
         // this.newLists.timeSpan
         this.deviceId = obj.deviceNo;
         this.passageway = obj.channel;
@@ -181,89 +193,64 @@ Component({
         });
 
       }
+      // debugger
+      // 监听websocket消息 
+      // let _this = this;
+      // wx.onSocketMessage(function (res) {
+      //   let data = res.data
+      //   // debugger
+      //   if (data) {
+      //     _this.distributeMessage(data)
+      //   }
+      // })
 
-      if (this.data.mapShowIndex === 1) {
-        let obj = {};
-        // debugger;
-        obj = Object.assign({}, this.properties.outInfo);
-        delete obj.kpiFlag;
-        delete obj.faultId;
-        delete obj.pageSize;
-        delete obj.parameterTime;
-        delete obj.timeSpan;
-        delete obj.statisDimen;
-        obj.statisStartTime = (this.data.timeShow && new Date(this.data.timeShow).getTime()) || this.data.value3;
-        obj.channel = this.data.value1;
-        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
-        // this.newLists.timeSpan
-        this.deviceNo = obj.deviceNo;
-        // debugger
-        util.domainWaveformFigure(obj, res => {
-          // trendChart(obj).then(res => {
-          if (res.code === 0) {
-            // debugger
-            const obj = JSON.parse(res.result[0]);
-            
 
-            this.setData({
-              lineParamsObj: {
-                x0data: Array.from({ length: obj.domainWaveformFigure.length }, (v, k) => k),
-                s0data: obj.domainWaveformFigure,
-                x0name: '',
-                title: this.name,
-                rotateSpeed: obj.device.rotateSpeed,
-                pagemap: 'sybx'
-              }
-            });
+    },
+    distributeMessage(data) {
+      if (typeof (data) === 'string') {
+        try {
+          const val = JSON.parse(data);
+          if (val.code === 1102) {
+            this.wszdqst(val.result)
 
 
           }
-          // debugger
-        });
+        } catch (e) {
 
+        }
       }
-
-      if (this.data.mapShowIndex === 2) {
-        let obj = {};
-        // debugger;
-        obj = Object.assign({}, this.properties.outInfo);
-        delete obj.kpiFlag;
-        delete obj.faultId;
-        delete obj.pageSize;
-        delete obj.parameterTime;
-        delete obj.timeSpan;
-        delete obj.statisDimen;
-        obj.statisStartTime = (this.data.timeShow && new Date(this.data.timeShow).getTime()) || this.data.value3;
-        obj.channel = this.data.value1;
-        obj.dataType = this.data.value2 == '-1' ? 'acceleration' : 'speed';
-        // this.newLists.timeSpan
-        this.deviceNo = obj.deviceNo;
-        // debugger
-        util.fftFigure(obj, res => {
-          // trendChart(obj).then(res => {
-          if (res.code === 0) {
-            // debugger
-
-
-            this.setData({
-              lineParamsObj: {
-                x0data: res.result.rp_fft_f_arr,
-                s0data: res.result.rp_fft_date_arr,
-                x0name: '频率(Hz)',
-                title: this.name,
-                rotateSpeed: res.result.device.rotateSpeed,
-                pagemap: 'fft'
-              }
-            });
-
-
-          }
-          // debugger
+    },
+    wszdqst(val) {
+      this.deviceNo = wx.getStorageSync('deviceNo');
+      this.channel = this.data.outInfo.channel;
+      this.dataType = this.data.outInfo.kpiFlag == 1 ? 'acceleration' : 'speed';
+      this.timeformat = util.timeformat;
+      // debugger;
+      // return;
+      const data = val[this.deviceNo];
+      if (data) {
+        let datainfo = data.filter(item => {
+          return item.channel === this.channel && item.attribute === this.dataType;
         });
+        const newDatas = datainfo[0];
+        const time = this.timeformat(Number(newDatas.dateTime));
+        const newval = newDatas.validValue;
+        
+        const oldTimeList = this.data.lineParamsObj.time;
+        if (oldTimeList.indexOf(time) > -1) {
+          console.log('新增数据为重复数据');
+          return;
+        } else {
+          debugger
+          this.data.lineParamsObj.time.push(time);
+          this.data.lineParamsObj.value.push(newval);
+          this.setData({
+            'lineParamsObj.time': this.data.lineParamsObj.time,
+            'lineParamsObj.value': this.data.lineParamsObj.value,
 
+          });
+        }
       }
-
-
     },
     listChannel() {
       // debugger

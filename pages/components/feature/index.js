@@ -368,8 +368,10 @@ Component({
       // debugger
       try{
         this.chart.clear(); // 清楚累加数据
-        this.chart.setOption(option);
       }catch(e){}
+      try {
+        this.chart.setOption(option);
+      } catch (e) { }
       
       
     }
