@@ -145,20 +145,20 @@ Component({
         padding: 10
       },
       calculable: true,
-      dataZoom: {
-        show: false,
-        realtime: true,
-        start: 20,
-        end: 80,
-        height: 8,
-        bottom: 10,
-        // y: 300 //下面滚轮的位置
+      // dataZoom: {
+      //   show: false,
+      //   realtime: true,
+      //   start: 20,
+      //   end: 80,
+      //   height: 8,
+      //   bottom: 10,
+      //   // y: 300 //下面滚轮的位置
 
-      },
+      // },
       grid: {
-        top: 40,
-        bottom: 20,
-        left: 40,
+        top: 20,
+        bottom: 30,
+        left: 50,
         right: 40,
       },
       xAxis: [
@@ -177,6 +177,8 @@ Component({
           },
           axisLabel: {
             show: true,
+            // interval: 0,
+            rotate: 40,
             textStyle: {
               fontSize: '12rpx',
               color: '#979797',
@@ -233,7 +235,7 @@ Component({
           symbol: 'circle',
           symbolSize: 1,
           data: [0, 0, 0, 0, 0, 0, 0, 0],
-          barMaxWidth: 24,
+          barMaxWidth: 20,
           itemStyle: {
             normal: {
               label: {
