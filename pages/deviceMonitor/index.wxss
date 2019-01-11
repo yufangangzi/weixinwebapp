@@ -5,3 +5,33 @@
   height:200rpx;
   margin:0 auto;
 }
+
+
+.ub {
+  display: flex;
+}
+
+.ub-f1 {
+  flex: 1;
+}
+
+.wid {
+  width: 180rpx;
+}
+
+.ub-pc {
+  align-items: center;
+}
+.ub-ac {
+  justify-content: center;
+}
+
+.t-bla{
+  color: #000;
+}
+
+.f30{
+  font-size: 60rpx;
+
+}
+

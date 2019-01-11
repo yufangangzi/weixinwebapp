@@ -14,6 +14,12 @@ Component({
         content: {
             type: String,
             value: '',
+            observer: function (newVal, oldVal) {
+              setTimeout(()=>{
+                this.clearMarqueeTimer()
+                this.initAnimation();
+              },50)
+            }
         },
         mode: {
             type: String,

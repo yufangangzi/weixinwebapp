@@ -480,6 +480,29 @@ const getByCode = (data, successcb, failcb) => {
   })
 }
 
+// 获取报警数据
+const alarmList2 = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'deviceAlarm/alarmList',
+    data: {},
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
 module.exports = {
   baseUrl: baseUrl,
   timeformat: timeformat,
@@ -494,6 +517,7 @@ module.exports = {
   fftFigure: fftFigure,
   listHistoryData2: listHistoryData2,
   listNewByGroup2: listNewByGroup2,
+  alarmList2: alarmList2,
   wxlogin: wxlogin,
   wxbind: wxbind,
   allNotAccept: allNotAccept,

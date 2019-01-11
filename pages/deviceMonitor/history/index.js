@@ -327,6 +327,41 @@ Component({
       }, 1500)
     },
 
+    chooseItem(e){
+      const info = e.currentTarget.dataset.info;
+      const channel = e.currentTarget.dataset.channel;
+      
+      const timereg = /-/g
+      const obj = {
+        selfPageName: 'zdqst',
+        token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
+        pagemap: 'zdqs',
+        timeSpan: 129600,
+        channel: channel,
+        dataType: this.data.value2,
+        statisStartTime: info.dateTime,
+        parameterTime: info.dateTime,
+        statisDimen: 'second',
+        pageSize:0,
+        // valueshow: this.data.title2
+      }
+      const valueshow = {
+        kpiFlag: this.data.value2 === 'speed' ? '0' : '1',
+        valueshow: this.data.value2 === 'speed' ? '速度' : '加速度'
+      }
+      const paramsobj = Object.assign({}, obj, this.data.outInfo, valueshow);
+      // debugger;
+      const params = Object.keys(paramsobj).map(function (key) {
+        // body...
+        return encodeURIComponent(key) + "=" + encodeURIComponent(paramsobj[key]);
+      }).join("&");
+      console.log(params)
+      wx.navigateTo({
+        url: `../../pages/daping/index?${params}`,
+      })
+      
+    },
+
     listChannel() {
       // debugger
       let obj = {

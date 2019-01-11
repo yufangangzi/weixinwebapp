@@ -46,6 +46,18 @@ Component({
         
       }
     },
+    outWsdata: {
+      type: Object,
+      // value: '',
+      observer: function (newVal, oldVal) {
+        // console.log('newVal:', newVal, ';oldVal:', oldVal);
+
+        if (oldVal && newVal) {
+          // debugger;
+          this.distributeMessage(newVal.data);
+        }
+      }
+    },
     paramDevice:Object,
     outFlag: {
       type: Object,
@@ -201,13 +213,13 @@ Component({
       }
 
       // 监听websocket消息 
-      let _this = this;
-      wx.onSocketMessage(function (res) {
-        let data = res.data
-        if (data) {
-          _this.distributeMessage(data)
-        }
-      })
+      // let _this = this;
+      // wx.onSocketMessage(function (res) {
+      //   let data = res.data
+      //   if (data) {
+      //     _this.distributeMessage(data)
+      //   }
+      // })
 
 
     },
@@ -216,7 +228,9 @@ Component({
         try {
           const val = JSON.parse(data);
           if (val.code === 1102) {
-              this.wszdqst(val.result)
+              // this.wszdqst(val.result)
+              this.pytInit(val.result)
+
             
           }
         } catch (e) {
@@ -224,28 +238,37 @@ Component({
         }
       }
     },
-    wszdqst (val) {
+    
+    pytInit (val) {
       this.deviceNo = wx.getStorageSync('deviceNo');
       this.channel = this.data.outInfo.channel;
-      this.dataType  = this.data.outInfo.dataType;
-      debugger;
-      return;
+      this.dataType = this.data.outInfo.kpiFlag == 1 ? 'acceleration' : 'speed';
+      this.timeformat = util.timeformat;
+      // debugger;
       const data = val[this.deviceNo];
-      let datainfo = data.filter(item => {
-        return item.channel === this.channel && item.attribute === this.dataType;
-      });
-      const newDatas = datainfo[0];
-      const time = this.timeformat(Number(newDatas.dateTime));
-      const newval = newDatas.validValue;
-      const oldTimeList = this.chartsData.xAxis[0].data;
-      if (oldTimeList.indexOf(time) > -1) {
-        console.log('新增数据为重复数据');
-        return;
-      } else {
-        this.chartsData.xAxis[0].data.push(time);
-        this.chartsData.series[0].data.push(newval);
-        this.updateOptionMap(this.chartsData)
+      if(data){
+        let datainfo = data.filter(item => {
+          return item.channel === this.channel && item.attribute === this.dataType;
+        });
+        const newInfo = datainfo[0];
+        let ary = [];
+        ary.push(newInfo.zeroPointTwoDegree);
+        ary.push(newInfo.zeroPointThreeDegree);
+        ary.push(newInfo.zeroPointFiveDegree);
+        ary.push(newInfo.oneDegree);
+        ary.push(newInfo.twoDegree);
+        ary.push(newInfo.threeDegree);
+        ary.push(newInfo.fiveDegree);
+        ary.push(newInfo.tenDegree);
+        // this.pyChartsData.yAxis[0].name = this.dataType === 'speed' ? '速度(mm/s)' : '加速度(m/s2)';
+        // this.pyChartsData.title.text = '频域特征图';
+        // this.pyChartsData.series[0].data = ary;
+
+        this.setData({
+          'lineParamsObj.value': ary
+        });
       }
+
     },
 
     listChannel() {

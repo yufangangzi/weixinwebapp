@@ -51,7 +51,7 @@
     <span class="item-1">{{item}}</span>
     <image class="trendicon" mode="aspectFit" src="{{trendSrc}}" ></image>
   </view>
-  <view wx:for="{{tablelist}}" wx:for-item="it" wx:key="index" class="item" bindtap="chooseItem">
+  <view wx:for="{{tablelist}}" wx:for-item="it" wx:key="index" class="item" bindtap="chooseItem" data-info="{{it}}" data-channel="{{item}}">
     {{it[item]}}
   </view>
 </view> 

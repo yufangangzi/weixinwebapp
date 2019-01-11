@@ -47,6 +47,7 @@ Page({
       name: '传参',
     },
     lineChart: null,
+    wsdata: {},
   },
 
   
@@ -279,7 +280,19 @@ Page({
     
     // this.getDetail();
 
-
+    // 监听websocket消息 
+    let _this = this;
+    wx.onSocketMessage(function (res) {
+      let data = res.data
+      // debugger
+      if (data) {
+        _this.setData({
+          'wsdata': {
+            data: data
+          }
+        })
+      }
+    })
     
   },
 

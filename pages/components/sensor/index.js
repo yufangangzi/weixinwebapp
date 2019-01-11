@@ -33,7 +33,7 @@ Component({
       const parameterTime = obj.createTime;
       const deviceNo = '';
       const statisDimen = 'second';
-      const timeSpan = 10;
+      const timeSpan = 360;
       const pageSize = 0;
       
       wx.navigateTo({
@@ -48,7 +48,7 @@ Component({
       const parameterTime = obj.createTime;
       const deviceNo = '';
       const statisDimen = 'second';
-      const timeSpan = 10;
+      const timeSpan = 360;
       const pageSize = 0;
 
       wx.navigateTo({
