@@ -8,13 +8,16 @@ Component({
     deviceData: {
       type: Object,
       observer: function (newVal, oldVal, changedPath) {
+        console.log(newVal)
+        if (newVal.sensorList){
+          this.infosInit(newVal)
+        }
         return newVal
       }
     },
     deviceinfos: {
       type: Object,
       observer: function (newVal, oldVal, changedPath) {
-        console.log(newVal)
         this.formateTime()
         return newVal
       }
@@ -26,7 +29,11 @@ Component({
       type: Number
     },
     deviceNo: {
-      type: String
+      type: String,
+      observer: function (newVal, oldVal, changedPath) {
+        this.infosInit2()
+        return newVal
+      }
     }
   },
 
@@ -34,7 +41,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    setupTime: ''
+    setupTime: '',
+    devices: {}
   },
 
   /**
@@ -52,6 +60,27 @@ Component({
       this.setData({
         setupTime: units.timeformat(new Date(Number(_this.data.deviceinfos.setupTime)))
       })
+    },
+    infosInit2 () {
+      if (this.properties.deviceData && this.properties.deviceData.sensorList  && this.data.deviceNo) {
+        const info = this.properties.deviceData.sensorList[this.data.deviceNo]
+        if (info) {
+          this.setData({
+            devices: info
+          })
+        }
+      }
+      
+    },
+    infosInit (data) {
+      const info = data.sensorList[this.data.deviceNo]
+      if (info) {
+        this.setData({
+          devices: info
+        })
+      }
+      
+      console.log(this.data.devices)
     }
   },
 })
