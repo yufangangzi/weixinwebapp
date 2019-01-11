@@ -200,10 +200,54 @@ Component({
 
       }
 
-      
+      // 监听websocket消息 
+      let _this = this;
+      wx.onSocketMessage(function (res) {
+        let data = res.data
+        if (data) {
+          _this.distributeMessage(data)
+        }
+      })
 
 
     },
+    distributeMessage (data) {
+      if (typeof (data) === 'string') {
+        try {
+          const val = JSON.parse(data);
+          if (val.code === 1102) {
+              this.wszdqst(val.result)
+            
+          }
+        } catch (e) {
+
+        }
+      }
+    },
+    wszdqst (val) {
+      this.deviceNo = wx.getStorageSync('deviceNo');
+      this.channel = this.data.outInfo.channel;
+      this.dataType  = this.data.outInfo.dataType;
+      debugger;
+      return;
+      const data = val[this.deviceNo];
+      let datainfo = data.filter(item => {
+        return item.channel === this.channel && item.attribute === this.dataType;
+      });
+      const newDatas = datainfo[0];
+      const time = this.timeformat(Number(newDatas.dateTime));
+      const newval = newDatas.validValue;
+      const oldTimeList = this.chartsData.xAxis[0].data;
+      if (oldTimeList.indexOf(time) > -1) {
+        console.log('新增数据为重复数据');
+        return;
+      } else {
+        this.chartsData.xAxis[0].data.push(time);
+        this.chartsData.series[0].data.push(newval);
+        this.updateOptionMap(this.chartsData)
+      }
+    },
+
     listChannel() {
       // debugger
       let obj = {
