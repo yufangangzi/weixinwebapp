@@ -2,6 +2,8 @@
 <wux-select id="wux-select3" />
 <view class="page">
   <view class="page__bd">
+    <view class="ub ub-ac t-bla f30">设备状况一览</view>
+    <wux-notice-bar loop  hidden="{{warningMsg==''}}" style="display:{{warningMsg=='' ? 'none' : 'flex'}}" content="{{ warningMsg }}" />
     <wux-grids bordered="{{ false }}" >
       <wux-grid  wx:for="{{ relist }}" wx:key="{{index}}" thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="{{item.lable}}" id="{{index}}" bind:click="onClick3" />
       <!-- <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="催化裂化" />

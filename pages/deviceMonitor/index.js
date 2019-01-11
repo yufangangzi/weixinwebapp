@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    warningMsg: '',
     value3: '',
     title3: '',
     codeArr: [], // 设备编号
@@ -52,6 +53,22 @@ Page({
 
     this.getFiterList();  //选项
     app.initSocket()
+
+
+    // 监听websocket消息 
+    let _this = this;
+    wx.onSocketMessage(function (res) {
+      let data = res.data
+      // debugger
+      try{
+        const val = JSON.parse(data);
+        if (val.code === 1101 && val.result && val.result.alarmDevice) {
+          this.handleAlarm(val.result.alarmDevice);
+        }
+      }catch(e){
+
+      }
+    })
   },
 
   /**
@@ -127,9 +144,43 @@ Page({
           'codeArr': res.result,
          
         })
+
+
+        this.getAlarmList();
       }
     }, err => {
     });
+  },
+  getAlarmList(params = {}) {
+    util.alarmList2(params, res => {
+      if (res.code === 1101 && res.result) {
+
+        // debugger;
+        this.handleAlarm(res.result);
+      }
+    }, err => {
+    });
+  },
+  handleAlarm(res){
+    // debugger;
+    if (Array.isArray(res)) {
+      let arr = res.filter(item => {
+        return this.data.relist.find(it => {
+          return it.unitName == item.deviceUnitName;
+        })
+      });
+      if(Array.isArray(arr)){
+        arr = arr.map(item => item.deviceUnitName);
+        this.setData({
+          warningMsg: '温馨提示：'+arr.join('、')+'单元内有设备报警，请尽快排查处理！'
+        })
+      }else{
+        this.setData({
+          warningMsg: ''
+        })
+      }
+      // debugger;
+    }
   },
  // sel start
   onClick3(e) {
