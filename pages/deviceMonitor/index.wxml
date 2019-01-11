@@ -3,7 +3,7 @@
 <view class="page">
   <view class="page__bd">
     <wux-grids bordered="{{ false }}" >
-      <wux-grid  wx:for="{{ relist }}" thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="{{item.lable}}" id="{{index}}" bind:click="onClick3" />
+      <wux-grid  wx:for="{{ relist }}" wx:key="{{index}}" thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="{{item.lable}}" id="{{index}}" bind:click="onClick3" />
       <!-- <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="催化裂化" />
       <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="延迟焦化" />
       <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="蜡油加氢" />
