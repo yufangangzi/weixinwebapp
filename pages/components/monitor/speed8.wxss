@@ -1,1 +1,49 @@
 /* pages/components/monitor/speed8.wxss */
+.speed-device{
+  position: relative;
+  height:980rpx;
+  background:linear-gradient(138deg,rgba(98,150,255,1) 0%,rgba(45,78,231,1) 100%);
+}
+.ico{
+  width:770rpx;
+  height:308rpx;
+  position:absolute;
+  margin-left:-38rpx;
+  margin-top:302rpx;
+  transform:rotate(90deg);
+}
+.sensor{
+  position: absolute;
+}
+.sensor1{
+  right:12rpx;
+  top:44rpx
+}
+.sensor2{
+  right:6rpx;
+  top:240rpx;
+}
+.sensor3{
+  left:62rpx;
+  top:44rpx;
+}
+.sensor4{
+  left:62rpx;
+  top:262rpx;
+}
+.sensor5{
+  left:31rpx;
+  top:443rpx;
+}
+.sensor6{
+  right:6rpx;
+  top:444rpx;
+}
+.sensor7{
+  left:31rpx;
+  top:759rpx;
+}
+.sensor8{
+  right:6rpx;
+  top:759rpx;
+}

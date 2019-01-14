@@ -1,2 +1,28 @@
 <!--pages/components/monitor/speed8.wxml-->
-<text>pages/components/monitor/speed8.wxml</text>
+<view class='speed-device'>
+  <image class='ico' src='{{deviceImg}}'></image>
+  <view class='sensor sensor1'>
+    <sensor sensorData="{{deviceData.sensor2v}}"></sensor>
+  </view>
+  <view class='sensor sensor2'>
+    <sensor sensorData="{{deviceData.sensor4v}}"></sensor>
+  </view>
+  <view class='sensor sensor3'>
+    <sensor sensorData="{{deviceData.sensor1h}}"></sensor>
+  </view>
+  <view class='sensor sensor4'>
+    <sensor sensorData="{{deviceData.sensor3h}}"></sensor>
+  </view>
+  <view class='sensor sensor5'>
+    <sensor sensorData="{{deviceData.sensor5h}}"></sensor>
+  </view>
+  <view class='sensor sensor6'>
+    <sensor sensorData="{{deviceData.sensor6v}}"></sensor>
+  </view>
+  <view class='sensor sensor7'>
+    <sensor sensorData="{{deviceData.sensor7h}}"></sensor>
+  </view>
+  <view class='sensor sensor8'>
+    <sensor sensorData="{{deviceData.sensor8v}}"></sensor>
+  </view>
+</view>

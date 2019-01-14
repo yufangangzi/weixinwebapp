@@ -12,29 +12,32 @@
   </block>
 
   <!-- 下面数据可从storage取 -->
-  <view class='ub padl10 padb10 c-wh'>
-    <view class='wid'>设备类型：</view>
-    <view class='ub-f1'>{{deviceinfos.structure}}</view>
+  <view class='deviceinfo'>
+    <view class='ub padl10 padb10 c-wh'>
+      <view class='wid wid-first'>设备类型</view>
+      <view class='ub-f1 ub-f1-first'>{{deviceinfos.structure}}</view>
+    </view>
+
+    <view class='ub padl10 padb10 c-wh'>
+      <view class='wid'>设备型号：</view>
+      <view class='ub-f1'>{{deviceinfos.bearingTypeNotDriveEnd}}</view>
+    </view>
+
+    <view class='ub padl10 padb10 c-wh'>
+      <view class='wid'>设计寿命：</view>
+      <view class='ub-f1'>{{deviceinfos.designLife}} 年</view>
+    </view>
+
+    <view class='ub padl10 padb10 c-wh'>
+      <view class='wid'>安装时间：</view>
+      <view class='ub-f1'>{{setupTime}}</view>
+    </view>
+
+    <view class='ub padl10 padb10 c-wh'>
+      <view class='wid'>生产厂家：</view>
+      <view class='ub-f1'>{{deviceinfos.factory}}</view>
+    </view>
   </view>
 
-  <view class='ub padl10 padb10 c-wh'>
-    <view class='wid'>设备型号：</view>
-    <view class='ub-f1'>{{deviceinfos.bearingTypeNotDriveEnd}}</view>
-  </view>
-
-  <view class='ub padl10 padb10 c-wh'>
-    <view class='wid'>设计寿命：</view>
-    <view class='ub-f1'>{{deviceinfos.designLife}} 年</view>
-  </view>
-
-  <view class='ub padl10 padb10 c-wh'>
-    <view class='wid'>安装时间：</view>
-    <view class='ub-f1'>{{setupTime}}</view>
-  </view>
-
-  <view class='ub padl10 padb10 c-wh'>
-    <view class='wid'>生产厂家：</view>
-    <view class='ub-f1'>{{deviceinfos.factory}}</view>
-  </view>
 
 </view>

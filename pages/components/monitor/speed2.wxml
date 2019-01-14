@@ -1,2 +1,10 @@
 <!--pages/components/monitor/speed2.wxml-->
-<text>pages/components/monitor/speed2.wxml</text>
+<view class='speed-device'>
+  <image class='ico' src='{{deviceImg}}'></image>
+  <view class='sensor sensor1'>
+    <sensor sensorData="{{deviceData.sensor2v}}"></sensor>
+  </view>
+  <view class='sensor sensor3'>
+    <sensor sensorData="{{deviceData.sensor1h}}"></sensor>
+  </view>
+</view>
