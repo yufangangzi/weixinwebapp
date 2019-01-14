@@ -1,6 +1,8 @@
 import baseBehavior from '../helpers/baseBehavior'
 import mergeOptionsToData from '../helpers/mergeOptionsToData'
 
+const app = getApp();
+// debugger;
 const defaults = {
     value: '',
     options: [],
@@ -27,6 +29,9 @@ const getSelectIndex = ({ value = '', options = [], multiple = false }) => {
 }
 
 Component({
+    data: {
+      wHeight: '540rpx',
+    },
     behaviors: [baseBehavior],
     externalClasses: ['wux-class'],
     data: mergeOptionsToData(defaults),
@@ -35,6 +40,10 @@ Component({
          * 打开
          */
         open(opts = {}) {
+            // debugger
+            this.setData({
+              wHeight: (app.globalData.winHeight - 95) + 'px'
+            })
             const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts, {
                 max: parseInt(opts.max),
             }))
@@ -57,7 +66,9 @@ Component({
          * 点击确定按钮时的回调函数
          */
         onConfirm() {
-            this.close(this.fns.onConfirm)
+            setTimeout(() => {
+              this.close(this.fns.onConfirm)
+            },500)
         },
         /**
          * 点击取消按钮时的回调函数
@@ -71,7 +82,10 @@ Component({
         onCheckboxChange(e) {
             const oldValue = this.data.value
             const { value: newValue, checked } = e.detail
-            const value = checked ? [...oldValue, newValue] : oldValue.filter((n) => n !== newValue)
+            // debugger
+            // const value = checked ? [...oldValue, newValue] : oldValue.filter((n) => n !== newValue)
+            // const value = checked ? [newValue] : oldValue.filter((n) => n !== newValue)
+            const value = checked ? [newValue] : oldValue;
             const index = getSelectIndex({ ...this.data, value })
 
             this.onChange(value, index)

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/deviceMonitor/devicemonitor",
     "pages/deviceMonitor/index",
+    "pages/deviceMonitor/devicemonitor",
     "pages/first/first",
     "pages/deviceMonitor/detail",
     "pages/historAlarm/historAlarm",

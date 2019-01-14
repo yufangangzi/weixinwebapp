@@ -33,8 +33,9 @@ Component({
         },
         color: {
             type: String,
-            value: 'balanced',
+            value: 'custom',
             observer(newVal) {
+                // debugger;
                 this.setData({
                     inputColor: isPresetColor(newVal),
                 })

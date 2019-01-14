@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    warningList: [],
     warningMsg: '',
     value3: '',
     title3: '',
@@ -44,6 +45,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    //获取系统信息 
+    wx.getSystemInfo({
+      success(res) {
+        app.globalData.winHeight = res.windowHeight;
+      }
+    })
 
     this.setData({
       deviceParamsObj: {
@@ -180,9 +188,11 @@ Page({
         })
       });
       if(Array.isArray(arr)){
-        arr = arr.map(item => item.deviceUnitName);
+        const arr1 = arr.map(item => item.deviceUnitName);
+        const arr2 = arr.map(item => item.deviceCode);
         this.setData({
-          warningMsg: '温馨提示：'+arr.join('、')+'单元内有设备报警，请尽快排查处理！'
+          warningMsg: '温馨提示：'+arr1.join('、')+'单元内有设备报警，请尽快排查处理！',
+          warningList: arr2
         })
       }else{
         this.setData({
@@ -196,9 +206,12 @@ Page({
   onClick3(e) {
     let index = e.currentTarget.id;
     let devName = e.detail.label;
+    const warningList = this.data.warningList;
     const codeOption = this.data.codeArr[index].menuDeviceList.map((n) => Object.assign({},  {
       title: n,
       value: n,
+      color: 'custom',
+      extra: warningList.find(o => n.indexOf(o)>-1) ? 'warnicon' : 'normalicon'
     }))
     // debugger
     $wuxSelect('#wux-select3').open({
