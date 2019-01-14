@@ -11,6 +11,10 @@
   display: flex;
 }
 
+.ub-dir{
+  flex-direction: column;
+}
+
 .ub-f1 {
   flex: 1;
 }
@@ -35,3 +39,35 @@
 
 }
 
+.box{
+  background:linear-gradient(180deg,rgba(30,53,113,1) 0%,rgba(21,35,74,1) 100%);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.item{
+  width:100px;
+  height:115px;
+  background:linear-gradient(138deg,rgba(98,150,255,1) 0%,rgba(45,78,231,1) 100%);
+  border-radius:2px;
+  text-align: center;
+  position: relative;
+}
+
+.rt {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 18px;
+  height: 18px;
+}
+
+.txt{
+  height:17px;
+  font-size:12px;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:17px;
+}
