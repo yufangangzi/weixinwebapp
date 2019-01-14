@@ -4,8 +4,15 @@
 <wux-select id="wux-select1" style="z-index: 1000;" />
 <wux-select id="wux-select2" style="z-index: 1000;" />
 <wux-select id="wux-select3" style="z-index: 1000;" />
+
+<!-- <view class="ub">
+  <view wx:for="{{deviceLists}}" wx:key="{{index}}" class="ub-f1 ub ub-ac ub-pc t-item {{tabIndex==index ? 't-sel': ''}}" bindtap='switchTab' data-code="{{item}}" data-index="{{index}}">
+    <view class="">{{item}}</view>
+  </view>
+</view> -->
+
 <view class="bg-top">
-  <image style="width:100%;background-color: #eeeeee;height:140rpx;" mode="scaleToFill" src="{{imgSrc}}"></image>
+  <!-- <image style="width:100%;background-color: #eeeeee;height:140rpx;" mode="scaleToFill" src="{{imgSrc}}"></image> -->
   <!-- <view class="bg-img" style="background-image:url({{imgSrc}});"></view> -->
   <view class="pos">
     <view style="display:inline-block;vertical-align:middle;width:50%;">
@@ -24,44 +31,44 @@
 
   </view>
 
-  <view style="margin-top: -60rpx;z-index:999;position:relative;">
+  <view style="margin-left: 11px;margin-right: 11px;">
+  <view style="margin-top: 14rpx;z-index:999;position:relative;background:linear-gradient(360deg,rgba(37,203,249,1) 0%,rgba(0,135,255,1) 100%);">
     <wux-wing-blank size="default">
-        <view style="height:410rpx;background-color:#fff;z-index:999;">
+        <view style="height:782rpx;z-index:999;">
           <custom-map paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" out-wsdata="{{wsdata}}" bind:myevent="fatherRecvFn" bind:mybtnevent="btnRecFn"  out-flag="{{mapFlag}}"></custom-map>
         </view>
-        <view style="height:36rpx;background-color:#fff;z-index:999;font-size:24rpx;text-align:center;">振动趋势图</view>
-        <view style="background-color:#fff;">
-        <wux-row>
-          <wux-col span="5">
-            <view class="placeholder" style="background-color:#fff;">
-          <wux-button block type="{{btnEnabled ? 'positive' : 'stable'}}" size="small" bind:click="open2SYBX" disabled="{{!btnEnabled}}">时域波形图</wux-button>
+        <view style="height:36rpx;color:#fff;z-index:999;font-size:26rpx;text-align:center;letter-spacing:1px;">振动趋势图</view>
+        
+        <view class="ub" style="margin-top: 15px;">
+            <view class="ub-f1 ub ub-pc ub-ac" style="">
+          <!-- <wux-button block type="{{btnEnabled ? 'positive' : 'stable'}}" size="small" bind:click="open2SYBX" disabled="{{!btnEnabled}}">时域波形图</wux-button> -->
+              <view class="{{btnEnabled ? 'positive' : 'stable'}}" bindtap="open2SYBX" disabled="{{!btnEnabled}}">时域波形图</view>
             </view>
-          </wux-col>
-          <wux-col span="2"></wux-col>
-          <wux-col span="5">
-            <view class="placeholder" style="background-color:#fff;">
-          <wux-button block type="{{btnEnabled ? 'positive' : 'stable'}}" size="small" bind:click="open2FFT" disabled="{{!btnEnabled}}">FFT</wux-button>
+          
+            <view class="ub-f1 ub ub-pc ub-ac" style="">
+          <!-- <wux-button block type="{{btnEnabled ? 'positive' : 'stable'}}" size="small" bind:click="open2FFT" disabled="{{!btnEnabled}}">FFT</wux-button> -->
+              <view class="{{btnEnabled ? 'positive' : 'stable'}}" bindtap="open2FFT" disabled="{{!btnEnabled}}">FFT</view>
             </view>
-          </wux-col>
-        </wux-row>
+          
         </view>
-        <view style="height:46rpx;background-color:#fff !important;z-index:999;font-size:22rpx;text-align:left;color:#ccc;padding-left:20rpx;">
-        <span style="height:8px;width:8px;border-radius:100%;background-color:#f33;display:inline-block;"></span>
+        <view style="height:46rpx;z-index:999;font-size:26rpx;text-align:left;color:#ccc;padding-left:20px;color:#FF6F6F;margin-top:9px;">
+        <span style="height:8px;width:8px;border-radius:100%;display:inline-block;">*</span>
         点击选择上图任一时间点查看时域波形图和FFT</view>
     </wux-wing-blank>
   </view>
 
-  <view style="margin-top:18rpx;z-index:999;position:relative;">
+  <view style="margin-top:13rpx;z-index:999;position:relative;background:linear-gradient(360deg,rgba(37,203,249,1) 0%,rgba(0,135,255,1) 100%);">
     <wux-wing-blank size="default">
-        <view style="height:410rpx;background-color:#fff;z-index:999;">
+        <view style="height:618rpx;z-index:999;">
           <custom-map-feature paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" out-wsdata="{{wsdata}}" bind:myevent="fatherRecvFn" bind:mybtnevent="btnRecFn"  out-flag="{{mapFlag}}"></custom-map-feature>
         </view>
-        <view style="height:46rpx;background-color:#fff;z-index:999;font-size:24rpx;text-align:center;">频域特征图</view>
+        <view style="height:46rpx;color:#fff;z-index:999;font-size:26rpx;text-align:center;letter-spacing:1px;">频域特征图</view>
         
     </wux-wing-blank>
   </view>
 
-  <view style="height: 50px;"></view>
+  <view style="height: 20px;"></view>
+  </view>
 
 
 </view>

@@ -162,7 +162,7 @@ Page({
       value: this.data.value2,
       // multiple: true,
       toolbar: {
-        title: '请选择指派人员',
+        title: '请选择维保单位',
         confirmText: '确定',
       },
       options: options,
@@ -327,15 +327,38 @@ Page({
       })
     }
 
-    if (repairPeopleList) {
-      repairPeopleList = JSON.parse(repairPeopleList);
-      repairPeopleList = repairPeopleList.map(v => { return { title: v.label, value: v.value } });
-      // debugger;
+    // if (repairPeopleList) {
+    //   repairPeopleList = JSON.parse(repairPeopleList);
+    //   repairPeopleList = repairPeopleList.map(v => { return { title: v.label, value: v.value } });
+    //   // debugger;
 
-      this.setData({
-        repairPeopleList: repairPeopleList
-      })
-    }
+    //   this.setData({
+    //     repairPeopleList: repairPeopleList
+    //   })
+    // }
+    // 改成4个固定的维保单位
+    repairPeopleList = [
+      {
+        value: '洛阳三隆',
+        label: '洛阳三隆'
+      },
+      {
+        value: '茂化建',
+        label: '茂化建'
+      },
+      {
+        value: '青岛检安',
+        label: '青岛检安'
+      },
+      {
+        value: '长岭机电',
+        label: '长岭机电'
+      }
+    ];
+    repairPeopleList = repairPeopleList.map(v => { return { title: v.label, value: v.value } });
+    this.setData({
+      repairPeopleList: repairPeopleList
+    })
 
   },
 

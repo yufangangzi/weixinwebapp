@@ -49,7 +49,7 @@
     {{it.reportTime}}
   </view>
 </view> 
-<view wx:for="{{initChannel}}" wx:for-index="idx" wx:key="idx" class="w20 hovertxt">
+<view wx:for="{{initChannel}}" wx:for-index="idx" wx:key="idx" class="{{ initChannel.length>2 ? 'w20' : 'w22' }} hovertxt">
   <view class="item-title">
     <span class="item-1">{{item}}</span>
     <image class="trendicon" mode="aspectFit" src="{{trendSrc}}" ></image>

@@ -239,3 +239,16 @@ page{
 .weui-media-box_small-appmsg {
   padding: 0;
 }
+
+.ub {
+  display: flex;
+}
+.ub-f1{
+  flex: 1;
+}
+.ub-pc{
+  justify-content: center;
+}
+.ub-ac{
+  align-items: center;
+}
