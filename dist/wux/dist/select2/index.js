@@ -42,7 +42,7 @@ Component({
         open(opts = {}) {
             // debugger
             this.setData({
-              wHeight: (app.globalData.winHeight - 95) + 'px'
+              wHeight: (app.globalData.winHeight - 88) + 'px'
             })
             const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts, {
                 max: parseInt(opts.max),
