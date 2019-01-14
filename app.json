@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/deviceMonitor/index",
     "pages/deviceMonitor/devicemonitor",
+    "pages/deviceMonitor/index",
     "pages/first/first",
     "pages/deviceMonitor/detail",
     "pages/historAlarm/historAlarm",
@@ -26,8 +26,8 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#000",
-    "selectedColor": "#f00",
+    "color": "#AFAFAF",
+    "selectedColor": "#5878E4",
     "backgroundColor": "#fff",
     "borderStyle": "black",
     "position": "bottom",

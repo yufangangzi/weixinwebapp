@@ -124,6 +124,16 @@ Page({
   onShareAppMessage: function () {
 
   },
+
+  onTabItemTap(item) {
+    // debugger;
+    wx.setTabBarStyle({
+      // color: '#FF0000',
+      selectedColor: '#5878E4',
+      // backgroundColor: '#0000FF',
+      // borderStyle: 'white'
+    })
+  },
   // 获取筛选接口数据
   getFiterList(params = {}) {
     util.listMenu(params, res => {

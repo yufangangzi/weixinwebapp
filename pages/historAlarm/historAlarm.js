@@ -116,6 +116,15 @@ Page({
 
     ],
   },
+  onTabItemTap(item) {
+    // debugger;
+    wx.setTabBarStyle({
+      // color: '#FF0000',
+      selectedColor: '#E70000',
+      // backgroundColor: '#0000FF',
+      // borderStyle: 'white'
+    })
+  },
   onLoad(obj) {
     // 主要作用是从详情页修改状态返回后刷新列表
 

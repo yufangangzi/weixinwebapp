@@ -2,23 +2,26 @@
 <wux-select id="wux-select2" />
 <wux-calendar id="wux-calendar" />
 
+<view class="bg1">
 
 <view class="bg-top">
   <view class="ff">
-    <view class="lf">历史查询</view>
-    <view class="rf" bindtap="switchRT">实时监测》</view>
+    <view class="lf">
+      <view class="his1">历史查询</view>
+    </view>
+    <view class="rf" bindtap="switchRT">实时监测</view>
   </view>
 
-  <view class="ff">
+  <view class="ff" style="margin-top:24rpx;padding-bottom: 24rpx;">
     <view class="lf">
-      <view bindtap="openSelect2" disabled="buttonClicked" class="cbtn marr19" style="width: 220rpx;">
+      <view bindtap="openSelect2" disabled="buttonClicked" class="cbtn marr19" style="margin-left:20rpx;">
         <view class="ctxt">{{title2}}</view>
         <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
       </view>
     </view>
 
     <view class="lf"><view class="ff2">
-      <view bindtap="openCalendar1" disabled="buttonClicked" class="cbtn marr19">
+      <view bindtap="openCalendar1" disabled="buttonClicked" class="cbtn " style="width: 180rpx;">
         <view class="ctxt">{{startTime[0]}}</view>
       </view>
       </view>
@@ -27,7 +30,7 @@
     <view><span>至</span></view>
 
     <view class="lf"><view class="ff2">
-      <view bindtap="openCalendar2" disabled="buttonClicked" class="cbtn marr19">
+      <view bindtap="openCalendar2" disabled="buttonClicked" class="cbtn marr19" style="width: 180rpx;">
         <view class="ctxt">{{endTime[0]}}</view>
       </view>
       </view>
@@ -35,14 +38,14 @@
 
   </view>
 
-</view><view class="scrool-left">
+</view><view class="scrool-left" style="">
 <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh" pull-end="{{pullEnd}}">
 
 <scroll-view scroll-x="true" style="white-space: nowrap; display: block" class="showmian">
 
 <view class="w30 hovertxt" >
   <view class="item-title">时间</view>
-  <view wx:for="{{tablelist}}" wx:for-item="it" wx:key="index" class="item">
+  <view wx:for="{{tablelist}}" wx:for-item="it" wx:key="index" class="item" style="padding-left: 4rpx;">
     {{it.reportTime}}
   </view>
 </view> 
@@ -83,4 +86,5 @@
 　<view class="weui-loadmore__tips">正在加载</view>
 </view>
 
+</view>
 </view>
