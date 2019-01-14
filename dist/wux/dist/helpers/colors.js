@@ -8,6 +8,7 @@ export const colors = {
     'assertive': '#ef473a',
     'royal': '#886aea',
     'dark': '#444',
+  'custom': '#108EE9',
 }
 
 export const isPresetColor = (color) => {

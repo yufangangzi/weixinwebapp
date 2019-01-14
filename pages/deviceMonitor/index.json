@@ -7,7 +7,7 @@
       "wux-cell-group": "../../dist/wux/dist/cell-group/index",
       "wux-cell": "../../dist/wux/dist/cell/index",
       "wux-notice-bar": "../../dist/wux/dist/notice-bar/index",
-      "wux-select": "../../dist/wux/dist/select/index"
+      "wux-select": "../../dist/wux/dist/select2/index"
 
   }
 }

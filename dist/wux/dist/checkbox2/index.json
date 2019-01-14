@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-cell": "../cell2/index",
+        "wux-selectable": "../selectable/index"
+    }
+}
