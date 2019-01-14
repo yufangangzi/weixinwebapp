@@ -8,7 +8,6 @@ Component({
     deviceData: {
       type: Object,
       observer: function (newVal, oldVal, changedPath) {
-        console.log('newVal', newVal)
         wx.setStorageSync('deviceNo', newVal.deviceNo);
         return newVal
       }

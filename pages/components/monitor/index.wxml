@@ -2,7 +2,7 @@
 <view class='main'>
   <top rotateSpeed="{{rotateSpeed}}"  bind:myevent="fatherRecvFn"></top>
   <block wx:if="{{channelnum===4}}">
-    <speed4 deviceData="{{deviceData.sensorList[deviceNo]}}"></speed4>
+    <speed4 deviceData="{{devices}}"></speed4>
   </block>
   <block wx:if="{{channelnum===2}}">
     <speed2 deviceData="{{deviceData.sensorList[deviceNo]}}"></speed2>

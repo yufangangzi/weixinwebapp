@@ -92,15 +92,18 @@ Page({
     })
   },
   distributeMessage(data) {
+    let _this = this;
     if (typeof (data) === 'string') {
       try {
         const val = JSON.parse(data);
         if (val.code === 1102) {
           // 实时监控
-          this.setData({
+          console.log(this.data.deviceData)
+          _this.setData({
             deviceData: handel.monitorData(val.result, this.structureNum)
           });
-          console.log(val);
+          console.log(handel.monitorData(val.result, this.structureNum));
+          console.log(this.data.deviceData)
         }
       } catch (e) {
         //console.log(e);
@@ -175,7 +178,9 @@ Page({
     })
     const deviceNos = options.deviceNos || '2111-P230A/B/C'
     this.initPage(deviceNos)
-
+    wx.sendSocketMessage({
+      data: options.deviceNos || '2111-P230A/B/C'
+    })
     // this.setData({
     //   deviceParamsObj: {
     //     deviceNo: '2411-K103A'

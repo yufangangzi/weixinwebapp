@@ -46,9 +46,6 @@ App({
 
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
-      wx.sendSocketMessage({
-        data: '2111-P230A/B/C'
-      })
     })
 
     
