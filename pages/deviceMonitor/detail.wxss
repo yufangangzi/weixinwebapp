@@ -11,9 +11,12 @@
 }
 
 .pos{
-  position: absolute;
+  /* position: absolute;
   left:0;
   top:0;
+  width: 100%; */
+  height:40px;
+  background:rgba(221,245,255,1);
   width: 100%;
 }
 
@@ -23,7 +26,7 @@
   height:40rpx;
   font-size:28rpx;
   font-weight:400;
-  color:rgba(255,255,255,1);
+  color:#108EE9;
   line-height:40rpx;
   display: inline-block;
 }
@@ -179,6 +182,45 @@
 }
 
 .placeholder {
-    margin: 10rpx;
-    width: auto;
+    margin-top: 30rpx;
+}
+
+.positive{
+  width:119px;
+  height:40px;
+  background:rgba(255,186,0,1);
+  border-radius:4px;
+
+  font-size:17px;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:40px;
+  text-align: center;
+}
+.stable{
+  width:120px;
+  height:40px;
+  background:rgba(216,216,216,1);
+  border-radius:4px;
+
+  font-size:17px;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:40px;
+  text-align: center;
+}
+
+.c-wh{
+  color: white;
+}
+
+.t-item{
+  height: 88rpx;
+  color: #333333;
+  background-color:#fff;
+  width:100%;
+}
+.t-sel{
+  color: #108EE9;
+  border-bottom: 2px solid #108EE9;
 }

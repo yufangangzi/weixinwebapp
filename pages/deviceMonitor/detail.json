@@ -1,6 +1,6 @@
 {
-  "navigationBarBackgroundColor": "#5E8FE5",
-  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
   "navigationBarTitleText": "设备监测图",
   "backgroundColor": "#F3F4F5",
   "backgroundTextStyle": "light",

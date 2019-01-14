@@ -16,9 +16,7 @@ Component({
         // console.log('newVal:', newVal, ';oldVal:', oldVal);
           // debugger
           if (oldVal && newVal) {
-            setTimeout(()=>{
-              this.setOption(newVal);
-            },50);
+            this.setOption(newVal);
             // debugger
             // this.setData({
             //   'option.series[1].data': [118, 136, 165, 130, 178, 140, 133],
@@ -68,7 +66,59 @@ Component({
     isLoaded: false,
     isDisposed: false,
     
-    
+    markLine1: {
+      silent: true,
+      itemStyle: {
+        normal: {
+          borderWidth: 1,
+          lineStyle: {
+            type: 'solid',
+            // color: '00FFFF ',
+            width: 1
+          },
+          label: {
+            formatter: '高报',
+            textStyle: {
+              fontSize: 16,
+              fontWeight: 'bolder',
+              color: '#00FFFF'
+            }
+          }
+        }
+
+      },
+      data: [
+        {
+          yAxis: 4.5
+        }
+      ]
+    },
+    markLine2: {
+      silent: true,
+      itemStyle: {
+        normal: {
+          borderWidth: 1,
+          lineStyle: {
+            type: 'solid',
+            // color: '#00FF7F ',
+            width: 1
+          },
+          label: {
+            formatter: '高高报',
+            textStyle: {
+              fontSize: 16,
+              fontWeight: 'bolder',
+              color: '#00FF7F'
+            }
+          }
+        }
+      },
+      data: [
+        {
+          yAxis: 7.1
+        }
+      ]
+    },
     option: {
       // title: {
       //   text: '振动趋势图',
@@ -111,17 +161,16 @@ Component({
             if (params[i].seriesName === '加速度') {
               dw = 'm/s2';
             }
-            dw = '';
             res += '\n' + params[i].seriesName + ' : ' + (params[i].value).toFixed(2) + dw;
           }
           // 传给父组件消息
           // debugger
-          // let dw2 = 'mm/s';
-          // if (params[0].seriesName === '加速度') {
-          //   dw2 = 'm/s2';
-          // }
+          let dw2 = 'mm/s';
+          if (params[0].seriesName === '加速度') {
+            dw2 = 'm/s2';
+          }
           // '时间：' + 
-          // _this.triggerEvent('myevent', { time: params[0].name, value: params[0].seriesName + '：' + (params[0].value).toFixed(2) + dw2  });
+          _this.triggerEvent('myevent', { time: params[0].name, value: params[0].seriesName + '：' + (params[0].value).toFixed(2) + dw2  });
 
           setTimeout(function () {
             // 仅为了模拟异步回调
@@ -133,7 +182,7 @@ Component({
         axisPointer: {
           type: 'line',
           lineStyle: {
-            color: '#979797',
+            color: '#fff',
             width: 1,
             type: 'solid'
           },
@@ -145,21 +194,21 @@ Component({
         padding: 10
       },
       calculable: true,
-      // dataZoom: {
-      //   show: false,
-      //   realtime: true,
-      //   start: 20,
-      //   end: 80,
-      //   height: 8,
-      //   bottom: 10,
-      //   // y: 300 //下面滚轮的位置
+      dataZoom: {
+        show: false,
+        realtime: true,
+        start: 20,
+        end: 80,
+        height: 8,
+        bottom: 10,
+        // y: 300 //下面滚轮的位置
 
-      // },
+      },
       grid: {
         top: 40,
         bottom: 30,
-        left: 50,
-        right: 40,
+        left: 60,
+        right: 30,
       },
       xAxis: [
         {
@@ -168,7 +217,7 @@ Component({
           // interval: 30000000000,
           type: 'category',
           boundaryGap: false,
-          data: ['0.2X', '0.33X', '0.5X', '1X', '2X', '3X', '5X', '10X'],
+          data: [],
           axisLine: {
             lineStyle: {
               color: '#979797',
@@ -177,8 +226,6 @@ Component({
           },
           axisLabel: {
             show: true,
-            // interval: 0,
-            rotate: 40,
             textStyle: {
               fontSize: '12rpx',
               color: '#979797',
@@ -203,10 +250,6 @@ Component({
       yAxis: [
         {
           type: 'value',
-          name: '',
-          nameTextStyle: {
-            color: '#fff'
-          },
           axisLine: {
             show:false,
             lineStyle: {
@@ -230,25 +273,13 @@ Component({
       ],
       series: [
         {
-          name: '倍频值',
-          type: 'bar',
+          name: '加速度',
+          type: 'line',
           symbol: 'circle',
           symbolSize: 1,
-          data: [0, 0, 0, 0, 0, 0, 0, 0],
-          barMaxWidth: 20,
+          data: [],
           itemStyle: {
             normal: {
-              label: {
-                show: true,
-                position: 'top',
-                textStyle: {
-                  fontSize: '12rpx',
-                  color: '#979797'
-                },
-                formatter: function (e) {
-                  return Number(e.value).toFixed(2);
-                }
-              },
               borderWidth: 1,
               color: '#63C57A', //拆点颜色
               lineStyle: {
@@ -256,7 +287,64 @@ Component({
               },
             }
           },
-          
+          // markLine: {
+          //   silent: true,
+          //   itemStyle: {
+          //     normal: {
+          //       borderWidth: 1,
+          //       lineStyle: {
+          //         color: '#00ffff',
+          //         type: 'solid',
+          //         width:1
+          //       },
+          //       // label: {
+          //       //     formatter: '高报',
+          //       //     textStyle: {
+          //       //         fontSize: 16,
+          //       //         fontWeight: 'bolder',
+          //       //       color: '#00ffff'
+          //       //     }
+          //       // }
+          //     }
+          //   },
+          //   data: [
+          //     {
+          //       yAxis: 4.5
+          //     }
+          //   ]
+          // }
+        },
+        {
+          name: '速度',
+          type: 'line',
+          data: [],
+          // markLine: {
+          //   silent: true,
+          //   itemStyle: {
+          //     normal: {
+          //         borderWidth: 1,
+          //         lineStyle: {
+          //             type: 'solid',
+          //             color: '#00FF7F ',
+          //             width: 1
+          //         },
+          //         // label: {
+          //         //     formatter: '高高报',
+          //         //     textStyle: {
+          //         //         fontSize: 16,
+          //         //         fontWeight: 'bolder',
+          //         //         color: '#00FF7F'
+          //         //     }
+          //         // }
+          //     }
+
+          //   },
+          //   data: [
+          //     {
+          //         yAxis: 7.1
+          //     }
+          //   ]
+          // }
         }
       ]
     }
@@ -265,9 +353,8 @@ Component({
   ready: function(){
     // 获取组件
     _this = this;
-    this.ecComponent = this.selectComponent('#mychart-dom-fe');
+    this.ecComponent = this.selectComponent('#mychart-dom-line');
     console.log(this.properties.outInfo);
-    // debugger
   },
 
   /**
@@ -318,7 +405,7 @@ Component({
     save() {
       const _this = this;
       // 保存图片到临时的本地文件
-      const ecComponent = this.selectComponent('#mychart-dom-fe');
+      const ecComponent = this.selectComponent('#mychart-dom-line');
       // wx.showModal({ title: 'msg', content: ecComponent.canvasToTempFilePath })
       // debugger
       ecComponent.canvasToTempFilePath({
@@ -356,24 +443,55 @@ Component({
         return;
       }
       console.log(data);
+      // debugger;
       let option = Object.assign({}, this.data.option);
-      // option.series = JSON.parse(JSON.stringify(this.data.option.series));
-      // option.xAxis[0].data = data.time;
+      option.series = JSON.parse(JSON.stringify(this.data.option.series));
+      option.xAxis[0].data = data.time;
       if (data.unit === '速度') {
-        option.yAxis[0].name = '速度(mm/s)';//'mm/s';
+        option.yAxis[0].name = 'mm/s';
+        // option.yAxis[0].nameLocation = 'start';
+        // option.yAxis[0].nameTextStyle = {align: 'left', color: '#f00'};
       } else {
-        option.yAxis[0].name = '加速度(m/s2)';//'m/s2';
+        option.yAxis[0].name = 'm/s2';
+        // option.yAxis[0].nameLocation = 'start';
+        // option.yAxis[0].nameTextStyle = { align: 'left', color: '#f00' };
       }
       option.series[0].data = data.value;
-      // debugger
-      try{
+      option.series[0].name = data.unit;
+      let markLine1 = this.data.markLine1;
+      let markLine2 = this.data.markLine2;
+      markLine1.data[0].yAxis = data.vibrateHighQuote || 4.5;
+      markLine2.data[0].yAxis = data.vibrateHighHighQuote || 7.1;
+      if (data.unit === '速度') {
+        option.series[0].markLine = markLine1;
+        option.series[1].markLine = markLine2
+      } else {
+        option.series[0].markLine = {};
+        option.series[1].markLine = {};
+        option.series[1] = null;
+      }
+      try {
         this.chart.clear(); // 清楚累加数据
-      }catch(e){}
+      } catch (e) { }
+      debugger;
       try {
         this.chart.setOption(option);
       } catch (e) { }
+      // debugger
+      // this.canvas.ctx._context.clearRect(0,0, this.canvas_w, this.canvas_h);
       
-      
+      // this.setData({
+      //   isLoaded: true,
+      //   isDisposed: false
+      // });
+
+      // debugger
+      let dw2 = 'mm/s';
+      if (data.unit === '加速度') {
+        dw2 = 'm/s2';
+      }
+      // '时间：' + 
+      // _this.triggerEvent('myevent', { time: data.time[0], value: data.unit + '：' + (data.value[0]).toFixed(2) + dw2 });
     }
   }
 })

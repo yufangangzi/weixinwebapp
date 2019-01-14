@@ -120,7 +120,7 @@ Component({
     imgIcon1GraySrc: app.globalData.imgUrl + 'qushi@2x1.png',
     imgIcon2GraySrc: app.globalData.imgUrl + 'xinzhuang@2x1.png',
     imgIcon3GraySrc: app.globalData.imgUrl + 'lujin@2x1.png',
-    imgIcon4Src: app.globalData.imgUrl + 'fangda.png',
+    imgIcon4Src: '../../../images/' + 'fangda.png',
     
     mapShowIndex: 0,
 

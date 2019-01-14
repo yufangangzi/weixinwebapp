@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tabIndex: 0,
+    deviceLists: [],
     channel: '',
     rotateSpeed: '',
     btnEnabled: false,
@@ -236,10 +238,53 @@ Page({
   },
 
   /**
+   * 切换设备编号 
+   */
+  switchTab(e) {
+    const deviceCode = e.currentTarget.dataset.code;
+    console.log(deviceCode);
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+      tabIndex: index,
+      deviceNo: deviceCode
+    })
+    debugger;
+    this.setData({
+      'lineParamsObj.deviceNo': deviceCode
+    });
+    
+
+  },
+
+  initPage(data, devNoSel) {
+    const deviceNo = data;
+    const deviceAry = deviceNo.split('/');
+    const fir = deviceAry[0].slice(0, deviceAry[0].length - 1)
+    const nameNo = deviceAry[0].slice(deviceAry[0].length - 1)
+    const ary = []
+    deviceAry.forEach((item, index) => {
+      if (index === 0) {
+        ary.push(`${fir}${nameNo}`)
+      } else {
+        ary.push(`${fir}${item}`)
+      }
+    })
+    // debugger;
+    const tabIndex = ary.indexOf(devNoSel);
+
+    this.setData({
+      tabIndex: tabIndex || 0,
+      deviceNo: devNoSel || ary[0],
+      deviceLists: ary
+    })
+  },
+
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options);
+    // debugger;
     const obj = Object.assign({}, options);
     obj.deviceNo = wx.getStorageSync('deviceNo');
     this.setData({
@@ -255,6 +300,11 @@ Page({
     this.setData({
       lineParamsObj: obj
     });
+
+    options.deviceNos = wx.getStorageSync('devicesNo');
+    const deviceNos = options.deviceNos || '2111-P230A/B/C'
+    this.initPage(deviceNos, obj.deviceNo);
+
     // this.setData({
     //   lineParamsObj: {
     //     faultId: this.data.DeviceFaultDetail.id,

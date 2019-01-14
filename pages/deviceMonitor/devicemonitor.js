@@ -63,6 +63,7 @@ Page({
     })
   },
   initPage(data) {
+    wx.setStorageSync('devicesNo', data);
     const deviceNo = data;
     const deviceAry = deviceNo.split('/');
     const fir = deviceAry[0].slice(0,deviceAry[0].length-1)

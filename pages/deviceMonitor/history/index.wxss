@@ -5,6 +5,7 @@
 .hovertxt{ color: #17a5ff !important;}
 .w25{display:inline-block;}
 .w20{display:inline-block; width:15%;word-wrap : break-word ;word-break:break-all; text-align: center;}
+.w22{display:inline-block; width:30%;word-wrap : break-word ;word-break:break-all; text-align: center;}
 .w30{display:inline-block; width:40%;word-wrap : break-word ;word-break:break-all; text-align: center;}
 .scrool-left{position: relative; background-color: #ffffff;}
 .leftjiantou{position: absolute; top:38%; right: 1%;}
