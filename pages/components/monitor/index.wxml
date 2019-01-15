@@ -1,6 +1,6 @@
 <!--pages/components/monitor/index.wxml-->
 <view class='main'>
-  <top rotateSpeed="{{rotateSpeed}}"  bind:myevent="fatherRecvFn"></top>
+  <!-- <top rotateSpeed="{{rotateSpeed}}"  bind:myevent="fatherRecvFn"></top> -->
   <block wx:if="{{channelnum===4}}">
     <speed4 deviceData="{{devices}}"></speed4>
   </block>

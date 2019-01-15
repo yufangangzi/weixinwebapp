@@ -13,7 +13,7 @@
 }
 .fcc1{
   height: 49px;
-  border:1px solid rgba(88,120,228,1);
+  /* border:1px solid rgba(88,120,228,1); */
   font-size:18px;
   font-weight:400;
   color:rgba(88,120,228,1);
