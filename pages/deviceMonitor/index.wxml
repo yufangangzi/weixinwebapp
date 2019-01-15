@@ -1,20 +1,56 @@
 
 <wux-select id="wux-select3" />
-<view class="page">
-  <view class="page__bd">
-    <view class="ub ub-ac t-bla f30">设备状况一览</view>
+<view class="box">
+    <!-- <view class="ub ub-ac t-bla f30">设备状况一览</view> -->
     <wux-notice-bar loop  hidden="{{warningMsg==''}}" style="display:{{warningMsg=='' ? 'none' : 'flex'}}" content="{{ warningMsg }}" />
-    <wux-grids bordered="{{ false }}" >
+    <!-- <wux-grids bordered="{{ false }}" >
       <wux-grid  wx:for="{{ relist }}" wx:key="{{index}}" thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="{{item.lable}}" id="{{index}}" bind:click="onClick3" />
-      <!-- <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="催化裂化" />
-      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="延迟焦化" />
-      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="蜡油加氢" />
-      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="渣油加氢" />
-      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="汽油加氢" />
-      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="煤油加氢" />
-      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="柴油加氢" />
-      <wux-grid thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="连续重整" /> -->
-    </wux-grids>
-  </view>
+      
+    </wux-grids> -->
+
+    <view class="ub" style="margin-top:34px;">
+      <view class="ub-f1 ub ub-pc ub-ac" wx:for="{{ relist0 }}" wx:key="{{item.label}}"  data-label="{{item.lable}}" id="{{index}}" bindtap="onClick3">
+        <view class="item ub ub-dir ub-pc ub-ac">
+          <view class="rt">
+            <image style="width:100%;height:100%;" mode="scaleToFill" src="{{item.hasWarning ? imgWSrc : imgNSrc}}"></image>
+          </view>
+          <image style="width:40px;height:45px;" mode="scaleToFill" src="{{imgD1Src}}"></image>
+          
+          <view class="txt">{{item.lable}}</view>
+        </view>
+        
+      </view>
+    </view>
+
+    <view class="ub" style="margin-top:34px;">
+      <view class="ub-f1 ub ub-pc ub-ac" wx:for="{{ relist1 }}" wx:key="{{item.label}}"  data-label="{{item.lable}}" id="{{index+3}}" bindtap="onClick3">
+        <view class="item ub ub-dir ub-pc ub-ac">
+          <view class="rt">
+            <image style="width:100%;height:100%;" mode="scaleToFill" src="{{item.hasWarning ? imgWSrc : imgNSrc}}"></image>
+          </view>
+          <image style="width:40px;height:45px;" mode="scaleToFill" src="{{imgD1Src}}"></image>
+          
+          <view class="txt">{{item.lable}}</view>
+        </view>
+        
+      </view>
+    </view>
+
+    <view class="ub" style="margin-top:34px;">
+      <view class="ub-f1 ub ub-pc ub-ac" wx:for="{{ relist2 }}" wx:key="{{item.label}}"  data-label="{{item.lable}}" id="{{index+6}}" bindtap="onClick3">
+        <view class="item ub ub-dir ub-pc ub-ac">
+          <view class="rt">
+            <image style="width:100%;height:100%;" mode="scaleToFill" src="{{item.hasWarning ? imgWSrc : imgNSrc}}"></image>
+          </view>
+          <image style="width:40px;height:45px;" mode="scaleToFill" src="{{imgD1Src}}"></image>
+          
+          <view class="txt">{{item.lable}}</view>
+        </view>
+        
+      </view>
+      
+    </view>
+
+  
 </view>
 

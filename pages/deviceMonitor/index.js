@@ -11,7 +11,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    relist: [],
+    relist0: [],
+    relist1: [],
+    relist2: [],
+
+    imgNSrc: '../../images/nicon.png',
+    imgWSrc: '../../images/wicon.png',
+    imgD1Src: '../../images/device.png',
     warningList: [],
+    warningUnitNameList: [],
     warningMsg: '',
     value3: '',
     title3: '',
@@ -153,12 +162,19 @@ Page({
           
         // }
         
-
+        const relist = res.result.map((n) => Object.assign({}, n, {
+          lable: n.unitName,
+          id: n.id.toString(),
+          hasWarning: false,
+        }));
+        const relist0 = relist.slice(0, 3);
+        const relist1 = relist.slice(3, 6);
+        const relist2 = relist.slice(6, 9);
         this.setData({
-          relist: res.result.map((n) => Object.assign({}, n, {
-            lable: n.unitName,
-            id: n.id.toString(),
-          })),
+          relist: relist,
+          relist0: relist0,
+          relist1: relist1,
+          relist2: relist2,
           'codeArr': res.result,
          
         })
@@ -192,21 +208,43 @@ Page({
         const arr2 = arr.map(item => item.deviceCode);
         this.setData({
           warningMsg: '温馨提示：'+arr1.join('、')+'单元内有设备报警，请尽快排查处理！',
-          warningList: arr2
+          warningList: arr2,
+          warningUnitNameList: arr1,
         })
       }else{
         this.setData({
-          warningMsg: ''
+          warningMsg: '',
+          warningList: [],//无故障
+          warningUnitNameList: [],
         })
       }
       // debugger;
+
+      let relist = this.data.relist;
+      relist = relist.map(item =>{
+        return Object.assign({}, item, {
+          hasWarning: this.data.warningUnitNameList.find(o => o===item.lable) ? true : false
+        })
+      })
+      // debugger;
+      const relist0 = relist.slice(0, 3);
+      const relist1 = relist.slice(3, 6);
+      const relist2 = relist.slice(6, 9);
+      this.setData({
+        relist: relist,
+        relist0: relist0,
+        relist1: relist1,
+        relist2: relist2,
+
+      })
     }
   },
  // sel start
   onClick3(e) {
     let index = e.currentTarget.id;
-    let devName = e.detail.label;
+    let devName = e.currentTarget.dataset.label;
     const warningList = this.data.warningList;
+    // debugger
     const codeOption = this.data.codeArr[index].menuDeviceList.map((n) => Object.assign({},  {
       title: n,
       value: n,
