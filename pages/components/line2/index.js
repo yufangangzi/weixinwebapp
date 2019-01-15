@@ -73,7 +73,7 @@ Component({
           borderWidth: 1,
           lineStyle: {
             type: 'solid',
-            // color: '00FFFF ',
+            color: '#00FFFF',
             width: 1
           },
           label: {
@@ -100,7 +100,7 @@ Component({
           borderWidth: 1,
           lineStyle: {
             type: 'solid',
-            // color: '#00FF7F ',
+            color: '#C23531',
             width: 1
           },
           label: {
@@ -133,7 +133,7 @@ Component({
       //   textBaseline: 'center'
       // },
       // backgroundColor: '#234495',
-      // color: ['#10EDFF'],
+      // color: ['#5093FE'],
       tooltip: {
         trigger: 'axis',
         position: function (p) {   //其中p为当前鼠标的位置
@@ -182,14 +182,14 @@ Component({
         axisPointer: {
           type: 'line',
           lineStyle: {
-            color: '#fff',
+            color: '#979797',
             width: 1,
             type: 'solid'
           },
         },
         // backgroundColor: 'rgba(255,248,31,0.2)',
         textStyle: {
-          color: '#ffffff'
+          color: '#fff'
         },
         padding: 10
       },
@@ -220,7 +220,7 @@ Component({
           data: [],
           axisLine: {
             lineStyle: {
-              color: '#979797',
+              color: '#fff',
               width: 1
             }
           },
@@ -228,7 +228,7 @@ Component({
             show: true,
             textStyle: {
               fontSize: '12rpx',
-              color: '#979797',
+              color: '#fff',
               align: 'center'
             },
             formatter: function (e) {
@@ -253,10 +253,22 @@ Component({
           axisLine: {
             show:false,
             lineStyle: {
-              color: '#979797',
+              color: '#fff',
               width: 1
             }
           },
+          axisLabel: {
+            show: true,
+            textStyle: {
+              fontSize: '12rpx',
+              color: '#fff',
+              align: 'right'
+            },
+            formatter: function (e) {
+              return e;
+            }
+          },
+
           axisTick: {
             show: false,
             inside: true // 刻度朝里
@@ -264,7 +276,7 @@ Component({
           splitLine: {// 终于找到了，背景图的内置表格中“边框”的颜色线条  这个是x轴的竖线
             show: true,
             lineStyle: {
-              color: '#C2C2C2',
+              color: '#fff',
               type: 'dot'
             }
           }
@@ -281,9 +293,9 @@ Component({
           itemStyle: {
             normal: {
               borderWidth: 1,
-              color: '#63C57A', //拆点颜色
+              color: '#B460C7', //拆点颜色
               lineStyle: {
-                color: '#63C57A', //折线颜色
+                color: '#B460C7', //折线颜色
               },
             }
           },
@@ -473,7 +485,7 @@ Component({
       try {
         this.chart.clear(); // 清楚累加数据
       } catch (e) { }
-      debugger;
+      // debugger;
       try {
         this.chart.setOption(option);
       } catch (e) { }

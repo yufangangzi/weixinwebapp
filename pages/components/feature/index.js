@@ -83,7 +83,7 @@ Component({
       //   textBaseline: 'center'
       // },
       // backgroundColor: '#234495',
-      // color: ['#10EDFF'],
+      color: ['#5093FE'],
       tooltip: {
         trigger: 'axis',
         position: function (p) {   //其中p为当前鼠标的位置
@@ -140,7 +140,7 @@ Component({
         },
         // backgroundColor: 'rgba(255,248,31,0.2)',
         textStyle: {
-          color: '#ffffff'
+          color: '#fff'
         },
         padding: 10
       },
@@ -171,7 +171,7 @@ Component({
           data: ['0.2X', '0.33X', '0.5X', '1X', '2X', '3X', '5X', '10X'],
           axisLine: {
             lineStyle: {
-              color: '#979797',
+              color: '#fff',
               width: 1
             }
           },
@@ -181,7 +181,7 @@ Component({
             rotate: 40,
             textStyle: {
               fontSize: '12rpx',
-              color: '#979797',
+              color: '#fff',
               align: 'center'
             },
             formatter: function (e) {
@@ -208,12 +208,24 @@ Component({
             color: '#fff'
           },
           axisLine: {
-            show:false,
+            show:true,
             lineStyle: {
-              color: '#979797',
+              color: '#fff',
               width: 1
             }
           },
+          axisLabel: {
+            show: true,
+            textStyle: {
+              fontSize: '12rpx',
+              color: '#fff',
+              align: 'right'
+            },
+            formatter: function (e) {
+              return e;
+            }
+          },
+
           axisTick: {
             show: false,
             inside: true // 刻度朝里
@@ -243,17 +255,17 @@ Component({
                 position: 'top',
                 textStyle: {
                   fontSize: '12rpx',
-                  color: '#979797'
+                  color: '#fff'
                 },
                 formatter: function (e) {
                   return Number(e.value).toFixed(2);
                 }
               },
-              borderWidth: 1,
-              color: '#63C57A', //拆点颜色
-              lineStyle: {
-                color: '#63C57A', //折线颜色
-              },
+              // borderWidth: 1,
+              // color: '#63C57A', //拆点颜色
+              // lineStyle: {
+              //   color: '#63C57A', //折线颜色
+              // },
             }
           },
           
