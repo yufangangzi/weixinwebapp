@@ -20,7 +20,7 @@
 
     <view class='ub padl10 padb10 c-wh'>
       <view class='wid'>设备型号：</view>
-      <view class='ub-f1'>{{deviceinfos.bearingTypeNotDriveEnd}}</view>
+      <view class='ub-f1'>{{deviceinfos.modelName}}</view>
     </view>
 
     <view class='ub padl10 padb10 c-wh'>
