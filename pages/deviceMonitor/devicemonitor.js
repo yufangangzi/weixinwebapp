@@ -137,6 +137,16 @@ Page({
     }
 
   },
+  switchRT() {
+    //切换到历史记录
+    console.log('切换到实时监测')
+    this.fatherRecvFn({ detail: { msg: '切换到实时监测' } });
+  },
+  switchHis() {
+    //切换到历史记录
+    console.log('切换到历史记录')
+    this.fatherRecvFn({ detail: { msg: '切换到历史记录' }});
+  },
   /**
    * 切换历史数据跟实时监测按钮
    */

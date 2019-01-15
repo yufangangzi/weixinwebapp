@@ -175,21 +175,35 @@ Page({
   },
   // 打开时域波形大图
   open2SYBX() {
+    if (this.forbiddenRepeatClicked) {
+      return;
+    }
     this.setData({
       mapFlag: {
         index: 1,
         r: Math.random()
       }
     })
+    this.forbiddenRepeatClicked = true;
+    setTimeout(() => {
+      this.forbiddenRepeatClicked = false;
+    }, 300);
   },
   // 打开FFT大图
   open2FFT() {
+    if (this.forbiddenRepeatClicked) {
+      return;
+    }
     this.setData({
       mapFlag: {
         index: 2,
         r: Math.random()
       }
     })
+    this.forbiddenRepeatClicked = true;
+    setTimeout(() => {
+      this.forbiddenRepeatClicked = false;
+    }, 300);
   },
   // 跳转到工单处理
   open3Page() {

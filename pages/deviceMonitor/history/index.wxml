@@ -2,17 +2,22 @@
 <wux-select id="wux-select2" />
 <wux-calendar id="wux-calendar" />
 
+<!-- <view class='top-main'>
+  <text>历史数据查询</text>
+  <text class='ri' bindtap="switchRT" >实时监测</text>
+</view> -->
+
 <view class="bg1">
 
 <view class="bg-top">
-  <view class="ff">
+  <!-- <view class="ff">
     <view class="lf">
       <view class="his1">历史查询</view>
     </view>
     <view class="rf" bindtap="switchRT">实时监测</view>
-  </view>
+  </view> -->
 
-  <view class="ff" style="margin-top:24rpx;padding-bottom: 24rpx;">
+  <view class="ff" style="padding-top:24rpx;padding-bottom: 24rpx;">
     <view class="lf">
       <view bindtap="openSelect2" disabled="buttonClicked" class="cbtn marr19" style="margin-left:20rpx;">
         <view class="ctxt">{{title2}}</view>
@@ -38,7 +43,9 @@
 
   </view>
 
-</view><view class="scrool-left" style="">
+</view>
+<view style="height:1px;background:rgba(229,229,238,1);"></view>
+<view class="scrool-left" style="">
 <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh" pull-end="{{pullEnd}}">
 
 <scroll-view scroll-x="true" style="white-space: nowrap; display: block" class="showmian">
@@ -52,7 +59,7 @@
 <view wx:for="{{initChannel}}" wx:for-index="idx" wx:key="idx" class="{{ initChannel.length>2 ? 'w20' : 'w22' }} hovertxt">
   <view class="item-title">
     <span class="item-1">{{item}}</span>
-    <image class="trendicon" mode="aspectFit" src="{{trendSrc}}" ></image>
+    <!-- <image class="trendicon" mode="aspectFit" src="{{trendSrc}}" ></image> -->
   </view>
   <view wx:for="{{tablelist}}" wx:for-item="it" wx:key="index" class="item" bindtap="chooseItem" data-info="{{it}}" data-channel="{{item}}">
     {{it[item]}}

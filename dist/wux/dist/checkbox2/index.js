@@ -61,7 +61,8 @@ Component({
         changeValue(inputChecked = false, index = 0) {
           // debugger
             this.setData({
-                inputChecked,
+              // inputChecked,
+                'inputChecked': false,
                 index,
             })
         },

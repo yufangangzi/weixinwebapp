@@ -60,7 +60,7 @@
   <view style="margin-top:13rpx;z-index:999;position:relative;background:linear-gradient(360deg,rgba(37,203,249,1) 0%,rgba(0,135,255,1) 100%);">
     <wux-wing-blank size="default">
         <view style="height:618rpx;z-index:999;">
-          <custom-map-feature paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" out-wsdata="{{wsdata}}" bind:myevent="fatherRecvFn" bind:mybtnevent="btnRecFn"  out-flag="{{mapFlag}}"></custom-map-feature>
+          <custom-map-feature paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" out-wsdata="{{wsdata}}" bind:myevent="fatherRecvFn" bind:mybtnevent="btnRecFn"  ></custom-map-feature>
         </view>
         <view style="height:46rpx;color:#fff;z-index:999;font-size:26rpx;text-align:center;letter-spacing:1px;">频域特征图</view>
         

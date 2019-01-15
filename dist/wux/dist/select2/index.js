@@ -30,7 +30,7 @@ const getSelectIndex = ({ value = '', options = [], multiple = false }) => {
 
 Component({
     data: {
-      wHeight: '540rpx',
+      wHeight: '',
     },
     behaviors: [baseBehavior],
     externalClasses: ['wux-class'],
@@ -41,9 +41,14 @@ Component({
          */
         open(opts = {}) {
             // debugger
+            // 此处曾置为全屏显示，后又去掉了
+            // this.setData({
+            //   wHeight: (app.globalData.winHeight - 88) + 'px'
+            // })
+            // debugger
             this.setData({
-              wHeight: (app.globalData.winHeight - 88) + 'px'
-            })
+              wHeight: opts.maxHeight
+            });
             const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts, {
                 max: parseInt(opts.max),
             }))
@@ -66,9 +71,10 @@ Component({
          * 点击确定按钮时的回调函数
          */
         onConfirm() {
-            setTimeout(() => {
+          // debugger
+          //   setTimeout(() => {
               this.close(this.fns.onConfirm)
-            },500)
+            // },500)
         },
         /**
          * 点击取消按钮时的回调函数
@@ -87,7 +93,7 @@ Component({
             // const value = checked ? [newValue] : oldValue.filter((n) => n !== newValue)
             const value = checked ? [newValue] : oldValue;
             const index = getSelectIndex({ ...this.data, value })
-
+            // debugger
             this.onChange(value, index)
         },
         /**
@@ -112,6 +118,9 @@ Component({
             if (typeof this.fns.onChange === 'function') {
                 this.fns.onChange.call(this, value, index, options)
             }
+
+            // 点击后直接跳转
+            this.onConfirm();
         },
     },
 })

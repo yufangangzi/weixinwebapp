@@ -12,6 +12,8 @@ Component({
         isLast: false,
         normalicon: '../../../../images/normalicon.png',
         warnicon: '../../../../images/warnicon.png',
+        normalTxt: '正常',
+        warnTxt: '报警',
         
     },
     properties: {

@@ -256,11 +256,12 @@ Page({
     $wuxSelect('#wux-select3').open({
       value: this.data.value3,
       // multiple: true, 
+      maxHeight: '646rpx',
       max:1, //最多选择个数
       toolbar: {
         title: devName,
         confirmText: '跳转',
-        cancelText: '取消',
+        cancelText: '关闭',
       },
       options: codeOption,
       // [{
@@ -276,6 +277,7 @@ Page({
         })
       },
       onConfirm: (value, index, options) => {
+        // debugger
         console.log('onConfirm', value, index, options)
         this.setData({
           value3: value,

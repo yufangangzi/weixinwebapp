@@ -4,11 +4,31 @@
 <wux-select id="wux-select2" />
 <wux-calendar id="wux-calendar" />
 
+<view class="fixed">
+
 <view class="ub">
   <view wx:for="{{deviceLists}}" wx:key="{{index}}" class="ub-f1 ub ub-ac ub-pc t-item {{tabIndex==index ? 't-sel': ''}}" bindtap='switchTab' data-code="{{item}}" data-index="{{index}}">
     <view class="">{{item}}</view>
   </view>
 </view>
+
+<block wx:if="{{ switchIndex===0 }}">
+<view class='top-main'>
+  <text>额定转速: {{rotateSpeed}}RPM</text>
+  <text class='ri' bindtap="switchHis" >历史数据</text>
+</view>
+</block>
+<block wx:else>
+
+<view class='top-main'>
+  <text>历史数据查询</text>
+  <text class='ri' bindtap="switchRT" >实时监测</text>
+</view>
+</block>
+
+</view>
+
+<view class="content">
 
 <!-- 设备详情-->
 <block wx:if="{{ switchIndex===0 }}">
@@ -18,3 +38,5 @@
 <block wx:else>
 <custom-history out-info="{{deviceParamsObj}}" out-more="{{loadMoreFlag}}" bind:myevent="fatherRecvFn" ></custom-history>
 </block>
+
+</view>
