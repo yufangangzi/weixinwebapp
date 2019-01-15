@@ -251,6 +251,7 @@ Page({
       color: 'custom',
       extra: warningList.find(o => n.indexOf(o)>-1) ? 'warnicon' : 'normalicon'
     }))
+
     // debugger
     $wuxSelect('#wux-select3').open({
       value: this.data.value3,
@@ -271,14 +272,14 @@ Page({
         console.log('onChange', value, index, options)
         this.setData({
           value3: value,
-          title3: options[index],
+          title3: options[index] || options[0],
         })
       },
       onConfirm: (value, index, options) => {
         console.log('onConfirm', value, index, options)
         this.setData({
           value3: value,
-          title3: options[index],          
+          title3: options[index] || options[0],          
         })
         // console.log("data--" + this.data.codeArr);
         // 跳转

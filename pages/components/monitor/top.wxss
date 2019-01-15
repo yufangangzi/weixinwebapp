@@ -1,7 +1,7 @@
 /* pages/components/monitor/top.wxss */
 .top-main{
-  height: 67rpx;
-  line-height: 67rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   background: #DDF5FF;
   border-radius: 6px 6px 0px 0px;
   color: #108EE9;
@@ -9,7 +9,7 @@
 }
 .ri{
   position: relative;
-  top:8rpx;
+  top:17rpx;
   float: right;
   width:144rpx;
   height:48rpx;
