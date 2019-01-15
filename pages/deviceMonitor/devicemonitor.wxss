@@ -54,7 +54,7 @@
 
 .content {
   position: relative;
-  margin-top: 172rpx;
+  padding-top: 172rpx;
 }
 
 

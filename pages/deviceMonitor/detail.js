@@ -58,6 +58,9 @@ Page({
   
   // 打开时域波形大图
   open2SYBX() {
+    if (!this.data.btnEnabled){
+      return;
+    }
     if (this.forbiddenRepeatClicked){
       return;
     }
@@ -75,6 +78,9 @@ Page({
   },
   // 打开FFT大图
   open2FFT() {
+    if (!this.data.btnEnabled) {
+      return;
+    }
     if (this.forbiddenRepeatClicked) {
       return;
     }
