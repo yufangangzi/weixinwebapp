@@ -48,7 +48,7 @@ Component({
                 max: parseInt(opts.max),
             }))
             const index = getSelectIndex(options)
-
+            
             this.$$setData({ visible: true, ...options, index })
         },
         /**

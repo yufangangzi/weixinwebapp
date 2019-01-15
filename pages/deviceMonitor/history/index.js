@@ -78,7 +78,6 @@ Component({
           console.log(this.properties.outInfo)
           const paramsobj = Object.assign({}, this.properties.outInfo, obj);
 
-
           console.log(paramsobj)
           const params = Object.keys(paramsobj).map(function (key) {
             // body...
@@ -334,6 +333,7 @@ Component({
       const timereg = /-/g
       const obj = {
         selfPageName: 'zdqst',
+        frompage: 'history',
         token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
         pagemap: 'zdqs',
         timeSpan: 129600,
