@@ -27,6 +27,7 @@ Component({
         // console.log('newVal:', newVal, ';oldVal:', oldVal);
         
           if (oldVal && newVal) {
+            
             this.init();
             // debugger
             // this.setData({
@@ -64,6 +65,14 @@ Component({
 
         if (oldVal && newVal) {
           // debugger
+          if (this.forbiddenRepeatClicked) {
+            return;
+          }
+          this.forbiddenRepeatClicked = true;
+          setTimeout(() => {
+            this.forbiddenRepeatClicked = false;
+          }, 300);
+          
           let mapIndex = 'sybx';
           if(newVal.index==1){
             mapIndex = 'sybx';

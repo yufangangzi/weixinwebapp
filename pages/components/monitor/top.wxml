@@ -1,5 +1,5 @@
 <!--pages/components/monitor/top.wxml-->
 <view class='top-main'>
-  <text>额定转速: {{rotateSpeed}}REM</text>
+  <text>额定转速: {{rotateSpeed}}RPM</text>
   <text class='ri' bindtap="switchHis" >历史数据</text>
 </view>
