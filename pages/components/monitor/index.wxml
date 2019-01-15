@@ -37,6 +37,9 @@
       <view class='wid'>生产厂家：</view>
       <view class='ub-f1'>{{deviceinfos.factory}}</view>
     </view>
+    <view class='lifeCycle {{lifeCycles}}'>
+      <view>{{deviceinfos.lifeCycle}}</view>
+    </view>
   </view>
 
 

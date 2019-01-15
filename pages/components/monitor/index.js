@@ -19,6 +19,13 @@ Component({
       type: Object,
       observer: function (newVal, oldVal, changedPath) {
         this.formateTime()
+        if (newVal.lifeCycle === '磨合期') {
+          newVal.lifeCycles = 'moheqi'
+        } else if (newVal.lifeCycle === '保持期') {
+          newVal.lifeCycles = 'bochiqi'
+        }
+        this.initlifeCycles(newVal)
+        console.log(newVal)
         return newVal
       }
     },
@@ -42,13 +49,23 @@ Component({
    */
   data: {
     setupTime: '',
-    devices: {}
+    devices: {},
+    lifeCycles: ''
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    initlifeCycles (data) {
+      const _this = this;
+      console.log(data)
+      if (data.lifeCycles) {
+        this.setData({
+          lifeCycles: data.lifeCycles
+        })
+      }
+    },
     fatherRecvFn: function (event) {
       // debugger
       console.log('父组件接受到的消息：', event.detail);

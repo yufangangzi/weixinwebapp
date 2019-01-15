@@ -4,6 +4,7 @@
   background: #ECF3FF;
 }
 .deviceinfo{
+  position: relative;
   width:750rpx;
   height:346rpx;
   background:rgba(255,255,255,1);
@@ -60,4 +61,19 @@
 .c-wh{
   color: #8A8C8A;
   font-size: 30rpx;
+}
+.lifeCycle{
+  position: absolute;
+  right:30rpx;
+  bottom:44rpx;
+  color: #fff;
+  background-color: #48D484;
+  padding:10rpx 20rpx;
+  border-radius: 5px
+}
+.moheqi{
+  background-color: #27B6E6;
+}
+.bochiqi{
+  background-color: #E98711;
 }
