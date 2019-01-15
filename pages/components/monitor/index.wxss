@@ -65,7 +65,7 @@
 .lifeCycle{
   position: absolute;
   right:30rpx;
-  bottom:44rpx;
+  top:16rpx;
   color: #fff;
   background-color: #48D484;
   padding:10rpx 20rpx;
