@@ -116,7 +116,7 @@ Page({
       })
       return;
     }
-    if (!/^(1[3578][0-9]{9})$/.test(userName)) {
+    if (!/^(1[3456789][0-9]{9})$/.test(userName)) {
       console.log('手机号不合法')
       $wuxToast().show({
         type: 'forbidden',

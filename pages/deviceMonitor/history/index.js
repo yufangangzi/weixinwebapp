@@ -185,10 +185,7 @@ Component({
         if (res.code === 0) {
           // debugger
 
-          res.result.forEach(item => {
-            item.reportTime = util.timeformat(new Date(Number(item.dateTime)));
-            item.select = false;
-          });
+          
           if (res.result.length > 0) {
             let reg = /^\d+-\d+/;
             let initChannel = [];
@@ -238,6 +235,16 @@ Component({
               initChannel: initChannel
             })
           }
+
+          // debugger;
+
+          res.result.forEach(item => {
+            item.reportTime = util.timeformat(new Date(Number(item.dateTime)));
+            item.select = false;
+            this.data.initChannel.forEach(it =>{
+              item[it] = Number(item[it]).toFixed(2);
+            })
+          });
 
           let tablelist = this.data.tablelist;
           if(this.data.startRow){

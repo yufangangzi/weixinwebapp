@@ -80,7 +80,7 @@ Page({
       try{
         const val = JSON.parse(data);
         if (val.code === 1101 && val.result && val.result.alarmDevice) {
-          this.handleAlarm(val.result.alarmDevice);
+          _this.handleAlarm(val.result.alarmDevice);
         }
       }catch(e){
 
@@ -249,7 +249,7 @@ Page({
       title: n,
       value: n,
       color: 'custom',
-      extra: warningList.find(o => n.indexOf(o)>-1) ? 'warnicon' : 'normalicon'
+      extra: warningList.find(o => n.indexOf(o.substring(0, o.length-1))>-1) ? 'warnicon' : 'normalicon'
     }))
 
     // debugger

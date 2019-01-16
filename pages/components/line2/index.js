@@ -194,21 +194,21 @@ Component({
         padding: 10
       },
       calculable: true,
-      dataZoom: {
-        show: false,
-        realtime: true,
-        start: 20,
-        end: 80,
-        height: 8,
-        bottom: 10,
-        // y: 300 //下面滚轮的位置
+      // dataZoom: {
+      //   show: false,
+      //   realtime: true,
+      //   start: 20,
+      //   end: 80,
+      //   height: 8,
+      //   bottom: 10,
+      //   // y: 300 //下面滚轮的位置
 
-      },
+      // },
       grid: {
         top: 40,
-        bottom: 30,
-        left: 60,
-        right: 30,
+        bottom: 40,
+        left: 40,
+        right: 40,
       },
       xAxis: [
         {
@@ -226,12 +226,15 @@ Component({
           },
           axisLabel: {
             show: true,
+            showMaxLabel: true,
+            showMinLabel: true,
             textStyle: {
               fontSize: '12rpx',
               color: '#fff',
               align: 'center'
             },
-            formatter: function (e) {
+            formatter: function (params) {
+              let e = params.replace(' ', '\n');
               return e;
             }
           },
@@ -475,8 +478,8 @@ Component({
       markLine1.data[0].yAxis = data.vibrateHighQuote || 4.5;
       markLine2.data[0].yAxis = data.vibrateHighHighQuote || 7.1;
       if (data.unit === '速度') {
-        option.series[0].markLine = markLine1;
-        option.series[1].markLine = markLine2
+        option.series[0].markLine = {};//markLine1;
+        option.series[1].markLine = {};//markLine2
       } else {
         option.series[0].markLine = {};
         option.series[1].markLine = {};

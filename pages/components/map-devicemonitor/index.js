@@ -83,8 +83,8 @@ Component({
           const obj = {
             token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
             pagemap: mapIndex,
-            timeSpan: this.data.value3,
-            channel: this.data.value1,
+            // timeSpan: this.data.value3,
+            // channel: this.data.value1,
             dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
             statisStartTime: new Date(this.data.timeShow.replace(timereg, '/')).getTime(),
             valueshow: this.data.valueShow
@@ -189,7 +189,7 @@ Component({
               lineParamsObj: {
                 time: res.result.time,
                 value: res.result.value,
-                unit: this.data.title2,
+                unit: this.properties.outInfo.kpiFlag == 1 ? '加速度' : '速度',
                 vibrateHighQuote: res.result.vibrateHighQuote,
                 vibrateHighHighQuote: res.result.vibrateHighHighQuote,
                 pagemap: 'zdqs'
