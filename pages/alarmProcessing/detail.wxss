@@ -178,7 +178,7 @@
   
 }
 
-.placeholder {
-    margin: 10rpx;
-    width: auto;
+.plholder {
+    margin-top: -20rpx;
+    width: 200rpx;
 }

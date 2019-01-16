@@ -78,8 +78,9 @@ Component({
           },
           label: {
             formatter: '高报',
+            position: 'start',
             textStyle: {
-              fontSize: 16,
+              fontSize: 12,
               fontWeight: 'bolder',
               color: '#00FFFF'
             }
@@ -105,8 +106,9 @@ Component({
           },
           label: {
             formatter: '高高报',
+            position: 'end',
             textStyle: {
-              fontSize: 16,
+              fontSize: 12,
               fontWeight: 'bolder',
               color: '#00FF7F'
             }
@@ -194,21 +196,21 @@ Component({
         padding: 10
       },
       calculable: true,
-      dataZoom: {
-        show: false,
-        realtime: true,
-        start: 20,
-        end: 80,
-        height: 8,
-        bottom: 10,
-        // y: 300 //下面滚轮的位置
+      // dataZoom: {
+      //   show: false,
+      //   realtime: true,
+      //   start: 20,
+      //   end: 80,
+      //   height: 8,
+      //   bottom: 10,
+      //   // y: 300 //下面滚轮的位置
 
-      },
+      // },
       grid: {
-        top: 40,
-        bottom: 30,
-        left: 60,
-        right: 30,
+        top: 35,
+        bottom: 35,
+        left: 40,
+        right: 50,
       },
       xAxis: [
         {
@@ -226,13 +228,15 @@ Component({
           },
           axisLabel: {
             show: true,
+            showMaxLabel: true,
+            showMinLabel: true,
             textStyle: {
               fontSize: '12rpx',
               color: '#979797',
               align: 'center'
             },
             formatter: function (e) {
-              return e;
+              return e.replace(' ', '\n');
             }
           },
           axisTick: {

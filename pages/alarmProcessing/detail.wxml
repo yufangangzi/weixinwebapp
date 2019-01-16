@@ -97,20 +97,17 @@
           <custom-map paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn" bind:mybtnevent="btnRecFn"  out-flag="{{mapFlag}}"></custom-map>
         </view>
         <view style="height:36rpx;background-color:#fff;z-index:999;font-size:24rpx;text-align:center;">振动趋势图</view>
-        <view style="background-color:#fff;">
-        <wux-row>
-          <wux-col span="5">
-            <view class="placeholder" style="background-color:#fff;">
+        <view class="ub" style="background-color:#fff;">
+          <view class="ub-f1 ub ub-pc ub-ac ">
+            <view class="plholder" style="background-color:#fff;">
           <wux-button block type="{{btnEnabled ? 'positive' : 'stable'}}" size="small" bind:click="open2SYBX" disabled="{{!btnEnabled}}">时域波形图</wux-button>
             </view>
-          </wux-col>
-          <wux-col span="2"></wux-col>
-          <wux-col span="5">
-            <view class="placeholder" style="background-color:#fff;">
+          </view>
+          <view class="ub-f1 ub ub-pc ub-ac ">
+            <view class="plholder" style="background-color:#fff;">
           <wux-button block type="{{btnEnabled ? 'positive' : 'stable'}}" size="small" bind:click="open2FFT" disabled="{{!btnEnabled}}">FFT</wux-button>
             </view>
-          </wux-col>
-        </wux-row>
+          </view>
         </view>
         <view style="height:46rpx;background-color:#fff !important;z-index:999;font-size:22rpx;text-align:left;color:#ccc;padding-left:20rpx;">
         <span style="height:8px;width:8px;border-radius:100%;background-color:#f33;display:inline-block;"></span>
