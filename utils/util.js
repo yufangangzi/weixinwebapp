@@ -445,7 +445,7 @@ const listNewByGroup2 = (data, successcb, failcb) => {
 const listNewByGroup = (data, successcb, failcb) => {
   return new Promise((resolve, reject) => {
     request({
-      url: baseUrl + 'deviceMonitor/listNewByGroup?deviceNo=' + data.deviceNo,
+      url: baseUrl + 'weChatDeviceMonitor/listNewByGroup?deviceNo=' + data.deviceNo,
       data: data,
       method: 'POST',
       dataType: 'json',
@@ -464,7 +464,7 @@ const listNewByGroup = (data, successcb, failcb) => {
 const getByCode = (data, successcb, failcb) => {
   return new Promise((resolve, reject) => {
     request({
-      url: baseUrl + 'device/getByCode?code=' + data.code,
+      url: baseUrl + 'wechatDevice/getByCode?code=' + data.code,
       data: data,
       method: 'POST',
       dataType: 'json',
@@ -483,7 +483,7 @@ const getByCode = (data, successcb, failcb) => {
 // 获取报警数据
 const alarmList2 = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceAlarm/alarmList',
+    url: baseUrl + 'wechatAlarm/alarmList',
     data: {},
     // header: {},
     method: 'POST',

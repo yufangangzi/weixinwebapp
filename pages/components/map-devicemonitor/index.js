@@ -83,11 +83,11 @@ Component({
           const obj = {
             token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
             pagemap: mapIndex,
-            timeSpan: this.data.value3,
-            channel: this.data.value1,
-            dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
-            statisStartTime: new Date(this.data.timeShow.replace(timereg, '/')).getTime(),
-            valueshow: this.data.valueShow
+            // timeSpan: this.data.value3,
+            // channel: this.data.value1,
+            // dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
+            statisStartTime: this.properties.outInfo.parameterTime,
+            // valueshow: this.data.valueShow
           }
           console.log(this.properties.outInfo)
           const paramsobj = Object.assign({}, this.properties.outInfo, obj);
