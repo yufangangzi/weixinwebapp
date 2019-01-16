@@ -52,6 +52,9 @@ App({
 
     wx.onSocketClose(function (res) {
       console.log('WebSocket连接已关闭！')
+      setTimeout(() => {
+        _this.initSocket();
+      }, 10000);
     })
   },
   onShow: function (options) {

@@ -52,7 +52,7 @@
 
 <view class="w30 hovertxt" >
   <view class="item-title">时间</view>
-  <view wx:for="{{tablelist}}" wx:for-item="it" wx:key="index" class="item" style="padding-left: 4rpx;">
+  <view wx:for="{{tablelist}}" wx:for-item="it" wx:key="index" class="item" style="padding-left: 2rpx;">
     {{it.reportTime}}
   </view>
 </view> 
