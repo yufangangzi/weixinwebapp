@@ -83,17 +83,10 @@ Component({
           const obj = {
             token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
             pagemap: mapIndex,
-            // timeSpan: this.data.value3,
-            // channel: this.data.value1,
-            // dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
             statisStartTime: this.properties.outInfo.parameterTime,
-            // valueshow: this.data.valueShow
           }
           console.log(this.properties.outInfo)
           const paramsobj = Object.assign({}, this.properties.outInfo, obj);
-
-
-          console.log(paramsobj)
           const params = Object.keys(paramsobj).map(function (key) {
             // body...
             return encodeURIComponent(key) + "=" + encodeURIComponent(paramsobj[key]);
@@ -189,7 +182,7 @@ Component({
               lineParamsObj: {
                 time: res.result.time,
                 value: res.result.value,
-                unit: this.data.title2,
+                unit: this.properties.outInfo.kpiFlag == 1 ? '加速度' : '速度',
                 vibrateHighQuote: res.result.vibrateHighQuote,
                 vibrateHighHighQuote: res.result.vibrateHighHighQuote,
                 pagemap: 'zdqs'

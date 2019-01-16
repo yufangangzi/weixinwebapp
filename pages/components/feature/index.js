@@ -157,7 +157,7 @@ Component({
       // },
       grid: {
         top: 40,
-        bottom: 30,
+        bottom: 40,
         left: 50,
         right: 40,
       },
@@ -177,15 +177,15 @@ Component({
           },
           axisLabel: {
             show: true,
-            // interval: 0,
-            rotate: 40,
+            interval: 0,
+            rotate: 45,
             textStyle: {
               fontSize: '12rpx',
               color: '#fff',
               align: 'center'
             },
             formatter: function (e) {
-              return e;
+              return '\n\n' + e;
             }
           },
           axisTick: {
