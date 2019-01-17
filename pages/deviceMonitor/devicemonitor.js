@@ -133,7 +133,9 @@ Page({
 
     }else{
       //实时监测页面
-
+      // debugger;
+      const data = wx.getStorageSync('devicesNo');
+      this.initData(data, this.data.deviceNo)
     }
 
   },
