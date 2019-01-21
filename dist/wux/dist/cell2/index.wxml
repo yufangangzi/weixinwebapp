@@ -38,7 +38,11 @@
         <block wx:if="{{ extra }}">
           <!-- {{extra }} -->
           <!-- <image class="cicon" mode="scaleToFill" src="{{ extra==='normalicon' ? normalicon : warnicon }}"></image> -->
-          <view class="{{ extra==='normalicon' ? 'normalicon' : 'warnicon' }}">{{ extra==='normalicon' ? normalTxt : warnTxt }}</view>
+          <view class="{{ extra==='normalicon' ? 'normalicon' : 'warnicon' }}">
+          <text class="txt">{{ extra==='normalicon' ? normalTxt : warnTxt }}</text>
+          <image class="ricon" mode="scaleToFill" src="{{ rightArrow }}"></image>
+          </view>
+          
         </block>
         <block wx:else>
             <slot name="footer"></slot>

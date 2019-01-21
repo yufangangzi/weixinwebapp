@@ -19,6 +19,7 @@ Page({
       if (res.result && res.result.openId) {
         app.globalData.openId = res.result.openId;
       }
+      // debugger
       if (res.code === 0) {
         app.globalData.islogined = true;
         app.globalData.userInfo = res.result.user;

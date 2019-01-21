@@ -207,7 +207,7 @@ Component({
               lineParamsObj: {
                 time: [],
                 value: jfg,
-                unit: this.data.title2,
+                unit: this.properties.outInfo.kpiFlag == 1 ? '加速度' : '速度',
                 pagemap: 'zdqs'
               }
             });

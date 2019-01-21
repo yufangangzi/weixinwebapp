@@ -2,7 +2,7 @@
 .speed-device{
   position: relative;
   height:980rpx;
-  background:linear-gradient(138deg,rgba(98,150,255,1) 0%,rgba(45,78,231,1) 100%);
+  background:linear-gradient(176deg,rgba(95,107,140,1) 0%,rgba(29,35,56,1) 100%);
 }
 .ico{
   width:770rpx;
@@ -24,26 +24,26 @@
   top:240rpx;
 }
 .sensor3{
-  left:62rpx;
+  left:25rpx;
   top:44rpx;
 }
 .sensor4{
-  left:62rpx;
-  top:262rpx;
+  left:25rpx;
+  top:221rpx;
 }
 .sensor5{
-  left:31rpx;
-  top:443rpx;
+  left:25rpx;
+  top:411rpx;
 }
 .sensor6{
   right:6rpx;
-  top:444rpx;
+  top:414rpx;
 }
 .sensor7{
-  left:31rpx;
+  left:25rpx;
   top:759rpx;
 }
 .sensor8{
   right:6rpx;
-  top:759rpx;
+  top:755rpx;
 }

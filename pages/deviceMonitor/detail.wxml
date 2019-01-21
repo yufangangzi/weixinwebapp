@@ -32,32 +32,34 @@
   </view>
 
   <view style="margin-left: 11px;margin-right: 11px;">
-  <view style="margin-top: 14rpx;z-index:999;position:relative;background:linear-gradient(360deg,rgba(37,203,249,1) 0%,rgba(0,135,255,1) 100%);">
+  <view style="margin-top: 14px;z-index:999;position:relative;background:linear-gradient(173deg,rgba(95,107,140,1) 0%,rgba(29,35,56,1) 100%);border-radius:12px;">
     <wux-wing-blank size="default">
         <view style="height:782rpx;z-index:999;">
           <custom-map paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" out-wsdata="{{wsdata}}" bind:myevent="fatherRecvFn" bind:mybtnevent="btnRecFn"  out-flag="{{mapFlag}}"></custom-map>
         </view>
-        <view style="height:36rpx;color:#fff;z-index:999;font-size:26rpx;text-align:center;letter-spacing:1px;">振动趋势图</view>
+        <view style="height:36rpx;color:#fff;z-index:999;font-size:26rpx;text-align:center;letter-spacing:1px;margin-top:-12px;">振动趋势图</view>
         
         <view class="ub" style="margin-top: 15px;">
-            <view class="ub-f1 ub ub-pc ub-ac" style="">
+            <view class="ub-f1 ub ub-pe ub-ac" style="position:relative;">
           <!-- <wux-button block type="{{btnEnabled ? 'positive' : 'stable'}}" size="small" bind:click="open2SYBX" disabled="{{!btnEnabled}}">时域波形图</wux-button> -->
               <view class="{{btnEnabled ? 'positive' : 'stable'}}" bindtap="open2SYBX" disabled="{{!btnEnabled}}">时域波形图</view>
+            
+            <view class="lne"></view>
             </view>
-          
-            <view class="ub-f1 ub ub-pc ub-ac" style="">
+            
+            <view class="ub-f1 ub  ub-ac" style="">
           <!-- <wux-button block type="{{btnEnabled ? 'positive' : 'stable'}}" size="small" bind:click="open2FFT" disabled="{{!btnEnabled}}">FFT</wux-button> -->
-              <view class="{{btnEnabled ? 'positive' : 'stable'}}" bindtap="open2FFT" disabled="{{!btnEnabled}}">FFT</view>
+              <view class="{{btnEnabled ? 'positive1' : 'stable1'}}" bindtap="open2FFT" disabled="{{!btnEnabled}}">FFT</view>
             </view>
           
         </view>
-        <view style="height:46rpx;z-index:999;font-size:26rpx;text-align:left;color:#ccc;padding-left:20px;color:#FF6F6F;margin-top:9px;">
+        <view style="height:46rpx;z-index:999;font-size:26rpx;text-align:left;color:#ccc;padding-left:20px;color:rgba(255,255,255,0.2);margin-top:9px;">
         <span style="height:8px;width:8px;border-radius:100%;display:inline-block;">*</span>
         点击选择上图任一时间点查看时域波形图和FFT</view>
     </wux-wing-blank>
   </view>
 
-  <view style="margin-top:13rpx;z-index:999;position:relative;background:linear-gradient(360deg,rgba(37,203,249,1) 0%,rgba(0,135,255,1) 100%);">
+  <view style="margin-top:26px;z-index:999;position:relative;background:linear-gradient(173deg,rgba(95,107,140,1) 0%,rgba(29,35,56,1) 100%);border-radius:12px;">
     <wux-wing-blank size="default">
         <view style="height:618rpx;z-index:999;">
           <custom-map-feature paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" out-wsdata="{{wsdata}}" bind:myevent="fatherRecvFn" bind:mybtnevent="btnRecFn"  ></custom-map-feature>

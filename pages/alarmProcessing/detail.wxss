@@ -182,3 +182,8 @@
     margin-top: -20rpx;
     width: 200rpx;
 }
+
+.placeholder{
+  width: 96%;
+  margin-left: 2%;
+}

@@ -2,50 +2,65 @@
 <wux-select id="wux-select3" />
 <view class="box">
     <!-- <view class="ub ub-ac t-bla f30">设备状况一览</view> -->
-    <wux-notice-bar loop  hidden="{{warningMsg==''}}" style="display:{{warningMsg=='' ? 'none' : 'flex'}}" content="{{ warningMsg }}" />
+    <wux-notice-bar loop  hidden="{{warningMsg==''}}" style="display:{{warningMsg=='' ? 'none' : 'flex'}}" content="{{ warningMsg }}"   /> <!-- mode="closable" -->
     <!-- <wux-grids bordered="{{ false }}" >
       <wux-grid  wx:for="{{ relist }}" wx:key="{{index}}" thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" label="{{item.lable}}" id="{{index}}" bind:click="onClick3" />
       
     </wux-grids> -->
-
-    <view class="ub" style="margin-top:34px;">
-      <view class="ub-f1 ub ub-pc ub-ac" wx:for="{{ relist0 }}" wx:key="{{item.label}}"  data-label="{{item.lable}}" id="{{index}}" bindtap="onClick3">
+    
+    <view class="ub-f1 ub posrel">
+      <view class="ub-f1 ub ub-pc ub-ac posrel" wx:for="{{ relist0 }}" wx:key="{{item.label}}"  data-label="{{item.lable}}" id="{{index}}" bindtap="onClick3">
         <view class="item ub ub-dir ub-pc ub-ac">
           <view class="rt">
             <image style="width:100%;height:100%;" mode="scaleToFill" src="{{item.hasWarning ? imgWSrc : imgNSrc}}"></image>
           </view>
-          <image style="width:40px;height:45px;" mode="scaleToFill" src="{{imgD1Src}}"></image>
+          <image style="width:148rpx;height:148rpx;" mode="aspectFit" src="{{imgD1SrcList[index]}}"></image>
           
           <view class="txt">{{item.lable}}</view>
         </view>
+
+        
+        <view class="line-right" style="height:calc(100% - 20px);"></view>
         
       </view>
+
+      <view class="line-bottom"></view>
+
     </view>
 
-    <view class="ub" style="margin-top:34px;">
-      <view class="ub-f1 ub ub-pc ub-ac" wx:for="{{ relist1 }}" wx:key="{{item.label}}"  data-label="{{item.lable}}" id="{{index+3}}" bindtap="onClick3">
+    <view class="ub-f1 ub posrel" style="">
+      <view class="ub-f1 ub ub-pc ub-ac posrel" wx:for="{{ relist1 }}" wx:key="{{item.label}}"  data-label="{{item.lable}}" id="{{index+3}}" bindtap="onClick3">
         <view class="item ub ub-dir ub-pc ub-ac">
           <view class="rt">
             <image style="width:100%;height:100%;" mode="scaleToFill" src="{{item.hasWarning ? imgWSrc : imgNSrc}}"></image>
           </view>
-          <image style="width:40px;height:45px;" mode="scaleToFill" src="{{imgD1Src}}"></image>
+          <image style="width:148rpx;height:148rpx;margin-top:-15px;" mode="aspectFit" src="{{imgD1SrcList[index+3]}}"></image>
           
           <view class="txt">{{item.lable}}</view>
         </view>
+
+        
+        <view class="line-right" style="top:0;"></view>
         
       </view>
+      
+      <view class="line-bottom"></view>
+
     </view>
 
-    <view class="ub" style="margin-top:34px;">
-      <view class="ub-f1 ub ub-pc ub-ac" wx:for="{{ relist2 }}" wx:key="{{item.label}}"  data-label="{{item.lable}}" id="{{index+6}}" bindtap="onClick3">
+    <view class="ub-f1 ub posrel" style="">
+      <view class="ub-f1 ub ub-pc ub-ac posrel" wx:for="{{ relist2 }}" wx:key="{{item.label}}"  data-label="{{item.lable}}" id="{{index+6}}" bindtap="onClick3">
         <view class="item ub ub-dir ub-pc ub-ac">
           <view class="rt">
             <image style="width:100%;height:100%;" mode="scaleToFill" src="{{item.hasWarning ? imgWSrc : imgNSrc}}"></image>
           </view>
-          <image style="width:40px;height:45px;" mode="scaleToFill" src="{{imgD1Src}}"></image>
+          <image style="width:148rpx;height:148rpx;margin-top:-15px;" mode="aspectFit" src="{{imgD1SrcList[index+6]}}"></image>
           
           <view class="txt">{{item.lable}}</view>
         </view>
+
+        
+        <view class="line-right2"></view>
         
       </view>
       

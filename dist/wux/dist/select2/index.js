@@ -31,6 +31,7 @@ const getSelectIndex = ({ value = '', options = [], multiple = false }) => {
 Component({
     data: {
       wHeight: '',
+      
     },
     behaviors: [baseBehavior],
     externalClasses: ['wux-class'],

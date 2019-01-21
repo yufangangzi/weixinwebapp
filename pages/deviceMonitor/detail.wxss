@@ -1,6 +1,7 @@
 .bg-top{
   width: 100%;
   position: relative;
+  background-color: #F9FBFC;
 }
 .bg-img{
   width: 100%;
@@ -16,7 +17,7 @@
   top:0;
   width: 100%; */
   height:40px;
-  background:rgba(221,245,255,1);
+  background:#F9FBFC;
   width: 100%;
 }
 
@@ -26,7 +27,7 @@
   height:40rpx;
   font-size:28rpx;
   font-weight:400;
-  color:#108EE9;
+  color:#5878E4;
   line-height:40rpx;
   display: inline-block;
 }
@@ -185,29 +186,67 @@
     margin-top: 30rpx;
 }
 
+.lne{
+  position: absolute;
+  top: 4px;
+  right: 0px;
+  width: 2px;
+  height: 32px;
+  background-color:rgba(216,216,216,0.4);
+}
+
 .positive{
-  width:119px;
+  width:144px;
   height:40px;
-  background:rgba(255,186,0,1);
-  border-radius:4px;
+  background:rgba(88,120,228,1);
+  
 
   font-size:17px;
   font-weight:400;
   color:rgba(255,255,255,1);
   line-height:40px;
   text-align: center;
+  border-radius:20px 0 0 20px;
 }
 .stable{
-  width:120px;
+  width:144px;
   height:40px;
-  background:rgba(216,216,216,1);
-  border-radius:4px;
+  background:rgba(53,63,98,1);
+  
+
+  font-size:17px;
+  font-weight:400;
+  color:rgba(216,216,216,0.4);
+  line-height:40px;
+  text-align: center;
+  border-radius:20px 0 0 20px;
+}
+
+.positive1{
+  width:145px;
+  height:40px;
+  background:rgba(88,120,228,1);
+  
 
   font-size:17px;
   font-weight:400;
   color:rgba(255,255,255,1);
   line-height:40px;
   text-align: center;
+  border-radius: 0 20px 20px 0;
+}
+.stable1{
+  width:145px;
+  height:40px;
+  background:rgba(53,63,98,1);
+  
+
+  font-size:17px;
+  font-weight:400;
+  color:rgba(216,216,216,0.4);
+  line-height:40px;
+  text-align: center;
+  border-radius: 0 20px 20px 0;
 }
 
 .c-wh{
@@ -223,4 +262,8 @@
 .t-sel{
   color: #108EE9;
   border-bottom: 2px solid #108EE9;
+}
+
+page{
+  background-color:#F9FBFC;
 }

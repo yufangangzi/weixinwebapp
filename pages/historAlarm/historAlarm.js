@@ -36,6 +36,11 @@ Page({
       '1': '处理中',
       '2': '已处理'
     },
+    proStateColorArr: {
+      '0': 'ha-txt-res0',
+      '1': 'ha-txt-res1',
+      '2': 'ha-txt-res'
+    },
     items: [{
       checked: true,
       type: 'text',
@@ -120,8 +125,8 @@ Page({
     // debugger;
     wx.setTabBarStyle({
       // color: '#FF0000',
-      selectedColor: '#E70000',
-      // backgroundColor: '#0000FF',
+      selectedColor: '#F5675D',
+      // backgroundColor: '#ffffff',
       // borderStyle: 'white'
     })
   },
@@ -294,6 +299,7 @@ Page({
               date: "报警时间:" + util.timeformat(new Date(n.alarmTime)).substr(5, 14),
               alarmSeverity: that.data.alertArr[n.alarmSeverity],
               processStatus: that.data.proStateArr[n.processStatus],
+              processStatusColor: that.data.proStateColorArr[n.processStatus],
               total: res.result.total,
               pageNum: that.data.pageNum + 1
             }))
@@ -304,6 +310,7 @@ Page({
             date: "报警时间:" + util.timeformat(new Date(n.alarmTime)).substr(5, 14),
             alarmSeverity: that.data.alertArr[n.alarmSeverity],
             processStatus: that.data.proStateArr[n.processStatus],
+            processStatusColor: that.data.proStateColorArr[n.processStatus],
             total: res.result.total,
             pageNum: that.data.pageNum + 1
           })));

@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/first/first",
     "pages/deviceMonitor/index",
     "pages/deviceMonitor/devicemonitor",
     "pages/deviceMonitor/detail",
-    "pages/first/first",
     "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/handle2",
     "pages/login/login",
@@ -20,15 +20,15 @@
     "pages/logs/logs"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#5F6B8C",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "color": "#AFAFAF",
+    "color": "#666666",
     "selectedColor": "#5878E4",
-    "backgroundColor": "#fff",
+    "backgroundColor": "#242B3F",
     "borderStyle": "black",
     "position": "bottom",
     "list": [

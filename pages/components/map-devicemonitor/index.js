@@ -64,7 +64,7 @@ Component({
         // console.log('newVal:', newVal, ';oldVal:', oldVal);
 
         if (oldVal && newVal) {
-          // debugger
+          debugger
           if (this.forbiddenRepeatClicked) {
             return;
           }

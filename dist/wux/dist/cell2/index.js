@@ -12,6 +12,7 @@ Component({
         isLast: false,
         normalicon: '../../../../images/normalicon.png',
         warnicon: '../../../../images/warnicon.png',
+        rightArrow: '../../../../images/rarrow.png',
         normalTxt: '正常',
         warnTxt: '报警',
         

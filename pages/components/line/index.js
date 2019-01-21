@@ -77,7 +77,7 @@ Component({
             width: 1
           },
           label: {
-            formatter: '高报',
+            formatter: '4.5',
             position: 'start',
             textStyle: {
               fontSize: 12,
@@ -101,11 +101,11 @@ Component({
           borderWidth: 1,
           lineStyle: {
             type: 'solid',
-            // color: '#00FF7F ',
+            color: '#C23531',
             width: 1
           },
           label: {
-            formatter: '高高报',
+            formatter: '7.1',//'高高报',
             position: 'end',
             textStyle: {
               fontSize: 12,
@@ -190,8 +190,9 @@ Component({
           },
         },
         // backgroundColor: 'rgba(255,248,31,0.2)',
+        //是tooltip的文字颜色
         textStyle: {
-          color: '#ffffff'
+          color: '#fff'
         },
         padding: 10
       },
@@ -287,7 +288,14 @@ Component({
               borderWidth: 1,
               color: '#63C57A', //拆点颜色
               lineStyle: {
-                color: '#63C57A', //折线颜色
+                // color: '#B460C7', //折线颜色
+                color: new echarts.graphic.LinearGradient(1, 0, 0, 1, [{
+                  offset: 0,
+                  color: "#5878E4" // 0% 处的颜色
+                }, {
+                  offset: 1,
+                    color: "#93E1FF" // 100% 处的颜色
+                }], false),
               },
             }
           },

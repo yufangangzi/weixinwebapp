@@ -73,13 +73,14 @@ Component({
           borderWidth: 1,
           lineStyle: {
             type: 'solid',
-            color: '#00FFFF',
+            // color: '00FFFF ',
             width: 1
           },
           label: {
-            formatter: '高报',
+            formatter: '4.5',
+            position: 'start',
             textStyle: {
-              fontSize: 16,
+              fontSize: 12,
               fontWeight: 'bolder',
               color: '#00FFFF'
             }
@@ -104,9 +105,10 @@ Component({
             width: 1
           },
           label: {
-            formatter: '高高报',
+            formatter: '7.1',//'高高报',
+            position: 'end',
             textStyle: {
-              fontSize: 16,
+              fontSize: 12,
               fontWeight: 'bolder',
               color: '#00FF7F'
             }
@@ -188,6 +190,7 @@ Component({
           },
         },
         // backgroundColor: 'rgba(255,248,31,0.2)',
+        //是tooltip的文字颜色
         textStyle: {
           color: '#fff'
         },
@@ -220,7 +223,7 @@ Component({
           data: [],
           axisLine: {
             lineStyle: {
-              color: '#fff',
+              color: '#999999',
               width: 1
             }
           },
@@ -229,10 +232,12 @@ Component({
             showMaxLabel: true,
             showMinLabel: true,
             textStyle: {
-              fontSize: '12rpx',
-              color: '#fff',
-              align: 'center'
+              fontSize: 12,
+              color: '#999999',
+              align: 'center',
             },
+            padding: [5, 0, 5, 0],
+            // lineHeight: 20,
             formatter: function (params) {
               let e = params.replace(' ', '\n');
               return e;
@@ -253,10 +258,14 @@ Component({
       yAxis: [
         {
           type: 'value',
+          name: '',
+          nameTextStyle: {
+            color: '#fff'
+          },
           axisLine: {
             show:false,
             lineStyle: {
-              color: '#fff',
+              color: '#999999',
               width: 1
             }
           },
@@ -264,7 +273,7 @@ Component({
             show: true,
             textStyle: {
               fontSize: '12rpx',
-              color: '#fff',
+              color: '#999999',
               align: 'right'
             },
             formatter: function (e) {
@@ -279,7 +288,7 @@ Component({
           splitLine: {// 终于找到了，背景图的内置表格中“边框”的颜色线条  这个是x轴的竖线
             show: true,
             lineStyle: {
-              color: '#fff',
+              color: '#999999',
               type: 'dot'
             }
           }
@@ -298,7 +307,14 @@ Component({
               borderWidth: 1,
               color: '#B460C7', //拆点颜色
               lineStyle: {
-                color: '#B460C7', //折线颜色
+                // color: '#B460C7', //折线颜色
+                color: new echarts.graphic.LinearGradient(1, 0, 0, 1, [{
+                  offset: 0,
+                  color: "#5878E4" // 0% 处的颜色
+                }, {
+                  offset: 1,
+                    color: "#93E1FF" // 100% 处的颜色
+                }], false),
               },
             }
           },
@@ -463,14 +479,15 @@ Component({
       option.series = JSON.parse(JSON.stringify(this.data.option.series));
       option.xAxis[0].data = data.time;
       if (data.unit === '速度') {
-        option.yAxis[0].name = 'mm/s';
+        option.yAxis[0].name = '速度(mm/s)';
         // option.yAxis[0].nameLocation = 'start';
         // option.yAxis[0].nameTextStyle = {align: 'left', color: '#f00'};
       } else {
-        option.yAxis[0].name = 'm/s2';
+        option.yAxis[0].name = '加速度(m/s2)';
         // option.yAxis[0].nameLocation = 'start';
         // option.yAxis[0].nameTextStyle = { align: 'left', color: '#f00' };
       }
+      
       option.series[0].data = data.value;
       option.series[0].name = data.unit;
       let markLine1 = this.data.markLine1;
@@ -478,8 +495,8 @@ Component({
       markLine1.data[0].yAxis = data.vibrateHighQuote || 4.5;
       markLine2.data[0].yAxis = data.vibrateHighHighQuote || 7.1;
       if (data.unit === '速度') {
-        option.series[0].markLine = {};//markLine1;
-        option.series[1].markLine = {};//markLine2
+        option.series[0].markLine = markLine1;
+        option.series[1].markLine = markLine2
       } else {
         option.series[0].markLine = {};
         option.series[1].markLine = {};

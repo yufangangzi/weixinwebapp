@@ -249,6 +249,17 @@ page{
 .ub-pc{
   justify-content: center;
 }
+.ub-pe{
+  justify-content: flex-end;
+}
 .ub-ac{
   align-items: center;
+}
+
+.ub-dire{
+  flex-direction: column;
+}
+
+.pos-rel{
+  position: relative;
 }

@@ -108,7 +108,7 @@ Component({
     imgIcon1GraySrc: app.globalData.imgUrl + 'qushi@2x1.png',
     imgIcon2GraySrc: app.globalData.imgUrl + 'xinzhuang@2x1.png',
     imgIcon3GraySrc: app.globalData.imgUrl + 'lujin@2x1.png',
-    imgIcon4Src: app.globalData.imgUrl + 'fangda.png',
+    imgIcon4Src: '../../../images/fangda2.png',
     
     mapShowIndex: 0,
 
@@ -277,7 +277,8 @@ Component({
           let accessMethodList = res.result.channel.map(item => {
             return {
               title: item,
-              value: item
+              value: item,
+              color: '#5878E4',
             };
           });
           this.setData({
@@ -494,11 +495,13 @@ Component({
         options: [{
           title: '速度',
           value: '-2',
+          color: '#5878E4',
           // color: 'positive',
         },
         {
           title: '加速度',
           value: '-1',
+          color: '#5878E4',
           // color: 'positive',
         },
         ],
@@ -550,36 +553,43 @@ Component({
         options: [{
           title: '5分钟',
           value: '5',
+          color: '#5878E4',
           // color: 'positive',
         },
         {
           title: '半小时',
           value: '30',
+          color: '#5878E4',
           // color: 'positive',
         },
         {
           title: '1小时',
           value: '60',
+          color: '#5878E4',
           // color: 'positive',
         },
         {
           title: '3小时',
           value: '180',
+          color: '#5878E4',
           // color: 'positive',
         },
         {
           title: '6小时',
           value: '360',
+          color: '#5878E4',
           // color: 'positive',
         },
         {
           title: '12小时',
           value: '720',
+          color: '#5878E4',
           // color: 'positive',
         },
         {
           title: '24小时',
           value: '1440',
+          color: '#5878E4',
           // color: 'positive',
         },
 

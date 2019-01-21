@@ -14,7 +14,7 @@
   <!-- 下面数据可从storage取 -->
   <view class='deviceinfo'>
     <view class='ub padl10 padb10 c-wh'>
-      <view class='wid wid-first'>设备类型</view>
+      <view class='wid'>设备类型：</view>
       <view class='ub-f1 ub-f1-first'>{{deviceinfos.structure}}</view>
     </view>
 

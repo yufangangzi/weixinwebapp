@@ -7,8 +7,9 @@
 <view class="fixed">
 
 <view class="ub">
-  <view wx:for="{{deviceLists}}" wx:key="{{index}}" class="ub-f1 ub ub-ac ub-pc t-item {{tabIndex==index ? 't-sel': ''}}" bindtap='switchTab' data-code="{{item}}" data-index="{{index}}">
+  <view wx:for="{{deviceLists}}" wx:key="{{index}}" class="pos-rel ub-f1 ub ub-ac ub-pc t-item " bindtap='switchTab' data-code="{{item}}" data-index="{{index}}">
     <view class="">{{item}}</view>
+    <view class="lie  {{tabIndex==index ? 't-sel': 't-def'}}"></view>
   </view>
 </view>
 

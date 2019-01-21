@@ -319,7 +319,7 @@ Page({
 
     if (suggestCheckList2) {
       suggestCheckList2 = JSON.parse(suggestCheckList2);
-      suggestCheckList2 = suggestCheckList2.map(v => { return { title: v.label, value: v.value } });
+      suggestCheckList2 = suggestCheckList2.map(v => { return { title: v.label, value: v.value, color: '#5878E4' } });
       // debugger;
 
       this.setData({
@@ -355,7 +355,7 @@ Page({
         label: '长岭机电'
       }
     ];
-    repairPeopleList = repairPeopleList.map(v => { return { title: v.label, value: v.value } });
+    repairPeopleList = repairPeopleList.map(v => { return { title: v.label, value: v.value, color: '#5878E4' } });
     this.setData({
       repairPeopleList: repairPeopleList
     })

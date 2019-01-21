@@ -2,7 +2,7 @@
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "设备监测图",
-  "backgroundColor": "#F3F4F5",
+  "backgroundColor": "#F9FBFC",
   "backgroundTextStyle": "light",
   "usingComponents": {
     "wux-card": "../../dist/wux/dist/card/index",

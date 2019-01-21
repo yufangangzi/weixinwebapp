@@ -2,7 +2,7 @@
 .speed-device{
   position: relative;
   height:666rpx;
-  background:linear-gradient(138deg,rgba(98,150,255,1) 0%,rgba(45,78,231,1) 100%);
+  background:linear-gradient(176deg,rgba(95,107,140,1) 0%,rgba(29,35,56,1) 100%);
 }
 .ico{
   width:610rpx;
@@ -16,16 +16,16 @@
 .sensor{
   position: absolute;
 }
-.sensor1{
-  left:62rpx;
-  top:44rpx
+.sensor3{
+  right:42rpx;
+  top:462rpx
 }
 .sensor2{
   right:90rpx;
   top:44rpx
 }
-.sensor3{
-  left:62rpx;
+.sensor1{
+  left:83rpx;
   top:462rpx
 }
 .sensor4{

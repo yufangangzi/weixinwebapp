@@ -19,6 +19,7 @@ Page({
     imgNSrc: '../../images/nicon.png',
     imgWSrc: '../../images/wicon.png',
     imgD1Src: '../../images/device.png',
+    imgD1SrcList: ['../../images/device0.png', '../../images/device1.png', '../../images/device2.png', '../../images/device3.png', '../../images/device4.png', '../../images/device5.png', '../../images/device6.png', '../../images/device7.png', '../../images/device8.png'],
     warningList: [],
     warningUnitNameList: [],
     warningMsg: '',
@@ -262,6 +263,7 @@ Page({
         title: devName,
         confirmText: '跳转',
         cancelText: '关闭',
+        imgCloseSrc: '../../../../images/pclose.png',
       },
       options: codeOption,
       // [{

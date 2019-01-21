@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "设备监测",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
   "usingComponents": {
     "custom-history": "./history/index",
     "wux-calendar": "../../dist/wux/dist/calendar/index",

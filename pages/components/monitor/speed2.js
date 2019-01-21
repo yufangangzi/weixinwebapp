@@ -18,7 +18,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    deviceImg: app.globalData.imgUrl + 'device2-1225.png'
+    deviceImg: app.globalData.imgUrl + 'device2-1226.png'
   },
 
   /**

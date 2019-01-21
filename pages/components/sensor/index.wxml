@@ -3,12 +3,12 @@
   <view class='sensor-title'>{{sensorData.title}}</view>
   <view class='sensor-main'>
     <view class='speed' data-obj="{{sensorData}}" bindtap="openMap">
-      <text>速度:</text>
-      <text>{{sensorData.speed}}mm/s</text>
+      <text>速度:{{sensorData.speed}}mm/s</text>
+      
     </view>
     <view class='accel' data-obj="{{sensorData}}" bindtap="openMap2">
-      <text>加速度:</text>
-      <text>{{sensorData.accel}}m/s2</text>
+      <text>加速度:{{sensorData.accel}}m/s2</text>
+      
     </view>
   </view>
 </view>

@@ -66,8 +66,9 @@
 }
 
 .ischecked {
-  color: #f15353;
-  border-bottom:1px solid #009A40;
+  color: #5878E4;
+  border-bottom:2px solid #5878E4;
+  font-weight: 300;
 }
 
 .wux-filterbar__icon {

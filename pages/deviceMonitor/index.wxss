@@ -40,7 +40,7 @@
 }
 
 .box{
-  background:linear-gradient(180deg,rgba(30,53,113,1) 0%,rgba(21,35,74,1) 100%);
+  background:linear-gradient(173deg,rgba(95,107,140,1) 0%,rgba(29,35,56,1) 100%);
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -48,26 +48,63 @@
   width: 100%;
 }
 .item{
-  width:100px;
-  height:115px;
-  background:linear-gradient(138deg,rgba(98,150,255,1) 0%,rgba(45,78,231,1) 100%);
+  width:148rpx;
+  min-height:160px;
+  /* background:linear-gradient(138deg,rgba(98,150,255,1) 0%,rgba(45,78,231,1) 100%); */
   border-radius:2px;
   text-align: center;
   position: relative;
+  
 }
 
 .rt {
   position: absolute;
-  top: 5px;
+  top: 34px;
   right: 5px;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
 }
 
 .txt{
-  height:17px;
-  font-size:12px;
-  font-weight:500;
-  color:rgba(255,255,255,1);
-  line-height:17px;
+
+  
+  height:21px;
+  font-size:16px;
+  color:rgba(255,255,255,0.6);
+  line-height:21px;
+  padding-top: 2px;
+}
+
+.posrel {
+  position: relative;
+}
+
+.line-bottom{
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  width: calc(100% - 40px);
+  height: 1px;
+
+}
+
+.line-right{
+  border-right: 1px solid rgba(255,255,255,0.1);
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  /* height: calc(100% - 20px); */
+}
+
+.line-right2{
+  border-right: 1px solid rgba(255,255,255,0.1);
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  height: calc(100% - 20px);
+  /* height: calc(100% - 20px); */
 }

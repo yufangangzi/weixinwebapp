@@ -171,7 +171,7 @@ Component({
           data: ['0.2X', '0.33X', '0.5X', '1X', '2X', '3X', '5X', '10X'],
           axisLine: {
             lineStyle: {
-              color: '#fff',
+              color: '#999999',
               width: 1
             }
           },
@@ -181,7 +181,7 @@ Component({
             rotate: 45,
             textStyle: {
               fontSize: '12rpx',
-              color: '#fff',
+              color: '#999999',
               align: 'center'
             },
             formatter: function (e) {
@@ -218,7 +218,7 @@ Component({
             show: true,
             textStyle: {
               fontSize: '12rpx',
-              color: '#fff',
+              color: '#999999',
               align: 'right'
             },
             formatter: function (e) {
@@ -233,7 +233,7 @@ Component({
           splitLine: {// 终于找到了，背景图的内置表格中“边框”的颜色线条  这个是x轴的竖线
             show: true,
             lineStyle: {
-              color: '#C2C2C2',
+              color: '#999999',
               type: 'dot'
             }
           }
@@ -261,6 +261,13 @@ Component({
                   return Number(e.value).toFixed(2);
                 }
               },
+              color: new echarts.graphic.LinearGradient(0, 0, 1, 1, [{
+                offset: 0,
+                color: "#FF80DB" // 0% 处的颜色
+              }, {
+                offset: 1,
+                  color: "#5878E4" // 100% 处的颜色
+              }], false),
               // borderWidth: 1,
               // color: '#63C57A', //拆点颜色
               // lineStyle: {
@@ -368,6 +375,7 @@ Component({
         return;
       }
       console.log(data);
+      // debugger;
       let option = Object.assign({}, this.data.option);
       // option.series = JSON.parse(JSON.stringify(this.data.option.series));
       // option.xAxis[0].data = data.time;
