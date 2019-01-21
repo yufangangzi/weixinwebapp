@@ -34,7 +34,7 @@
           <view class="rt">
             <image style="width:100%;height:100%;" mode="scaleToFill" src="{{item.hasWarning ? imgWSrc : imgNSrc}}"></image>
           </view>
-          <image style="width:148rpx;height:148rpx;margin-top:-15px;" mode="aspectFit" src="{{imgD1SrcList[index+3]}}"></image>
+          <image style="width:148rpx;height:148rpx;margin-top:-20px;" mode="aspectFit" src="{{imgD1SrcList[index+3]}}"></image>
           
           <view class="txt">{{item.lable}}</view>
         </view>
@@ -54,7 +54,7 @@
           <view class="rt">
             <image style="width:100%;height:100%;" mode="scaleToFill" src="{{item.hasWarning ? imgWSrc : imgNSrc}}"></image>
           </view>
-          <image style="width:148rpx;height:148rpx;margin-top:-15px;" mode="aspectFit" src="{{imgD1SrcList[index+6]}}"></image>
+          <image style="width:148rpx;height:148rpx;margin-top:-30px;" mode="aspectFit" src="{{imgD1SrcList[index+6]}}"></image>
           
           <view class="txt">{{item.lable}}</view>
         </view>

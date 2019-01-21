@@ -13,6 +13,7 @@
     "wux-cell-group": "../../dist/wux/dist/cell-group/index",
     "wux-cell": "../../dist/wux/dist/cell/index",
     "wux-input": "../../dist/wux/dist/input/index",
+    "wux-textarea": "../../dist/wux/dist/textarea/index",
     "wux-upload": "../../dist/wux/dist/upload/index",
     "wux-icon": "../../dist/wux/dist/icon/index",
     "wux-dialog": "../../dist/wux/dist/dialog/index",

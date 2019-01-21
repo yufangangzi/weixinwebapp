@@ -213,7 +213,7 @@ Page({
       value: this.data.value2,
       // multiple: true,
       toolbar: {
-        title: '请选择指派人员',
+        title: '请选择维保单位',
         confirmText: '确定',
       },
       options: options,
@@ -397,6 +397,7 @@ Page({
     // console.log(param);
     // return;
     //
+    // debugger;
     util.dealDeviceAlarm(param, res => {
       // debugger;
       // return;
@@ -456,7 +457,7 @@ Page({
 
     if (suggestCheckList2) {
       suggestCheckList2 = JSON.parse(suggestCheckList2);
-      suggestCheckList2 = suggestCheckList2.map(v => { return { title: v.label, value: v.value } });
+      suggestCheckList2 = suggestCheckList2.map(v => { return { title: v.label, value: v.value, color: '#5878E4' } });
       // debugger;
 
       this.setData({

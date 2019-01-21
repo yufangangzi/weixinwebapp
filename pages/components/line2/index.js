@@ -77,7 +77,7 @@ Component({
             width: 1
           },
           label: {
-            formatter: '4.5',
+            formatter: '高报',
             position: 'start',
             textStyle: {
               fontSize: 12,
@@ -105,7 +105,7 @@ Component({
             width: 1
           },
           label: {
-            formatter: '7.1',//'高高报',
+            formatter: '高高报',
             position: 'end',
             textStyle: {
               fontSize: 12,

@@ -26,6 +26,7 @@
             </block>
         </wux-checkbox-group>
     </scroll-view>
+    <view style="width:100%;height:8px;"></view>
     <!-- <view class="wux-select__toolbar" wx:if="{{ toolbar }}">
         <view class="wux-select__toolbar-inner">
             <!-- <view class="wux-select__toolbar-button wux-select__toolbar-button--cancel" hover-class="wux-select__toolbar-button--hover" bindtap="onCancel" wx:if="{{ toolbar.cancelText }}">{{ toolbar.cancelText }}</view>
