@@ -167,7 +167,7 @@ Component({
           // max: 'dataMax',
           // interval: 30000000000,
           type: 'category',
-          boundaryGap: false,
+          boundaryGap: true,
           data: ['0.2X', '0.33X', '0.5X', '1X', '2X', '3X', '5X', '10X'],
           axisLine: {
             lineStyle: {
@@ -178,15 +178,16 @@ Component({
           axisLabel: {
             show: true,
             interval: 0,
-            rotate: 45,
+            rotate: 15,
+            marginTop: 40,
             textStyle: {
               fontSize: '12rpx',
               color: '#999999',
               align: 'center'
             },
-            formatter: function (e) {
-              return '\n\n' + e;
-            }
+            // formatter: function (e) {
+            //   return '\n\n' + e;
+            // }
           },
           axisTick: {
             inside: true // 刻度朝里
