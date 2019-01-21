@@ -84,6 +84,7 @@ Component({
             token: wx.getStorageSync('token') || '3bda1ffe-e30e-4da9-969b-4e8468da475b',
             pagemap: mapIndex,
             statisStartTime: this.properties.outInfo.parameterTime,
+            valueData: this.data.valueShow,
           }
           console.log(this.properties.outInfo)
           const paramsobj = Object.assign({}, this.properties.outInfo, obj);
@@ -310,7 +311,8 @@ Component({
         // valueshow: this.data.title2
       }
       const valueshow = {
-        valueshow: this.properties.outInfo.kpiFlag === '0'? '速度': '加速度'
+        valueshow: this.properties.outInfo.kpiFlag === '0'? '速度': '加速度',
+        valueData: this.data.valueShow,
       }
       const paramsobj = Object.assign({}, this.properties.outInfo, obj, valueshow);
       

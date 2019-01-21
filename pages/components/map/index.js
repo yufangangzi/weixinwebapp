@@ -66,7 +66,8 @@ Component({
             channel: this.data.value1,
             dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
             statisStartTime: new Date(this.data.timeShow.replace(timereg, '/')).getTime(),
-            valueshow: this.data.valueShow
+            valueshow: this.data.valueShow,
+            valueData: this.data.valueShow,
           }
           console.log(this.properties.outInfo)
           const paramsobj = Object.assign({}, this.properties.outInfo, obj);
@@ -318,7 +319,8 @@ Component({
         channel: this.data.value1,
         dataType: this.data.value2 == '-1' ? 'acceleration' : 'speed',
         statisStartTime: new Date(this.data.timeShow.replace(timereg, '/')).getTime(),
-        valueshow: this.data.valueShow
+        valueshow: this.data.valueShow,
+        valueData: this.data.valueShow,
       }
       console.log(this.properties.outInfo)
       const paramsobj = Object.assign({}, this.properties.outInfo,obj);
