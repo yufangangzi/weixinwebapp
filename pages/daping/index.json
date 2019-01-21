@@ -1,6 +1,7 @@
 {
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "大屏展示",
+  "navigationBarBackgroundColor": "#4F5978",
   "backgroundColor": "#ffffff",
   "backgroundTextStyle": "light",
   "usingComponents": {

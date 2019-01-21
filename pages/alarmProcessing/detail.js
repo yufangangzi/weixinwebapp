@@ -173,6 +173,62 @@ Page({
       },
     });
   },
+
+  reject4() {
+    const _this = this;
+    let param = {
+      id: wx.getStorageSync('repairId'),
+      processStatus: 1,
+      reportStatus: 0,
+      newFaultIds: [],
+    };
+    param.deviceCode = wx.getStorageSync('deviceCode') || '';
+    // 新增提交字段
+    let stepList = wx.getStorageSync('stepList') || '';
+    param.faultPerformance = stepList + '\n\n' + param.remark;
+
+    // { "id": "33c0b3a7775d4d24876464064cc4af8f", "newFaultIds": [], "processStatus": 1, "reportStatus": 0, "deviceCode": "2414-P231A", "faultPerformance": "频域最大值为1倍频\n\n" }
+    // debugger;
+    util.dealDeviceAlarm(param, res => {
+      debugger;
+      // return;
+      if (res.code === 0) {
+        $wuxToast().show({
+          type: 'text',
+          duration: 1000,
+          color: '#f66',
+          text: '操作成功!',
+          success: () => {
+            app.globalData.listReload = true;
+            //此处暂时改为退回上一页，因为肯定会列表进来
+            // let url = "../../pages/historAlarm/historAlarm";
+            // wx.redirectTo({
+            //   url: url
+            // });
+            wx.navigateBack({
+
+            })
+          }
+        });
+      } else if (res.code === 4) {
+        wx.showModal({
+          title: '提示',
+          content: res.msg,
+          success: (r) => {
+            if (r.confirm) {
+              // app.globalData.detailReload = true;
+              app.globalData.listReload = true;
+              // wx.navigateBack();
+              _this.getDetail();
+            }
+          }
+        })
+      }
+    }, err => {
+
+    });
+     
+  },
   // 打开时域波形大图
   open2SYBX() {
     if (this.forbiddenRepeatClicked) {

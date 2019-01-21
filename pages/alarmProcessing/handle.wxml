@@ -21,7 +21,7 @@
 
 <view hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? none : flex}}">
   <wux-cell-group title="">
-      <wux-cell title="指派人员" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
+      <wux-cell title="维保单位" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
   </wux-cell-group>
 </view>
 

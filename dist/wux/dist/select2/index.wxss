@@ -27,16 +27,16 @@
   color:rgba(255,255,255,1);
 }
 
-.wux-select__toolbar{
+/* .wux-select__toolbar{
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   margin-left: 20rpx;
   margin-right: 20rpx;
-}
+} */
 .wux-select__content{
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  margin-left: 20rpx;
+  /* margin-left: 20rpx;
   margin-right: 20rpx;
-  margin-bottom:26rpx;
+  margin-bottom:26rpx; */
 }
