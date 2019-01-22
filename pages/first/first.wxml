@@ -6,5 +6,5 @@
   <span></span>
   <span></span>
 </view> -->
-<image style="width:120rpx;height:120rpx;margin-top:-40px;"  mode="aspectFit" src="{{loadSrc}}" ></image>
+<image style="width:120rpx;height:120rpx;margin-top:-40px;"  mode="aspectFit" src="../../images/load.gif" ></image>
 </view>
