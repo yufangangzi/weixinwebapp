@@ -101,6 +101,13 @@ Page({
    */
   onShow: function () {
     
+    
+    if (app.globalData.rootReload) {
+      this.getAlarmList();
+      app.globalData.rootReload = false;
+    }
+    
+  
   },
 
   /**
@@ -182,12 +189,17 @@ Page({
 
 
         this.getAlarmList();
+        // 启动计时装置轮循报警信息
+        setInterval(() =>{
+          this.getAlarmList();
+        }, 30 * 1000);
       }
     }, err => {
     });
   },
   getAlarmList(params = {}) {
     util.alarmList2(params, res => {
+      res.result = res.result || [];
       if (res.code === 1101 && res.result) {
 
         // debugger;
@@ -204,7 +216,7 @@ Page({
           return it.unitName == item.deviceUnitName;
         })
       });
-      if(Array.isArray(arr)){
+      if(Array.isArray(arr) && arr.length>0){
         const arr1 = arr.map(item => item.deviceUnitName);
         const arr2 = arr.map(item => item.deviceCode);
         this.setData({

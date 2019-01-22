@@ -140,6 +140,7 @@ Page({
               text: '操作成功!',
               success: () => {
                 app.globalData.listReload = true;
+                app.globalData.rootReload = true;
                 //此处暂时改为退回上一页，因为肯定会列表进来
                 // let url = "../../pages/historAlarm/historAlarm";
                 // wx.redirectTo({
@@ -158,6 +159,7 @@ Page({
                 if(r.confirm){
                   // app.globalData.detailReload = true;
                   app.globalData.listReload = true;
+                  app.globalData.rootReload = true;
                   // wx.navigateBack();
                   _this.getDetail();
                 }
@@ -200,6 +202,7 @@ Page({
           text: '操作成功!',
           success: () => {
             app.globalData.listReload = true;
+            app.globalData.rootReload = true;
             //此处暂时改为退回上一页，因为肯定会列表进来
             // let url = "../../pages/historAlarm/historAlarm";
             // wx.redirectTo({
@@ -218,6 +221,7 @@ Page({
             if (r.confirm) {
               // app.globalData.detailReload = true;
               app.globalData.listReload = true;
+              app.globalData.rootReload = true;
               // wx.navigateBack();
               _this.getDetail();
             }
