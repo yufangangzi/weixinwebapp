@@ -1,9 +1,10 @@
 <view class="pg">
-<view class="loading">
+<!-- <view class="loading">
   <span></span>
   <span></span>
   <span></span>
   <span></span>
   <span></span>
-</view>
+</view> -->
+<image style="width:120rpx;height:120rpx;margin-top:-40px;"  mode="aspectFit" src="{{loadSrc}}" ></image>
 </view>
