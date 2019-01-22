@@ -389,10 +389,10 @@ Page({
 
     }
     if (param.reportStatus == '0') {
-      delete param.processResult;
-      delete param.remark;
+      // delete param.processResult;
+      // delete param.remark;
       delete param.acceptIds;
-      delete param.picUrl;
+      // delete param.picUrl;
     }
     // console.log(param);
     // return;

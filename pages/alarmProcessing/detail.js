@@ -417,6 +417,7 @@ Page({
 
         //设置图片数组
         const img = res.result.picUrl;
+        // debugger;
         if (img) {
           const imgList = img.split(',').map(v => app.globalData.baseUrl + v);
           this.setData({

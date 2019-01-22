@@ -56,7 +56,7 @@ border-radius:9px;
 .page_search{
   padding-top: 10rpx;
   padding-bottom: 10rpx;
-  margin: 7px 20px;
+  margin: 8px 10px;
   border-radius: 14px;
   background-color:#ffffff;
 }

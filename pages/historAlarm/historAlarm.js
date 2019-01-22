@@ -187,6 +187,7 @@ Page({
       deviceUnitId: '',
     }
     let isCheck = false;
+    let isReset = false;
     
     console.log(checkedItems, items)
 
@@ -221,6 +222,7 @@ Page({
                 'items[4].checked': false
               })
             }
+            isReset = true;
           }
 
         } else if (n.value === 'search') {
@@ -240,9 +242,13 @@ Page({
           params.processStatus = '2'
           this.setData({ 'inputValue': '' })
           //  debugger
-        }
+        }else{}
       }
     })
+
+    if(isReset && !isCheck){
+      params.processStatus = '';
+    }
 
     const data = Object.assign(this.data.reposParams, params)
     this.setData({

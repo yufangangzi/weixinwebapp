@@ -4,12 +4,12 @@
 <wux-select id="wux-select2" />
 <wux-loading id="wux-loading" />
 
-<!-- <view>
-  <wux-radio-group name="d" value="{{ value4 }}" title="是否处理" bind:change="onChange4">
+<view>
+  <wux-radio-group name="d" value="{{ value4 }}" title="是否故障" bind:change="onChange4">
       <wux-radio color='positive' title="是" value="1" />
       <wux-radio color='positive' title="否" value="2" />
   </wux-radio-group>
-</view> -->
+</view>
 
 <view hidden="{{isSelectNo}}" style="display:{{isSelectNo ? none : flex}}">
   <wux-checkbox-group name="e" value="{{ value5 }}" title="故障名称" bind:change="onChange5">
@@ -26,7 +26,7 @@
   </wux-cell-group>
 </view> -->
 
-<view hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? none : flex}}">
+<view>
     <wux-cell hover-class="none">
         <!-- <wux-input label="现场描述" placeholder="请输入" value="{{value6}}" bind:change="onChange6" bind:blur="onBlur6" /> -->
 
@@ -40,7 +40,8 @@
 </view>
 
 <block>
-<wux-cell-group title="上传照片" hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? 'none' : flex}}">
+<!-- <wux-cell-group title="上传照片" hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? 'none' : flex}}"> -->
+<wux-cell-group title="上传照片" >
     <!-- <view class="sub-title">Picture card & max = 4</view> -->
     <wux-upload listType="picture-card" defaultFileList="{{ fileList }}" max="4" url="{{uploadUrl}}" name="files" formData="" bind:change="onImgChange" bind:success="onImgSuccess" bind:fail="onImgFail" bind:complete="onImgComplete" bind:preview="onImgPreview" bind:remove="onImgRemove">
         <!-- <text>Upload</text> -->

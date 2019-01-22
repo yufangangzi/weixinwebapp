@@ -206,8 +206,8 @@
 
 
 <view wx-if="{{DeviceFaultDetail.processStatus==1}}" class="page__bd page__bd_spacing martop70">
-  <!-- <wux-button block type="positive" bind:click="open3Page">立即处理</wux-button> -->
-  <wux-row>
+  <wux-button block type="positive" bind:click="open3Page">处理结果上报</wux-button>
+  <!-- <wux-row>
     <wux-col span="6">
       <view class="placeholder">
     <wux-button block type="positive" bind:click="open3Page">已处理</wux-button>
@@ -218,7 +218,7 @@
     <wux-button block type="assertive" bind:click="reject4">不处理</wux-button>
       </view>
     </wux-col>
-  </wux-row>
+  </wux-row> -->
 </view>
 
 
@@ -286,11 +286,15 @@
               </view> -->
 
               <!-- 结论 -->
-              <view class="marb40" wx:if="{{ DeviceFaultDetail.reportStatus==1}}">
+              <view class="marb40">
                 <!-- <view class="line"></view> -->
-                <view class="">
+                <view class="" wx:if="{{ DeviceFaultDetail.reportStatus==1}}">
                   <view class="intro">故障名称</view>
                   <view class="desp">{{value9}}</view>
+                </view>
+                <view class="" wx:else>
+                  <view class="intro">是否故障</view>
+                  <view class="desp">否</view>
                 </view>
                 <view class="">
                   <view class="intro">现场描述</view>

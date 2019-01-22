@@ -45,7 +45,7 @@
   display: block;
   -ms-flex: 1;
   flex: 1;
-  padding: 26rpx 0;
+  padding: 30rpx 0;
   text-align: center;
   font-size: 30rpx;
 }
