@@ -82,7 +82,7 @@ const request = obj => {
 }
 
 const baseUrl = 'https://tiot.sinochem-tech.com/wx/';
-const baseWebView = 'https://tiot.sinochem-tech.com/';
+const baseWebView = 'https://tiot.sinochem-tech.com/static/qzweapp/bigcharts.html';
 const wss = 'wss://tiot.sinochem-tech.com/wss/socketServer/';
 
 // WX登录,拿code换登录

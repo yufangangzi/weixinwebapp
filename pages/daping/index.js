@@ -19,7 +19,7 @@ Page({
       // body...
       return encodeURIComponent(key) + "=" + encodeURIComponent(options[key]);
     }).join("&");
-    const sc = `${util.baseWebView}static/qzweapp/bigcharts.html?${params}&time=${new Date().getTime()}`;
+    const sc = `${util.baseWebView}?${params}&time=${new Date().getTime()}`;
     console.log(sc);
     this.setData({
       src: sc
