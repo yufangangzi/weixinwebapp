@@ -398,7 +398,7 @@ const dealDeviceAlarm = (data, successcb, failcb) => {
 // 获取设备监测历史数据
 const listHistoryData2 = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceMonitor/listHistoryData',
+    url: baseUrl + 'weChatDeviceMonitor/listHistoryData',
     data: data,
     // header: {},
     method: 'POST',
@@ -421,7 +421,7 @@ const listHistoryData2 = (data, successcb, failcb) => {
 // 获取频域特征图数据
 const listNewByGroup2 = (data, successcb, failcb) => {
   request({
-    url: baseUrl + 'deviceMonitor/listNewByGroup?deviceNo=' + data.deviceNo,
+    url: baseUrl + 'weChatDeviceMonitor/listNewByGroup?deviceNo=' + data.deviceNo,
     data: {},
     // header: {},
     method: 'POST',
