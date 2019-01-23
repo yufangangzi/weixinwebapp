@@ -8,21 +8,21 @@
 
 <view class="ub">
   <view wx:for="{{deviceLists}}" wx:key="{{index}}" class="pos-rel ub-f1 ub ub-ac ub-pc t-item " bindtap='switchTab' data-code="{{item}}" data-index="{{index}}">
-    <view class="">{{item}}</view>
+    <view class="{{tabIndex==index ? 'v-sel': 'v-def'}}">{{item}}</view>
     <view class="lie  {{tabIndex==index ? 't-sel': 't-def'}}"></view>
   </view>
 </view>
 
 <block wx:if="{{ switchIndex===0 }}">
 <view class='top-main'>
-  <text>额定转速: {{rotateSpeed}}RPM</text>
+  <text class='bar-tit'>额定转速: {{rotateSpeed}}RPM</text>
   <text class='ri' bindtap="switchHis" >历史数据</text>
 </view>
 </block>
 <block wx:else>
 
 <view class='top-main'>
-  <text>历史数据查询</text>
+  <text class='history-tit'>历史数据查询</text>
   <text class='ri' bindtap="switchRT" >实时监测</text>
 </view>
 </block>
