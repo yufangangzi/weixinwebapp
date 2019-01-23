@@ -21,7 +21,7 @@ ec-canvas {
   margin-top:24rpx;
   height:40rpx;
   width: 120rpx;
-  border-radius:10rpx;
+  border-radius:20rpx;
   border:1px solid #949494;
   position: relative;
   display: inline-block;
