@@ -23,25 +23,21 @@
 
 .wid {
   width: 180rpx;
-  font-size: 30rpx;
+  font-size: 26rpx;
   font-weight: 400;
 }
 .wid-first{
   width:180rpx;
   height:42rpx;
   line-height: 42rpx;
-  /* text-align: center; */
-  /* background:rgba(0,62,255,0.4);
-  border-radius:4px; */
   font-size: 30rpx;
   font-weight:400;
   color: rgba(88,120,228,0.6);
 }
 .ub-f1-first{
-  /* font-size: 34rpx; */
-  color: #3E464E;
+  font-size: 26rpx;
+  color: #333;
   font-weight:400;
-  /* padding-left:40rpx; */
 
 }
 .ub-pc {
@@ -60,7 +56,7 @@
 
 .c-wh{
   color: #8A8C8A;
-  font-size: 30rpx;
+  font-size: 26rpx;
 }
 .lifeCycle{
   position: absolute;
