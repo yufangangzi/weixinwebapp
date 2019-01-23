@@ -158,8 +158,8 @@ Component({
       grid: {
         top: 40,
         bottom: 40,
-        left: 50,
-        right: 40,
+        left: 40,
+        right: 20,
       },
       xAxis: [
         {
@@ -209,9 +209,9 @@ Component({
             color: '#fff'
           },
           axisLine: {
-            show:true,
+            show:false,
             lineStyle: {
-              color: '#fff',
+              color: '#979797',
               width: 1
             }
           },

@@ -46,7 +46,12 @@
   color: #5878E4;
   border-bottom: 4rpx solid #5878E4;
 }
-
+.v-sel{
+  color: #5878E4;
+}
+.v-def{
+  color: #333333;
+}
 .fixed {
   position: fixed;
   left:0;
@@ -83,7 +88,7 @@
   font-size: 28rpx;
   font-weight: 400;
   background:rgba(88,120,228,0.6);
-  border-radius:12px;
+  border-radius:24rpx;
   margin-right: 22px;
 }
 
@@ -96,4 +101,16 @@ page{
   bottom: 0;
   width: 70%;
 
+}
+.history-tit{
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(88,120,228,0.6);
+  font-size: 26rpx
+}
+.bar-tit{
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(88,120,228,0.6);
+  font-size: 26rpx
 }

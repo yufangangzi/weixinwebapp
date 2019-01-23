@@ -27,7 +27,7 @@
   height:40rpx;
   font-size:28rpx;
   font-weight:400;
-  color:#5878E4;
+  color:rgba(88,120,228,0.6);
   line-height:40rpx;
   display: inline-block;
 }

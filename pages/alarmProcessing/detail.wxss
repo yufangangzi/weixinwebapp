@@ -215,8 +215,8 @@
 .stable{
   width:144px;
   height:40px;
-  background:#98ACED;
-  
+  /* background:#98ACED; */
+   background:rgba(224,227,234,1);
 
   font-size:17px;
   font-weight:400;
@@ -242,8 +242,8 @@
 .stable1{
   width:145px;
   height:40px;
-  background:#98ACED;
-  
+  /* background:#98ACED; */
+  background:rgba(224,227,234,1);
 
   font-size:17px;
   font-weight:400;

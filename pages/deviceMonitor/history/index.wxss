@@ -13,7 +13,7 @@
 .lefts{ left: 1%; top:38%;}
 .item{
   line-height: 94rpx;height: 94rpx;
-  color: #0B0817;
+  color: #333;
   font-size: 28rpx;
   font-weight:400;
   
