@@ -108,3 +108,9 @@ page{
   color:rgba(88,120,228,0.6);
   font-size: 26rpx
 }
+.bar-tit{
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(88,120,228,0.6);
+  font-size: 26rpx
+}
