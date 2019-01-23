@@ -1,9 +1,9 @@
 <!--pages/historAlarm/historAlarm.wxml-->
 <view class="page" style="{{ pageStyle }}">
-    <view class="ub ub-pc ub-ac" style="z-index:9999;background-color:#F3F4F5;height:100rpx;">
+    <view class="ub ub-pc ub-ac" style="z-index:9999;background-color:#F9FBFC;height:100rpx;">
         <view class="ub-f1 page__bd page_search" style="background-color:#fff;">
-        <image class="baoicon"  mode="aspectFit" src="{{searchlog}}" bindtap='pageSearch'></image>
-        <input class='lg-input' type='text' placeholder='输入设备编号' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='pageSearch'></input>
+        <image class="baoicon"  mode="aspectFit" src="../../images/sear.png" bindtap='pageSearch'></image>
+        <input class='lg-input' type='text' placeholder='请输入设备编号' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='pageSearch'></input>
         </view>
     </view>
     <view class="page__bd1">
@@ -13,7 +13,7 @@
             <view class="weui-panel__bd">
                 <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ repos }}" wx:key=""  catchtap='go2page' data-bean='{{repos}}' data-index='{{index}}'>
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <view class='ha-txt ub ub-pc ub-ac'>{{item.alarmSeverity}}</view>
+                        <view class=' ub ub-pc ub-ac {{ item.alarmIcon }}'>{{item.alarmSeverity}}</view>
                     </view>
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                         <view class="weui-media-box__title">{{ item.deviceCode }}</view>

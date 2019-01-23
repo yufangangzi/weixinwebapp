@@ -31,6 +31,7 @@ Page({
       '1': '高报',
       '2': '高高报'
     },
+    alertIcon: ['ha-txt', 'ha-txt-gb', 'ha-txt-2'],
     proStateArr: {
       '0': '未处理',
       '1': '处理中',
@@ -304,6 +305,7 @@ Page({
             repos: res.result.list.map((n) => Object.assign({}, n, {
               date: "报警时间:" + util.timeformat(new Date(n.alarmTime)).substr(5, 14),
               alarmSeverity: that.data.alertArr[n.alarmSeverity],
+              alarmIcon: n.processStatus < 2 ? (n.alarmSeverity == 2 ? that.data.alertIcon[0] : that.data.alertIcon[1]) : that.data.alertIcon[2],
               processStatus: that.data.proStateArr[n.processStatus],
               processStatusColor: that.data.proStateColorArr[n.processStatus],
               total: res.result.total,
@@ -315,6 +317,7 @@ Page({
           appendList.push(...res.result.list.map((n) => Object.assign({}, n, {
             date: "报警时间:" + util.timeformat(new Date(n.alarmTime)).substr(5, 14),
             alarmSeverity: that.data.alertArr[n.alarmSeverity],
+            alarmIcon: n.processStatus < 2 ? (n.alarmSeverity == 2 ? that.data.alertIcon[0] : that.data.alertIcon[1]) : that.data.alertIcon[2],
             processStatus: that.data.proStateArr[n.processStatus],
             processStatusColor: that.data.proStateColorArr[n.processStatus],
             total: res.result.total,

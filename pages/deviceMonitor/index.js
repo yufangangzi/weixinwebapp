@@ -265,6 +265,11 @@ Page({
       extra: warningList.find(o => n.indexOf(o.substring(0, o.length-1))>-1) ? 'warnicon' : 'normalicon'
     }))
 
+    // 把报警的排前面
+    let arr1 = codeOption.filter(n => n.extra==='warnicon');
+    let arr2 = codeOption.filter(n => n.extra!=='warnicon');
+    const codeOptionNew = arr1.concat(arr2);
+
     // debugger
     $wuxSelect('#wux-select3').open({
       value: this.data.value3,
@@ -277,7 +282,7 @@ Page({
         cancelText: '关闭',
         imgCloseSrc: '../../../../images/pclose.png',
       },
-      options: codeOption,
+      options: codeOptionNew,
       // [{
       //   title: '画画',
       //   value: '1',
