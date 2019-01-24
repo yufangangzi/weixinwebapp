@@ -94,7 +94,7 @@
             <view slot="footer"></view>
         </wux-card> -->
         <!-- <view style="height:469rpx;background-color:#fff;z-index:999;text-align:center;display:flex;justify-content:center;align-items:center;">图表预留</view> -->
-        <view style="height:410rpx;background-color:#fff;z-index:999;">
+        <view style="height:410rpx;background-color:#fff;z-index:999;border-radius:16rpx">
           <custom-map paramDevice="{{DeviceFaultDetail}}" style="width:100%;height:100%;" id="mychart-dom-all-father" out-info="{{lineParamsObj}}" bind:myevent="fatherRecvFn" bind:mybtnevent="btnRecFn"  out-flag="{{mapFlag}}"></custom-map>
         </view>
         <view style="height:36rpx;background-color:#fff;z-index:999;font-size:24rpx;text-align:center;">振动趋势图</view>
@@ -132,7 +132,7 @@
     </wux-wing-blank>
   </view>
 
-  <view style="margin-top:18rpx;">
+  <view style="margin-top:28rpx;border-radius:16rpx">
     <wux-wing-blank size="default">
         <wux-card title="图谱特征" extra="" thumb="{{imgGroup4Src}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
@@ -158,7 +158,7 @@
     </wux-wing-blank>
   </view>
 
-  <view style="margin-top:18rpx;">
+  <view style="margin-top:24rpx;border-radius:16rpx">
     <wux-wing-blank size="default">
         <wux-card title="系统诊断建议" extra="{{isRepair ? '确认人员：'+DeviceFaultDetail.processor : ''}}" extra2="{{isRepair ? '确认时间：'+faultTime2 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
@@ -256,7 +256,7 @@
   </view> -->
 
 
-  <view wx:if="{{isRepairEnd}}" style="margin-top:18rpx;">
+  <view wx:if="{{isRepairEnd}}" style="margin-top:18rpx;border-radius:16rpx">
     <wux-wing-blank size="default">
         <wux-card title="维修结果" extra="{{isRepair && DeviceFaultDetail.accendant ? '维护人员：'+DeviceFaultDetail.accendant : ''}}" extra2="{{isRepairEnd && DeviceFaultDetail.accendant ? '维护时间：'+faultTime3 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
