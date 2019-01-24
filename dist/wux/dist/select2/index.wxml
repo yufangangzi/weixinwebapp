@@ -4,7 +4,7 @@
             <!-- <view class="wux-select__toolbar-button wux-select__toolbar-button--cancel" hover-class="wux-select__toolbar-button--hover" bindtap="onCancel" wx:if="{{ toolbar.cancelText }}">{{ toolbar.cancelText }}</view> -->
             <view class="wux-select__toolbar-title">{{ toolbar.title }}</view>
             <view class="wux-select__toolbar-button wux-select__toolbar-button--confirm" hover-class="wux-select__toolbar-button--hover" bindtap="onCancel" >
-              <image style="width:64rpx;height:64rpx;margin-top:12rpx;" mode="aspectFit" src="{{toolbar.imgCloseSrc}}"></image>
+              <image style="width:44rpx;height:44rpx;margin-top:30rpx;" mode="aspectFit" src="{{toolbar.imgCloseSrc}}"></image>
             </view>
             <!-- <view class="wux-select__toolbar-button wux-select__toolbar-button--confirm" hover-class="wux-select__toolbar-button--hover" bindtap="onConfirm" wx:if="{{ toolbar.confirmText }}">{{ toolbar.confirmText }}</view> -->
         </view>

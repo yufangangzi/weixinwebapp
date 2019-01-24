@@ -7,7 +7,7 @@ font-size:22rpx;
 font-weight:400;
 color:rgba(255,255,255,1);
 line-height:44rpx;
-border-radius:9px;
+border-radius:18px;
 
 }
 .ha-txt-gb{
@@ -18,7 +18,7 @@ font-size:22rpx;
 font-weight:400;
 color:rgba(245,103,93,1);
 line-height:44rpx;
-border-radius:9px;
+border-radius:18px;
 
 }
 .ha-txt-2{
@@ -30,7 +30,7 @@ font-size:22rpx;
 font-weight:400;
 color:rgba(155,155,155,1);
 line-height:44rpx;
-border-radius:9px;
+border-radius:18px;
 
 }
 .weui-media-box__hd_in-appmsg {

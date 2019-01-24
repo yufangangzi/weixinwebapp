@@ -10,23 +10,23 @@
   position:absolute;
   /* top:50%;
   left:50%; */
-  margin-left:120rpx;
-  margin-top:170rpx;
+  margin-left:66rpx;
+  margin-top:108rpx;
 }
 .sensor{
   position: absolute;
 }
 .sensor3{
-  right:42rpx;
-  top:462rpx
+  right:64rpx;
+  top:410rpx
 }
 .sensor2{
   right:90rpx;
   top:44rpx
 }
 .sensor1{
-  left:83rpx;
-  top:462rpx
+  left:64rpx;
+  top:410rpx
 }
 .sensor4{
   right:90rpx;
