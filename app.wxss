@@ -44,7 +44,7 @@ page{
 }
 
 .placeholder {
-    background-color: #ebebef;
+    /* background-color: #ebebef; */
     color: #bbb;
     text-align: center;
     height: 30px;
