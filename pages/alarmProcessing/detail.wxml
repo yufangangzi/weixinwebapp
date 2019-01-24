@@ -132,7 +132,7 @@
     </wux-wing-blank>
   </view>
 
-  <view style="margin-top:28rpx;border-radius:16rpx">
+  <view style="margin-top:28rpx;border-radius:16rpx；">
     <wux-wing-blank size="default">
         <wux-card title="图谱特征" extra="" thumb="{{imgGroup4Src}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
@@ -193,7 +193,7 @@
   <wux-row>
     <wux-col span="6">
       <view class="placeholder">
-    <wux-button block type="positive" bind:click="open2Page">立即处理</wux-button>
+    <wux-button block type="arrys" bind:click="open2Page">立即处理</wux-button>
       </view>
     </wux-col>
     <wux-col span="6">

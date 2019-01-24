@@ -4,7 +4,7 @@
   "backgroundColor": "#F3F4F5",
   "backgroundTextStyle": "light",
   "usingComponents": {
-    "wux-card": "../../dist/wux/dist/card/index",
+    "wux-card": "../../dist/wux/dist/card2/index",
     "wux-wing-blank": "../../dist/wux/dist/wing-blank/index",
     "wux-button": "../../dist/wux/dist/button/index",
     "wux-icon": "../../dist/wux/dist/icon/index",
