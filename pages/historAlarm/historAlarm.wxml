@@ -1,15 +1,17 @@
 <!--pages/historAlarm/historAlarm.wxml-->
 <view class="page" style="{{ pageStyle }}">
-    <view class="ub ub-pc ub-ac" style="z-index:9999;background-color:#F9FBFC;height:100rpx;">
+    <view class="ub ub-pc ub-ac" style="z-index:9999;background-color:#F9FBFC;height:100rpx;position:fixed;top:0;left:0;width:100%;">
         <view class="ub-f1 page__bd page_search" style="background-color:#fff;">
         <image class="baoicon"  mode="aspectFit" src="../../images/sear.png" bindtap='pageSearch'></image>
         <input class='lg-input' type='text' placeholder='请输入设备编号'  placeholder-style="color:#e2e2e2;" confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='pageSearch'></input>
         </view>
     </view>
     <view class="page__bd1">
-        <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />
+        <view style="z-index:9999;background-color:#F9FBFC;position:fixed;top:100rpx;left:0;width:100%;height:100rpx;">
+        <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" style="" />
+        </view>
         <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
-        <view class="weui-panel weui-panel_access" style="margin-top:0px;">
+        <view class="weui-panel weui-panel_access" style="margin-top:196rpx;">
             <view class="weui-panel__bd">
                 <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ repos }}" wx:key=""  catchtap='go2page' data-bean='{{repos}}' data-index='{{index}}'>
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">

@@ -65,13 +65,13 @@
   color: #48D484;
   border: 1px solid #48D484;
   padding:4rpx 26rpx;
-  border-radius: 12px;
+  border-radius: 22px;
 }
 .moheqi{
-  border: 1px solid #27B6E6;
-  color: #27B6E6;
+  border: 1px solid #2D55DA;
+  color: #2D55DA;
 }
 .bochiqi{
-  border: 1px solid #E98711;
-  color: #E98711;
+  border: 1px solid #5878E4;
+  color: #5878E4;
 }

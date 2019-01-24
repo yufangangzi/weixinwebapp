@@ -208,7 +208,7 @@
   line-height: 48rpx;
   /* background-color: #f0f2f5; */
   background:rgba(249,251,252,1);
-  border-radius: 10px;
+  border-radius: 16px;
   /* border: 2rpx solid #f0f2f5; */
   box-sizing: border-box;
 }
@@ -246,20 +246,20 @@
   -webkit-box-pack: center;
   border: none;
   border-radius: 0;
-  height: 72rpx;
-  line-height: 72rpx;
+  height: 122rpx;
+  line-height: 122rpx;
 }
 
 .pal{
-  margin-top: 10rpx;
+  margin-top: -44rpx;
   display: -webkit-box;
   -webkit-box-flex: 1;
   -webkit-box-align: center;
   -webkit-box-pack: center;
   border: none;
   border-radius: 0;
-  height: 52rpx;
-  line-height: 52rpx;
+  /* height: 102rpx;
+  line-height: 102rpx; */
 }
 .wux-filterbar__btn2 {
   border-radius: 13px;
