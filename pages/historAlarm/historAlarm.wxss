@@ -92,7 +92,7 @@ input::-webkit-input-placeholder, input::-input-placeholder {
   padding-left:20rpx;
   padding-right:16rpx;
   vertical-align:top;
-  padding-top:11rpx;
+  padding-top:10rpx;
 }
 .lg-input{
   display: inline-block;
