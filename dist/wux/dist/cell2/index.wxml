@@ -38,7 +38,7 @@
         <block wx:if="{{ extra }}">
           <!-- {{extra }} -->
           <!-- <image class="cicon" mode="scaleToFill" src="{{ extra==='normalicon' ? normalicon : warnicon }}"></image> -->
-          <view class="ub" style="width: 70px;">
+          <view class="ub" style="">
             <view class="ub-f1 ub ub-ac ub-pc {{ extra==='normalicon' ? 'normalicon' : 'warnicon' }}">
             <text class="txt">{{ extra==='normalicon' ? normalTxt : warnTxt }}</text>
             </view>

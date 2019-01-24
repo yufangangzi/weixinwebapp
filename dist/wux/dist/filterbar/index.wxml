@@ -4,7 +4,7 @@
         <block wx:for="{{ items }}" wx:key="">
             <view class="wux-filterbar__item {{ item.checked ? 'ischecked' : '' }}" bindtap="onClick" data-index="{{ index }}">
                 <text class="wux-filterbar__text">{{ item.label }}</text>
-                <text class="wux-filterbar__icon {{ 'wux-filterbar__icon--' + item.type }} {{ item.sort === 1 ? 'wux-filterbar__icon--sort-asc' : item.sort === -1 ? 'wux-filterbar__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' || item.type === 'search' }}"></text>
+                <!-- <text class="wux-filterbar__icon {{ 'wux-filterbar__icon--' + item.type }} {{ item.sort === 1 ? 'wux-filterbar__icon--sort-asc' : item.sort === -1 ? 'wux-filterbar__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' || item.type === 'search' }}"></text> -->
                 <view class="lnb" wx:if="{{ item.checked }}"></view>
             </view>
         </block>
