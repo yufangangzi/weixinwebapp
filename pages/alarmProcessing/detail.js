@@ -381,8 +381,8 @@ Page({
           })
 
           this.setData({
-            value6: res.result.processResult,
-            value7: res.result.remark,
+            value6: res.result.processResult || '',
+            value7: res.result.remark || '',
             value9: (res.result.accendantFault && res.result.accendantFault.join(',')) || ''
           })
         }
