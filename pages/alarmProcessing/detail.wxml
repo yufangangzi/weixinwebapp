@@ -193,7 +193,7 @@
   <wux-row>
     <wux-col span="6">
       <view class="placeholder">
-    <wux-button block type="arrys" bind:click="open2Page">立即处理</wux-button>
+    <wux-button block type="positive" bind:click="open2Page">立即处理</wux-button>
       </view>
     </wux-col>
     <wux-col span="6">
@@ -338,5 +338,5 @@
 
 
 <view wx:if="{{isRepairEnd}}" class="page__bd page__bd_spacing martop70">
-  <wux-button block type="positive" bind:click="back2">返回</wux-button>
+  <wux-button block type="arrys" bind:click="back2">返回</wux-button>
 </view>
