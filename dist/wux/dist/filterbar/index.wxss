@@ -223,9 +223,9 @@
 }
 
 .wux-filterbar__btn--checked {
-  border-color: #f23030;
+  border:1px solid rgba(245,103,93,1);
   background-color: #fff;
-  color: #f23030;
+  color:rgba(245,103,93,1);
 }
 
 .wux-filterbar__btns {
