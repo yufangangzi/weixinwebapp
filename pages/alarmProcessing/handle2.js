@@ -35,6 +35,11 @@ Page({
     value5: [],
     value6: '',
     value7: '',
+    showMask: false,
+    txtRealContent6: '',
+    txtHeight6: 0,
+    txtRealContent7: '',
+    txtHeight7: 0,
     sugggestArray: [
       // {
       //   name: '不平衡',
@@ -149,6 +154,18 @@ Page({
     this.onChange2('value5', e)
   },
   onClick1() {
+    if (!this.data.showMask) {
+      // 将换行符转换为wxml可识别的换行元素 <br/>
+      const txtRealContent6 = this.data.value6.replace(/\n/g, '<br/>')
+      const txtRealContent7 = this.data.value7.replace(/\n/g, '<br/>')
+      this.setData({ 
+        txtRealContent6: txtRealContent6,
+        txtRealContent7: txtRealContent7,
+      })
+    }
+    this.setData({ showMask: true });
+    const _this = this;
+
     let options = this.data.suggestCheckList2;
     // debugger
     $wuxSelect('#wux-select1').open({
@@ -203,6 +220,10 @@ Page({
           value1: value,
           title1: index.map((n) => options[n].title),
         })
+
+        this.setData({ showMask: false });
+        // console.log(_this);
+        // debugger;
       },
     })
   },
@@ -270,14 +291,34 @@ Page({
     // if(v && v.length> 8){
     //   v = v.substring(0, 8);
     // }
+    // debugger
     this.setData({
-      value6: v
+      value6: v,
     });
   },
   onBlur6(e) {
     let v = e.detail.value;
     this.setData({
       value6: v
+    });
+  },
+  onInput6(e) {
+    // debugger
+    let v = e.detail.value;
+    this.setData({
+      value6: v
+    });
+  },
+  onLinechange6(e) {
+    // debugger
+    // this.setData({
+    //   txtHeight6: e.detail.height,
+    // });
+  },
+  upLinechange6(e) {
+    // debugger
+    this.setData({
+      txtHeight6: e.detail,
     });
   },
 
@@ -287,13 +328,31 @@ Page({
     //   v = v.substring(0, 8);
     // }
     this.setData({
-      value7: v
+      value7: v,
     });
   },
   onBlur7(e) {
     let v = e.detail.value;
     this.setData({
       value7: v
+    });
+  },
+  onInput7(e) {
+    let v = e.detail.value;
+    this.setData({
+      value7: v
+    });
+  },
+  onLinechange7(e) {
+    // debugger
+    // this.setData({
+    //   txtHeight7: e.detail.height,
+    // });
+  },
+  upLinechange7(e) {
+    // debugger
+    this.setData({
+      txtHeight7: e.detail,
     });
   },
 
@@ -352,8 +411,8 @@ Page({
     //     type: 'forbidden',
     //     duration: 1000,
     //     color: '#f66',
-    //     text: '请选择维修人员',
-    //     success: () => console.log('请选择维修人员')
+    //     text: '请选择维保单位',
+    //     success: () => console.log('请选择维保单位')
     //   })
     //   return;
     // }

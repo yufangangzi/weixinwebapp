@@ -1,13 +1,35 @@
 /* pages/historAlarm/historAlarm.wxss */
 .ha-txt{
 width:100rpx;
-height:48rpx;
+height:44rpx;
 background:#F5675D;
 font-size:24rpx;
 font-weight:400;
 color:rgba(255,255,255,1);
-line-height:48rpx;
-border-radius:9px;
+line-height:44rpx;
+border-radius:18px;
+
+}
+.ha-txt-gb{
+width:100rpx;
+height:44rpx;
+border:1px solid rgba(245,103,93,1);
+font-size:24rpx;
+font-weight:400;
+color:rgba(245,103,93,1);
+line-height:44rpx;
+border-radius:18px;
+
+}
+.ha-txt-2{
+width:100rpx;
+height:44rpx;
+border:1px solid rgba(155,155,155,0.6);
+font-size:24rpx;
+font-weight:400;
+color:rgba(155,155,155,1);
+line-height:44rpx;
+border-radius:18px;
 
 }
 .weui-media-box__hd_in-appmsg {
@@ -57,21 +79,25 @@ border-radius:9px;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
   margin: 8px 10px;
-  border-radius: 14px;
+  border-radius: 24px;
   background-color:#ffffff;
+}
+input::-webkit-input-placeholder, input::-input-placeholder {
+  color: #9B9B9B;
 }
 .baoicon{
   width:36rpx;
   height:36rpx;
   display: inline-block;
-  padding-left:10rpx;
-  padding-right:10rpx;
+  padding-left:20rpx;
+  padding-right:16rpx;
   vertical-align:top;
-  padding-top:9rpx;
+  padding-top:10rpx;
 }
 .lg-input{
   display: inline-block;
   font-size: 32rpx;
+  padding-top:1px;
 }
 .weui-loadmore{
   text-align: center;

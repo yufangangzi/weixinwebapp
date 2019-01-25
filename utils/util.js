@@ -60,7 +60,7 @@ const timeformat = function (date, fmt) {
 const request = obj => {
   let param = Object.assign({
     'header': {
-      'identity-authentic-request-header': wx.getStorageSync('token') || 'c34d9b63-0f38-49a9-ad05-4a5dd7be616f'
+      'identity-authentic-request-header': wx.getStorageSync('token') || ''
     },
   }, obj);
   // console.log(param);
@@ -71,7 +71,10 @@ const request = obj => {
     // debugger;
     if(res && res.data && res.data.code==10103){
       //登录状态失效，需重新登录
-      wxlogin();
+      // wxlogin();
+      wx.redirectTo({
+        url: '../../../../first/first',
+      })
       // return;
     }
     if(successcb){

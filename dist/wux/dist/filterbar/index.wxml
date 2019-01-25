@@ -4,7 +4,8 @@
         <block wx:for="{{ items }}" wx:key="">
             <view class="wux-filterbar__item {{ item.checked ? 'ischecked' : '' }}" bindtap="onClick" data-index="{{ index }}">
                 <text class="wux-filterbar__text">{{ item.label }}</text>
-                <text class="wux-filterbar__icon {{ 'wux-filterbar__icon--' + item.type }} {{ item.sort === 1 ? 'wux-filterbar__icon--sort-asc' : item.sort === -1 ? 'wux-filterbar__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' || item.type === 'search' }}"></text>
+                <!-- <text class="wux-filterbar__icon {{ 'wux-filterbar__icon--' + item.type }} {{ item.sort === 1 ? 'wux-filterbar__icon--sort-asc' : item.sort === -1 ? 'wux-filterbar__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' || item.type === 'search' }}"></text> -->
+                <view class="lnb" wx:if="{{ item.checked }}"></view>
             </view>
         </block>
     </view>
@@ -43,8 +44,10 @@
                 </block>
             </scroll-view>
             <div class="wux-filterbar__btns">
-                <view class="wux-filterbar__btn" data-index="{{ index }}" data-item="{{ item }}" bindtap="onReset">重置</view>
-                <view class="wux-filterbar__btn wux-filterbar__btn--danger" data-index="{{ index }}" bindtap="onConfirm">确定</view>
+                <view class="pal"></view>
+                <view class="pal"><view class="wux-filterbar__btn wux-filterbar__btn2 wux-filterbar__btn--danger" data-index="{{ index }}" bindtap="onConfirm">确定</view></view>
+                <view class="pal"><view class="wux-filterbar__btn wux-filterbar__btn2 wux-filterbar__btn--reset" data-index="{{ index }}" data-item="{{ item }}" bindtap="onReset">重置</view></view>
+                <view class="pal"></view>
             </div>
         </wux-animation-group>
         <wux-animation-group wux-class="wux-filterbar__select" in="{{ item.visible }}" class-names="wux-animate--fadeIn" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'radio' }}">

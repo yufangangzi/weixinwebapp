@@ -35,6 +35,7 @@ Page({
     imgGroup3Src: app.globalData.imgUrl + 'group5.png',
     imgGroup4Src: app.globalData.imgUrl + 'group4.png',
     imgJianyiSrc: app.globalData.imgUrl + 'jianyi.png',
+    imgResultSrc: app.globalData.imgUrl + 'bgresult.png',
     imgPhoneSrc: app.globalData.imgUrl + 'phone.png',
     isReport: false,
     isRepair: false,
@@ -381,8 +382,8 @@ Page({
           })
 
           this.setData({
-            value6: res.result.processResult,
-            value7: res.result.remark,
+            value6: res.result.processResult || '',
+            value7: res.result.remark || '',
             value9: (res.result.accendantFault && res.result.accendantFault.join(',')) || ''
           })
         }
