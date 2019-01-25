@@ -16,14 +16,20 @@
 <block wx:if="{{ switchIndex===0 }}">
 <view class='top-main'>
   <text class='bar-tit'>额定转速: {{rotateSpeed}}RPM</text>
-  <text class='ri' bindtap="switchHis" >历史数据</text>
+  <view class='ri' bindtap="switchHis" >
+    <text>历史数据</text>
+    <image style="width:12rpx;height:22rpx;margin-left:10rpx;margin-top:4rpx;" mode="aspectFit" src="../../../../../images/arrow-e.png"></image>
+  </view>
 </view>
 </block>
 <block wx:else>
 
 <view class='top-main'>
   <text class='history-tit'>历史数据查询</text>
-  <text class='ri' bindtap="switchRT" >实时监测</text>
+  <view class='ri' bindtap="switchRT" >
+    <text>实时监测</text>
+    <image style="width:12rpx;height:22rpx;margin-left:10rpx;margin-top:4rpx;" mode="aspectFit" src="../../../../../images/arrow-e.png"></image>
+  </view>
 </view>
 </block>
 

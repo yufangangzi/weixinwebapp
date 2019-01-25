@@ -382,9 +382,9 @@ Page({
           })
 
           this.setData({
-            value6: res.result.processResult || '',
-            value7: res.result.remark || '',
-            value9: (res.result.accendantFault && res.result.accendantFault.join(',')) || ''
+            value6: res.result.processResult || '无',
+            value7: res.result.remark || '无',
+            value9: (res.result.accendantFault && res.result.accendantFault.join(',')) || '无'
           })
         }
 
