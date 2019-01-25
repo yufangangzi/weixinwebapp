@@ -171,7 +171,7 @@ Component({
           data: ['0.2X', '0.33X', '0.5X', '1X', '2X', '3X', '5X', '10X'],
           axisLine: {
             lineStyle: {
-              color: '#999999',
+              color: '#515A75',
               width: 1
             }
           },
@@ -234,8 +234,8 @@ Component({
           splitLine: {// 终于找到了，背景图的内置表格中“边框”的颜色线条  这个是x轴的竖线
             show: true,
             lineStyle: {
-              color: '#999999',
-              type: 'dot'
+              color: '#515A75',
+              type: 'solid'
             }
           }
 
@@ -264,10 +264,10 @@ Component({
               },
               color: new echarts.graphic.LinearGradient(0, 0, 1, 1, [{
                 offset: 0,
-                color: "#FF80DB" // 0% 处的颜色
+                color: "#9E7CE1" // 0% 处的颜色
               }, {
                 offset: 1,
-                  color: "#5878E4" // 100% 处的颜色
+                  color: "#6979E3" // 100% 处的颜色
               }], false),
               // borderWidth: 1,
               // color: '#63C57A', //拆点颜色
