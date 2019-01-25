@@ -1,6 +1,6 @@
 /* pages/login/login.wxss */
 .conbg{
-  background:linear-gradient(178deg,rgba(95,107,140,1) 0%,rgba(29,35,56,1) 100%);
+  background: #FFFFFF;
   height: 100%;
   width: 100%;
 }
@@ -13,21 +13,21 @@
   margin-top: 78rpx;
 }
 .log-tit{
-  height:48rpx;
-  font-size:34rpx;
+  height:33rpx;
+  font-size:24rpx;
   font-weight:500;
-  color:rgba(255,255,255,1);
-  margin-top: 40rpx;
+  color:#5878E4;
+  margin-top: 39rpx;
 }
 .btn-color {
-  margin-top: 80rpx;
-  background:rgba(88,120,228,1);
-  border-radius:48rpx;
+  margin-top: 73rpx;
+  background-color:rgb(17, 48, 150);
+  border-radius:10px;
   height: 94rpx;
   line-height: 94rpx;
   color:#FFFFFF;
   font-size:36rpx;
-  width: 624rpx;
+  width: 680rpx;
 }
 
 .ipt-con{  
@@ -36,20 +36,14 @@
   margin-top: 143rpx;
 }
 .logimg{
-  width: 22px;
-  height: 24px;
-  display: inline-block;
-  line-height: 94rpx; 
-  margin-top:12px;
-  margin-left:26px; 
+  width: 23rpx;
+  height: 34rpx;
+  display: inline-block;  
 }
 .pwdimg{
-    width: 22px;
-    height: 24px;
-    display: inline-block;
-    line-height: 94rpx; 
-    margin-top:12px;
-    margin-left:26px;  
+  width: 34rpx;
+  height: 33rpx;
+  display: inline-block;  
 }
 .lg-text{
   margin-left: 30rpx;
@@ -67,21 +61,23 @@
 }
 .section{
   flex-direction:row;
-  height:94rpx;
-  border-radius:48rpx;
-  border:1px solid rgba(255,255,255,0.4);
+  border-bottom: 1px #D4D4D4 solid;
+  height: 103rpx;
+  line-height: 133rpx;
 }
 .lg-input{
-  margin-left: 28rpx;
+  margin-left: 30rpx;
   display: inline-block;
-  font-size: 32rpx;
-  /* vertical-align: text-bottom; */
-  /* width: 88%; */
+  font-size: 28rpx;
+  vertical-align: text-bottom;
+  width: 88%;
 }
 .pwd-input{
-  margin-left: 28rpx;
+  margin-left: 20rpx;
   display: inline-block;
-  font-size: 32rpx;
+  font-size: 28rpx;
+  vertical-align: text-bottom;
+  width: 88%;
 }
 
 .bgbottom{
@@ -89,7 +85,4 @@
   left:0;
   bottom: 0;
   width: 100%;
-}
-.mtp14{
-  margin-top:28rpx;
 }

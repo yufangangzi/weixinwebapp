@@ -5,7 +5,7 @@
   <view class='top-con'>
     <image class="image_frame" src="{{logUrl}}" mode="scaleToFill">
     </image>
-    <view style="margin-top:40rpx;">
+    <view>
       <text class='log-tit'>泉州石化设备智能诊断系统</text>
     </view>
   </view>
@@ -16,7 +16,7 @@
       <!-- <text class='lg-text'>账号:</text> -->
       <input bindinput="onChange" bindfocus="onFocus" bindblur="onBlur" value="{{userName}}" class='lg-input' type="number" placeholder="手机号" cursor-spacing='100' auto-focus/>
     </view>
-    <view class="section mtp14">
+    <view class="section">
       <image class="pwdimg" src="{{loginimg2}}" mode="scaleToFill"></image>
       <!-- <text class='lg-text'>密码:</text> -->
       <input bindinput="onChangePwd" bindfocus="onFocusPwd" bindblur="onBlurPwd" value="{{pwd}}" class='pwd-input'type="password" placeholder="密码"  cursor-spacing='100' />
@@ -30,7 +30,7 @@
   <!-- <view>
   <wux-button block type="light" bind:click="open2Page">登录</wux-button>
   </view> -->
-  <!-- <view class="bgbottom">
+  <view class="bgbottom">
     <image class="bmimg" src="{{loginbg}}" mode="scaleToFill"></image>
-  </view> -->
+  </view>
 </view>

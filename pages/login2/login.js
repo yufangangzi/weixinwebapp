@@ -19,6 +19,27 @@ Page({
   },
   onChange(e) {
     const userName = e.detail.value;
+    // if(!userName){
+    //   $wuxToast().show({
+    //     type: 'forbidden',
+    //     duration: 1500,
+    //     color: '#f66',
+    //     text: '手机号不能为空',
+    //     success: () => console.log('服务异常稍后再试')
+    //   })
+    //   return;
+    // }
+    // if (!/^(1[358][0-9]{9})$/.test(userName)){
+    //   console.log('手机号不合法')
+    //   $wuxToast().show({
+    //     type: 'forbidden',
+    //     duration: 1000,
+    //     color: '#f66',
+    //     text: '手机号不合法',
+    //     success: () => console.log('服务异常稍后再试')
+    //   })
+    //   return;
+    // }
     this.setData({
       userName: userName
     });
@@ -34,6 +55,26 @@ Page({
   },
   onChangePwd(e) {
     const pwd = e.detail.value;
+    // if (!pwd) {
+    //   $wuxToast().show({
+    //     type: 'forbidden',
+    //     duration: 1000,
+    //     color: '#f66',
+    //     text: '密码不能为空',
+    //     success: () => console.log('服务异常稍后再试')
+    //   })
+    //   return;
+    // }
+    // if (pwd.length<6) {
+    //   $wuxToast().show({
+    //     type: 'forbidden',
+    //     duration: 1000,
+    //     color: '#f66',
+    //     text: '密码至少6位',
+    //     success: () => console.log('服务异常稍后再试')
+    //   })
+    //   return;
+    // }
     this.setData({
       pwd: pwd
     });
@@ -53,6 +94,13 @@ Page({
   open2Page() {
     debugger;
     var that = this;
+    // util.wxlogin({}, res => {
+    //   if(res.code===0){
+    //     util.openPage("../../pages/alarmProcessing/detail");
+    //   }else if(res.code==400){
+
+    //   }
+    // });
     let param = {};
     param.phone = this.data.userName;
     param.pwd = this.data.pwd;

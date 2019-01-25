@@ -1,6 +1,6 @@
 {
-  "navigationBarTitleText": "",
-  "navigationBarBackgroundColor": "#5F6B8C",
+  "navigationBarTitleText": "用户绑定",
+  "navigationBarBackgroundColor": "#fff",
   "navigationBarTextStyle": "black",
   "usingComponents": {
     "wux-button": "../../dist/wux/dist/button/index",
