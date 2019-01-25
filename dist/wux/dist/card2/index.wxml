@@ -2,7 +2,7 @@
 <view class="wux-class wux-card {{ bordered ? 'wux-card--bordered' : '' }} {{ full ? 'wux-card--full' : '' }}">
     <view class="wux-card__hd">
         <view class="wux-card__content">
-            <image class="wux-card__thumb" src="{{ thumb }}" mode="aspectFit" style="{{ thumbStyle }}" wx:if="{{ thumb }}" />
+            <image class="wux-card__thumb" src="{{ thumb }}" mode="aspectFit" style="margin-top:-4rpx;{{ thumbStyle }}" wx:if="{{ thumb }}" />
             <text>{{ title }}</text>
         </view>
         <view class="wux-card__extra" wx:if="{{ extra }}">
