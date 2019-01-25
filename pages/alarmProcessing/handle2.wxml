@@ -29,13 +29,25 @@
 <view>
     <wux-cell hover-class="none">
         <!-- <wux-input label="现场描述" placeholder="请输入" value="{{value6}}" bind:change="onChange6" bind:blur="onBlur6" /> -->
-
-        <wux-textarea rows="3" label="现场描述" placeholder="请输入" value="{{value6}}" bind:change="onChange6" bind:blur="onBlur6" />
+        <wux-textarea rows="3" label="现场描述" placeholder="请输入" value="{{value6}}" controlled="true" maxlength="500" bind:change="onChange6" bind:blur="onBlur6" bind:input='onInput6' bind:linechange="onLinechange6" bind:updatehevent="upLinechange6" wx:if="{{!showMask}}" />
+        <view class='rich-text wux-textarea' wx:else>
+          <view class="wux-textarea__label">现场描述</view>
+          <view class="wux-textarea__control" style="{{('height:' + txtHeight6 + 'px')}}">
+            <rich-text class="wx-textarea__item"  nodes="{{txtRealContent6}}"></rich-text>
+          </view>
+        </view>
     </wux-cell>
     <wux-cell hover-class="none">
         <!-- <wux-input label="处理结果" placeholder="请输入" value="{{value7}}" bind:change="onChange7" bind:blur="onBlur7" /> -->
 
-        <wux-textarea rows="3" label="处理结果" placeholder="请输入" value="{{value7}}" bind:change="onChange7" bind:blur="onBlur7" />
+        <wux-textarea rows="3" label="处理结果" placeholder="请输入" value="{{value7}}" controlled="true" maxlength="500" bind:change="onChange7" bind:blur="onBlur7" bind:input='onInput7' bind:linechange="onLinechange7" bind:updatehevent="upLinechange7" wx:if="{{!showMask}}" />
+        
+        <view class='rich-text wux-textarea' wx:else>
+          <view class="wux-textarea__label">处理结果</view>
+          <view class="wux-textarea__control" style="{{('height:' + txtHeight7 + 'px')}}">
+            <rich-text class="wx-textarea__item"  nodes="{{txtRealContent7}}"></rich-text>
+          </view>
+        </view>
     </wux-cell>
 </view>
 
