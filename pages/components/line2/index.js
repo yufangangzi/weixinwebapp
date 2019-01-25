@@ -73,7 +73,7 @@ Component({
           borderWidth: 1,
           lineStyle: {
             type: 'solid',
-            // color: '00FFFF ',
+            color: '#00FFFF',
             width: 1
           },
           label: {
@@ -110,7 +110,7 @@ Component({
             textStyle: {
               fontSize: 12,
               fontWeight: 'bolder',
-              color: '#00FF7F'
+              color: '#C23531'
             }
           }
         }
@@ -223,7 +223,7 @@ Component({
           data: [],
           axisLine: {
             lineStyle: {
-              color: '#999999',
+              color: '#515A75',
               width: 1
             }
           },
@@ -288,8 +288,8 @@ Component({
           splitLine: {// 终于找到了，背景图的内置表格中“边框”的颜色线条  这个是x轴的竖线
             show: true,
             lineStyle: {
-              color: '#999999',
-              type: 'dot'
+              color: '#515A75',
+              type: 'solid'
             }
           }
 
@@ -305,7 +305,7 @@ Component({
           itemStyle: {
             normal: {
               borderWidth: 1,
-              color: '#B460C7', //拆点颜色
+              color: '#fff', //拆点颜色
               lineStyle: {
                 // color: '#B460C7', //折线颜色
                 color: new echarts.graphic.LinearGradient(1, 0, 0, 1, [{
@@ -490,13 +490,20 @@ Component({
       
       option.series[0].data = data.value;
       option.series[0].name = data.unit;
+
       let markLine1 = this.data.markLine1;
       let markLine2 = this.data.markLine2;
       markLine1.data[0].yAxis = data.vibrateHighQuote || 4.5;
       markLine2.data[0].yAxis = data.vibrateHighHighQuote || 7.1;
+
+      let maxValue = Math.max.apply(null, data.value);
+      let markL = maxValue > markLine2.data[0].yAxis ? true : false;
       if (data.unit === '速度') {
         option.series[0].markLine = markLine1;
-        option.series[1].markLine = markLine2
+        option.series[1].markLine = markLine2;
+        if (markL) {
+          option.series[0].markLine = {};
+        }
       } else {
         option.series[0].markLine = {};
         option.series[1].markLine = {};

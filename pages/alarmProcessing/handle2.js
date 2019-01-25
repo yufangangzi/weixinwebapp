@@ -411,8 +411,8 @@ Page({
     //     type: 'forbidden',
     //     duration: 1000,
     //     color: '#f66',
-    //     text: '请选择维修人员',
-    //     success: () => console.log('请选择维修人员')
+    //     text: '请选择维保单位',
+    //     success: () => console.log('请选择维保单位')
     //   })
     //   return;
     // }

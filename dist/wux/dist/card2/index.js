@@ -7,7 +7,7 @@ Component({
     properties: {
         bordered: {
             type: Boolean,
-            value: true,
+            value: false,
         },
         full: {
             type: Boolean,
