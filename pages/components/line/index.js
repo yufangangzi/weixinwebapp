@@ -73,7 +73,7 @@ Component({
           borderWidth: 1,
           lineStyle: {
             type: 'solid',
-            // color: '00FFFF ',
+            color: '#00FFFF',
             width: 1
           },
           label: {
@@ -110,7 +110,7 @@ Component({
             textStyle: {
               fontSize: 12,
               fontWeight: 'bolder',
-              color: '#00FF7F'
+              color: '#C23531'
             }
           }
         }
@@ -473,9 +473,16 @@ Component({
       let markLine2 = this.data.markLine2;
       markLine1.data[0].yAxis = data.vibrateHighQuote || 4.5;
       markLine2.data[0].yAxis = data.vibrateHighHighQuote || 7.1;
+      // debugger;
+
+      let maxValue = Math.max.apply(null, data.value);
+      let markL = maxValue > markLine2.data[0].yAxis ? true : false;
       if (data.unit === '速度') {
         option.series[0].markLine = markLine1;
         option.series[1].markLine = markLine2
+        if (markL) {
+          option.series[0].markLine = {};
+        }
       } else {
         option.series[0].markLine = {};
         option.series[1].markLine = {};
