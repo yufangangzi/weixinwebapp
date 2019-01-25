@@ -112,6 +112,7 @@ Component({
     },
     methods: {
         updateHeight(val = this.data.rows) {
+            const _this = this;
             // rows 取值为大于或等于 1 的正整数
             const rows = Math.max(1, parseInt(val))
             const { inputRows } = this.data
@@ -129,6 +130,8 @@ Component({
                                 inputRows: rows,
                                 inputHeight,
                             })
+
+                           _this.triggerEvent('updatehevent', inputHeight);
                         }
                     })
                     .exec()
@@ -189,6 +192,7 @@ Component({
         },
     },
     attached() {
+      
         const { defaultValue, value, controlled } = this.data
         const inputValue = controlled ? value : defaultValue
 
