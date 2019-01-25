@@ -86,7 +86,7 @@ Component({
           axisLine: {
             onZero: false,
             lineStyle: {
-              color: '#979797',
+              color: '#515A75',
               width: 1
             }
           },
@@ -142,7 +142,7 @@ Component({
         splitLine: {// 终于找到了，背景图的内置表格中“边框”的颜色线条  这个是x轴的竖线
           show: true,
           lineStyle: {
-            color: 'rgba(255,255,255,0.15)',
+            color: '#515A75',
             type: 'solid'
           }
         }

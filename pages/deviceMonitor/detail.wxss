@@ -190,7 +190,7 @@
   position: absolute;
   top: 4px;
   right: 0px;
-  width: 2px;
+  width: 2rpx;
   height: 32px;
   background-color:rgba(216,216,216,0.4);
 }
