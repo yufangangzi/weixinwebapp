@@ -9,7 +9,7 @@ Page({
             //     text: '知道了',
             // },
             {
-                type: 'light',
+                type: 'lightXin',
                 block: true,
                 text: '查看详情',
             },
