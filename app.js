@@ -3,6 +3,8 @@ const util = require('./utils/util.js');
 App({
   onLaunch: function (options) {
     console.log(options);
+
+    // wx.setStorageSync('token', '')
     // 展示本地存储能力
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
