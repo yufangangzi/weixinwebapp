@@ -38,7 +38,7 @@
 <view class="content">
 
 <view class="reportcc ub " style="align-items:center;" wx:if="{{ alarmTime!=='' }}">
-  <view class="reportmsg ub-f1">该设备于{{ alarmTime }}发生故障！</view>
+  <view class="reportmsg ub-f1">该设备于{{ alarmTime }}发生报警！</view>
   <view class="reportview" bindtap='go2page' data-bean='{{alarmObj}}'>查看详情</view>
 </view>
 
