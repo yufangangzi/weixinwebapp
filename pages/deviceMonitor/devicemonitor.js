@@ -13,6 +13,10 @@ Page({
     switchIndex: 0,
     tabIndex: 0,
 
+    alarmTime: '',
+    detailId: '',
+    alarmObj: {},
+
     deviceData: {},
     rotateSpeed: '',
     channelnum: 4,
@@ -35,6 +39,8 @@ Page({
     return util.getByCode(obj)
   },
   initData(deciveNos,device) {
+    // debugger
+    this.showAlarm(device);
     let _this = this;
     Promise.all([this.getByCodes(device), this.getlistNewByGroup(deciveNos)]).then(([res1, res2]) => {
       if (res1.code === 0) {
@@ -61,6 +67,42 @@ Page({
         }
       }
     })
+  },
+  showAlarm(deviceCode){
+    const arr = wx.getStorageSync('alarmlist');
+    if(arr && Array.isArray(arr)){
+      const a = arr.find(item => {
+        return item.deviceCode == deviceCode;
+      });
+      // debugger;
+      if(a){
+        const alarmTime = util.timeformat(new Date(Number(a.alarmTime)));
+        this.setData({
+          alarmTime: alarmTime,
+          detailId: a.id,
+          alarmObj: a,
+        })
+      }else{
+        this.setData({
+          alarmTime: '',
+          detailId: '',
+          alarmObj: {},
+        })
+      }
+    }
+  },
+  // 跳转到详情页
+  go2page: function (e) {
+
+    var bean = e.currentTarget.dataset.bean;
+
+    // debugger;
+    var id = bean.id;
+    var code = bean.deviceCode;
+    wx.navigateTo({
+      url: "../../pages/alarmProcessing/detail?id=" + id + '&code=' + code,
+    })
+    // }
   },
   initPage(data) {
     wx.setStorageSync('devicesNo', data);
@@ -130,6 +172,8 @@ Page({
           deviceNo: this.data.deviceNo || '2411-K103A'
         }
       })
+
+      this.showAlarm(deviceCode);
 
     }else{
       //实时监测页面

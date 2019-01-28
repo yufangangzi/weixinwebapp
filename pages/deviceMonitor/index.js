@@ -216,6 +216,10 @@ Page({
           return it.unitName == item.deviceUnitName;
         })
       });
+      // debugger
+      try{
+        wx.setStorageSync('alarmlist', arr);
+      }catch(e){}
       if(Array.isArray(arr) && arr.length>0){
         const arr1 = arr.map(item => item.deviceUnitName);
         const arr2 = arr.map(item => item.deviceCode);
