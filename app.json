@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/first/first",
     "pages/deviceMonitor/index",
     "pages/deviceMonitor/devicemonitor",
@@ -18,7 +17,8 @@
     "pages/alarmProcessingResult/success",
     "pages/alarmProcessingResult/error",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/caselib/caselib"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -44,6 +44,12 @@
         "iconPath": "images/warning.png",
         "pagePath": "pages/historAlarm/historAlarm",
         "text": "设备警报"
+      },
+      {
+        "selectedIconPath": "images/caselib-sel.png",
+        "iconPath": "images/caselib.png",
+        "pagePath": "pages/caselib/caselib",
+        "text": "诊断案例"
       }
     ]
   },

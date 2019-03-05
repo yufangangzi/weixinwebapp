@@ -51,7 +51,7 @@ Page({
 
   // 登陆接口
   open2Page() {
-    debugger;
+    // debugger;
     var that = this;
     let param = {};
     param.phone = this.data.userName;
