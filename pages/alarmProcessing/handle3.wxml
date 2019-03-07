@@ -6,8 +6,8 @@
 
 <view>
   <wux-radio-group name="d" value="{{ value4 }}" title="是否故障" bind:change="onChange4">
-      <wux-radio color='positive' title="设备故障" value="1" />
-      <wux-radio color='positive' title="传感器异常/环境干扰" value="2" />
+      <wux-radio color='positive' title="设备故障" disabled value="1" />
+      <wux-radio color='positive' title="传感器异常/环境干扰" disabled value="2" />
   </wux-radio-group>
 </view>
 

@@ -1,7 +1,7 @@
 {
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "警报处理",
+  "navigationBarTitleText": "更新维修结果",
   "backgroundColor": "#F3F4F5",
   "backgroundTextStyle": "light",
   "usingComponents": {
@@ -12,9 +12,13 @@
     "wux-checkbox": "../../dist/wux/dist/checkbox/index",
     "wux-cell-group": "../../dist/wux/dist/cell-group/index",
     "wux-cell": "../../dist/wux/dist/cell/index",
+    "wux-input": "../../dist/wux/dist/input/index",
+    "wux-textarea": "../../dist/wux/dist/textarea/index",
+    "wux-upload": "../../dist/wux/dist/upload/index",
+    "wux-icon": "../../dist/wux/dist/icon/index",
     "wux-dialog": "../../dist/wux/dist/dialog/index",
     "wux-toast": "../../dist/wux/dist/toast/index",
-    "wux-textarea": "../../dist/wux/dist/textarea/index",
+    "wux-loading": "../../dist/wux/dist/loading/index",
     "wux-select": "../../dist/wux/dist/select/index"
   }
 }

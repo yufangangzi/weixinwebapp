@@ -54,6 +54,13 @@ Component({
         defaultFileList: {
             type: Array,
             value: [],
+          observer(newVal) {
+            // debugger
+            this.setData({
+              uploadFileList: newVal,
+            })
+            
+          },
         },
         fileList: {
             type: Array,
