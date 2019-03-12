@@ -21,21 +21,23 @@
 </view>
 
 <view hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? none : flex}}">
-  <wux-cell-group title="">
-      <wux-cell title="指派维保单位" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
+  <wux-cell-group title="指派维保单位">
+      <wux-cell title="请选择" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
   </wux-cell-group>
 </view>
 
 <view>
+<wux-cell-group title="专家确认说明">
   <wux-cell hover-class="none">
-        <wux-textarea rows="3" label="专家确认说明" placeholder="请输入本次诊断相关说明" value="{{value6}}" controlled="true" maxlength="500" bind:change="onChange6" bind:blur="onBlur6" bind:input='onInput6' bind:linechange="onLinechange6" bind:updatehevent="upLinechange6" wx:if="{{!showMask}}" />
+        <wux-textarea rows="3" label="" placeholder="请输入本次诊断相关说明" value="{{value6}}" controlled="true" maxlength="500" bind:change="onChange6" bind:blur="onBlur6" bind:input='onInput6' bind:linechange="onLinechange6" bind:updatehevent="upLinechange6" wx:if="{{!showMask}}" />
         <view class='rich-text wux-textarea' wx:else>
-          <view class="wux-textarea__label">专家确认说明</view>
+          <!-- <view class="wux-textarea__label">专家确认说明</view> -->
           <view class="wux-textarea__control" style="{{('height:' + txtHeight6 + 'px')}}">
             <rich-text class="wx-textarea__item"  nodes="{{txtRealContent6}}"></rich-text>
           </view>
         </view>
     </wux-cell>
+  </wux-cell-group>
 </view>
 
 

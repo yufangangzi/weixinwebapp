@@ -27,6 +27,14 @@ Component({
         // console.log('newVal:', newVal, ';oldVal:', oldVal);
         
           if (oldVal && newVal) {
+            // debugger;
+            const obj = Object.assign({}, newVal);
+            if(obj && obj.kpiFlag && obj.kpiFlag==1){
+              this.setData({
+                value2: '-1',
+                title2: '加速度'
+              })
+            }
             this.listChannel();
             // debugger
             // this.setData({
