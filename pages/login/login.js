@@ -122,6 +122,7 @@ Page({
                   app.globalData.userInfo = res.result.user;
                   app.globalData.token = res.result.token;
                   wx.setStorageSync('token', res.result.token);
+                  wx.setStorageSync('quanzhouunitVOList', res.result.unitVOList);
                   app.globalData.islogined = true;
 
                   // util.openPage("../../pages/alarmProcessing/detail");

@@ -117,8 +117,11 @@ Component({
     title2: '速度(mm/s)',
     value3: '1440',
     title3: '24小时',
+    value4: '-1',
+    title4: '全部',
     startTime: [''],
     endTime: [''],
+    startEndTime: [],
     startRow: '',
     initChannel: [],
     tablelist: [],
@@ -166,7 +169,7 @@ Component({
       // debugger;
       obj = Object.assign({}, this.properties.outInfo);
       obj.statisStartTime = new Date(this.data.startTime[0]).getTime();
-      obj.statisEndTime = new Date(this.data.endTime).getTime();
+      obj.statisEndTime = new Date(this.data.endTime[0]).getTime();
       obj.dataType = this.data.value2;
       obj.startRow = this.data.startRow;
       obj.deviceNo = obj.deviceNo || "2411-K103A";
@@ -473,11 +476,13 @@ Component({
         options: [{
           title: '速度(mm/s)',
           value: 'speed',
+          color: '#5878E4'
           // color: 'positive',
         },
         {
           title: '加速度(m/s2)',
           value: 'accel',
+          color: '#5878E4'
           // color: 'positive',
         },
         ],
@@ -503,6 +508,92 @@ Component({
         onCancel: () => {
           
         }
+      })
+    },
+    openSelect4() {
+      // this.scrollToMap();
+      $wuxSelect('#wux-select1').open({
+        value: this.data.value4,
+        // multiple: true,
+        toolbar: {
+          title: '请选择',
+          confirmText: '确定',
+        },
+        options: [{
+          title: '全部',
+          value: '-1',
+          color: '#5878E4'
+        },{
+          title: '高报',
+          value: '1',
+          color: '#5878E4'
+        },
+        {
+          title: '高高报',
+          value: '2',
+          color: '#5878E4'
+        },
+        ],
+        onChange: (value, index, options) => {
+          console.log('onChange', value, index, options)
+          this.setData({
+            value4: value,
+            title4: options[index].title,
+          })
+        },
+        onConfirm: (value, index, options) => {
+          console.log('onConfirm', value, index, options)
+          this.setData({
+            value4: value,
+            title4: options[index].title,
+          })
+          setTimeout(() => {
+            this.getHis();
+          }, 30);
+
+
+        },
+        onCancel: () => {
+
+        }
+      })
+    },
+    openCalendar12() {
+      const maxDate = new Date(this.data.endTime[0]).getTime();
+      $wuxCalendar().open({
+        value: this.data.startEndTime,
+        multiple: true,
+        limit2: true,
+        onChange: (values, displayValues) => {
+          console.log('onChange', values, displayValues)
+          // debugger
+          if(displayValues.length<1){
+            this.setData({
+              startTime: [''],
+              endTime: [''],
+              startEndTime: [''],
+            })
+            
+          }else if (displayValues.length < 2) {
+            this.setData({
+              startTime: displayValues.slice(0,1),
+              endTime: [''],
+              startEndTime: displayValues,
+            })
+          }else if (displayValues.length < 3) {
+            this.setData({
+              startTime: displayValues.slice(0,1),
+              endTime: displayValues.slice(1,2),
+              startEndTime: displayValues,
+            })
+          }
+          // if (values[0] != displayValues[0]) {
+            setTimeout(() => {
+              this.getHis();
+            }, 30);
+          // }
+
+        },
       })
     },
     openCalendar1() {

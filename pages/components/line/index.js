@@ -484,9 +484,20 @@ Component({
           option.series[0].markLine = {};
         }
       } else {
-        option.series[0].markLine = {};
-        option.series[1].markLine = {};
-        option.series[1] = null;
+        // markLine1 = this.data.markLine1;
+        // markLine2 = this.data.markLine2;
+        markLine1.data[0].yAxis = data.accVibrateHighQuote || 40;
+        markLine2.data[0].yAxis = data.accVibrateHighHighQuote || 80;
+        markL = maxValue > markLine2.data[0].yAxis ? true : false;
+
+        // option.series[0].markLine = {};
+        // option.series[1].markLine = {};
+        // option.series[1] = null;
+        option.series[0].markLine = markLine1;
+        option.series[1].markLine = markLine2
+        if (markL) {
+          option.series[0].markLine = {};
+        }
       }
       try {
         this.chart.clear(); // 清楚累加数据

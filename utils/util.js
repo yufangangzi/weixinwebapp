@@ -56,6 +56,17 @@ const timeformat = function (date, fmt) {
   return fmt;
 };
 
+const limitsUnitId = (unitId) => {
+  let limit = false;
+  const list = wx.getStorageSync('quanzhouunitVOList') || [];
+  list.forEach(item => {
+    if (item.id === unitId) {
+      limit = true;
+    }
+  });
+  return limit;
+};
+
 // header拦截 wx.getStorageSync('token')
 const request = obj => {
   let param = Object.assign({
@@ -69,7 +80,7 @@ const request = obj => {
   const successcb = param.success;
   param.success = res => {
     // debugger;
-    if(res && res.data && res.data.code==10103){
+    if (res && res.data && (res.data.code == 10103 || res.data.code == 10104)){
       //登录状态失效，需重新登录
       // wxlogin();
       wx.redirectTo({
@@ -397,6 +408,29 @@ const dealDeviceAlarm = (data, successcb, failcb) => {
   })
 }
 
+// 已处理重新编辑
+const modifyDeviceAlarmDealInfo = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'deviceAlarm/modifyDeviceAlarmDealInfo',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+
 
 // 获取设备监测历史数据
 const listHistoryData2 = (data, successcb, failcb) => {
@@ -552,6 +586,7 @@ const alarmList2 = (data, successcb, failcb) => {
 module.exports = {
   baseUrl: baseUrl,
   timeformat: timeformat,
+  limitsUnitId: limitsUnitId,
   deviceAlarmGet: deviceAlarmGet,
   faultListAll: faultListAll,
   alarmList: alarmList,
@@ -570,6 +605,7 @@ module.exports = {
   wxbind: wxbind,
   allNotAccept: allNotAccept,
   dealDeviceAlarm: dealDeviceAlarm,
+  modifyDeviceAlarmDealInfo: modifyDeviceAlarmDealInfo,
   openPage: openPage,
   formatTime: formatTime,
   baseWebView: baseWebView,

@@ -116,6 +116,20 @@ Page({
           value: 'devCode',
           children: [],
         }, // 设备编号
+        {
+          type: 'radio',
+          label: '处理结果',
+          value: 'resultItem',
+          children: [{
+            label: '设备故障',
+            value: '1',
+          },
+          {
+            label: '传感器异常/环境干扰',
+            value: '0',
+          },
+          ],
+        },
       ],
       groups: ['001', '002', '003', '004'],
     },
@@ -205,6 +219,9 @@ Page({
               isCheck = true;
             } else if (n.value === 'alarmItem2') {
               params.alarmSeverity = n.children.find(v => { return v.checked }).value || ''
+              isCheck = true;
+            } else if (n.value === 'resultItem') {
+              params.reportStatus = n.children.find(v => { return v.checked }).value || ''
               isCheck = true;
             } else if (n.value === 'devUnit') {
               params.deviceUnitId = n.children.find(v => { return v.checked }).value || ''

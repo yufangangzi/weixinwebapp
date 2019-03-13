@@ -1,5 +1,6 @@
 <wux-select id="wux-select1" />
 <wux-select id="wux-select2" />
+<wux-select id="wux-select4" />
 <wux-calendar id="wux-calendar" />
 
 <!-- <view class='top-main'>
@@ -19,13 +20,27 @@
 
   <view class="ff" style="padding-top:24rpx;padding-bottom: 24rpx;">
     <view class="lf">
-      <view bindtap="openSelect2" disabled="buttonClicked" class="cbtn marr19" style="margin-left:20rpx;">
+      <view bindtap="openSelect2" disabled="buttonClicked" class="cbtn marr19" style="margin-left:20rpx;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
         <view class="ctxt">{{title2}}</view>
         <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
       </view>
     </view>
 
-    <view class="lf"><view class="ff2">
+    <view class="lf">
+      <view bindtap="openSelect4" disabled="buttonClicked" class="cbtn marr19" style="margin-left:20rpx;width: 200rpx;">
+        <view class="ctxt">{{title4}}</view>
+        <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
+      </view>
+    </view>
+
+    <view class="lf">
+      <view bindtap="openCalendar12" disabled="buttonClicked" class="cbtn marr19" style="margin-left: 20rpx;">
+        <view class="ctxt" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{startTime[0] + ',' + endTime[0] }}</view>
+        <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
+      </view>
+    </view>
+
+    <!-- <view class="lf"><view class="ff2">
       <view bindtap="openCalendar1" disabled="buttonClicked" class="cbtn " style="width: 180rpx;">
         <view class="ctxt">{{startTime[0]}}</view>
       </view>
@@ -39,7 +54,7 @@
         <view class="ctxt">{{endTime[0]}}</view>
       </view>
       </view>
-    </view>
+    </view> -->
 
   </view>
 

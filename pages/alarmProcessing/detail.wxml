@@ -160,7 +160,7 @@
 
   <view style="margin-top:24rpx;border-radius:16rpx">
     <wux-wing-blank size="default">
-        <wux-card title="系统诊断建议" extra="{{isRepair ? '确认人员：'+DeviceFaultDetail.processor : ''}}" extra2="{{isRepair ? '确认时间：'+faultTime2 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
+        <wux-card title="{{DeviceFaultDetail.processStatus==0 ? '系统建议' : '诊断建议及确认说明'}}" extra="{{isRepair ? '确认人员：'+DeviceFaultDetail.processor : ''}}" extra2="{{isRepair ? '确认时间：'+faultTime2 : ''}}" thumb="{{imgJianyiSrc}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
 
               <view wx:for="{{DeviceFaultDetail.faultInfoVOList}}" wx:key="index" class="marb40">
@@ -180,8 +180,21 @@
                     </view>
                   </view>
                 </view>
+
+
+                
                 
               </view>
+
+              <view class="marb40" wx-if="{{DeviceFaultDetail.processStatus>0}}">
+                <view class="jianyitt">专家确认说明</view>
+                <view class="jianyitxt"></view>
+                <view class="line"></view>
+                <view class="">
+                  <!-- <view class="intro">专家确认说明</view> -->
+                  <view class="desp" style="width:100%;">{{ DeviceFaultDetail.confirmInfo || '暂无说明' }}</view>
+                </view>
+                </view>
 
             </view>
             <view slot="footer"></view>
@@ -189,8 +202,9 @@
     </wux-wing-blank>
   </view>
 
-<view wx-if="{{DeviceFaultDetail.processStatus==0}}" class="page__bd page__bd_spacing martop70">
-  <wux-row>
+<view wx-if="{{ opAuthority && DeviceFaultDetail.processStatus==0}}" class="page__bd page__bd_spacing martop70">
+  <wux-button block type="positive" bind:click="open2Page">立即处理</wux-button>
+  <!-- <wux-row>
     <wux-col span="6">
       <view class="placeholder">
     <wux-button block type="positive" bind:click="open2Page">立即处理</wux-button>
@@ -201,24 +215,18 @@
     <wux-button block type="assertive" bind:click="reject3">全部不采纳</wux-button>
       </view>
     </wux-col>
-  </wux-row>
+  </wux-row> -->
+</view>
+<view wx-if="{{ (!opAuthority && DeviceFaultDetail.processStatus==0) || (DeviceFaultDetail.accept==0 && DeviceFaultDetail.processStatus==2) }}" class="page__bd page__bd_spacing martop70">
+  <wux-button block type="arrys" bind:click="back2">返回</wux-button>
 </view>
 
 
-<view wx-if="{{DeviceFaultDetail.processStatus==1}}" class="page__bd page__bd_spacing martop70">
+<view wx-if="{{ opAuthority && DeviceFaultDetail.processStatus==1}}" class="page__bd page__bd_spacing martop70">
   <wux-button block type="positive" bind:click="open3Page">处理结果上报</wux-button>
-  <!-- <wux-row>
-    <wux-col span="6">
-      <view class="placeholder">
-    <wux-button block type="positive" bind:click="open3Page">已处理</wux-button>
-      </view>
-    </wux-col>
-    <wux-col span="6">
-      <view class="placeholder">
-    <wux-button block type="assertive" bind:click="reject4">不处理</wux-button>
-      </view>
-    </wux-col>
-  </wux-row> -->
+</view>
+<view wx-if="{{!opAuthority && DeviceFaultDetail.processStatus==1}}" class="page__bd page__bd_spacing martop70">
+  <wux-button block type="arrys" bind:click="back2">返回</wux-button>
 </view>
 
 
@@ -256,7 +264,7 @@
   </view> -->
 
 
-  <view wx:if="{{isRepairEnd}}" style="margin-top:18rpx;border-radius:16rpx">
+  <view wx:if="{{isRepairEnd && isProcessEnd}}" style="margin-top:18rpx;border-radius:16rpx">
     <wux-wing-blank size="default">
         <wux-card title="维修结果" extra="{{isRepair && DeviceFaultDetail.accendant ? '维护人员：'+DeviceFaultDetail.accendant : ''}}" extra2="{{isRepairEnd && DeviceFaultDetail.accendant ? '维护时间：'+faultTime3 : ''}}" thumb="{{imgResultSrc}}" thumb-style="height:30rpx;width:30rpx;">
             <view slot="body">
@@ -294,7 +302,7 @@
                 </view>
                 <view class="" wx:else>
                   <view class="intro">是否故障</view>
-                  <view class="desp">否</view>
+                  <view class="desp">传感器异常/环境干扰</view>
                 </view>
                 <view class="">
                   <view class="intro">现场描述</view>
@@ -330,13 +338,16 @@
         </wux-card>
     </wux-wing-blank>
   </view>
+  
 
 
 </view>
 
 
 
-
-<view wx:if="{{isRepairEnd}}" class="page__bd page__bd_spacing martop70">
+<view wx:if="{{ opAuthority && isRepairEnd && isProcessEnd}}" class="page__bd page__bd_spacing martop70">
+  <wux-button block type="positive" bind:click="open4Page">更新维修结果</wux-button>
+</view>
+<view  wx:if="{{!opAuthority && isRepairEnd && DeviceFaultDetail.accept==1 }}" class="page__bd page__bd_spacing martop70">
   <wux-button block type="arrys" bind:click="back2">返回</wux-button>
 </view>

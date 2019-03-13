@@ -7,6 +7,7 @@
     "pages/deviceMonitor/detail",
     "pages/historAlarm/historAlarm",
     "pages/alarmProcessing/handle2",
+    "pages/alarmProcessing/handle3",
     "pages/login/login",
     "pages/alarmProcessing/detail",
     "pages/alarmProcessing/handle",

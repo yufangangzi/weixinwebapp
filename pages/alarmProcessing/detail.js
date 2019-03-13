@@ -40,12 +40,14 @@ Page({
     isReport: false,
     isRepair: false,
     isRepairEnd: false,
+    isProcessEnd: false,
     picturesList: [],
     lineParamsObj: {
       id: 1,
       name: '传参',
     },
     lineChart: null,
+    opAuthority: false,
   },
 
   // 获取其他故障信息
@@ -272,6 +274,10 @@ Page({
       this.forbiddenRepeatClicked = false;
     }, 300);
   },
+  // 跳转到更新已处理
+  open4Page() {
+    util.openPage("../../pages/alarmProcessing/handle3");
+  },
   // 跳转到工单处理
   open3Page() {
     util.openPage("../../pages/alarmProcessing/handle2");
@@ -379,7 +385,14 @@ Page({
             isReport: true,
             isRepair: true,
             isRepairEnd: true
+            
           })
+
+          if (res.result.accept == 1) {
+            this.setData({
+              isProcessEnd: true
+            })
+          }
 
           this.setData({
             value6: res.result.processResult || '无',
@@ -396,9 +409,24 @@ Page({
         );
         // debugger;
 
+        const opAuthority = util.limitsUnitId(res.result.deviceUnitId)
+        this.setData({
+          opAuthority: opAuthority
+        })
+
         wx.setStorageSync('repairId', res.result.id);
         wx.setStorageSync('deviceCode', res.result.deviceCode);
         wx.setStorageSync('faultInfoVOList', res.result.faultInfoVOList);
+
+        wx.setStorageSync('processResult', res.result.processResult);
+        wx.setStorageSync('remark', res.result.remark);
+        wx.setStorageSync('reportStatus', res.result.reportStatus);
+        const accendantFault = res.result.accendantFault || '';
+        // debugger;
+        // if (accendantFault && Array.isArray(accendantFault) && accendantFault.length > 0) {
+          
+        // }
+        wx.setStorageSync('accendantFault', accendantFault);
 
         try {
           let stepList = res.result.faultOmenVOList.map(item => {
@@ -424,6 +452,22 @@ Page({
           this.setData({
             picturesList: imgList
           });
+
+          //保存默认值列表190306
+          const imgList2 = imgList.map((v, i) => {
+            return {
+              uid: i,
+              status: 'done',
+              url: v,
+              
+            }
+          })
+          wx.setStorageSync('tempPicList', imgList2);
+        }else{
+          this.setData({
+            picturesList: []
+          });
+          wx.setStorageSync('tempPicList', []);
         }
 
         this.devEchart();
