@@ -250,8 +250,8 @@ Component({
 
         // 展开或隐藏下拉框
         if (['radio', 'checkbox', 'filter'].includes(n.type)) {
-          params.visible = index === i ? !n.visible : false
-          debugger
+          params.visible = index === i ? !n.visible : false  //控制弹框
+          
           if (n.type === 'filter') {
             this.$wuxBackdrop[index === i ? !n.visible ? 'retain' : 'release' : 'release']()
           }

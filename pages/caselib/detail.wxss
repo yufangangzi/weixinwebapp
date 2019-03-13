@@ -1,0 +1,11 @@
+
+.page-read{
+  color: #808080;
+  font-size: 28rpx;
+  margin: 20rpx 0;
+}
+.page__desc{
+  color: #333333;
+  border-top: 1px solid #DDDDDD;
+  padding-top: 20rpx;
+}

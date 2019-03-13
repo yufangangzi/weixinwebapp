@@ -1,0 +1,8 @@
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">{{item.title}}</view>
+        <view class="page-read">发布于：{{item.updateTime}}   阅读数：{{item.readNums}}</view>
+        <view class="page__desc">{{item.content}}</view>
+    </view>
+</view>

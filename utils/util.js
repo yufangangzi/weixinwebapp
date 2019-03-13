@@ -482,7 +482,50 @@ const getByCode = (data, successcb, failcb) => {
     })
   })
 }
-
+// 知识库列表
+const listCaselib = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'wcKnowledge/list',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
+// 知识库详情页
+const getCaselib = (data, successcb, failcb) => {
+  request({
+    url: baseUrl + 'wcKnowledge/get',
+    data: data,
+    // header: {},
+    method: 'POST',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      if (successcb) {
+        successcb(res.data || res);
+      }
+    },
+    fail: function (res) {
+      if (failcb) {
+        failcb(res);
+      }
+    },
+    complete: function (res) { },
+  })
+}
 // 获取报警数据
 const alarmList2 = (data, successcb, failcb) => {
   request({
@@ -521,6 +564,8 @@ module.exports = {
   listHistoryData2: listHistoryData2,
   listNewByGroup2: listNewByGroup2,
   alarmList2: alarmList2,
+  listCaselib: listCaselib,
+  getCaselib:getCaselib,
   wxlogin: wxlogin,
   wxbind: wxbind,
   allNotAccept: allNotAccept,

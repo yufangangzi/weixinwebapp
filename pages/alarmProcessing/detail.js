@@ -323,7 +323,7 @@ Page({
     const deviceId = this.data.detailId;
     const deviceCode = this.data.deviceCode;
 
-    // debugger;
+    debugger;
     util.deviceAlarmGet({
       'deviceAlarmId': deviceId
     }, res => {
