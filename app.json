@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/caselib/caselib",
     "pages/first/first",
     "pages/deviceMonitor/index",
     "pages/deviceMonitor/devicemonitor",
@@ -19,7 +20,7 @@
     "pages/alarmProcessingResult/error",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/caselib/caselib"
+    "pages/caselib/detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

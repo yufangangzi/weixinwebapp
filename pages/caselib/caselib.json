@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "诊断案例",
+  "usingComponents": {
+    "wux-filterbar": "../../dist/wux/dist/filterbar2/index",
+    "wux-refresher": "../../dist/wux/dist/refresher/index"
+  }
 }
