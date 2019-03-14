@@ -1,3 +1,4 @@
+var WxParse = require('../../dist/wxParse/wxParse.js');
 // pages/caselib/caselib.js
 import { $stopWuxRefresher } from '../../dist/wux/dist/index'
 const app = getApp();
