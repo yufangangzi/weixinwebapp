@@ -76,3 +76,7 @@ input::-webkit-input-placeholder, input::-input-placeholder {
   margin-right: 40rpx;
   font-size: 24rpx;
 }
+.weui-loadmore{
+  text-align: center;
+  height: 70rpx;
+}

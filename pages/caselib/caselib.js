@@ -14,7 +14,7 @@ Page({
     switchIndex: 0,
     total: 0,//分页总数
     pageNum: 0,//分页记录数pageNum
-    pageSize: 20,//分页大小
+    pageSize: 10,//分页大小
     hasmoreData: true,//更多数据
     hiddenloading: true,//加载中
     isResult: true,
@@ -24,7 +24,7 @@ Page({
       keywords: "",
       order: "desc",
       pageNum: 1,
-      pageSize: 20,
+      pageSize: 10,
       sort: ""
     },
     items: [{
@@ -271,9 +271,9 @@ Page({
         }
         if (that.data.inParams.pageNum < 2 && res.result.list.length == 0) {
           that.setData({ isResult: false })
-
         }
-        if (that.data.inParams.pageNum > 1 && !res.result.hasNextPage) {
+        
+        if (that.data.inParams.pageNum > (res.result.total) / (res.result.pageSize)) {
           that.setData({ hasmoreData: false, hiddenloading: true })
         }
       }

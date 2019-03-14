@@ -5,7 +5,7 @@
     <view class="ub ub-pc ub-ac" style="z-index:9999;background-color:#F9FBFC;height:100rpx;position:fixed;top:0;left:0;width:100%;">
         <view class="ub-f1 page__bd page_search" style="background-color:#fff;">
         <image class="baoicon"  mode="aspectFit" src="../../images/sear.png" bindtap='pageSearch'></image>
-        <input class='lg-input' type='text' placeholder='请输入设备编号'  placeholder-style="color:#e2e2e2;" confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='pageSearch'></input>
+        <input class='lg-input' type='text' placeholder='请输入关键字'  placeholder-style="color:#e2e2e2;" confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='pageSearch'></input>
         </view>
         
     </view>
