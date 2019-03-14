@@ -1,3 +1,4 @@
+var WxParse = require('../../dist/wxParse/wxParse.js');
 import { $stopWuxRefresher } from '../../dist/wux/dist/index'
 const app = getApp();
 const util = require('../../utils/util.js');
@@ -74,6 +75,12 @@ Page({
       'id': deviceId
       }, res => {
         if(res.code == 0){
+          var content = res.result.content;
+          var that = this;
+          // debugger;
+          WxParse.wxParse('content', 'html', content, that, 5);
+          // debugger
+          // res.result.content2 = content;
           this.setData({
             item: res.result
           });

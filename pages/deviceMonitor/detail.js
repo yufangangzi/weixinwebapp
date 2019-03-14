@@ -269,7 +269,7 @@ Page({
       tabIndex: index,
       deviceNo: deviceCode
     })
-    debugger;
+    // debugger;
     this.setData({
       'lineParamsObj.deviceNo': deviceCode
     });
