@@ -11,6 +11,14 @@ Page({
    */
   data: {
     inputValue: '', //搜索的内容
+    loadMoreFlag: {},
+    switchIndex: 0,
+    total: 0,//分页总数
+    pageNum: 0,//分页记录数pageNum
+    pageSize: 20,//分页大小
+    hasmoreData: true,//更多数据
+    hiddenloading: true,//加载中
+    isResult: true,
     inParams: {
       deviceType: "", //设备
       faultType: "", //故障
@@ -124,7 +132,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    //加载更多
+    this.setData({
+      hasmoreData: true,
+      hiddenloading: false,
+      'inParams.pageNum': this.data.inParams.pageNum + 1
+    })
+    this.getPageList2(this.data.inParams);
   },
 
   onChange(e) {
@@ -173,20 +187,7 @@ Page({
         } else if (n.value === 'alls') {
           params.processStatus = ''
 
-        } else if (n.value === 'state0') {
-          // 未处理
-          params.processStatus = '0'
-          this.setData({ 'inputValue': '' })
-        } else if (n.value === 'state1') {
-          // 处理中
-          params.processStatus = '1'
-          this.setData({ 'inputValue': '' })
-        } else if (n.value === 'state2') {
-          // 已处理
-          params.processStatus = '2'
-          this.setData({ 'inputValue': '' })
-          //  debugger
-        } else { }
+        }else { }
       }
     })
 
@@ -207,17 +208,47 @@ Page({
    *  获取页面列表数据
    */
   getPageList(params = {}) {
-    util.listCaselib(params, res => {
-      if (res.code === 0) {
+    this.setData({
+      hasmoreData: true,
+      hiddenloading: true,
+      'inParams.pageNum': 1
+    })
+    this.getPageList2(this.data.inParams);
+
+  },
+  getPageList2(params = {}) {
         wx.hideLoading();
         var that = this;
+    if (that.data.isResult == false) {
+      that.setData({ isResult: true })
+    }
+    util.listCaselib(params, res => {
+      if (res.code === 0) {
 
-        // debugger
-        this.setData({
-         relist: res.result.list.map((n) => {
-              n.tag = Array.isArray(n.tag) ? n.tag.join(' ') : n.tag;
-              n.summary = Array.isArray(n.summary) ? n.summary.join(' ') : n.summary;
-            if(n.tag){
+        if (that.data.inParams.pageNum < 2) {
+            this.setData({
+            relist: res.result.list.map((n) => {
+                  n.tag = Array.isArray(n.tag) ? n.tag.join(' ') : n.tag;
+                  n.summary = Array.isArray(n.summary) ? n.summary.join(' ') : n.summary;
+                if(n.tag){
+                  n.tag = n.tag.replace(/,/g, " ")
+                }
+                return Object.assign({}, n, {
+                  title: n.title,
+                  tags: n.tag,
+                  summary: n.summary.substring(0, 50),
+                  readNums: n.readNums,
+                  total: res.result.total,
+                  pageNum: that.data.pageNum + 1
+                })
+              })
+            })
+        }else{
+          let appendList = that.data.relist;
+          appendList.push(...res.result.list.map((n) => {
+            n.tag = Array.isArray(n.tag) ? n.tag.join(' ') : n.tag;
+            n.summary = Array.isArray(n.summary) ? n.summary.join(' ') : n.summary;
+            if (n.tag) {
               n.tag = n.tag.replace(/,/g, " ")
             }
             return Object.assign({}, n, {
@@ -228,8 +259,18 @@ Page({
               total: res.result.total,
               pageNum: that.data.pageNum + 1
             })
+          }));
+          that.setData({
+            relist: appendList
           })
-        })
+        }
+        if (that.data.inParams.pageNum < 2 && res.result.list.length == 0) {
+          that.setData({ isResult: false })
+
+        }
+        if (that.data.inParams.pageNum > 1 && !res.result.hasNextPage) {
+          that.setData({ hasmoreData: false, hiddenloading: true })
+        }
       }
     }, err => {
     });
@@ -273,6 +314,16 @@ Page({
   pageSearch: function (event) {
     this.getPageList(this.data.inParams);
     
+  },
+  onPulling() {
+    console.log('onPulling')
+  },
+  onRefresh() {
+    console.log('onRefresh')
+    setTimeout(() => {
+      this.getPageList(this.data.inParams);
+      $stopWuxRefresher()
+    }, 1500)
   },
   /**
    * 用户点击右上角分享
