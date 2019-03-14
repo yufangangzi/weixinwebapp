@@ -279,6 +279,15 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onTabItemTap(item) {
+    // debugger;
+    wx.setTabBarStyle({
+      // color: '#FF0000',
+      selectedColor: '#5878E4',
+      // backgroundColor: '#0000FF',
+      // borderStyle: 'white'
+    })
   }
   
 })

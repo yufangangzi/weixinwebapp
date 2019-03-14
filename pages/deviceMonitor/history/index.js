@@ -152,9 +152,12 @@ Component({
       const endTime = new Date();
       const start = new Date().getTime() - 90 * 24 * 60 * 60 * 1000;
       const startTime = new Date(start);
+      const d1 = util.timeformat(startTime, 'yyyy-MM-dd');
+      const d2 = util.timeformat(endTime, 'yyyy-MM-dd');
       this.setData({
-        'startTime[0]': util.timeformat(startTime, 'yyyy-MM-dd'),
-        'endTime[0]': util.timeformat(endTime, 'yyyy-MM-dd')
+        'startTime[0]': d1,
+        'endTime[0]': d2,
+        'startEndTime': [d1, d2]
       })
 
       this.getHis();

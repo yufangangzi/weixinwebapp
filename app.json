@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/caselib/caselib",
     "pages/first/first",
+    "pages/caselib/caselib",
     "pages/deviceMonitor/index",
     "pages/deviceMonitor/devicemonitor",
     "pages/deviceMonitor/detail",
