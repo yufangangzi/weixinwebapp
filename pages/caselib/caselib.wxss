@@ -1,4 +1,4 @@
-@import "../../dist/wxParse/wxParse.wxss";
+
 /* pages/caselib/caselib.wxss */
 .page_search{
   padding-top: 10rpx;

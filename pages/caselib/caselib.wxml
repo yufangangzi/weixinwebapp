@@ -1,4 +1,4 @@
-<import src="../../dist/wxParse/wxParse.wxml"/>
+
 <!--pages/caselib/caselib.wxml-->
 <!-- <text>pages/caselib/caselib.wxml</text> -->
 <view class="page" style="{{ pageStyle }}">
