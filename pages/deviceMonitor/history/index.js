@@ -131,6 +131,9 @@ Component({
     isResult: true,
     pullEnd:{},
 
+    thresholdValue: [],
+    pageNum: 0,
+
     mapIndexFlag: false,//fft sybx则不显示
     mapIndex: 'zdqs' // zdqs 振动趋势图  fft fft图  sybx 时域波形图
   },
@@ -167,6 +170,7 @@ Component({
     getHisAction() {
       let obj = {};
       // debugger;
+      const thresholdType = this.data.value4;
       obj = Object.assign({}, this.properties.outInfo);
       obj.statisStartTime = new Date(this.data.startTime[0]).getTime();
       obj.statisEndTime = new Date(this.data.endTime[0]).getTime();
@@ -174,6 +178,28 @@ Component({
       obj.startRow = this.data.startRow;
       obj.deviceNo = obj.deviceNo || "2411-K103A";
       obj.pageSize = 20;
+      obj.pageNum = this.data.pageNum;
+      if (thresholdType>-1){
+        obj.startRow = '';
+        obj.thresholdType = thresholdType;
+        if (thresholdType==2){
+          if(obj.dataType=='speed'){
+            obj.thresholdValue = this.data.thresholdValue.slice(0,1);
+          }else{
+            obj.thresholdValue = this.data.thresholdValue.slice(2,3);
+          }
+        }else{
+          if (obj.dataType == 'speed') {
+            obj.thresholdValue = this.data.thresholdValue.slice(0,2);
+          }else{
+            obj.thresholdValue = this.data.thresholdValue.slice(2,4);
+          }
+        }
+      }else{
+        delete obj.thresholdType;
+        delete obj.thresholdValue;
+        delete obj.pageNum;
+      }
       // { "pageSize": 20, "deviceNo": "2411-K103A", "statisStartTime": 1539820800000, "statisEndTime": 1546925854719, "startRow": "0_2111-P230A_9223372035307853848", "dataType": "speed" }
 
       if(!obj.startRow){
@@ -187,13 +213,23 @@ Component({
         wx.hideLoading()
         if (res.code === 0) {
           // debugger
+          let thresholdValue = [];
+          thresholdValue.push(res.result.vibrateHighQuote);
+          thresholdValue.push(res.result.vibrateHighHighQuote);
+          thresholdValue.push(res.result.accVibrateHighQuote);
+          thresholdValue.push(res.result.accVibrateHighHighQuote);
 
-          
-          if (res.result.length > 0) {
+          const pageNum = this.data.pageNum;
+
+          this.setData({
+            thresholdValue: thresholdValue,
+            pageNum: pageNum+1
+          })
+          if (res.result.data.length > 0) {
             let reg = /^\d+-\d+/;
             let initChannel = [];
             let arr = [];
-            for (let key in res.result[0]) {
+            for (let key in res.result.data[0]) {
               if (reg.test(key) && initChannel.indexOf(key) < 0) {
                 arr.push(key);
               }
@@ -241,7 +277,7 @@ Component({
 
           // debugger;
 
-          res.result.forEach(item => {
+          res.result.data.forEach(item => {
             item.reportTime = util.timeformat(new Date(Number(item.dateTime)));
             item.select = false;
             this.data.initChannel.forEach(it =>{
@@ -251,9 +287,9 @@ Component({
 
           let tablelist = this.data.tablelist;
           if(this.data.startRow){
-            tablelist.push(...res.result.slice(0, 20));
+            tablelist.push(...res.result.data.slice(0, 20));
           }else{
-            tablelist = res.result.slice(0, 20);
+            tablelist = res.result.data.slice(0, 20);
           }
           // debugger
           this.setData({
@@ -262,8 +298,8 @@ Component({
           if(this.data.startRow){
             this.setData({ hasmoreData: false, hiddenloading: true })
           }
-          if (res.result.length > 0) {
-            let currentPage = res.result[res.result.length - 1].rowKey;
+          if (res.result.data.length > 0) {
+            let currentPage = res.result.data[res.result.data.length - 1].rowKey;
             // let isEndPage = true;
             // if (res.result.length > 20) {
             //   isEndPage = false;
@@ -539,6 +575,8 @@ Component({
           this.setData({
             value4: value,
             title4: options[index].title,
+            pageNum: 0,
+            startRow: '',
           })
         },
         onConfirm: (value, index, options) => {
@@ -546,6 +584,8 @@ Component({
           this.setData({
             value4: value,
             title4: options[index].title,
+            pageNum: 0,
+            startRow: '',
           })
           setTimeout(() => {
             this.getHis();
