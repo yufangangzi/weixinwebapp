@@ -1,4 +1,4 @@
-
+@import "../../dist/wxParse/wxParse.wxss";
 .page-read{
   color: #808080;
   font-size: 28rpx;
