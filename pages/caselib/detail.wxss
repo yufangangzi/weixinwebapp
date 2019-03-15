@@ -1,6 +1,6 @@
 @import "../../dist/wxParse/wxParse.wxss";
 .page-read{
-  color: #808080;
+  color: rgba(153,153,153,1);
   font-size: 28rpx;
   margin: 20rpx 0;
 }

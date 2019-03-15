@@ -1,13 +1,13 @@
 <view class="wux-class wux-filterbar">
     <wux-backdrop id="wux-backdrop" data-index="{{ index }}" data-item="{{ items[index] }}" bind:click="onClose" />
-    <view class="wux-filterbar__bd">
-        <!-- <block wx:for="{{ items }}" wx:key=""> -->
-            <!-- <view class="wux-filterbar__item {{ item.checked ? 'ischecked' : '' }}" bindtap="onClick" data-index="{{ index }}">
+    <view class="wux-filterbar__bd" style="background-color:transparent;">
+        <block wx:for="{{ items }}" wx:key="">
+            <view class="wux-filterbar__item {{ item.checked ? 'ischecked' : '' }}" bindtap="onClick" data-index="{{ index }}">
                 <text class="wux-filterbar__text">{{ item.label }}</text>
-                <view class="lnb" wx:if="{{ item.checked }}"></view>../
-            </view> -->
-            <image class="selicon"  mode="aspectFit" src="../../../../images/select.png" bindtap='onClick' style='width:42rpx;height:42rpx'></image>
-        <!-- </block> -->
+                <!-- <text class="wux-filterbar__icon {{ 'wux-filterbar__icon--' + item.type }} {{ item.sort === 1 ? 'wux-filterbar__icon--sort-asc' : item.sort === -1 ? 'wux-filterbar__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' || item.type === 'search' }}"></text> -->
+                <!-- <view class="lnb" wx:if="{{ item.checked }}"></view> -->
+            </view>
+        </block>
     </view>
     <block wx:for="{{ items }}" wx:key="">
         <wux-animation-group wux-class="wux-filterbar__pop" in="{{ item.visible }}" class-names="wux-animate--slideInRight" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'filter' }}">

@@ -71,9 +71,15 @@ Page({
     const deviceId = this.data.detailId;
 
     // debugger;  knowledge/get
+    wx.showLoading({
+      title: '加载中',
+    })
     util.getCaselib({
       'id': deviceId
       }, res => {
+        setTimeout(()=>{
+          wx.hideLoading();
+        });
         if(res.code == 0){
           var content = res.result.content;
           var that = this;

@@ -28,6 +28,7 @@ Page({
       sort: ""
     },
     items: [{
+      checked: false,
       type: 'filter',
       label: '筛选',
       value: 'filter',
@@ -37,7 +38,7 @@ Page({
           label: '排序',
           value: 'alarmItem1',
           children: [{
-            label: '按时间发布',
+            label: '按发布时间',
             value: 'updateTime',
           },
           {
@@ -81,7 +82,7 @@ Page({
         }, // 装置单元
        
       ],
-      groups: ['004'],
+      groups: ['001'],
     },]
   },
 
@@ -157,7 +158,7 @@ Page({
 
         if (n.value === 'filter') {
           this.setData({ 'inputValue': '' })  // 切换标签清空搜索框
-
+          
           n.children.filter((n) => n.selected).forEach((n) => {
 
             if (n.value === 'alarmItem1') {
@@ -176,7 +177,7 @@ Page({
               n.checked = false
 
               this.setData({
-                'items[4].checked': false
+                'items[0].checked': false
               })
             }
             isReset = true;
@@ -193,12 +194,13 @@ Page({
     if (isReset && !isCheck) {
       params.processStatus = '';
     }
+    
 
     const data = Object.assign(this.data.inParams, params)
     this.setData({
       inParams: data
     })
-     debugger
+    //  debugger
     this.getPageList(this.data.inParams);
 
   },
@@ -237,7 +239,7 @@ Page({
               n.summary = this.convertHtmlToText(n.summary);
                 return Object.assign({}, n, {
                   title: n.title,
-                  tags: n.tag,
+                  tags: n.tag.split(' '),
                   summary: n.summary.substring(0, 50),
                   readNums: n.readNums,
                   total: res.result.total,
@@ -258,7 +260,7 @@ Page({
             n.summary = this.convertHtmlToText(n.summary);
             return Object.assign({}, n, {
               title: n.title,
-              tags: n.tag,
+              tags: n.tag.split(' '),
               summary: n.summary.substring(0, 50),
               readNums: n.readNums,
               total: res.result.total,
@@ -269,11 +271,13 @@ Page({
             relist: appendList
           })
         }
+        // debugger;
         if (that.data.inParams.pageNum < 2 && res.result.list.length == 0) {
           that.setData({ isResult: false })
+          return;
         }
         
-        if (that.data.inParams.pageNum > (res.result.total) / (res.result.pageSize)) {
+        if (that.data.inParams.pageNum >= Math.ceil((res.result.total) / (res.result.pageSize))) {
           that.setData({ hasmoreData: false, hiddenloading: true })
         }
       }
