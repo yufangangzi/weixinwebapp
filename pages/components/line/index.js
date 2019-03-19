@@ -495,6 +495,7 @@ Component({
         // option.series[1] = null;
         option.series[0].markLine = markLine1;
         option.series[1].markLine = markLine2
+        // debugger
         if (markL) {
           option.series[0].markLine = {};
         }

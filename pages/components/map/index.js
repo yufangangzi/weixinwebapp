@@ -180,6 +180,8 @@ Component({
                 unit: this.data.title2,
                 vibrateHighQuote: res.result.vibrateHighQuote,
                 vibrateHighHighQuote: res.result.vibrateHighHighQuote,
+                accVibrateHighQuote: res.result.accVibrateHighQuote,
+                accVibrateHighHighQuote: res.result.accVibrateHighHighQuote,
                 pagemap: 'zdqs'
               }
             });

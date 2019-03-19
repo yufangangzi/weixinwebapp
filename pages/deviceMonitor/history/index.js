@@ -216,6 +216,7 @@ Component({
         delete obj.thresholdValue;
         delete obj.pageNum;
       }
+      
       // { "pageSize": 20, "deviceNo": "2411-K103A", "statisStartTime": 1539820800000, "statisEndTime": 1546925854719, "startRow": "0_2111-P230A_9223372035307853848", "dataType": "speed" }
 
       if(!obj.startRow){
@@ -533,7 +534,7 @@ Component({
         },
         {
           title: '加速度(m/s2)',
-          value: 'accel',
+          value: 'acceleration',
           color: '#5878E4'
           // color: 'positive',
         },
