@@ -99,6 +99,16 @@ Component({
    * 组件的初始数据
    */
   data: {
+    isPickerShow: false,
+    pickerConfig: {
+      endDate: true, // 是否需要结束时间，为true时显示开始时间和结束时间两个picker
+      column: "", //可选的最小时间范围hour、min、sec、""
+      dateLimit: true, //是否现在时间可选范围，false时可选任意时间；未数字n时，范围是当前时间的最近n天
+      initStartTime: '',
+      initEndTime: '',
+      limitStartTime: "2010-05-06 12:32:44", //最小可选时间
+      limitEndTime: "2025-05-06 12:32:44" //最大可选时间 
+    },
     buttonClicked: false,
     currentSelect: '1',
     outMsgObj: {},
@@ -143,6 +153,8 @@ Component({
     // debugger
   },
 
+  
+
   /**
    * 组件的方法列表
    */
@@ -158,7 +170,8 @@ Component({
         'startTime[0]': d1,
         'endTime[0]': d2,
         'startEndTime': [d1, d2]
-      })
+      });
+      
 
       this.getHis();
 
@@ -716,7 +729,41 @@ Component({
           buttonClicked: false
         })
       }, 500);
-    }
+    },
+
+    // 日期picker打开
+    pickerShow: function () {
+      const d1 = this.data.startTime[0] + ' 00:00:00';
+      const d2 = this.data.endTime[0] + ' 00:00:00';
+      this.setData({
+        'pickerConfig.initStartTime': d1,
+        'pickerConfig.initEndTime': d2,
+      });
+      // debugger
+      this.setData({
+        isPickerShow: true
+      });
+    },
+    // 日期picker关闭
+    pickerHide: function () {
+      this.setData({
+        isPickerShow: false
+      });
+    },
+
+    // 获取日期时间
+    setPickerTime: function (val) {
+      let data = val.detail;
+      console.log(data)
+      this.setData({
+        startTime: [data.startTime],
+        endTime: [data.endTime],
+      });
+
+      setTimeout(() => {
+        this.getHis();
+      }, 30);
+    },
     
 
   }

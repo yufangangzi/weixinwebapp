@@ -34,7 +34,7 @@
     </view>
 
     <view class="lf">
-      <view bindtap="openCalendar12" disabled="buttonClicked" class="cbtn marr19" style="margin-left: 20rpx;">
+      <view bindtap="pickerShow" disabled="buttonClicked" class="cbtn marr19" style="margin-left: 20rpx;">
         <view class="ctxt" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{startTime[0] + ',' + endTime[0] }}</view>
         <image class="cicon" mode="aspectFit" src="{{imgIconSrc}}"></image>
       </view>
@@ -110,3 +110,5 @@
 
 </view>
 </view>
+
+<timePicker wx:if="{{isPickerShow}}" pickerShow="{{isPickerShow}}" id="picker"  bind:hidePicker="pickerHide" bind:setPickerTime="setPickerTime" config="{{pickerConfig}}"></timePicker>
