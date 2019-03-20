@@ -286,6 +286,7 @@ Page({
       hiddenloading: true,
       'reposParams.pageNum': 1
     })
+    this.topPosBack = true;
     this.getRepos2(this.data.reposParams);
     
   },
@@ -316,7 +317,14 @@ Page({
     }
 
     util.alarmList(serchData, res => {
-
+      if (this.topPosBack){
+        setTimeout(() => {
+          wx.pageScrollTo({
+            scrollTop: 0
+          });
+          this.topPosBack = false;
+        },50);
+      }
       if (res.code === 0) {
         wx.hideLoading()
 
