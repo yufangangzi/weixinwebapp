@@ -6,7 +6,7 @@
   margin: 8px 10px;
   border-radius: 24px;
   background-color:#ffffff;
-  margin-right: 80rpx;
+  margin-right: 90rpx;
 }
 input::-webkit-input-placeholder, input::-input-placeholder {
   color: #9B9B9B;
@@ -82,4 +82,7 @@ input::-webkit-input-placeholder, input::-input-placeholder {
 .weui-loadmore{
   text-align: center;
   height: 70rpx;
+}
+.weui-media-box__title{
+  margin-left: -10rpx;
 }
