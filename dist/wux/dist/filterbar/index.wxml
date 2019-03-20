@@ -13,7 +13,7 @@
         <wux-animation-group wux-class="wux-filterbar__pop" in="{{ item.visible }}" class-names="wux-animate--slideInRight" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'filter' }}">
             <scroll-view class="wux-filterbar__scroll-view" scroll-y bindscroll="onScroll">
                 <block wx:for="{{ item.children }}" wx:for-item="p" wx:for-index="pIndex" wx:key="">
-                    <view class="wux-filterbar__panel">
+                    <view class="wux-filterbar__panel" wx:if="{{ p.hidden !== true }}">
                         <view class="wux-filterbar__panel-hd">
                             <div class="wux-filterbar__panel-title">{{ p.label }}</div>
                             <!-- <div class="wux-filterbar__panel-selected">{{ p.selected }}</div> -->
@@ -23,7 +23,7 @@
                                 <view class="wux-filterbar__groups">
                                     <block wx:for="{{ p.children }}" wx:for-item="g" wx:key="">
                                         <view class="wux-filterbar__group">
-                                            <radio class="wux-filterbar__radio" value="{{ g.value }}" checked="{{ g.checked }}" />
+                                            <radio class="wux-filterbar__radio" value="{{ g.value }}" checked="{{ g.checked }}"  disabled="{{ g.disabled }}" />
                                             <view class="wux-filterbar__btn {{ g.checked ? 'wux-filterbar__btn--checked' : '' }}">{{ g.label }}</view>
                                         </view>
                                     </block>
