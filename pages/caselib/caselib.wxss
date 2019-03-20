@@ -35,13 +35,13 @@ input::-webkit-input-placeholder, input::-input-placeholder {
   padding-top:1px;
 }
 .weui-media-box__title{
-  font-size:28rpx;
+  font-size:34rpx;
   font-weight:500;
   color:rgba(70,70,70,1);
   line-height:40rpx;
 }
 .weui-media-box__info{
-  font-size:24rpx;
+  font-size:30rpx;
   font-weight:400;
   color:rgba(153,153,153,1);
   line-height:34rpx;
@@ -60,6 +60,7 @@ input::-webkit-input-placeholder, input::-input-placeholder {
 .taggroup{
   margin-left: -40rpx;
   margin-top: 16rpx;
+  font-size: 30rpx;
 }
 .weui-media-box__info{
   margin-top: 16rpx;
@@ -70,7 +71,7 @@ input::-webkit-input-placeholder, input::-input-placeholder {
   height:18rpx;
   position:relative;
   margin-left:auto;
-  margin-right:10rpx;
+  margin-right:6rpx;
   overflow:hidden;
   vertical-align:middle; 
 }
