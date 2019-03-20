@@ -200,9 +200,9 @@ Component({
         obj.thresholdType = thresholdType;
         if (thresholdType==2){
           if(obj.dataType=='speed'){
-            obj.thresholdValue = this.data.thresholdValue.slice(0,1);
+            obj.thresholdValue = this.data.thresholdValue.slice(1,2);
           }else{
-            obj.thresholdValue = this.data.thresholdValue.slice(2,3);
+            obj.thresholdValue = this.data.thresholdValue.slice(3,4);
           }
         }else{
           if (obj.dataType == 'speed') {
@@ -237,7 +237,8 @@ Component({
           thresholdValue.push(res.result.accVibrateHighHighQuote);
 
           const pageNum = this.data.pageNum;
-
+          // console.log(this.data.value2);
+          // debugger
           this.setData({
             thresholdValue: thresholdValue,
             pageNum: pageNum+1

@@ -88,7 +88,7 @@
         {{it[item]}}
       </span>
     </block>
-    <block wx:else>
+    <block wx:if="{{ value2!=='speed' }}">
       <span wx:if="{{ it[item]>thresholdValue[3] }}" style="color:#F5675D;">
         {{it[item]}}
       </span>
