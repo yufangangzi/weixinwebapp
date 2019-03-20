@@ -215,6 +215,7 @@ Page({
       hiddenloading: true,
       'inParams.pageNum': 1
     })
+    this.topPosBack = true; //滑到底部后筛选返回遮挡顶部
     this.getPageList2(this.data.inParams);
 
   },
@@ -225,6 +226,14 @@ Page({
       that.setData({ isResult: true })
     }
     util.listCaselib(params, res => {
+      if (this.topPosBack) {
+        setTimeout(() => {
+          wx.pageScrollTo({
+            scrollTop: 0
+          });
+          this.topPosBack = false;
+        }, 50);
+      }
       if (res.code === 0) {
 
         if (that.data.inParams.pageNum < 2) {
