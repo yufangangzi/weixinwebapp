@@ -295,6 +295,9 @@ Page({
     wx.navigateTo({
       url: "../../pages/caselib/detail?id=" + id,
     })
+    setTimeout(() => {
+      this.getPageList();; // 阅读数返回增加
+    }, 1000);
   },
   //重置清空字段
   onReset(e) {
@@ -385,3 +388,5 @@ Page({
   }
   
 })
+
+
