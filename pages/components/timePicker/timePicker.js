@@ -135,9 +135,12 @@ Component({
       });
     },
     onConfirm: function() {
-
-      let startTime = new Date(this.data.startPickTime);
-      let endTime = new Date(this.data.endPickTime);
+      // wx.showModal({
+      //   title:this.data.startPickTime,
+      //   content: this.data.endPickTime,
+      // });
+      let startTime = new Date(this.data.startPickTime.replace(/-/g, "/"));
+      let endTime = new Date(this.data.endPickTime.replace(/-/g, "/"));
       if (startTime <= endTime || !this.data.endDate) {
         this.setData({
           startTime,

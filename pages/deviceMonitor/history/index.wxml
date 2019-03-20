@@ -77,7 +77,28 @@
     <!-- <image class="trendicon" mode="aspectFit" src="{{trendSrc}}" ></image> -->
   </view>
   <view wx:for="{{tablelist}}" wx:for-item="it" wx:key="index" class="item" bindtap="chooseItem" data-info="{{it}}" data-channel="{{item}}">
-    {{it[item]}}
+    <block wx:if="{{ value2==='speed' }}">
+      <span wx:if="{{ it[item]>thresholdValue[1] }}" style="color:#F5675D;">
+        {{it[item]}}
+      </span>
+      <span wx:elif="{{ it[item]>thresholdValue[0] }}" style="color:#5878E4;">
+        {{it[item]}}
+      </span>
+      <span wx:else>
+        {{it[item]}}
+      </span>
+    </block>
+    <block wx:else>
+      <span wx:if="{{ it[item]>thresholdValue[3] }}" style="color:#F5675D;">
+        {{it[item]}}
+      </span>
+      <span wx:elif="{{ it[item]>thresholdValue[2] }}" style="color:#5878E4;">
+        {{it[item]}}
+      </span>
+      <span wx:else>
+        {{it[item]}}
+      </span>
+    </block>
   </view>
 </view> 
 <!-- <view bindtap="chooseItem" class="w20 hovertxt" data-index="{{index}}">

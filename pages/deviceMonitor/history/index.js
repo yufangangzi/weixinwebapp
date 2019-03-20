@@ -188,8 +188,8 @@ Component({
       // debugger;
       const thresholdType = this.data.value4;
       obj = Object.assign({}, this.properties.outInfo);
-      obj.statisStartTime = new Date(this.data.startTime[0]).getTime();
-      obj.statisEndTime = new Date(this.data.endTime[0]).getTime();
+      obj.statisStartTime = new Date(this.data.startTime[0].replace(/-/g, "/")).getTime();
+      obj.statisEndTime = new Date(this.data.endTime[0].replace(/-/g, "/")).getTime();
       obj.dataType = this.data.value2;
       obj.startRow = this.data.startRow;
       obj.deviceNo = obj.deviceNo || "2411-K103A";

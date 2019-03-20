@@ -221,6 +221,7 @@ Page({
               params.alarmSeverity = n.children.find(v => { return v.checked }).value || ''
               isCheck = true;
             } else if (n.value === 'resultItem') {
+              // debugger
               params.reportStatus = n.children.find(v => { return v.checked }).value || ''
               isCheck = true;
             } else if (n.value === 'devUnit') {
@@ -249,11 +250,13 @@ Page({
 
         } else if (n.value === 'state0') {
           // 未处理
-          params.processStatus = '0'
+          params.processStatus = '0';
+          params.reportStatus = '';
           this.setData({ 'inputValue': '' })
         } else if (n.value === 'state1') {
           // 处理中
-          params.processStatus = '1'
+          params.processStatus = '1';
+          params.reportStatus = '';
           this.setData({ 'inputValue': '' })
         } else if (n.value === 'state2') {
           // 已处理
