@@ -147,6 +147,7 @@ Page({
       sort: "",
       deviceType: "", //设备
       faultType: "", //故障
+      keywords: "",  // 重置之后返回不带查询条件
     }
     let isCheck = false;
     let isReset = false;
@@ -296,7 +297,7 @@ Page({
       url: "../../pages/caselib/detail?id=" + id,
     })
     setTimeout(() => {
-      this.getPageList();; // 阅读数返回增加
+      this.getPageList(); // 阅读数返回增加
     }, 1000);
   },
   //重置清空字段
@@ -312,6 +313,7 @@ Page({
         sort: ""
       },
     })
+   
   },
   //搜索框文本内容显示
   inputBind: function (event) {
