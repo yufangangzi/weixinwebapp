@@ -553,6 +553,9 @@ Component({
             value2: value,
             title2: options[index].title,
           })
+          this.setData({
+            pageNum: 0,
+          })
           setTimeout(() => {
             this.getHis();
           }, 30);
@@ -604,6 +607,9 @@ Component({
             title4: options[index].title,
             pageNum: 0,
             startRow: '',
+          })
+          this.setData({
+            pageNum: 0,
           })
           setTimeout(() => {
             this.getHis();
@@ -761,6 +767,10 @@ Component({
         startTime: [data.startTime],
         endTime: [data.endTime],
       });
+
+      this.setData({
+        pageNum: 0,
+      })
 
       setTimeout(() => {
         this.getHis();
