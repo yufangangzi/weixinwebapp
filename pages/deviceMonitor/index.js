@@ -223,8 +223,10 @@ Page({
       if(Array.isArray(arr) && arr.length>0){
         const arr1 = arr.map(item => item.deviceUnitName);
         const arr2 = arr.map(item => item.deviceCode);
+        // debugger
+        const arr1Set = Array.from(new Set(arr1));
         this.setData({
-          warningMsg: '温馨提示：'+arr1.join('、')+'单元内有设备报警，请尽快排查处理！',
+          warningMsg: '温馨提示：' + arr1Set.join('、')+'单元内有设备报警，请尽快排查处理！',
           warningList: arr2,
           warningUnitNameList: arr1,
         })
