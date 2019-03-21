@@ -11,6 +11,8 @@ Page({
   data: {
     detailId:'',
     item: '',
+    isShow: false,
+
   },
 
   /**
@@ -79,7 +81,7 @@ Page({
       }, res => {
         setTimeout(()=>{
           wx.hideLoading();
-        });
+        },20);
         if(res.code == 0){
           var content = res.result.content;
           var that = this;
@@ -88,7 +90,8 @@ Page({
           // debugger
           // res.result.content2 = content;
           this.setData({
-            item: res.result
+            item: res.result,
+            isShow: true
           });
         }else{
           wx.showToast({
