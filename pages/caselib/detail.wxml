@@ -1,13 +1,13 @@
 <import src="../../dist/wxParse/wxParse.wxml"/>
 <view class="page">
-    <view class="page__hd">
+    <view class="page__hd" wx:if="{{isShow}}">
         <view class="page__title">{{item.title}}</view>
         <view class="ub">
           <view class="ub-f1">
             <view class="page-read">{{ '发布于：' + (item.updateTime || '')}}</view>
           </view>
           <view class="ub ub-pe">
-            <view class="page-read">{{  '阅读数：' + (item.readNums || 0)}}</view>
+            <view class="page-read">{{  '阅读数：' + item.readNums}}</view>
           </view>
         </view>
         
