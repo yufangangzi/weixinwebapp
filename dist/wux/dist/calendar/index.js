@@ -657,6 +657,37 @@ Component({
                     arrValues.splice(inValuesIndex, 1)
                 }
 
+              arrValues = arrValues.map(v => {
+                if(typeof(v)==='string' && v.indexOf('-')>0){
+                  return new Date(v).getTime();
+                }else{
+                  return v;
+                }
+              })
+                if(this.data.limit2){
+                  // debugger
+                  let values = arrValues;
+                  if (values.length > 2) {
+                    const third = values[2];
+                    values = values.slice(0, 2);
+
+                    values.sort();
+
+
+
+                    if (third < values[0]) {
+                      values[0] = third;
+                    }else{
+                      values[1] = third;
+                    }
+                    // if (third > values[1]) {
+                    //   values[1] = third;
+                    // }
+                  }
+                  values.sort();
+                  arrValues = values;
+                }
+
                 this.setValue(arrValues)
             } else {
                 this.setValue([value])

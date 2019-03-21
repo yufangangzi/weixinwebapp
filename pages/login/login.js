@@ -51,7 +51,7 @@ Page({
 
   // 登陆接口
   open2Page() {
-    debugger;
+    // debugger;
     var that = this;
     let param = {};
     param.phone = this.data.userName;
@@ -122,6 +122,7 @@ Page({
                   app.globalData.userInfo = res.result.user;
                   app.globalData.token = res.result.token;
                   wx.setStorageSync('token', res.result.token);
+                  wx.setStorageSync('quanzhouunitVOList', res.result.unitVOList);
                   app.globalData.islogined = true;
 
                   // util.openPage("../../pages/alarmProcessing/detail");

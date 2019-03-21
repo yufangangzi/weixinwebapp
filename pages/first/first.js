@@ -22,10 +22,26 @@ Page({
       }
       // debugger
       if (res.code === 0) {
+        if(res.result && res.result.user && res.result.user.status==1){
+          wx.showModal({
+            title: '提示',
+            content: '该账户已禁用，请联系管理员',
+            showCancel: false,
+            success(rest) {
+              if (rest.confirm) {
+                console.log('用户点击确定')
+              } else if (rest.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+          return;
+        }
         app.globalData.islogined = true;
         app.globalData.userInfo = res.result.user;
         app.globalData.token = res.result.token;
         wx.setStorageSync('token', res.result.token);
+        wx.setStorageSync('quanzhouunitVOList', res.result.unitVOList);
         app.globalData.islogined = true;
         app.initSocket()
         // util.openPage("../../pages/alarmProcessing/detail");

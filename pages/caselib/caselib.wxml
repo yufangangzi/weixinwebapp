@@ -1,0 +1,73 @@
+
+<!--pages/caselib/caselib.wxml-->
+<!-- <text>pages/caselib/caselib.wxml</text> -->
+<view class="page" style="{{ pageStyle }}">
+    <view class="ub ub-pc ub-ac" style="z-index:9999;background-color:#F9FBFC;height:100rpx;position:fixed;top:0;left:0;width:100%;">
+        <view class="ub-f1 page__bd page_search" style="background-color:#fff;">
+        <image class="baoicon"  mode="aspectFit" src="../../images/sear.png" bindtap='pageSearch'></image>
+        <input class='lg-input' type='text' placeholder='请输入关键字'  placeholder-style="color:rgba(153,153,153,1);" confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='pageSearch'></input>
+        </view>
+        
+    </view>
+ <view class="page__bd1">
+        <view style="z-index:9999;position:fixed;top:0rpx;right:18rpx;">
+            <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" style="" />
+        </view>
+        <!-- <image class="selicon"  mode="aspectFit" src="../../images/select.png" bindtap='pageSearch'></image> -->
+        <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
+        <view class="weui-panel weui-panel_access" style="margin-top:82rpx;">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ relist }}" wx:key=""  catchtap='go2page' data-bean='{{relist}}' data-index='{{index}}'>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                      
+                       <!-- <view>
+                           <wux-cell-group class="titlegr">
+                              <wux-cell class='weui-media-box__title'>{{ item.title }}</wux-cell>
+                              <wux-cell class='cs-read'>
+                                <image class='wux-card__thumb' src="../../images/readIcon.png" ></image>
+                                  {{item.readNums}}
+                              </wux-cell>
+                            </wux-cell-group>
+                        </view> -->
+                        <view class="ub" style="margin-right: -10px;">
+                          <view class="ub-f1 weui-media-box__title">
+                            {{ item.title }}
+                          </view>
+                          <view>
+                            <image class='wux-card__thumb' src="../../images/readIcon.png" ></image>
+                          </view>
+                          <view class="ub ub-ps ub-ac" style="width: 30px;font-size:24rpx;color:#9B9B9B;">
+                            
+                                  {{item.readNums}}
+                          </view>
+                        </view>
+                        <wux-cell-group class="taggroup">
+                            <wux-cell class='cs-tags' wx:for="{{ item.tags }}"  wx:for-index="idx" wx:for-item="it">{{ it }}</wux-cell>
+                            <!-- <wux-cell class='cs-tags'>传感器</wux-cell> -->
+                        </wux-cell-group>
+                       
+                        <view class="weui-media-box__desc">{{ item.description }}</view>
+                        <view class="weui-media-box__info">
+                            <view class="weui-media-box__info__meta"> {{ item.summary }}</view>
+                        </view>
+                    </view>
+                    <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg-res">
+                        <text class='{{item.processStatusColor}}'>{{item.processStatus}}</text>
+                    </view> -->
+                </view>
+            </view>
+        </view>
+        </wux-refresher>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" hidden='{{isResult}}'>
+　　　　<view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+　　</view>
+    <view class="weui-loadmore weui-loadmore_line" hidden='{{hasmoreData}}'>
+　　　　<view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无更多数据</view>
+　　</view>
+  　<view class="weui-loadmore" hidden='{{hiddenloading}}'>
+  　　　　<view class="weui-loading"></view>
+  　　　　<view class="weui-loadmore__tips">正在加载</view>
+  　</view>
+</view>
+

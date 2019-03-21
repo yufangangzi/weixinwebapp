@@ -1,0 +1,89 @@
+
+/* pages/caselib/caselib.wxss */
+.page_search{
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  margin: 8px 10px;
+  border-radius: 24px;
+  background-color:#ffffff;
+  margin-right: 90rpx;
+}
+input::-webkit-input-placeholder, input::-input-placeholder {
+  color: #9B9B9B;
+}
+.baoicon{
+  width:36rpx;
+  height:36rpx;
+  display: inline-block;
+  padding-left:20rpx;
+  padding-right:16rpx;
+  vertical-align:top;
+  padding-top:10rpx;
+}
+.selicon{
+  width:32rpx;
+  height:30rpx;
+  display: inline-block;
+  padding-left:18rpx;
+  padding-right:40rpx;
+  vertical-align:top;
+  padding-top:10rpx;
+}
+.lg-input{
+  display: inline-block;
+  font-size: 32rpx;
+  padding-top:1px;
+}
+.weui-media-box__title{
+  font-size:30rpx;
+  font-weight:500;
+  color:rgba(70,70,70,1);
+  line-height:40rpx;
+}
+.weui-media-box__info{
+  font-size:26rpx;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:34rpx;
+}
+.cs-tags{
+  height:34rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(88,120,228,1);
+  line-height:34rpx;
+  margin-left: 40rpx;
+  background-color:rgba(249,251,252,1);
+  border-radius:9px;
+
+}
+.taggroup{
+  margin-left: -40rpx;
+  margin-top: 16rpx;
+  font-size: 30rpx;
+}
+.weui-media-box__info{
+  margin-top: 16rpx;
+}
+.wux-card__thumb {
+  display:inline-block;
+  width:26rpx;
+  height:18rpx;
+  position:relative;
+  margin-left:auto;
+  margin-right:6rpx;
+  overflow:hidden;
+  vertical-align:middle; 
+}
+.cs-read{
+  float: right;
+  margin-right: 40rpx;
+  font-size: 24rpx;
+}
+.weui-loadmore{
+  text-align: center;
+  height: 70rpx;
+}
+.weui-media-box__title{
+  margin-left: -10rpx;
+}

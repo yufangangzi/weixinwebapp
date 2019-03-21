@@ -116,6 +116,20 @@ Page({
           value: 'devCode',
           children: [],
         }, // 设备编号
+        {
+          type: 'radio',
+          label: '处理结果',
+          value: 'resultItem',
+          children: [{
+            label: '设备故障',
+            value: '1',
+          },
+          {
+            label: '传感器异常/环境干扰',
+            value: '0',
+          },
+          ],
+        },
       ],
       groups: ['001', '002', '003', '004'],
     },
@@ -206,6 +220,10 @@ Page({
             } else if (n.value === 'alarmItem2') {
               params.alarmSeverity = n.children.find(v => { return v.checked }).value || ''
               isCheck = true;
+            } else if (n.value === 'resultItem') {
+              // debugger
+              params.reportStatus = n.children.find(v => { return v.checked }).value || ''
+              isCheck = true;
             } else if (n.value === 'devUnit') {
               params.deviceUnitId = n.children.find(v => { return v.checked }).value || ''
               isCheck = true;
@@ -232,11 +250,13 @@ Page({
 
         } else if (n.value === 'state0') {
           // 未处理
-          params.processStatus = '0'
+          params.processStatus = '0';
+          params.reportStatus = '';
           this.setData({ 'inputValue': '' })
         } else if (n.value === 'state1') {
           // 处理中
-          params.processStatus = '1'
+          params.processStatus = '1';
+          params.reportStatus = '';
           this.setData({ 'inputValue': '' })
         } else if (n.value === 'state2') {
           // 已处理
@@ -266,6 +286,7 @@ Page({
       hiddenloading: true,
       'reposParams.pageNum': 1
     })
+    this.topPosBack = true;
     this.getRepos2(this.data.reposParams);
     
   },
@@ -296,7 +317,14 @@ Page({
     }
 
     util.alarmList(serchData, res => {
-
+      if (this.topPosBack){
+        setTimeout(() => {
+          wx.pageScrollTo({
+            scrollTop: 0
+          });
+          this.topPosBack = false;
+        },50);
+      }
       if (res.code === 0) {
         wx.hideLoading()
 

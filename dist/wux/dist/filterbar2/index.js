@@ -164,7 +164,6 @@ Component({
          * @param {Object} e 事件对象
          */
         radioChange(e) {
-            
             const { value } = e.detail
             const { index, item } = e.currentTarget.dataset
             const children = item.children.map((n) => Object.assign({}, n, {
@@ -251,8 +250,8 @@ Component({
 
         // 展开或隐藏下拉框
         if (['radio', 'checkbox', 'filter'].includes(n.type)) {
-          params.visible = index === i ? !n.visible : false
-          // debugger
+          params.visible = index === i ? !n.visible : false  //控制弹框
+          
           if (n.type === 'filter') {
             this.$wuxBackdrop[index === i ? !n.visible ? 'retain' : 'release' : 'release']()
           }
@@ -300,29 +299,8 @@ Component({
      * 元素发生变化时的事件
      */
     onChange() {
-      // debugger;
       const { items } = this.data
       const checkedItems = items.filter((n) => n.checked)
-
-      const childs = this.data.items[4].children[4].children;
-      // const childs = this.data.items[4].children[4];
-      const params = {};
-      //若为未处理跟处理中状态，则处理结果不可选中
-      if (checkedItems[0].type === 'text' && (checkedItems[0].value === 'state0' || checkedItems[0].value === 'state1')){
-        childs.forEach((n, i) => {
-          params[`items[4].children[4].children[${i}].checked`] = false;
-        })
-        
-        params[`items[4].children[4].hidden`] = true;
-        params[`items[4].children[4].selected`] = '';
-        
-      }else{
-        // childs.forEach((n, i) => {
-        //   params[`items[4].children[4].children[${i}].disabled`] = false;
-        // })
-        params[`items[4].children[4].hidden`] = false;
-      }
-      this.$$setData(params);
 
       this.$$requestAnimationFrame(() => this.onCloseSelect(), 300)
         .then(() => this.triggerEvent('change', { checkedItems, items }))

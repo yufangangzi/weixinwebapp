@@ -99,6 +99,16 @@ Component({
    * 组件的初始数据
    */
   data: {
+    isPickerShow: false,
+    pickerConfig: {
+      endDate: true, // 是否需要结束时间，为true时显示开始时间和结束时间两个picker
+      column: "", //可选的最小时间范围hour、min、sec、""
+      dateLimit: true, //是否现在时间可选范围，false时可选任意时间；未数字n时，范围是当前时间的最近n天
+      initStartTime: '',
+      initEndTime: '',
+      limitStartTime: "2010-05-06 12:32:44", //最小可选时间
+      limitEndTime: "2025-05-06 12:32:44" //最大可选时间 
+    },
     buttonClicked: false,
     currentSelect: '1',
     outMsgObj: {},
@@ -117,8 +127,11 @@ Component({
     title2: '速度(mm/s)',
     value3: '1440',
     title3: '24小时',
+    value4: '-1',
+    title4: '全部',
     startTime: [''],
     endTime: [''],
+    startEndTime: [],
     startRow: '',
     initChannel: [],
     tablelist: [],
@@ -127,6 +140,9 @@ Component({
     hiddenloading: true,//加载中
     isResult: true,
     pullEnd:{},
+
+    thresholdValue: [],
+    pageNum: 0,
 
     mapIndexFlag: false,//fft sybx则不显示
     mapIndex: 'zdqs' // zdqs 振动趋势图  fft fft图  sybx 时域波形图
@@ -137,6 +153,8 @@ Component({
     // debugger
   },
 
+  
+
   /**
    * 组件的方法列表
    */
@@ -146,10 +164,14 @@ Component({
       const endTime = new Date();
       const start = new Date().getTime() - 90 * 24 * 60 * 60 * 1000;
       const startTime = new Date(start);
+      const d1 = util.timeformat(startTime, 'yyyy-MM-dd');
+      const d2 = util.timeformat(endTime, 'yyyy-MM-dd');
       this.setData({
-        'startTime[0]': util.timeformat(startTime, 'yyyy-MM-dd'),
-        'endTime[0]': util.timeformat(endTime, 'yyyy-MM-dd')
-      })
+        'startTime[0]': d1,
+        'endTime[0]': d2,
+        'startEndTime': [d1, d2]
+      });
+      
 
       this.getHis();
 
@@ -164,13 +186,37 @@ Component({
     getHisAction() {
       let obj = {};
       // debugger;
+      const thresholdType = this.data.value4;
       obj = Object.assign({}, this.properties.outInfo);
-      obj.statisStartTime = new Date(this.data.startTime[0]).getTime();
-      obj.statisEndTime = new Date(this.data.endTime).getTime();
+      obj.statisStartTime = new Date(this.data.startTime[0].replace(/-/g, "/")).getTime();
+      obj.statisEndTime = new Date(this.data.endTime[0].replace(/-/g, "/")).getTime();
       obj.dataType = this.data.value2;
       obj.startRow = this.data.startRow;
       obj.deviceNo = obj.deviceNo || "2411-K103A";
       obj.pageSize = 20;
+      obj.pageNum = this.data.pageNum;
+      if (thresholdType>-1){
+        obj.startRow = '';
+        obj.thresholdType = thresholdType;
+        if (thresholdType==2){
+          if(obj.dataType=='speed'){
+            obj.thresholdValue = this.data.thresholdValue.slice(1,2);
+          }else{
+            obj.thresholdValue = this.data.thresholdValue.slice(3,4);
+          }
+        }else{
+          if (obj.dataType == 'speed') {
+            obj.thresholdValue = this.data.thresholdValue.slice(0,2);
+          }else{
+            obj.thresholdValue = this.data.thresholdValue.slice(2,4);
+          }
+        }
+      }else{
+        delete obj.thresholdType;
+        delete obj.thresholdValue;
+        delete obj.pageNum;
+      }
+      
       // { "pageSize": 20, "deviceNo": "2411-K103A", "statisStartTime": 1539820800000, "statisEndTime": 1546925854719, "startRow": "0_2111-P230A_9223372035307853848", "dataType": "speed" }
 
       if(!obj.startRow){
@@ -184,13 +230,24 @@ Component({
         wx.hideLoading()
         if (res.code === 0) {
           // debugger
+          let thresholdValue = [];
+          thresholdValue.push(res.result.vibrateHighQuote);
+          thresholdValue.push(res.result.vibrateHighHighQuote);
+          thresholdValue.push(res.result.accVibrateHighQuote);
+          thresholdValue.push(res.result.accVibrateHighHighQuote);
 
-          
-          if (res.result.length > 0) {
+          const pageNum = this.data.pageNum;
+          // console.log(this.data.value2);
+          // debugger
+          this.setData({
+            thresholdValue: thresholdValue,
+            pageNum: pageNum+1
+          })
+          if (res.result.data.length > 0) {
             let reg = /^\d+-\d+/;
             let initChannel = [];
             let arr = [];
-            for (let key in res.result[0]) {
+            for (let key in res.result.data[0]) {
               if (reg.test(key) && initChannel.indexOf(key) < 0) {
                 arr.push(key);
               }
@@ -238,7 +295,7 @@ Component({
 
           // debugger;
 
-          res.result.forEach(item => {
+          res.result.data.forEach(item => {
             item.reportTime = util.timeformat(new Date(Number(item.dateTime)));
             item.select = false;
             this.data.initChannel.forEach(it =>{
@@ -248,9 +305,9 @@ Component({
 
           let tablelist = this.data.tablelist;
           if(this.data.startRow){
-            tablelist.push(...res.result.slice(0, 20));
+            tablelist.push(...res.result.data.slice(0, 20));
           }else{
-            tablelist = res.result.slice(0, 20);
+            tablelist = res.result.data.slice(0, 20);
           }
           // debugger
           this.setData({
@@ -259,8 +316,8 @@ Component({
           if(this.data.startRow){
             this.setData({ hasmoreData: false, hiddenloading: true })
           }
-          if (res.result.length > 0) {
-            let currentPage = res.result[res.result.length - 1].rowKey;
+          if (res.result.data.length > 0) {
+            let currentPage = res.result.data[res.result.data.length - 1].rowKey;
             // let isEndPage = true;
             // if (res.result.length > 20) {
             //   isEndPage = false;
@@ -473,11 +530,13 @@ Component({
         options: [{
           title: '速度(mm/s)',
           value: 'speed',
+          color: '#5878E4'
           // color: 'positive',
         },
         {
           title: '加速度(m/s2)',
-          value: 'accel',
+          value: 'acceleration',
+          color: '#5878E4'
           // color: 'positive',
         },
         ],
@@ -494,6 +553,9 @@ Component({
             value2: value,
             title2: options[index].title,
           })
+          this.setData({
+            pageNum: 0,
+          })
           setTimeout(() => {
             this.getHis();
           }, 30);
@@ -503,6 +565,99 @@ Component({
         onCancel: () => {
           
         }
+      })
+    },
+    openSelect4() {
+      // this.scrollToMap();
+      $wuxSelect('#wux-select1').open({
+        value: this.data.value4,
+        // multiple: true,
+        toolbar: {
+          title: '请选择',
+          confirmText: '确定',
+        },
+        options: [{
+          title: '全部',
+          value: '-1',
+          color: '#5878E4'
+        },{
+          title: '高报',
+          value: '1',
+          color: '#5878E4'
+        },
+        {
+          title: '高高报',
+          value: '2',
+          color: '#5878E4'
+        },
+        ],
+        onChange: (value, index, options) => {
+          console.log('onChange', value, index, options)
+          this.setData({
+            value4: value,
+            title4: options[index].title,
+            pageNum: 0,
+            startRow: '',
+          })
+        },
+        onConfirm: (value, index, options) => {
+          console.log('onConfirm', value, index, options)
+          this.setData({
+            value4: value,
+            title4: options[index].title,
+            pageNum: 0,
+            startRow: '',
+          })
+          this.setData({
+            pageNum: 0,
+          })
+          setTimeout(() => {
+            this.getHis();
+          }, 30);
+
+
+        },
+        onCancel: () => {
+
+        }
+      })
+    },
+    openCalendar12() {
+      const maxDate = new Date(this.data.endTime[0]).getTime();
+      $wuxCalendar().open({
+        value: this.data.startEndTime,
+        multiple: true,
+        limit2: true,
+        onChange: (values, displayValues) => {
+          console.log('onChange', values, displayValues)
+          // debugger
+          if(displayValues.length<1){
+            this.setData({
+              startTime: [''],
+              endTime: [''],
+              startEndTime: [''],
+            })
+            
+          }else if (displayValues.length < 2) {
+            this.setData({
+              startTime: displayValues.slice(0,1),
+              endTime: [''],
+              startEndTime: displayValues,
+            })
+          }else if (displayValues.length < 3) {
+            this.setData({
+              startTime: displayValues.slice(0,1),
+              endTime: displayValues.slice(1,2),
+              startEndTime: displayValues,
+            })
+          }
+          // if (values[0] != displayValues[0]) {
+            setTimeout(() => {
+              this.getHis();
+            }, 30);
+          // }
+
+        },
       })
     },
     openCalendar1() {
@@ -582,7 +737,45 @@ Component({
           buttonClicked: false
         })
       }, 500);
-    }
+    },
+
+    // 日期picker打开
+    pickerShow: function () {
+      const d1 = this.data.startTime[0] + ' 00:00:00';
+      const d2 = this.data.endTime[0] + ' 00:00:00';
+      this.setData({
+        'pickerConfig.initStartTime': d1,
+        'pickerConfig.initEndTime': d2,
+      });
+      // debugger
+      this.setData({
+        isPickerShow: true
+      });
+    },
+    // 日期picker关闭
+    pickerHide: function () {
+      this.setData({
+        isPickerShow: false
+      });
+    },
+
+    // 获取日期时间
+    setPickerTime: function (val) {
+      let data = val.detail;
+      console.log(data)
+      this.setData({
+        startTime: [data.startTime],
+        endTime: [data.endTime],
+      });
+
+      this.setData({
+        pageNum: 0,
+      })
+
+      setTimeout(() => {
+        this.getHis();
+      }, 30);
+    },
     
 
   }

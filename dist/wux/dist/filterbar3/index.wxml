@@ -1,11 +1,11 @@
 <view class="wux-class wux-filterbar">
     <wux-backdrop id="wux-backdrop" data-index="{{ index }}" data-item="{{ items[index] }}" bind:click="onClose" />
-    <view class="wux-filterbar__bd">
+    <view class="wux-filterbar__bd" style="background-color:transparent;">
         <block wx:for="{{ items }}" wx:key="">
             <view class="wux-filterbar__item {{ item.checked ? 'ischecked' : '' }}" bindtap="onClick" data-index="{{ index }}">
                 <text class="wux-filterbar__text">{{ item.label }}</text>
                 <!-- <text class="wux-filterbar__icon {{ 'wux-filterbar__icon--' + item.type }} {{ item.sort === 1 ? 'wux-filterbar__icon--sort-asc' : item.sort === -1 ? 'wux-filterbar__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' || item.type === 'search' }}"></text> -->
-                <view class="lnb" wx:if="{{ item.checked }}"></view>
+                <!-- <view class="lnb" wx:if="{{ item.checked }}"></view> -->
             </view>
         </block>
     </view>
@@ -13,7 +13,7 @@
         <wux-animation-group wux-class="wux-filterbar__pop" in="{{ item.visible }}" class-names="wux-animate--slideInRight" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'filter' }}">
             <scroll-view class="wux-filterbar__scroll-view" scroll-y bindscroll="onScroll">
                 <block wx:for="{{ item.children }}" wx:for-item="p" wx:for-index="pIndex" wx:key="">
-                    <view class="wux-filterbar__panel" wx:if="{{ p.hidden !== true }}">
+                    <view class="wux-filterbar__panel">
                         <view class="wux-filterbar__panel-hd">
                             <div class="wux-filterbar__panel-title">{{ p.label }}</div>
                             <!-- <div class="wux-filterbar__panel-selected">{{ p.selected }}</div> -->
@@ -23,7 +23,7 @@
                                 <view class="wux-filterbar__groups">
                                     <block wx:for="{{ p.children }}" wx:for-item="g" wx:key="">
                                         <view class="wux-filterbar__group">
-                                            <radio class="wux-filterbar__radio" value="{{ g.value }}" checked="{{ g.checked }}"  disabled="{{ g.disabled }}" />
+                                            <radio class="wux-filterbar__radio" value="{{ g.value }}" checked="{{ g.checked }}" />
                                             <view class="wux-filterbar__btn {{ g.checked ? 'wux-filterbar__btn--checked' : '' }}">{{ g.label }}</view>
                                         </view>
                                     </block>

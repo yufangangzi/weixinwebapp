@@ -1,17 +1,18 @@
 <!--pages/alarmProcessing/alarmProcessing.wxml-->
+<wux-dialog id="wux-dialog" />
 <wux-toast id="wux-toast" />
 <wux-select id="wux-select1" />
 <wux-select id="wux-select2" />
 
-<!-- <view>
-  <wux-radio-group name="d" value="{{ value4 }}" title="是否接受" bind:change="onChange4">
-      <wux-radio color='positive' title="是" value="1" />
-      <wux-radio color='positive' title="否" value="2" />
+<view>
+  <wux-radio-group name="d" value="{{ value4 }}" title="是否故障" bind:change="onChange4">
+      <wux-radio color='positive' title="设备故障" value="1" />
+      <wux-radio color='positive' title="传感器异常/环境干扰" value="2" />
   </wux-radio-group>
-</view> -->
+</view>
 
 <view hidden="{{isSelectNo}}" style="display:{{isSelectNo ? none : flex}}">
-  <wux-checkbox-group name="e" value="{{ value5 }}" title="诊断建议" bind:change="onChange5">
+  <wux-checkbox-group name="e" value="{{ value5 }}" title="已采纳建议" bind:change="onChange5">
       <wux-checkbox color="positive" wx:for="{{sugggestArray}}" title="{{item.name}}"  value="{{item.id}}" wx:key="check-{{item.id}}" />
       <view  hidden="{{!isSelectOther}}" style="display:{{isSelectOther ? none : flex}}">
         <wux-cell title="请选择" extra="{{ title1 }}" bind:click="onClick1"></wux-cell>
@@ -20,8 +21,22 @@
 </view>
 
 <view hidden="{{isSelectNo}}" style="margin-top:20rpx;display:{{isSelectNo ? none : flex}}">
-  <wux-cell-group title="">
-      <wux-cell title="维保单位" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
+  <wux-cell-group title="指派维保单位">
+      <wux-cell title="请选择" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
+  </wux-cell-group>
+</view>
+
+<view>
+<wux-cell-group title="专家确认说明">
+  <wux-cell hover-class="none">
+        <wux-textarea rows="3" label="" placeholder="请输入本次诊断相关说明" value="{{value6}}" controlled="true" maxlength="500" bind:change="onChange6" bind:blur="onBlur6" bind:input='onInput6' bind:linechange="onLinechange6" bind:updatehevent="upLinechange6" wx:if="{{!showMask}}" />
+        <view class='rich-text wux-textarea' wx:else>
+          <!-- <view class="wux-textarea__label">专家确认说明</view> -->
+          <view class="wux-textarea__control" style="{{('height:' + txtHeight6 + 'px')}}">
+            <rich-text class="wx-textarea__item"  nodes="{{txtRealContent6}}"></rich-text>
+          </view>
+        </view>
+    </wux-cell>
   </wux-cell-group>
 </view>
 
