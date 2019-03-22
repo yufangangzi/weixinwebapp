@@ -2,6 +2,7 @@
   "pages": [
     "pages/first/first",
     "pages/caselib/caselib",
+    "pages/caselibping/index",
     "pages/deviceMonitor/index",
     "pages/deviceMonitor/devicemonitor",
     "pages/deviceMonitor/detail",
