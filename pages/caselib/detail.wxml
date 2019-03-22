@@ -8,7 +8,7 @@
           </view>
           <view class="ub ub-pe">
             <view class="page-read">{{  '阅读数：' + item.readNums}}</view>
-          </view>
+		  </view>
         </view>
         
         <!-- <view class="page__desc">{{item.content}}</view> -->

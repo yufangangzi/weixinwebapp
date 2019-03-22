@@ -302,8 +302,11 @@ Page({
     console.log(index)
     
     var id = bean[index].id;
+    // wx.navigateTo({
+    //   url: "../../pages/caselib/detail?id=" + id,
+    // })
     wx.navigateTo({
-      url: "../../pages/caselib/detail?id=" + id,
+      url: "../../pages/caselibping/index?id=" + id,
     })
     setTimeout(() => {
       this.getPageList(); // 阅读数返回增加

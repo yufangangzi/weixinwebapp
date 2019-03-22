@@ -53,7 +53,7 @@ input::-webkit-input-placeholder, input::-input-placeholder {
   color:rgba(88,120,228,1);
   line-height:34rpx;
   margin-left: 40rpx;
-  background-color:rgba(249,251,252,1);
+  background-color:#EBEEF8;
   border-radius:9px;
 
 }

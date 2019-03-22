@@ -12,6 +12,7 @@ Page({
     detailId:'',
     item: '',
     isShow: false,
+
   },
 
   /**
@@ -90,7 +91,7 @@ Page({
           // res.result.content2 = content;
           this.setData({
             item: res.result,
-            isShow: true,
+            isShow: true
           });
         }else{
           wx.showToast({
