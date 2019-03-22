@@ -19,6 +19,8 @@ Page({
 
     deviceData: {},
     rotateSpeed: '',
+    vibrateHighQuote: '',
+    accVibrateHighQuote: '',
     channelnum: 4,
     deviceNo: '',
     deviceLists:[],
@@ -55,6 +57,8 @@ Page({
         }
         _this.setData({
           rotateSpeed: res1.result.rotateSpeed,
+          vibrateHighQuote: res1.result.vibrateHighQuote,
+          accVibrateHighQuote: res1.result.accVibrateHighQuote,
           channelnum: structureNum,
           deviceinfos: res1.result
         })

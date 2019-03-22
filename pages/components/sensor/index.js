@@ -10,6 +10,12 @@ Component({
         console.log('sensor', newVal);
         return newVal
       }
+    },
+    vibrateHighQuote: {
+      type: Number
+    },
+    accVibrateHighQuote: {
+      type: Number
     }
   },
 

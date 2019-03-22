@@ -44,7 +44,7 @@
 
 <!-- 设备详情-->
 <block wx:if="{{ switchIndex===0 }}">
-<page-monitor deviceNo="{{deviceNo}}" channelnum="{{channelnum}}" rotateSpeed="{{rotateSpeed}}" deviceData="{{deviceData}}" deviceinfos="{{deviceinfos}}"   bind:myevent="fatherRecvFn"></page-monitor>
+<page-monitor vibrateHighQuote="{{vibrateHighQuote}}" accVibrateHighQuote="{{accVibrateHighQuote}}" deviceNo="{{deviceNo}}" channelnum="{{channelnum}}" rotateSpeed="{{rotateSpeed}}" deviceData="{{deviceData}}" deviceinfos="{{deviceinfos}}"   bind:myevent="fatherRecvFn"></page-monitor>
 </block>
 <!-- 根据标识位来切换到历史记录列表 -->
 <block wx:else>

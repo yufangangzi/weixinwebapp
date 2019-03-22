@@ -2,13 +2,13 @@
 <view class='main'>
   <!-- <top rotateSpeed="{{rotateSpeed}}"  bind:myevent="fatherRecvFn"></top> -->
   <block wx:if="{{channelnum===4}}">
-    <speed4 deviceData="{{devices}}"></speed4>
+    <speed4 deviceData="{{devices}}" vibrateHighQuote="{{vibrateHighQuote}}" accVibrateHighQuote="{{accVibrateHighQuote}}"></speed4>
   </block>
   <block wx:if="{{channelnum===2}}">
-    <speed2 deviceData="{{deviceData.sensorList[deviceNo]}}"></speed2>
+    <speed2 deviceData="{{deviceData.sensorList[deviceNo]}}" vibrateHighQuote="{{vibrateHighQuote}}" accVibrateHighQuote="{{accVibrateHighQuote}}"></speed2>
   </block>
   <block wx:if="{{channelnum===8}}">
-    <speed8 deviceData="{{deviceData.sensorList[deviceNo]}}"></speed8>
+    <speed8 deviceData="{{deviceData.sensorList[deviceNo]}}" vibrateHighQuote="{{vibrateHighQuote}}" accVibrateHighQuote="{{accVibrateHighQuote}}"></speed8>
   </block>
 
   <!-- 下面数据可从storage取 -->
