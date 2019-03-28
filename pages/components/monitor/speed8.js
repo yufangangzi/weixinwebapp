@@ -11,6 +11,12 @@ Component({
         wx.setStorageSync('deviceNo', newVal.deviceNo);
         return newVal
       }
+    },
+    vibrateHighQuote: {
+      type: Number
+    },
+    accVibrateHighQuote: {
+      type: Number
     }
   },
 

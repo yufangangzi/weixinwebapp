@@ -2,15 +2,15 @@
 <view class='speed-device'>
   <image class='ico' src='{{deviceImg}}'></image>
   <view class='sensor sensor1'>
-    <sensor sensorData="{{deviceData.sensor2v}}"></sensor>
+    <sensor sensorData="{{deviceData.sensor2v}}" vibrateHighQuote="{{vibrateHighQuote}}" accVibrateHighQuote="{{accVibrateHighQuote}}"></sensor>
   </view>
   <view class='sensor sensor2'>
-    <sensor sensorData="{{deviceData.sensor4v}}"></sensor>
+    <sensor sensorData="{{deviceData.sensor4v}}" vibrateHighQuote="{{vibrateHighQuote}}" accVibrateHighQuote="{{accVibrateHighQuote}}"></sensor>
   </view>
   <view class='sensor sensor3'>
-    <sensor sensorData="{{deviceData.sensor1h}}"></sensor>
+    <sensor sensorData="{{deviceData.sensor1h}}" vibrateHighQuote="{{vibrateHighQuote}}" accVibrateHighQuote="{{accVibrateHighQuote}}"></sensor>
   </view>
   <view class='sensor sensor4'>
-    <sensor sensorData="{{deviceData.sensor3h}}"></sensor>
+    <sensor sensorData="{{deviceData.sensor3h}}" vibrateHighQuote="{{vibrateHighQuote}}" accVibrateHighQuote="{{accVibrateHighQuote}}"></sensor>
   </view>
 </view>

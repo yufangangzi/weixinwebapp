@@ -41,6 +41,12 @@ Component({
         this.infosInit2()
         return newVal
       }
+    },
+    vibrateHighQuote: {
+      type: Number
+    },
+    accVibrateHighQuote: {
+      type: Number
     }
   },
 
